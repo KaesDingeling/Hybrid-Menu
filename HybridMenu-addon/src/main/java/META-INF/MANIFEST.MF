@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Vaadin-Stylesheets: VAADIN/addons/HybridMenu/style.scss
+Implementation-Title: HybridMenu
+Implementation-Version: 1.6.0
+Vaadin-Package-Version: 1
+Class-Path: 
