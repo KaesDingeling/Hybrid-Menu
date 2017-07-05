@@ -3,7 +3,6 @@
     position: relative;
     display: block;
     width: 100%;
-    height: 100%;
     top: 0;
     left: 0;
 }
@@ -300,9 +299,6 @@
 .kdHybridMenuLeft .subMenu.open.subMenu_19 { height: 845px; }
 .kdHybridMenuLeft .subMenu.open.subMenu_20 { height: 890px; }
 
-
-
-
 .kdHybridMenu.minimalView .kdHybridMenuLeft .v-nativebutton-caption, .kdHybridMenu.minimalView .kdHybridMenuLeft .v-nativebutton .v-nativebutton-caption .v-icon.v-icon-angle_left, .kdHybridMenu.minimalView .kdHybridMenuLeft .v-nativebutton .v-nativebutton-caption .v-icon.v-icon-angle_down
 {
     position: absolute;
@@ -398,24 +394,11 @@
     background: transparent;
 }
 
-
-
-
-
-
-
-
-
-
-
-
 .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenu
 {
     width: 100%;
     margin-left: 0;
 }
-
-
 
 .kdHybridMenuBody
 {
@@ -433,6 +416,7 @@
     width: calc(100% - 250px);
     left: 250px;
     top: 40px;
+    overflow-y: auto;
     transition: width 0.5s, left 0.5s;
 }
 

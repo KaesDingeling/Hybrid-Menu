@@ -21,6 +21,7 @@ import kaesdingeling.hybridmenu.demo.page.MemberPage;
 import kaesdingeling.hybridmenu.demo.page.SettingsPage;
 import kaesdingeling.hybridmenu.enums.EMenuPosition;
 import kaesdingeling.hybridmenu.enums.ETopMenuPosition;
+import kaesdingeling.hybridmenu.page.DefaultPage;
 
 @Theme("demo")
 @Title("HybridMenu Add-on Demo")
@@ -39,7 +40,7 @@ public class DemoUI extends UI {
     	hybridMenu.createItem(EMenuPosition.LEFT, "Settings", FontAwesome.COG, SettingsPage.class, true);
     	MenuItem subMenu = hybridMenu.createItem(EMenuPosition.LEFT, "Settings", FontAwesome.COG, null, false);
     	MenuItem settingsPage = hybridMenu.createItem(EMenuPosition.LEFT, "Settings", FontAwesome.COG, SettingsPage.class, false);
-    	MenuItem groupPage = hybridMenu.createItem(EMenuPosition.LEFT, "Groups", FontAwesome.USERS, GroupPage.class, false);
+    	MenuItem groupPage = hybridMenu.createItem(EMenuPosition.LEFT, "Groups", FontAwesome.USERS, null, false);
     	MenuItem memberPage = hybridMenu.createItem(EMenuPosition.LEFT, "Member", FontAwesome.USER, MemberPage.class, false);
     	
     	subMenu.addSubMenuItem(settingsPage);
@@ -51,6 +52,7 @@ public class DemoUI extends UI {
     	hybridMenu.createItemIconTitle(EMenuPosition.LEFT, FontAwesome.DASHBOARD.getHtml() + "General", true);
     	hybridMenu.createItem(EMenuPosition.LEFT, "Home", FontAwesome.HOME, HomePage.class, true);
     	hybridMenu.createItem(EMenuPosition.LEFT, "Settings", FontAwesome.COG, SettingsPage.class, true);
+    	hybridMenu.createItem(EMenuPosition.LEFT, "Default", FontAwesome.COG, DefaultPage.class, true);
     	
     	MenuItem topHomePage = hybridMenu.createItem(EMenuPosition.TOP, "Home", FontAwesome.HOME, HomePage.class, true);
     	
@@ -58,7 +60,7 @@ public class DemoUI extends UI {
     	
     	
     	MenuItem userSettings = hybridMenu.createItem(EMenuPosition.TOP, new ThemeResource("images/profilDummy.jpg"), false);
-    	MenuItem logout = hybridMenu.createItem(EMenuPosition.TOP, FontAwesome.SIGN_OUT.getHtml() + "Logout", MemberPage.class, false);
+    	MenuItem logout = hybridMenu.createItem(null, FontAwesome.SIGN_OUT.getHtml() + "Logout", MemberPage.class, false);
     	
     	userSettings.getButton().addStyleName("buttonWithoutCaption");
     	userSettings.getButton().addStyleName(ETopMenuPosition.RIGHT.toString());

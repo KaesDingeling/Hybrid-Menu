@@ -5,7 +5,7 @@
 	<groupId>kaesdingeling.hybridmenu</groupId>
 	<artifactId>HybridMenu</artifactId>
 	<packaging>jar</packaging>
-	<version>0.0.1.1-ALPHA</version>
+	<version>0.0.1.3-ALPHA</version>
 	<name>HybridMenu Add-on</name>
 
 	<prerequisites>

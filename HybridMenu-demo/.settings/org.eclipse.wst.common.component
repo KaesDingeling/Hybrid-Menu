@@ -5,7 +5,7 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/target/generated-resources/gwt"/>
-        <dependent-module archiveName="HybridMenu-0.0.1.1-ALPHA.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/HybridMenu/HybridMenu">
+        <dependent-module archiveName="HybridMenu-0.0.1.3-ALPHA.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/HybridMenu/HybridMenu">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <property name="context-root" value="HybridMenu-demo"/>

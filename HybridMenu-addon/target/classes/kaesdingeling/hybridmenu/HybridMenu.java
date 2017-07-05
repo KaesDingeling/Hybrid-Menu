@@ -24,43 +24,61 @@ import kaesdingeling.hybridmenu.utils.ViewChangeManager;
 
 public class HybridMenu extends CssLayout {
 	private static final long serialVersionUID = 1L;
-	
+
 	private ViewChangeManager viewChangeManager = null;
-	
+
 	@SuppressWarnings("unused")
 	private EMenuNavigator naviType = null;
 	private EMenuType menuType = null;
-	
+
 	private CssLayout leftMenu = null;
 	private CssLayout topMenu = null;
 	private CssLayout content = null;
-	
+
 	/* Intern Data */
 	private Set<MenuItem> leftMenuList = null;
 	private Set<MenuItem> topMenuList = null;
-	
+
 	private boolean allowChangeView = true;
-	
+
 	/* Default Content */
 	private Label menuTitle = new Label();
 	private NativeButton menuResize = new NativeButton();
 	
 	public HybridMenu() {
-		build(EMenuNavigator.AUTO, EMenuType.COMBONED);
+		build(EMenuNavigator.AUTO, EMenuType.COMBONED, false);
+	}
+
+	public HybridMenu(boolean customNavigator) {
+		build(EMenuNavigator.AUTO, EMenuType.COMBONED, customNavigator);
 	}
 	
 	public HybridMenu(EMenuNavigator naviType) {
 		if (naviType == null) {
 			naviType = EMenuNavigator.AUTO;
 		}
-		build(naviType, EMenuType.COMBONED);
+		build(naviType, EMenuType.COMBONED, false);
+	}
+
+	public HybridMenu(EMenuNavigator naviType, boolean ownNavigator) {
+		if (naviType == null) {
+			naviType = EMenuNavigator.AUTO;
+		}
+		build(naviType, EMenuType.COMBONED, ownNavigator);
 	}
 	
 	public HybridMenu(EMenuType menuType) {
 		if (menuType == null) {
 			menuType = EMenuType.COMBONED;
 		}
-		build(EMenuNavigator.AUTO, menuType);
+		build(EMenuNavigator.AUTO, menuType, false);
+	}
+
+	public HybridMenu(EMenuType menuType, boolean ownNavigator) {
+		if (menuType == null) {
+			menuType = EMenuType.COMBONED;
+		}
+		build(EMenuNavigator.AUTO, menuType, ownNavigator);
 	}
 	
 	public HybridMenu(EMenuNavigator naviType, EMenuType menuType) {
@@ -70,10 +88,20 @@ public class HybridMenu extends CssLayout {
 		if (naviType == null) {
 			naviType = EMenuNavigator.AUTO;
 		}
-		build(naviType, menuType);
+		build(naviType, menuType, false);
 	}
-	
-	private void build(EMenuNavigator naviType, EMenuType menuType) {
+
+	public HybridMenu(EMenuNavigator naviType, EMenuType menuType, boolean ownNavigator) {
+		if (menuType == null) {
+			menuType = EMenuType.COMBONED;
+		}
+		if (naviType == null) {
+			naviType = EMenuNavigator.AUTO;
+		}
+		build(naviType, menuType, ownNavigator);
+	}
+
+	private void build(EMenuNavigator naviType, EMenuType menuType, boolean customNavigator) {
 		if (menuType.equals(EMenuType.COMBONED)) {
 			topMenu = new CssLayout();
 			leftMenu = new CssLayout();
@@ -86,7 +114,9 @@ public class HybridMenu extends CssLayout {
 			if (naviType.equals(EMenuNavigator.AUTO)) {
 				content = new CssLayout();
 				content.setStyleName("kdHybridMenuBody");
-				new Navigator(UI.getCurrent(), content);
+				if (!customNavigator) {
+					new Navigator(UI.getCurrent(), content);
+				}
 				setErrorView(DefaultPage.class);
 				addComponent(content);
 			}
@@ -94,7 +124,7 @@ public class HybridMenu extends CssLayout {
 			menuTitle.setCaption("<b>Hybrid</b> Menu");
 			menuTitle.setStyleName("menuTitle");
 			menuTitle.addStyleName(ETopMenuPosition.LEFT.toString());
-			
+
 			menuResize.setIcon(VaadinIcons.ANGLE_LEFT);
 			menuResize.setStyleName(ETopMenuPosition.LEFT.toString());
 			menuResize.addClickListener(e -> {
@@ -123,10 +153,12 @@ public class HybridMenu extends CssLayout {
 			viewChangeManager = new ViewChangeManager();
 			UI.getCurrent().getNavigator().addViewChangeListener(new ViewChangeListener() {
 				private static final long serialVersionUID = 1L;
+
 				@Override
 				public boolean beforeViewChange(ViewChangeEvent event) {
 					return allowChangeView;
 				}
+
 				@Override
 				public void afterViewChange(ViewChangeEvent event) {
 					if (allowChangeView) {
@@ -143,48 +175,58 @@ public class HybridMenu extends CssLayout {
 		this.menuType = menuType;
 		this.naviType = naviType;
 	}
-	
+
 	public Label getTopMenuLabel() {
 		return menuTitle;
 	}
-	
+
 	public CssLayout getBody() {
 		return content;
 	}
-	
+
 	public void setAllowViewChange(boolean allowChangeView) {
 		this.allowChangeView = allowChangeView;
 	}
-	
+
 	public boolean isAllowViewChange() {
 		return allowChangeView;
 	}
-	
+
 	public void setErrorView(Class<? extends View> _class) {
 		UI.getCurrent().getNavigator().setErrorView(_class);
 	}
-	
+
 	public void addView(Class<? extends View> _class) {
 		UI.getCurrent().getNavigator().addView(_class.getSimpleName(), _class);
 	}
-	
+
 	public void removeView(Class<? extends View> _class) {
 		UI.getCurrent().getNavigator().removeView(_class.getSimpleName());
 	}
-	
+
 	public void navigateTo(String viewName) {
 		UI.getCurrent().getNavigator().navigateTo(viewName);
 	}
-	
+
 	public MenuItem createItemTitle(EMenuPosition menuPosition) {
 		MenuItem menuItem = new MenuItem();
 		menuItem.setMenuPosition(menuPosition);
 		return menuItem;
 	}
-	
-	public MenuItem createItem(EMenuPosition menuPosition, String title, Class<? extends View> _class, boolean addItem) {
+
+	public MenuItem createItem(EMenuPosition menuPosition, String title, Class<? extends View> _class,
+			boolean addItem) {
 		MenuItem menuItem = createItemTitle(menuPosition);
-		NativeButton button = new NativeButton(title);
+		NativeButton button = new NativeButton();
+		if (menuPosition != null) {
+			if (menuPosition.equals(EMenuPosition.TOP)) {
+				button.setDescription(title);
+			} else {
+				button.setCaption(title);
+			}
+		} else {
+			button.setCaption(title);
+		}
 		button.setCaptionAsHtml(true);
 		menuItem.setButton(button);
 		if (_class != null) {
@@ -196,7 +238,7 @@ public class HybridMenu extends CssLayout {
 		}
 		return menuItem;
 	}
-	
+
 	public MenuItem createItem(EMenuPosition menuPosition, Resource icon, boolean addItem) {
 		MenuItem menuItem = createItemTitle(menuPosition);
 		NativeButton button = new NativeButton();
@@ -211,8 +253,9 @@ public class HybridMenu extends CssLayout {
 		}
 		return menuItem;
 	}
-	
-	public MenuItem createItem(EMenuPosition menuPosition, String title, Resource icon, Class<? extends View> _class, boolean addItem) {
+
+	public MenuItem createItem(EMenuPosition menuPosition, String title, Resource icon, Class<? extends View> _class,
+			boolean addItem) {
 		MenuItem menuItem = createItem(menuPosition, title, _class, false);
 		if (menuItem.getButton() != null) {
 			if (icon != null) {
@@ -224,8 +267,9 @@ public class HybridMenu extends CssLayout {
 		}
 		return menuItem;
 	}
-	
-	public MenuItem createItem(EMenuPosition menuPosition, String title, Resource icon, Class<? extends View> _class, String navigateTo, boolean addItem) {
+
+	public MenuItem createItem(EMenuPosition menuPosition, String title, Resource icon, Class<? extends View> _class,
+			String navigateTo, boolean addItem) {
 		MenuItem menuItem = createItem(menuPosition, title, icon, _class, false);
 		if (navigateTo != null) {
 			menuItem.setNavigateTo(navigateTo);
@@ -235,7 +279,7 @@ public class HybridMenu extends CssLayout {
 		}
 		return menuItem;
 	}
-	
+
 	public MenuItem createItemTitle(EMenuPosition menuPosition, String title, boolean addItem) {
 		MenuItem menuItem = createItemTitle(menuPosition);
 		Label label = new Label();
@@ -247,7 +291,7 @@ public class HybridMenu extends CssLayout {
 		}
 		return menuItem;
 	}
-	
+
 	public MenuItem createItemIconTitle(EMenuPosition menuPosition, String title, boolean addItem) {
 		MenuItem menuItem = createItemTitle(menuPosition, title, false);
 		menuItem.getTitle().addStyleName("withIcon");
@@ -256,7 +300,7 @@ public class HybridMenu extends CssLayout {
 		}
 		return menuItem;
 	}
-	
+
 	public boolean addItem(MenuItem menuItem) {
 		if (menuItem != null) {
 			if (menuItem.getParent() != null) {
@@ -296,7 +340,7 @@ public class HybridMenu extends CssLayout {
 			return false;
 		}
 	}
-	
+
 	public void addItem(MenuItem menuItem, CssLayout layout) {
 		CssLayout buttonMainContent = null;
 		if (menuItem.getTargetClass() != null) {
@@ -345,12 +389,14 @@ public class HybridMenu extends CssLayout {
 					if (menuItem.getSubMenuContent().getStyleName().contains("open")) {
 						menuItem.getSubMenuContent().removeStyleName("open");
 						if (menuItem.getButton().getCaption().contains(VaadinIcons.ANGLE_DOWN.getHtml())) {
-							menuItem.getButton().setCaption(menuItem.getButton().getCaption().replaceAll(VaadinIcons.ANGLE_DOWN.getHtml(), VaadinIcons.ANGLE_LEFT.getHtml()));
+							menuItem.getButton().setCaption(menuItem.getButton().getCaption()
+									.replaceAll(VaadinIcons.ANGLE_DOWN.getHtml(), VaadinIcons.ANGLE_LEFT.getHtml()));
 						}
 					} else {
 						menuItem.getSubMenuContent().addStyleName("open");
 						if (menuItem.getButton().getCaption().contains(VaadinIcons.ANGLE_LEFT.getHtml())) {
-							menuItem.getButton().setCaption(menuItem.getButton().getCaption().replaceAll(VaadinIcons.ANGLE_LEFT.getHtml(), VaadinIcons.ANGLE_DOWN.getHtml()));
+							menuItem.getButton().setCaption(menuItem.getButton().getCaption()
+									.replaceAll(VaadinIcons.ANGLE_LEFT.getHtml(), VaadinIcons.ANGLE_DOWN.getHtml()));
 						}
 					}
 				});
@@ -359,7 +405,8 @@ public class HybridMenu extends CssLayout {
 				if (menuItem.getNavigateTo() != null && menuItem.isAllowClickToNavigate()) {
 					menuItem.getButton().addClickListener(e -> {
 						if (allowChangeView) {
-							if (UI.getCurrent().getNavigator().getCurrentView().getClass().getSimpleName().equals(menuItem.getNavigateTo())) {
+							if (UI.getCurrent().getNavigator().getCurrentView().getClass().getSimpleName()
+									.equals(menuItem.getNavigateTo())) {
 								if (menuItem.isAllowNavigateToSamePage()) {
 									navigateTo(menuItem.getNavigateTo());
 								}
@@ -388,7 +435,7 @@ public class HybridMenu extends CssLayout {
 			}
 		}
 	}
-	
+
 	public void addItem(EMenuPosition menuPosition, Component component) {
 		if (menuType.equals(EMenuType.COMBONED)) {
 			if (menuPosition == null) {
@@ -403,7 +450,7 @@ public class HybridMenu extends CssLayout {
 			addComponent(component);
 		}
 	}
-	
+
 	public boolean removeItem(MenuItem menuItem) {
 		if (menuItem != null) {
 			if (leftMenuList != null) {
@@ -443,7 +490,7 @@ public class HybridMenu extends CssLayout {
 		}
 		return false;
 	}
-	
+
 	public void removeItem(EMenuPosition menuPosition, Component component) {
 		if (component != null) {
 			if (menuType.equals(EMenuType.COMBONED)) {

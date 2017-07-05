@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Vaadin-License-Title: Apache License 2.0
 Implementation-Title: HybridMenu Add-on
-Implementation-Version: 0.0.1.1-ALPHA
+Implementation-Version: 0.0.1.3-ALPHA
 Vaadin-Widgetsets: kaesdingeling.hybridmenu.WidgetSet
 Vaadin-Package-Version: 1
 Built-By: max
