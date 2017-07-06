@@ -108,6 +108,9 @@
 				<groupId>com.vaadin</groupId>
 				<artifactId>vaadin-maven-plugin</artifactId>
 				<version>${vaadin.plugin.version}</version>
+				<configuration>
+					<widgetsetMode>fetch</widgetsetMode>
+				</configuration>
 				<executions>
 					<!-- You are free to mark this as permanently ignored in Eclipse -->
 					<execution>
