@@ -2,10 +2,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>kaesdingeling.hybridmenu</groupId>
-	<artifactId>HybridMenu</artifactId>
+	<groupId>org.vaadin.addons</groupId>
+	<artifactId>hybridmenu</artifactId>
 	<packaging>jar</packaging>
-	<version>0.0.1.3-ALPHA</version>
+	<version>0.0.1.4-ALPHA</version>
 	<name>HybridMenu Add-on</name>
 
 	<prerequisites>
@@ -28,24 +28,22 @@
 		<Vaadin-Addon>${project.artifactId}-${project.version}.jar</Vaadin-Addon>
 	</properties>
 
-    <!--
 	<organization>
-		<name>My Name</name>
-		<url>https://github.com/mygithubaccount/HybridMenu/</url>
+		<name>KaesDingeling</name>
+		<url>https://github.com/KaesDingeling/Hybrid-Menu/</url>
 	</organization>
 
 	<scm>
-		<url>git://github.com/mygithubaccount/HybridMenu.git</url>
-		<connection>scm:git:git://github.com/mygithubaccount/HybridMenu.git</connection>
-		<developerConnection>scm:git:ssh://git@github.com:/mygithubaccount/${componentClassName}.git</developerConnection>
-		<tag>HybridMenu add-on for Vaadin</tag>
+		<url>git://github.com/KaesDingeling/Hybrid-Menu.git</url>
+		<connection>scm:git:git://github.com/KaesDingeling/Hybrid-Menu.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com:/KaesDingeling/Hybrid-Menu.git</developerConnection>
+		<tag>HybridMenu</tag>
 	</scm>
 
 	<issueManagement>
 		<system>GitHub</system>
-		<url>https://github.com/mygithubaccount/HybridMenu/issues</url>
+		<url>https://github.com/KaesDingeling/Hybrid-Menu/issues</url>
 	</issueManagement>
-    -->
 
 	<licenses>
 		<license>
@@ -101,7 +99,6 @@
 							<!-- Package format version - do not change -->
 							<Vaadin-Package-Version>1</Vaadin-Package-Version>
 							<Vaadin-License-Title>${Vaadin-License-Title}</Vaadin-License-Title>
-							<Vaadin-Widgetsets>kaesdingeling.hybridmenu.WidgetSet</Vaadin-Widgetsets>
 						</manifestEntries>
 					</archive>
 				</configuration>
@@ -166,13 +163,7 @@
 			included in the produced JARs -->
 		<resources>
 			<resource>
-				<directory>src/main/java</directory>
-				<excludes>
-                    <exclude>rebel.xml</exclude>
-                </excludes>
-			</resource>
-			<resource>
-				<directory>src/main/resources</directory>
+				<directory>src/main/webapp</directory>
 			</resource>
 		</resources>
 
