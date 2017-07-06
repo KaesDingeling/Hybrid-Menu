@@ -28,24 +28,23 @@
 		<Vaadin-Addon>${project.artifactId}-${project.version}.jar</Vaadin-Addon>
 	</properties>
 
-    <!--
 	<organization>
-		<name>My Name</name>
-		<url>https://github.com/mygithubaccount/HybridMenu/</url>
+		<name>KaesDingeling</name>
+		<url>https://github.com/KaesDingeling/Hybrid-Menu/</url>
 	</organization>
 
 	<scm>
-		<url>git://github.com/mygithubaccount/HybridMenu.git</url>
-		<connection>scm:git:git://github.com/mygithubaccount/HybridMenu.git</connection>
-		<developerConnection>scm:git:ssh://git@github.com:/mygithubaccount/${componentClassName}.git</developerConnection>
-		<tag>HybridMenu add-on for Vaadin</tag>
+		<url>git://github.com/KaesDingeling/Hybrid-Menu.git</url>
+		<connection>scm:git:git://github.com/KaesDingeling/Hybrid-Menu.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com:/KaesDingeling/Hybrid-Menu.git</developerConnection>
+		<tag>HybridMenu</tag>
 	</scm>
 
 	<issueManagement>
 		<system>GitHub</system>
-		<url>https://github.com/mygithubaccount/HybridMenu/issues</url>
+		<url>https://github.com/KaesDingeling/Hybrid-Menu/issues</url>
 	</issueManagement>
-    -->
+
 
 	<licenses>
 		<license>
