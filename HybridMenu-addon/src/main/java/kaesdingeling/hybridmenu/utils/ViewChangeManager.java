@@ -22,6 +22,8 @@ public class ViewChangeManager {
 							if (menuItem.getNavigateTo() != null && !event.getViewName().isEmpty()) {
 								if (menuItem.getNavigateTo().equals(event.getViewName())) {
 									setButtonActive = true;
+								} else if (menuItem.getNavigateTo().equals(event.getViewName() + "/" + event.getParameters())) {
+									setButtonActive = true;
 								}
 							} else {
 								setButtonActive = true;
