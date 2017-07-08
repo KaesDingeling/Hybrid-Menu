@@ -3,21 +3,33 @@ package kaesdingeling.hybridmenu.utils;
 import java.util.Set;
 
 import com.vaadin.icons.VaadinIcons;
+import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 
 import kaesdingeling.hybridmenu.data.MenuItem;
 
 public class ViewChangeManager {
-	public boolean manage(Set<MenuItem> menuItemList, String viewName) {
+	public boolean manage(Set<MenuItem> menuItemList, ViewChangeEvent event) {
 		boolean foundActiveButton = false;
 		if (menuItemList != null) {
 			for (MenuItem menuItem : menuItemList) {
 				boolean setButtonActive = false;
 				if (menuItem.getButton() != null) {
 					if (menuItem.getSubMenu() != null) {
-						setButtonActive = manage(menuItem.getSubMenu(), viewName);
+						setButtonActive = manage(menuItem.getSubMenu(), event);
 					}
-					if (menuItem.getNavigateTo() != null) {
-						if (menuItem.getNavigateTo().equals(viewName)) {
+					if (menuItem.getTargetClass() != null) {
+						if (menuItem.getTargetClass().equals(event.getNewView().getClass())) {
+							if (menuItem.getNavigateTo() != null && !event.getViewName().isEmpty()) {
+								if (menuItem.getNavigateTo().equals(event.getViewName())) {
+									setButtonActive = true;
+								}
+							} else {
+								setButtonActive = true;
+							}
+						}
+					}
+					if (!setButtonActive && menuItem.getNavigateTo() != null) {
+						if (menuItem.getNavigateTo().equals(event.getViewName())) {
 							setButtonActive = true;
 						}
 					}
