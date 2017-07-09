@@ -1,8 +1,0 @@
-Manifest-Version: 1.0
-Vaadin-Stylesheets: VAADIN/addons/HybridMenu/style.scss
-Implementation-Title: HybridMenu
-Implementation-Version: 0.0.1.4-ALPHA
-Vaadin-Widgetsets: kaesdingeling.hybridmenu.WidgetSet
-Vaadin-Package-Version: 1
-Class-Path: 
-
