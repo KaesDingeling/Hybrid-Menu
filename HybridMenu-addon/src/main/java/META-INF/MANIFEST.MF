@@ -1,7 +1,0 @@
-Manifest-Version: 1.0
-Vaadin-Stylesheets: VAADIN/addons/hybrid-menu/hybrid-menu.scss
-Implementation-Title: HybridMenu
-Implementation-Version: 0.0.1.12-ALPHA
-Vaadin-Package-Version: 1
-Class-Path: 
-
