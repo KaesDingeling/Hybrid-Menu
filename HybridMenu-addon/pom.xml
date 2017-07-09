@@ -5,8 +5,8 @@
 	<groupId>org.vaadin.addons</groupId>
 	<artifactId>hybridmenu</artifactId>
 	<packaging>jar</packaging>
-	<version>0.0.1.6-ALPHA</version>
-	<name>HybridMenu Add-on</name>
+	<version>0.0.1.11-ALPHA</version>
+	<name>HybridMenu</name>
 
 	<prerequisites>
 		<maven>3</maven>
@@ -99,7 +99,6 @@
 							<!-- Package format version - do not change -->
 							<Vaadin-Package-Version>1</Vaadin-Package-Version>
 							<Vaadin-License-Title>${Vaadin-License-Title}</Vaadin-License-Title>
-							<Vaadin-Stylesheets>VAADIN/addons/hybrid-menu/hybrid-menu.scss</Vaadin-Stylesheets>
 						</manifestEntries>
 					</archive>
 				</configuration>
