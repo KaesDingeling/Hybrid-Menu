@@ -1,15 +1,23 @@
 @import "../valo/valo.scss";
+@import "../../addons/hybrid-menu/hybrid-menu.scss";
 
+/*
 $gray: #d1d1cf;
 $green: #40b527;
 $darkgreen: darken($green, 30%);
+*/
 
-// Prefix all selectors in your theme with .demo
 .demo {
-
-	// Include valo theme styles in your theme
 	@include valo;
-
+    @include hybrid-menu;
+    
+    
+    
+    
+    
+    
+    
+/*
 	// You can style your demo app right here
 	.demoContentLayout {
 		background-color: $gray;
@@ -33,4 +41,5 @@ $darkgreen: darken($green, 30%);
              0px 34px 30px rgba(0,0,0,0.1);
         text-align: center;
 	}
+    */
 }

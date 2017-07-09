@@ -163,10 +163,10 @@ public class HybridMenu extends CssLayout {
 				public void afterViewChange(ViewChangeEvent event) {
 					if (allowChangeView) {
 						if (leftMenuList != null) {
-							viewChangeManager.manage(leftMenuList, event.getViewName());
+							viewChangeManager.manage(leftMenuList, event);
 						}
 						if (topMenuList != null) {
-							viewChangeManager.manage(topMenuList, event.getViewName());
+							viewChangeManager.manage(topMenuList, event);
 						}
 					}
 				}
