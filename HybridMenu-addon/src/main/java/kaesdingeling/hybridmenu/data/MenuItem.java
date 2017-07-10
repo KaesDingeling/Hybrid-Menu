@@ -1,7 +1,7 @@
 package kaesdingeling.hybridmenu.data;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.vaadin.navigator.View;
 import com.vaadin.ui.Component;
@@ -22,7 +22,7 @@ public class MenuItem {
 	private boolean allowNavigateToSamePage = false;
 	private boolean allowClickToNavigate = true;
 	private CssLayout subMenuContent; // Can not be initialized! This progress is automatic
-	private Set<MenuItem> subMenu;
+	private List<MenuItem> subMenu;
 	private MenuItem parent; // Parent object from a submenu
 	private EMenuPosition menuPosition;
 	
@@ -95,15 +95,15 @@ public class MenuItem {
 	public void setAllowNavigateToSamePage(boolean allowNavigateToSamePage) {
 		this.allowNavigateToSamePage = allowNavigateToSamePage;
 	}
-	public Set<MenuItem> getSubMenu() {
+	public List<MenuItem> getSubMenu() {
 		return subMenu;
 	}
-	public void setSubMenu(Set<MenuItem> subMenu) {
+	public void setSubMenu(List<MenuItem> subMenu) {
 		this.subMenu = subMenu;
 	}
 	public void addSubMenuItem(MenuItem subMenuItem) {
 		if (subMenu == null) {
-			subMenu = new HashSet<MenuItem>();
+			subMenu = new ArrayList<MenuItem>();
 		}
 		if (subMenuContent == null) {
 			subMenuContent = new CssLayout();

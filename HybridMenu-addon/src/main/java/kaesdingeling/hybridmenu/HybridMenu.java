@@ -1,7 +1,7 @@
 package kaesdingeling.hybridmenu;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.Navigator;
@@ -36,8 +36,8 @@ public class HybridMenu extends CssLayout {
 	private CssLayout content = null;
 
 	/* Intern Data */
-	private Set<MenuItem> leftMenuList = null;
-	private Set<MenuItem> topMenuList = null;
+	private List<MenuItem> leftMenuList = null;
+	private List<MenuItem> topMenuList = null;
 
 	private boolean allowChangeView = true;
 
@@ -107,8 +107,8 @@ public class HybridMenu extends CssLayout {
 			leftMenu = new CssLayout();
 			topMenu.setStyleName("kdHybridMenuTop");
 			leftMenu.setStyleName("kdHybridMenuLeft");
-			leftMenuList = new HashSet<MenuItem>();
-			topMenuList = new HashSet<MenuItem>();
+			leftMenuList = new ArrayList<MenuItem>();
+			topMenuList = new ArrayList<MenuItem>();
 			addComponents(topMenu, leftMenu);
 			setStyleName("kdHybridMenu");
 			if (naviType.equals(EMenuNavigator.AUTO)) {
@@ -141,11 +141,11 @@ public class HybridMenu extends CssLayout {
 			naviType = EMenuNavigator.MANUALL;
 			if (menuType.equals(EMenuType.TOP)) {
 				topMenu = new CssLayout();
-				leftMenuList = new HashSet<MenuItem>();
+				leftMenuList = new ArrayList<MenuItem>();
 				setStyleName("kdHybridMenuTopMenu");
 			} else {
 				leftMenu = new CssLayout();
-				topMenuList = new HashSet<MenuItem>();
+				topMenuList = new ArrayList<MenuItem>();
 				setStyleName("kdHybridMenuLeftMenu");
 			}
 		}
