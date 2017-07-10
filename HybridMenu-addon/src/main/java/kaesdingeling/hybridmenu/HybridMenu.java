@@ -11,10 +11,12 @@ import com.vaadin.server.Resource;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.Label;
+import com.vaadin.ui.Layout;
 import com.vaadin.ui.NativeButton;
 import com.vaadin.ui.UI;
 
 import kaesdingeling.hybridmenu.data.MenuItem;
+import kaesdingeling.hybridmenu.enums.EMenuMode;
 import kaesdingeling.hybridmenu.enums.EMenuNavigator;
 import kaesdingeling.hybridmenu.enums.EMenuPosition;
 import kaesdingeling.hybridmenu.enums.EMenuType;
@@ -27,81 +29,119 @@ public class HybridMenu extends CssLayout {
 
 	private ViewChangeManager viewChangeManager = null;
 
-	@SuppressWarnings("unused")
 	private EMenuNavigator naviType = null;
 	private EMenuType menuType = null;
+	private EMenuMode menuMode = null;
 
 	private CssLayout leftMenu = null;
 	private CssLayout topMenu = null;
-	private CssLayout content = null;
+	private Layout content = null;
 
 	/* Intern Data */
 	private List<MenuItem> leftMenuList = null;
 	private List<MenuItem> topMenuList = null;
 
 	private boolean allowChangeView = true;
+	private boolean customNavigator = false;
 
 	/* Default Content */
 	private Label menuTitle = new Label();
 	private NativeButton menuResize = new NativeButton();
 	
 	public HybridMenu() {
-		build(EMenuNavigator.AUTO, EMenuType.COMBONED, false);
+		menuMode = EMenuMode.TOGGLEABLE;
+		naviType = EMenuNavigator.AUTO;
+		menuType = EMenuType.COMBONED;
+		build();
 	}
-
+	
 	public HybridMenu(boolean customNavigator) {
-		build(EMenuNavigator.AUTO, EMenuType.COMBONED, customNavigator);
+		this.customNavigator = customNavigator;
+		menuMode = EMenuMode.TOGGLEABLE;
+		naviType = EMenuNavigator.AUTO;
+		menuType = EMenuType.COMBONED;
+		build();
+	}
+	
+	public HybridMenu(Layout content) {
+		this.content = content;
+		menuMode = EMenuMode.TOGGLEABLE;
+		naviType = EMenuNavigator.AUTO;
+		menuType = EMenuType.COMBONED;
+		build();
+	}
+	
+	public HybridMenu(boolean customNavigator, Layout content) {
+		this.customNavigator = customNavigator;
+		this.content = content;
+		menuMode = EMenuMode.TOGGLEABLE;
+		naviType = EMenuNavigator.AUTO;
+		menuType = EMenuType.COMBONED;
+		build();
 	}
 	
 	public HybridMenu(EMenuNavigator naviType) {
+		menuMode = EMenuMode.TOGGLEABLE;
 		if (naviType == null) {
 			naviType = EMenuNavigator.AUTO;
 		}
-		build(naviType, EMenuType.COMBONED, false);
+		menuType = EMenuType.COMBONED;
+		build();
 	}
 
-	public HybridMenu(EMenuNavigator naviType, boolean ownNavigator) {
+	public HybridMenu(EMenuNavigator naviType, boolean customNavigator) {
+		this.customNavigator = customNavigator;
+		menuMode = EMenuMode.TOGGLEABLE;
 		if (naviType == null) {
 			naviType = EMenuNavigator.AUTO;
 		}
-		build(naviType, EMenuType.COMBONED, ownNavigator);
+		menuType = EMenuType.COMBONED;
+		build();
 	}
 	
 	public HybridMenu(EMenuType menuType) {
+		menuMode = EMenuMode.TOGGLEABLE;
 		if (menuType == null) {
 			menuType = EMenuType.COMBONED;
 		}
-		build(EMenuNavigator.AUTO, menuType, false);
+		naviType = EMenuNavigator.AUTO;
+		build();
 	}
 
-	public HybridMenu(EMenuType menuType, boolean ownNavigator) {
+	public HybridMenu(EMenuType menuType, boolean customNavigator) {
+		this.customNavigator = customNavigator;
+		menuMode = EMenuMode.TOGGLEABLE;
 		if (menuType == null) {
 			menuType = EMenuType.COMBONED;
 		}
-		build(EMenuNavigator.AUTO, menuType, ownNavigator);
+		naviType = EMenuNavigator.AUTO;
+		build();
 	}
 	
 	public HybridMenu(EMenuNavigator naviType, EMenuType menuType) {
-		if (menuType == null) {
-			menuType = EMenuType.COMBONED;
-		}
+		menuMode = EMenuMode.TOGGLEABLE;
 		if (naviType == null) {
 			naviType = EMenuNavigator.AUTO;
 		}
-		build(naviType, menuType, false);
-	}
-
-	public HybridMenu(EMenuNavigator naviType, EMenuType menuType, boolean ownNavigator) {
 		if (menuType == null) {
 			menuType = EMenuType.COMBONED;
 		}
+		build();
+	}
+
+	public HybridMenu(EMenuNavigator naviType, EMenuType menuType, boolean customNavigator) {
+		this.customNavigator = customNavigator;
+		menuMode = EMenuMode.TOGGLEABLE;
 		if (naviType == null) {
 			naviType = EMenuNavigator.AUTO;
 		}
-		build(naviType, menuType, ownNavigator);
+		if (menuType == null) {
+			menuType = EMenuType.COMBONED;
+		}
+		build();
 	}
 
-	private void build(EMenuNavigator naviType, EMenuType menuType, boolean customNavigator) {
+	private void build() {
 		if (menuType.equals(EMenuType.COMBONED)) {
 			topMenu = new CssLayout();
 			leftMenu = new CssLayout();
@@ -125,18 +165,18 @@ public class HybridMenu extends CssLayout {
 			menuTitle.setStyleName("menuTitle");
 			menuTitle.addStyleName(ETopMenuPosition.LEFT.toString());
 
-			menuResize.setIcon(VaadinIcons.ANGLE_LEFT);
-			menuResize.setStyleName(ETopMenuPosition.LEFT.toString());
-			menuResize.addClickListener(e -> {
-				if (getStyleName().contains("minimalView")) {
-					menuResize.setIcon(VaadinIcons.ANGLE_LEFT);
-					removeStyleName("minimalView");
-				} else {
-					menuResize.setIcon(VaadinIcons.ANGLE_RIGHT);
-					addStyleName("minimalView");
-				}
-			});
-			topMenu.addComponents(menuTitle, menuResize);
+			topMenu.addComponent(menuTitle);
+			
+			if (menuMode.equals(EMenuMode.TOGGLEABLE)) {
+				menuResize.setIcon(VaadinIcons.ANGLE_LEFT);
+				menuResize.setStyleName(ETopMenuPosition.LEFT.toString());
+				menuResize.addClickListener(e -> {
+					toogleLeftMenu();
+				});
+				topMenu.addComponent(menuResize);
+			} else if (menuMode.equals(EMenuMode.MINIMIZE)) {
+				addStyleName("minimalView");
+			}
 		} else {
 			naviType = EMenuNavigator.MANUALL;
 			if (menuType.equals(EMenuType.TOP)) {
@@ -172,16 +212,30 @@ public class HybridMenu extends CssLayout {
 				}
 			});
 		}
-		this.menuType = menuType;
-		this.naviType = naviType;
 	}
 
 	public Label getTopMenuLabel() {
 		return menuTitle;
 	}
 
-	public CssLayout getBody() {
+	public Layout getBody() {
 		return content;
+	}
+	
+	public void toogleLeftMenu() {
+		if (getStyleName().contains("kdHybridMenu") && menuResize != null) {
+			if (getStyleName().contains("minimalView")) {
+				menuResize.setIcon(VaadinIcons.ANGLE_LEFT);
+				removeStyleName("minimalView");
+			} else {
+				menuResize.setIcon(VaadinIcons.ANGLE_RIGHT);
+				addStyleName("minimalView");
+			}
+		}
+	}
+	
+	public void toggleLeftMenuButton() {
+		menuResize.setVisible(!menuResize.isVisible());
 	}
 
 	public void setAllowViewChange(boolean allowChangeView) {
