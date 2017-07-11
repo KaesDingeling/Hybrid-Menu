@@ -124,8 +124,6 @@ public class HybridMenu extends CssLayout {
 
 	private void build() {
 		if (menuType.equals(EMenuType.COMBONED)) {
-			setMenuResizeSpeed(menuResizeSpeed);
-			setSubMenuSpeed(subMenuSpeed);
 			topMenu = new CssLayout();
 			leftMenu = new CssLayout();
 			topMenu.setStyleName("kdHybridMenuTop");
@@ -162,6 +160,8 @@ public class HybridMenu extends CssLayout {
 			} else if (menuMode.equals(EMenuMode.MINIMIZE)) {
 				addStyleName("minimalView");
 			}
+			setMenuResizeSpeed(menuResizeSpeed);
+			setSubMenuSpeed(subMenuSpeed);
 		} else {
 			naviType = EMenuNavigator.MANUALL;
 			if (menuType.equals(EMenuType.TOP)) {
