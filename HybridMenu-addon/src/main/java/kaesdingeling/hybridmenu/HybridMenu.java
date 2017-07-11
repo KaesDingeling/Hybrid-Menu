@@ -33,8 +33,8 @@ public class HybridMenu extends CssLayout {
 	private EMenuNavigator naviType = EMenuNavigator.AUTO;
 	private EMenuType menuType = EMenuType.COMBONED;
 	private EMenuMode menuMode = EMenuMode.TOGGLEABLE;
-	private EAnimationSpeed menuResizeSpeed = EAnimationSpeed.HIGH;
-	private EAnimationSpeed subMenuSpeed = EAnimationSpeed.HIGH;
+	private EAnimationSpeed menuResizeSpeed = EAnimationSpeed.NONE;
+	private EAnimationSpeed subMenuSpeed = EAnimationSpeed.NONE;
 
 	private CssLayout leftMenu = null;
 	private CssLayout topMenu = null;
@@ -160,8 +160,8 @@ public class HybridMenu extends CssLayout {
 			} else if (menuMode.equals(EMenuMode.MINIMIZE)) {
 				addStyleName("minimalView");
 			}
-			setMenuResizeSpeed(menuResizeSpeed);
-			setSubMenuSpeed(subMenuSpeed);
+			setMenuResizeSpeed(EAnimationSpeed.HIGH);
+			setSubMenuSpeed(EAnimationSpeed.HIGH);
 		} else {
 			naviType = EMenuNavigator.MANUALL;
 			if (menuType.equals(EMenuType.TOP)) {
