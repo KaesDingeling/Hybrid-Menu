@@ -4,15 +4,19 @@ HybridMenu is a UI component add-on for Vaadin 8.
 
 ## Online demo
 
-Try the add-on demo at <url of the online demo>
+Coming soon
 
 ## Download release
 
 Official releases of this add-on are available at Vaadin Directory. For Maven instructions, download and reviews, go to http://vaadin.com/addon/HybridMenu
 
+## Wiki
+
+Coming soon on https://github.com/KaesDingeling/Hybrid-Menu/wiki
+
 ## Building and running demo
 
-git clone <url of the HybridMenu repository>
+git clone https://github.com/KaesDingeling/Hybrid-Menu.git
 mvn clean install
 cd demo
 mvn jetty:run
@@ -51,19 +55,13 @@ Debugging client side code in the HybridMenu-demo project:
  
 ## Release notes
 
-### Version 0.0.1.0-ALPHA
-- ...
-- ...
+### Version 0.0.1.1-ALPHA
+- Upload to Vaadin Repository
+- Upload to GitHub
 
-## Roadmap
+### Version 0.0.1.13-ALPHA
+- Compiling problems was solved
 
-This component is developed as a hobby with no public roadmap or any guarantees of upcoming releases. That said, the following features are planned for upcoming releases:
-- ...
-- ...
-
-## Issue tracking
-
-The issues for this add-on are tracked on its github.com page. All bug reports and feature requests are appreciated. 
 
 ## Contributions
 
@@ -79,32 +77,14 @@ Contributions are welcome, but there are no guarantees that they are accepted as
 
 Add-on is distributed under Apache License 2.0. For license terms, see LICENSE.txt.
 
-HybridMenu is written by <...>
+HybridMenu is written by KaesDingeling
 
-# Developer Guide
+# Special thanks
 
-## Getting started
+### appreciated
 
-Here is a simple example on how to try out the add-on component:
+https://github.com/appreciated
 
-<...>
+### fo0
 
-For a more comprehensive example, see src/test/java/org/vaadin/template/demo/DemoUI.java
-
-## Features
-
-### Feature A
-
-<...>
-
-### Feature B
-
-<...>
-
-### Feature C
-
-<...>
-
-## API
-
-HybridMenu JavaDoc is available online at <...>
+https://github.com/fo0
