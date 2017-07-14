@@ -140,7 +140,7 @@ public class HybridMenu extends CssLayout {
             naviType = EMenuNavigator.MANUALL;
             if (menuType.equals(EMenuType.TOP)) {
                 topMenu = new CssLayout();
-                leftMenuList = new HashSet<MenuItem>();
+                leftMenuList = new HashSet<>();
                 setStyleName("kdHybridMenuTopMenu");
             } else {
                 leftMenu = new CssLayout();
