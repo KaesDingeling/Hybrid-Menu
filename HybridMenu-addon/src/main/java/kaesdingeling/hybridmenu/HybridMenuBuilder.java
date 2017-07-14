@@ -1,15 +1,14 @@
 package kaesdingeling.hybridmenu;
 
 import com.vaadin.navigator.View;
-import com.vaadin.server.Resource;
-import com.vaadin.server.ThemeResource;
+import com.vaadin.server.FontIcon;
 import kaesdingeling.hybridmenu.data.MenuItem;
 import kaesdingeling.hybridmenu.enums.EMenuNavigator;
 import kaesdingeling.hybridmenu.enums.EMenuPosition;
 import kaesdingeling.hybridmenu.enums.EMenuType;
 
 /**
- * Created by Johannes on 09.07.2017.
+ * Created by appreciated on 09.07.2017.
  */
 public class HybridMenuBuilder {
     HybridMenu hybridMenu;
@@ -53,50 +52,34 @@ public class HybridMenuBuilder {
 
     public HybridMenuBuilder withItem(EMenuPosition menuPosition, String title, Class<? extends View> _class,
                                       boolean addItem) {
-        hybridMenu.addItem(hybridMenu.createItem(menuPosition, title, _class, addItem));
+        hybridMenu.addItem(new MenuItem(menuPosition, title, _class, addItem));
         return this;
     }
 
-    public HybridMenuBuilder withItem(EMenuPosition menuPosition, Resource icon, boolean addItem) {
-        hybridMenu.addItem(hybridMenu.createItem(menuPosition, icon, addItem));
+    public HybridMenuBuilder withItem(EMenuPosition menuPosition, FontIcon icon, boolean addItem) {
+        hybridMenu.addItem(new MenuItem(menuPosition, icon, addItem));
         return this;
     }
 
-    public HybridMenuBuilder withItem(EMenuPosition menuPosition, String title, Resource icon, Class<? extends View> _class,
+    public HybridMenuBuilder withItem(EMenuPosition menuPosition, String title, FontIcon icon, Class<? extends View> _class,
                                       boolean addItem) {
-        hybridMenu.addItem(hybridMenu.createItem(menuPosition, title, icon, _class, addItem));
+        hybridMenu.addItem(new MenuItem(menuPosition, title, icon, _class, addItem));
         return this;
     }
 
-    public HybridMenuBuilder withItem(EMenuPosition menuPosition, String title, Resource icon, Class<? extends View> _class,
+    public HybridMenuBuilder withItem(EMenuPosition menuPosition, String title, FontIcon icon, Class<? extends View> _class,
                                       String navigateTo, boolean addItem) {
-        hybridMenu.addItem(hybridMenu.createItem(menuPosition, title, icon, _class, navigateTo, addItem));
-        return this;
-    }
-
-
-    public HybridMenuBuilder withItemTitle(EMenuPosition menuPosition) {
-        hybridMenu.createItemTitle(menuPosition);
+        hybridMenu.addItem(new MenuItem(menuPosition, title, icon, _class, navigateTo, addItem));
         return this;
     }
 
     public HybridMenuBuilder withItemTitle(EMenuPosition menuPosition, String title, boolean addItem) {
-        hybridMenu.createItemTitle(menuPosition, title, addItem);
-        return this;
-    }
-
-    public HybridMenuBuilder withItemIconTitle(EMenuPosition menuPosition, String title, boolean addItem) {
-        hybridMenu.createItemIconTitle(menuPosition, title, addItem);
+        hybridMenu.addItem(new MenuItem(menuPosition, title, addItem));
         return this;
     }
 
     public HybridMenu build() {
         return hybridMenu;
-    }
-
-    public HybridMenuBuilder withItem(EMenuPosition top, ThemeResource themeResource, boolean b) {
-        hybridMenu.createItem(top, themeResource, b);
-        return this;
     }
 
     public HybridMenuBuilder withItem(MenuItem home) {

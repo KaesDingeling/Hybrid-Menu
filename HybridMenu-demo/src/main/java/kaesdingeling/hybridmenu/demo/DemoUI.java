@@ -1,27 +1,23 @@
 package kaesdingeling.hybridmenu.demo;
 
-import javax.servlet.annotation.WebServlet;
-
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.Title;
 import com.vaadin.annotations.VaadinServletConfiguration;
-import com.vaadin.server.FontAwesome;
-import com.vaadin.server.ThemeResource;
+import com.vaadin.icons.VaadinIcons;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.server.VaadinSession;
-import com.vaadin.ui.MenuBar;
 import com.vaadin.ui.UI;
-
 import kaesdingeling.hybridmenu.HybridMenu;
-import kaesdingeling.hybridmenu.data.MenuItem;
-import kaesdingeling.hybridmenu.demo.page.GroupPage;
+import kaesdingeling.hybridmenu.HybridMenuBuilder;
+import kaesdingeling.hybridmenu.data.MenuItemBuilder;
 import kaesdingeling.hybridmenu.demo.page.HomePage;
 import kaesdingeling.hybridmenu.demo.page.MemberPage;
-import kaesdingeling.hybridmenu.demo.page.SettingsPage;
 import kaesdingeling.hybridmenu.enums.EMenuPosition;
 import kaesdingeling.hybridmenu.enums.ETopMenuPosition;
 import kaesdingeling.hybridmenu.page.DefaultPage;
+
+import javax.servlet.annotation.WebServlet;
 
 @Theme("demo")
 @Title("HybridMenu Add-on Demo")
@@ -34,7 +30,35 @@ public class DemoUI extends UI {
 
     @Override
     protected void init(VaadinRequest request) {
-    	HybridMenu hybridMenu = new HybridMenu();
+        HybridMenu hybridMenu = HybridMenuBuilder.get()
+                .withItemTitle(EMenuPosition.LEFT, "General", true)
+                .withItem(EMenuPosition.LEFT, "Home", VaadinIcons.HOME, HomePage.class, true)
+                .withItem(EMenuPosition.LEFT, "Default", VaadinIcons.COG, DefaultPage.class, true)
+                .withItem(
+                        MenuItemBuilder.get("Home", VaadinIcons.FILE_TREE, HomePage.class, true)
+                                .withSubMenuItem("Home", VaadinIcons.HOME, HomePage.class, true)
+                                .withSubMenuItem("Home", VaadinIcons.HOME, HomePage.class, true)
+                                .withSubMenuItem("Home", VaadinIcons.HOME, HomePage.class, true)
+                                .withSubMenuItem("Home", VaadinIcons.HOME, HomePage.class, true)
+                                .withStyleName(ETopMenuPosition.RIGHT.toString())
+                                .build())
+                .withItem(
+                        MenuItemBuilder.get("Home", VaadinIcons.FILE_TREE, HomePage.class, true)
+                                .withSubMenuItem(
+                                        MenuItemBuilder.get("Home", VaadinIcons.HOME, HomePage.class, true)
+                                                .withSubMenuItem("Home", VaadinIcons.HOME, HomePage.class, true)
+                                                .withSubMenuItem("Home", VaadinIcons.HOME, HomePage.class, true)
+                                                .build())
+                                .withSubMenuItem("Home", VaadinIcons.HOME, HomePage.class, true)
+                                .withSubMenuItem("Home", VaadinIcons.HOME, HomePage.class, true)
+                                .withSubMenuItem("Home", VaadinIcons.HOME, HomePage.class, true)
+                                .withStyleName(ETopMenuPosition.RIGHT.toString())
+                                .build()
+                )
+                .withItem(null, VaadinIcons.SIGN_OUT.getHtml() + "Logout", MemberPage.class, false)
+                .build();
+    	/*H
+        ybridMenu hybridMenu = new HybridMenu();
     	hybridMenu.createItemTitle(EMenuPosition.LEFT, "General", true);
     	hybridMenu.createItem(EMenuPosition.LEFT, "Home", FontAwesome.HOME, HomePage.class, true);
     	hybridMenu.createItem(EMenuPosition.LEFT, "Settings", FontAwesome.COG, SettingsPage.class, true);
@@ -66,9 +90,9 @@ public class DemoUI extends UI {
     	userSettings.getButton().addStyleName(ETopMenuPosition.RIGHT.toString());
     	userSettings.addSubMenuItem(logout);
     	
-    	hybridMenu.addItem(userSettings);
-    	
-    	setContent(hybridMenu);
-    	VaadinSession.getCurrent().setAttribute(HybridMenu.class, hybridMenu);
+    	hybridMenu.addItem(userSettings);*/
+
+        setContent(hybridMenu);
+        VaadinSession.getCurrent().setAttribute(HybridMenu.class, hybridMenu);
     }
 }

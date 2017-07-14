@@ -1,115 +1,154 @@
 package kaesdingeling.hybridmenu.data;
 
-import java.util.HashSet;
+import com.vaadin.navigator.View;
+import com.vaadin.server.Resource;
+import kaesdingeling.hybridmenu.enums.EMenuPosition;
+import kaesdingeling.hybridmenu.interfaces.MenuItemClickListener;
+
+import java.util.LinkedHashSet;
 import java.util.Set;
 
-import com.vaadin.navigator.View;
-import com.vaadin.ui.Component;
-import com.vaadin.ui.CssLayout;
-import com.vaadin.ui.Image;
-import com.vaadin.ui.Label;
-import com.vaadin.ui.NativeButton;
-
-import kaesdingeling.hybridmenu.enums.EMenuPosition;
-
 public class MenuItem {
-	private Label title;
-	private NativeButton button;
-	private Image image;
-	private Component component;
-	private Class<? extends View> targetClass;
-	private String navigateTo;
-	private boolean allowNavigateToSamePage = false;
-	private boolean allowClickToNavigate = true;
-	private CssLayout subMenuContent; // Can not be initialized! This progress is automatic
-	private Set<MenuItem> subMenu;
-	private MenuItem parent; // Parent object from a submenu
-	private EMenuPosition menuPosition;
-	
-	public Class<? extends View> getTargetClass() {
-		return targetClass;
-	}
-	public void setTargetClass(Class<? extends View> targetClass) {
-		this.targetClass = targetClass;
-	}
-	public Image getImage() {
-		return image;
-	}
-	public void setImage(Image image) {
-		this.image = image;
-	}
-	public Component getComponent() {
-		return component;
-	}
-	public void setComponent(Component component) {
-		this.component = component;
-	}
-	public EMenuPosition getMenuPosition() {
-		return menuPosition;
-	}
-	public void setMenuPosition(EMenuPosition menuPosition) {
-		this.menuPosition = menuPosition;
-	}
-	public MenuItem getParent() {
-		return parent;
-	}
-	public void setParent(MenuItem parent) {
-		this.parent = parent;
-	}
-	public CssLayout getSubMenuContent() {
-		return subMenuContent;
-	}
-	/*
-	 * Can not be initialized! This progress is automatic
-	 */
-	public void setSubMenuContent(CssLayout subMenuContent) {
-		this.subMenuContent = subMenuContent;
-	}
-	public boolean isAllowClickToNavigate() {
-		return allowClickToNavigate;
-	}
-	public void setAllowClickToNavigate(boolean allowClickToNavigate) {
-		this.allowClickToNavigate = allowClickToNavigate;
-	}
-	public Label getTitle() {
-		return title;
-	}
-	public void setTitle(Label title) {
-		this.title = title;
-	}
-	public NativeButton getButton() {
-		return button;
-	}
-	public void setButton(NativeButton button) {
-		this.button = button;
-	}
-	public String getNavigateTo() {
-		return navigateTo;
-	}
-	public void setNavigateTo(String navigateTo) {
-		this.navigateTo = navigateTo;
-	}
-	public boolean isAllowNavigateToSamePage() {
-		return allowNavigateToSamePage;
-	}
-	public void setAllowNavigateToSamePage(boolean allowNavigateToSamePage) {
-		this.allowNavigateToSamePage = allowNavigateToSamePage;
-	}
-	public Set<MenuItem> getSubMenu() {
-		return subMenu;
-	}
-	public void setSubMenu(Set<MenuItem> subMenu) {
-		this.subMenu = subMenu;
-	}
-	public void addSubMenuItem(MenuItem subMenuItem) {
-		if (subMenu == null) {
-			subMenu = new HashSet<MenuItem>();
-		}
-		if (subMenuContent == null) {
-			subMenuContent = new CssLayout();
-		}
-		subMenu.add(subMenuItem);
-		subMenuContent.setStyleName("subMenu");
-		subMenuContent.addStyleName("subMenu_" + subMenu.size());
-	}
+
+    private EMenuPosition menuPosition;
+    private Class<? extends View> targetClass;
+    private String navigateTo;
+    private boolean allowNavigateToSamePage = false;
+    private boolean allowClickToNavigate = true;
+    private Set<MenuItem> childItems = new LinkedHashSet<>();
+    private MenuItem parent;
+    private String title;
+    private Class<? extends View> aClass;
+    private boolean addItem;
+    private Resource icon;
+    private Class<? extends View> homePageClass;
+    private boolean b;
+    private MenuItemClickListener listener;
+
+    public MenuItem(String title, Resource icon, Class<? extends View> homepageclass, boolean b) {
+        this.title = title;
+        this.icon = icon;
+        this.homePageClass = homepageclass;
+        this.b = b;
+    }
+
+    public MenuItem(Resource icon, boolean b) {
+        this.icon = icon;
+        this.b = b;
+    }
+
+    public MenuItem(EMenuPosition menuPosition, String title, Class<? extends View> aClass, boolean addItem) {
+
+        this.menuPosition = menuPosition;
+        this.title = title;
+        this.aClass = aClass;
+        this.addItem = addItem;
+    }
+
+    public MenuItem(EMenuPosition menuPosition, Resource icon, boolean addItem) {
+
+        this.menuPosition = menuPosition;
+        this.icon = icon;
+        this.addItem = addItem;
+    }
+
+    public MenuItem(EMenuPosition menuPosition, String title, Resource icon, Class<? extends View> aClass, boolean addItem) {
+
+        this.menuPosition = menuPosition;
+        this.title = title;
+        this.icon = icon;
+        this.aClass = aClass;
+        this.addItem = addItem;
+    }
+
+    public MenuItem(EMenuPosition menuPosition, String title, Resource icon, Class<? extends View> aClass, String navigateTo, boolean addItem) {
+
+        this.menuPosition = menuPosition;
+        this.title = title;
+        this.icon = icon;
+        this.aClass = aClass;
+        this.navigateTo = navigateTo;
+        this.addItem = addItem;
+    }
+
+    public MenuItem(EMenuPosition menuPosition, String title, boolean addItem) {
+
+        this.menuPosition = menuPosition;
+        this.title = title;
+        this.addItem = addItem;
+    }
+
+    public Class<? extends View> getTargetClass() {
+        return targetClass;
+    }
+
+    public void setTargetClass(Class<? extends View> targetClass) {
+        this.targetClass = targetClass;
+    }
+
+    public MenuItem getParent() {
+        return parent;
+    }
+
+    public void setParent(MenuItem parent) {
+        this.parent = parent;
+    }
+
+    public boolean isAllowClickToNavigate() {
+        return allowClickToNavigate;
+    }
+
+    public void setAllowClickToNavigate(boolean allowClickToNavigate) {
+        this.allowClickToNavigate = allowClickToNavigate;
+    }
+
+    public String getNavigateTo() {
+        return navigateTo;
+    }
+
+    public void setNavigateTo(String navigateTo) {
+        this.navigateTo = navigateTo;
+    }
+
+    public boolean isAllowNavigateToSamePage() {
+        return allowNavigateToSamePage;
+    }
+
+    public void setAllowNavigateToSamePage(boolean allowNavigateToSamePage) {
+        this.allowNavigateToSamePage = allowNavigateToSamePage;
+    }
+
+    public Set<MenuItem> getChildItems() {
+        return childItems;
+    }
+
+    public void setChildItems(Set<MenuItem> childItems) {
+        this.childItems = childItems;
+    }
+
+    public void addSubMenuItem(MenuItem subMenuItem) {
+        childItems.add(subMenuItem);
+    }
+
+    public Resource getIcon() {
+        return icon;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void onClick() {
+        if (listener != null) {
+            listener.onClick();
+        }
+    }
+
+    public void setOnClickListener(MenuItemClickListener listener) {
+        this.listener = listener;
+    }
 }

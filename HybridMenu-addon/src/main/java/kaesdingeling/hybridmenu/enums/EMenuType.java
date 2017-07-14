@@ -1,5 +1,5 @@
 package kaesdingeling.hybridmenu.enums;
 
 public enum EMenuType {
-	LEFT, TOP, COMBONED
+	LEFT, TOP, COMBINED
 }
