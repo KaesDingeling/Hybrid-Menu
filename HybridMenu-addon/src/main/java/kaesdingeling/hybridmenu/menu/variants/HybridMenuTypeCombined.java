@@ -21,7 +21,6 @@ public class HybridMenuTypeCombined extends HybridMenuVariant {
     private CssLayout leftMenu;
     private Label menuTitle;
     private Button menuResize;
-    private CssLayout content;
     private Component[] components;
 
     @Override
@@ -78,6 +77,9 @@ public class HybridMenuTypeCombined extends HybridMenuVariant {
 
     @Override
     public void addItem(MenuItem menuItem) {
+        if (menuItem.getTargetClass() != null) {
+            menu.getNavigator().addView(menuItem.getTitle(), menuItem.getTargetClass());
+        }
         EMenuItemPosition position = menuItem.getMenuItemPosition();
         if (position == EMenuItemPosition.LEFT || position == EMenuItemPosition.COMBINED) {
             leftMenu.addComponent(getProvider().getComponent(menuItem));

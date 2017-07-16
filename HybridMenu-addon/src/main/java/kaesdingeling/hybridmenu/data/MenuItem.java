@@ -10,7 +10,7 @@ import java.util.Set;
 
 public class MenuItem {
 
-    private EMenuItemPosition menuItemPosition;
+    private EMenuItemPosition menuItemPosition = EMenuItemPosition.LEFT; // default Value
     private Class<? extends View> targetClass;
     private String navigateTo;
     private boolean allowNavigateToSamePage = false;
@@ -90,7 +90,7 @@ public class MenuItem {
     }
 
     public boolean isAllowClickToNavigate() {
-        return allowClickToNavigate;
+        return childItems.size() < 1;
     }
 
     public void setAllowClickToNavigate(boolean allowClickToNavigate) {

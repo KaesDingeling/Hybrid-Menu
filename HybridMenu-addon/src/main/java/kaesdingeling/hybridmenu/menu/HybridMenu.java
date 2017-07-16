@@ -75,17 +75,8 @@ public class HybridMenu extends CssLayout {
     }
 
     public void addItem(MenuItem item) {
-        item.setOnClickListener(() -> navigateTo(item));
+        item.setOnClickListener(() -> navigateTo(item.getTitle()));
         items.add(item);
-    }
-
-    public void navigateTo(Class<? extends View> _class) {
-        this.content.removeAllComponents();
-        this.content.addComponent((Component) instances.get(_class));
-    }
-
-    public void navigateTo(MenuItem item) {
-        navigateTo(item.getTargetClass());
     }
 
     public void removeItem(Component component) {
@@ -138,5 +129,9 @@ public class HybridMenu extends CssLayout {
 
     public void setDefaultPage(View defaultPage) {
         this.defaultPage = defaultPage;
+    }
+
+    public Navigator getNavigator() {
+        return navigator;
     }
 }
