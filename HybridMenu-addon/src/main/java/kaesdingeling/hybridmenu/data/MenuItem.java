@@ -2,7 +2,7 @@ package kaesdingeling.hybridmenu.data;
 
 import com.vaadin.navigator.View;
 import com.vaadin.server.Resource;
-import kaesdingeling.hybridmenu.enums.EMenuPosition;
+import kaesdingeling.hybridmenu.enums.EMenuItemPosition;
 import kaesdingeling.hybridmenu.interfaces.MenuItemClickListener;
 
 import java.util.LinkedHashSet;
@@ -10,7 +10,7 @@ import java.util.Set;
 
 public class MenuItem {
 
-    private EMenuPosition menuPosition;
+    private EMenuItemPosition menuItemPosition;
     private Class<? extends View> targetClass;
     private String navigateTo;
     private boolean allowNavigateToSamePage = false;
@@ -37,33 +37,29 @@ public class MenuItem {
         this.b = b;
     }
 
-    public MenuItem(EMenuPosition menuPosition, String title, Class<? extends View> aClass, boolean addItem) {
-
-        this.menuPosition = menuPosition;
+    public MenuItem(EMenuItemPosition menuItemPosition, String title, Class<? extends View> aClass, boolean addItem) {
+        this.menuItemPosition = menuItemPosition;
         this.title = title;
         this.aClass = aClass;
         this.addItem = addItem;
     }
 
-    public MenuItem(EMenuPosition menuPosition, Resource icon, boolean addItem) {
-
-        this.menuPosition = menuPosition;
+    public MenuItem(EMenuItemPosition menuItemPosition, Resource icon, boolean addItem) {
+        this.menuItemPosition = menuItemPosition;
         this.icon = icon;
         this.addItem = addItem;
     }
 
-    public MenuItem(EMenuPosition menuPosition, String title, Resource icon, Class<? extends View> aClass, boolean addItem) {
-
-        this.menuPosition = menuPosition;
+    public MenuItem(EMenuItemPosition menuItemPosition, String title, Resource icon, Class<? extends View> aClass, boolean addItem) {
+        this.menuItemPosition = menuItemPosition;
         this.title = title;
         this.icon = icon;
         this.aClass = aClass;
         this.addItem = addItem;
     }
 
-    public MenuItem(EMenuPosition menuPosition, String title, Resource icon, Class<? extends View> aClass, String navigateTo, boolean addItem) {
-
-        this.menuPosition = menuPosition;
+    public MenuItem(EMenuItemPosition menuItemPosition, String title, Resource icon, Class<? extends View> aClass, String navigateTo, boolean addItem) {
+        this.menuItemPosition = menuItemPosition;
         this.title = title;
         this.icon = icon;
         this.aClass = aClass;
@@ -71,9 +67,8 @@ public class MenuItem {
         this.addItem = addItem;
     }
 
-    public MenuItem(EMenuPosition menuPosition, String title, boolean addItem) {
-
-        this.menuPosition = menuPosition;
+    public MenuItem(EMenuItemPosition menuItemPosition, String title, boolean addItem) {
+        this.menuItemPosition = menuItemPosition;
         this.title = title;
         this.addItem = addItem;
     }
@@ -150,5 +145,9 @@ public class MenuItem {
 
     public void setOnClickListener(MenuItemClickListener listener) {
         this.listener = listener;
+    }
+
+    public EMenuItemPosition getMenuItemPosition() {
+        return menuItemPosition;
     }
 }

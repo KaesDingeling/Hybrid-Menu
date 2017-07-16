@@ -1,10 +1,7 @@
 package kaesdingeling.hybridmenu.component;
 
 import com.vaadin.server.Sizeable;
-import com.vaadin.ui.Button;
-import com.vaadin.ui.Component;
-import com.vaadin.ui.VerticalLayout;
-import com.vaadin.ui.themes.ValoTheme;
+import com.vaadin.ui.*;
 import kaesdingeling.hybridmenu.data.MenuItem;
 import kaesdingeling.hybridmenu.interfaces.MenuItemComponentProvider;
 
@@ -16,12 +13,7 @@ public class DefaultMenuItemComponentProvider implements MenuItemComponentProvid
     @Override
     public Component getComponent(MenuItem item) {
         if (item.getChildItems() == null) {
-            Button button = new Button();
-            button.setWidth(100, Sizeable.Unit.PERCENTAGE);
-            button.addStyleName(ValoTheme.BUTTON_BORDERLESS);
-            button.setIcon(item.getIcon());
-            button.setCaption(item.getTitle());
-            return button;
+            return getButton(item);
         } else {
             VerticalLayout layout = new VerticalLayout();
             layout.setMargin(false);
@@ -30,18 +22,24 @@ public class DefaultMenuItemComponentProvider implements MenuItemComponentProvid
             layout.addStyleName("menu-item-with-children");
 
             //Parent Button
-            Button button = new Button();
-            button.setWidth(100, Sizeable.Unit.PERCENTAGE);
-            button.addStyleName(ValoTheme.BUTTON_BORDERLESS);
-            button.setIcon(item.getIcon());
-            button.setCaption(item.getTitle());
-            layout.addComponent(button);
-
+            layout.addComponent(getButton(item));
             for (MenuItem child : item.getChildItems()) {
                 layout.addComponent(getComponent(child)); // recursion
             }
-
             return layout;
         }
+    }
+
+    private HorizontalLayout getButton(MenuItem item) {
+        HorizontalLayout layout = new HorizontalLayout();
+        layout.setSpacing(false);
+        layout.setWidth(100, Sizeable.Unit.PERCENTAGE);
+        Image image = new Image(null, item.getIcon());
+        image.setWidth(50, Sizeable.Unit.PIXELS);
+        Label label = new Label(item.getTitle());
+        layout.addComponent(image);
+        layout.addComponent(label);
+        layout.setExpandRatio(label, 1.0f);
+        return layout;
     }
 }
