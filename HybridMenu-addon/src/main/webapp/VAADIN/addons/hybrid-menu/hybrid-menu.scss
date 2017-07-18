@@ -1,3 +1,9 @@
+$hybrid-menu-top-height: 40px !default;
+$hybrid-menu-top-shadow: 0 0 5px 0 rgb(150, 150, 150) !default;
+$hybrid-menu-top-border-bottom: 3px solid rgb(100, 100, 100) !default;
+$hybrid-menu-border-bottom: 3px solid rgb(100, 100, 100) !default;
+$hybrid-menu-left-shadow: 0 0 5px 0 rgb(150, 150, 150) !default;
+
 @mixin hybrid-menu {
     .kdHybridMenu
     {
@@ -14,11 +20,11 @@
         position: relative;
         display: block;
         top: 0;
-        height: 40px;
+        height: $hybrid-menu-top-height;
         width: 100%;
         background: rgb(50, 50, 50);
-        box-shadow: 0 0 5px 0 rgb(150, 150, 150);
-        border-bottom: 3px solid rgb(100, 100, 100);
+        box-shadow: $top-shadow;
+        border-bottom: $top-border-bottom;
         z-index: 2000;
     }
 
@@ -58,27 +64,27 @@
 
     .kdHybridMenuTop .v-caption-menuTitle .v-captiontext
     {
-        padding: 2px 0 3px;
+        line-height: $hybrid-menu-top-height;
     }
 
-    .kdHybridMenuTop .v-nativebutton
+    .kdHybridMenuTop .hybrid-menu-button
     {
         position: relative;
         display: inline-block;
         border: none;
         margin: 0;
-        height: 37px;
+        height: 37px !important;
         background: transparent;
         cursor: pointer;
         transition: background 0.3s;
     }
 
-    .kdHybridMenuTop .v-nativebutton:hover
+    .kdHybridMenuTop .hybrid-menu-button:hover
     {
         background: rgb(75, 75, 75);
     }
 
-    .kdHybridMenuTop .v-nativebutton .v-icon
+    .kdHybridMenuTop .hybrid-menu-button .v-icon
     {
         font-size: 18px;
     }
@@ -88,7 +94,7 @@
         display: none;
     }
 
-    .kdHybridMenuTop .v-nativebutton img.v-icon
+    .kdHybridMenuTop .hybrid-menu-button img.v-icon
     {
         height: calc(100% - 8px);
         border-radius: 50%;
@@ -101,12 +107,12 @@
         position: relative;
     }
 
-    .kdHybridMenuTop .subMenuMasterContent .v-nativebutton .v-nativebutton-caption, .kdHybridMenuTop .subMenuMasterContent .subMenuTitle
+    .kdHybridMenuTop .subMenuMasterContent .hybrid-menu-button .hybrid-menu-button-caption, .kdHybridMenuTop .subMenuMasterContent .subMenuTitle
     {
         display: none;
     }
 
-    .kdHybridMenuTop .subMenuMasterContent .subMenu .v-nativebutton .v-nativebutton-caption
+    .kdHybridMenuTop .subMenuMasterContent .subMenu .hybrid-menu-button .hybrid-menu-button-caption
     {
         display: block;
         min-width: 125px;
@@ -114,7 +120,7 @@
         color: rgb(245, 245, 245);
     }
 
-    .kdHybridMenuTop .subMenuMasterContent .subMenu .v-nativebutton .v-nativebutton-caption .v-icon
+    .kdHybridMenuTop .subMenuMasterContent .subMenu .hybrid-menu-button .hybrid-menu-button-caption .v-icon
     {
         padding-right: 5px;
     }
@@ -136,7 +142,7 @@
         display: block;
     }
 
-    .kdHybridMenuTop .subMenuMasterContent .subMenu .v-nativebutton
+    .kdHybridMenuTop .subMenuMasterContent .subMenu .hybrid-menu-button
     {
         width: 100%;
         padding: 0;
@@ -152,34 +158,34 @@
         height: 100%;
         z-index: 1000;
         overflow-y: auto;
-        box-shadow: 0 0 5px 0 rgb(150, 150, 150);
+        box-shadow: $left-shadow;
     }
 
     .kdHybridMenu .kdHybridMenuLeft
     {
         position: fixed;
-        top: 40px;
+        top: $hybrid-menu-top-height;
         z-index: 1001;
         overflow-y: auto;
-        height: calc(100% - 40px);
+        height: calc(100% - $hybrid-menu-top-height);
     }
     
-    .kdHybridMenu.middelAnimationResizeSpeed .kdHybridMenuLeft
+    .kdHybridMenu.mediumAnimationResizeSpeed .kdHybridMenuLeft
     {
         transition: width 2s;
     }
     
-    .kdHybridMenu.middelAnimationResizeSpeed .kdHybridMenuLeft
+    .kdHybridMenu.mediumAnimationResizeSpeed .kdHybridMenuLeft
     {
         transition: width 1.5s;
     }
     
-    .kdHybridMenu.highAnimationResizeSpeed .kdHybridMenuLeft
+    .kdHybridMenu.fastAnimationResizeSpeed .kdHybridMenuLeft
     {
         transition: width 0.75s;
     }
     
-    .kdHybridMenu.fastAnimationResizeSpeed .kdHybridMenuLeft
+    .kdHybridMenu.veryFastAnimationResizeSpeed .kdHybridMenuLeft
     {
         transition: width 0.3s;
     }
@@ -199,17 +205,16 @@
          opacity: 1.0;
     }
 
-    .kdHybridMenu.minimalView .kdHybridMenuLeft .v-label, .kdHybridMenu.minimalView .kdHybridMenuLeft .v-caption
+    .kdHybridMenu.minimalView .kdHybridMenuLeft .hybrid-menu-button-caption, .kdHybridMenu.minimalView .kdHybridMenuLeft .v-caption
     {
         opacity: 0.0;
     }
 
-    .kdHybridMenuLeft .v-caption, .kdHybridMenuLeft .v-nativebutton
+    .kdHybridMenuLeft .v-caption, .kdHybridMenuLeft .hybrid-menu-button
     {
         position: relative;
         display: block;
         width: 100%;
-        padding: 5px 15px;
         border: none;
         color: rgb(50, 50, 50);
     }
@@ -230,29 +235,28 @@
     }
 
 
-    .kdHybridMenuLeft .v-nativebutton
+    .kdHybridMenuLeft .hybrid-menu-button
     {
         padding-top: 8px;
         padding-bottom: 8px;
         transition: background 0.3s, border 0.3s;
-        height: 45px;
+        height: 45px !important;
         cursor: pointer;
         background: transparent;
         border-left: 0px solid rgb(110, 170, 30);
     }
 
-    .kdHybridMenuLeft .v-nativebutton .v-icon
+    .kdHybridMenuLeft .hybrid-menu-button .v-icon
     {
         width: 20px;
     }
 
-    .kdHybridMenuLeft .v-nativebutton .v-nativebutton-caption
+    .kdHybridMenuLeft .hybrid-menu-button .hybrid-menu-button-caption
     {
         margin: 0;
-        padding: 0 0 0 10px;
     }
 
-    .kdHybridMenuLeft .v-nativebutton .v-nativebutton-caption .v-icon.v-icon-angle_left, .kdHybridMenuLeft .v-nativebutton .v-nativebutton-caption .v-icon.v-icon-angle_down
+    .kdHybridMenuLeft .hybrid-menu-button .hybrid-menu-button-caption .v-icon.v-icon-angle_left, .kdHybridMenuLeft .hybrid-menu-button .hybrid-menu-button-caption .v-icon.v-icon-angle_down
     {
         position: absolute;
         right: 0;
@@ -262,20 +266,19 @@
         text-align: center;
     }
 
-    .kdHybridMenuLeft .v-nativebutton.active
+    .kdHybridMenuLeft .hybrid-menu-button
     {
-        background: rgb(220, 220, 220);
         border-left-width: 5px;
         border-left-color: rgb(40, 160, 220);
     }
 
-    .kdHybridMenuLeft .v-nativebutton:hover
+    .kdHybridMenuLeft .hybrid-menu-button:hover
     {
         background: rgb(230, 230, 230);
         border-left-width: 7px;
     }
 
-    .kdHybridMenuLeft .v-nativebutton.active:hover
+    .kdHybridMenuLeft .hybrid-menu-button:hover
     {
         background: rgb(200, 200, 200);
     }
@@ -296,17 +299,17 @@
          transition: max-height 2s ease-in-out;
     }
     
-    .mediumAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu
+    .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu
     {
          transition: max-height 1.5s ease-in-out;
     }
     
-    .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu
+    .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu
     {
          transition: max-height 0.75s ease-in-out;
     }
     
-    .veryFastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu
+    .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu
     {
          transition: max-height 0.3s ease-in-out;
     }
@@ -316,22 +319,22 @@
         max-height: 999px;
     }
 
-    .slowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_1, .slowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_2, .slowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_3, .slowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_4, .slowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_5, .slowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_6, .slowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_7, .slowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_8, .slowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_9, .slowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_10, .slowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_11, .slowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_12, .slowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_13, .slowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_14, .slowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_15, .slowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_16, .slowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_17, .slowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_18, .slowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_19, .slowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_20
+    .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_1, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_2, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_3, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_4, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_5, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_6, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_7, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_8, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_9, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_10, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_11, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_12, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_13, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_14, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_15, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_16, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_17, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_18, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_19, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_20
     {
         transition: height 2s ease-in-out !important;
     }
     
-    .mediumAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_1, .mediumAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_2, .mediumAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_3, .mediumAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_4, .mediumAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_5, .mediumAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_6, .mediumAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_7, .mediumAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_8, .mediumAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_9, .mediumAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_10, .mediumAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_11, .mediumAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_12, .mediumAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_13, .mediumAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_14, .mediumAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_15, .mediumAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_16, .mediumAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_17, .mediumAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_18, .mediumAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_19, .mediumAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_20
+    .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_1, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_2, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_3, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_4, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_5, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_6, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_7, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_8, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_9, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_10, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_11, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_12, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_13, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_14, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_15, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_16, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_17, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_18, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_19, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_20
     {
         transition: height 1.5s ease-in-out !important;
     }
     
-    .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_1, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_2, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_3, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_4, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_5, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_6, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_7, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_8, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_9, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_10, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_11, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_12, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_13, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_14, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_15, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_16, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_17, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_18, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_19, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_20
+    .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_1, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_2, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_3, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_4, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_5, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_6, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_7, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_8, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_9, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_10, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_11, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_12, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_13, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_14, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_15, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_16, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_17, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_18, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_19, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_20
     {
         transition: height 0.75s ease-in-out !important;
     }
     
-    .veryFastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_1, .veryFastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_2, .veryFastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_3, .veryFastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_4, .veryFastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_5, .veryFastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_6, .veryFastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_7, .veryFastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_8, .veryFastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_9, .veryFastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_10, .veryFastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_11, .veryFastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_12, .veryFastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_13, .veryFastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_14, .veryFastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_15, .veryFastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_16, .veryFastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_17, .veryFastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_18, .veryFastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_19, .veryFastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_20
+    .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_1, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_2, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_3, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_4, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_5, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_6, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_7, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_8, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_9, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_10, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_11, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_12, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_13, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_14, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_15, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_16, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_17, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_18, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_19, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_20
     {
         transition: height 0.3s ease-in-out !important;
     }
@@ -363,7 +366,7 @@
     .kdHybridMenuLeft .subMenu.open.subMenu_19 { height: 845px; }
     .kdHybridMenuLeft .subMenu.open.subMenu_20 { height: 890px; }
 
-    .kdHybridMenu.minimalView .kdHybridMenuLeft .v-nativebutton-caption, .kdHybridMenu.minimalView .kdHybridMenuLeft .v-nativebutton .v-nativebutton-caption .v-icon.v-icon-angle_left, .kdHybridMenu.minimalView .kdHybridMenuLeft .v-nativebutton .v-nativebutton-caption .v-icon.v-icon-angle_down
+    .kdHybridMenu.minimalView .kdHybridMenuLeft .hybrid-menu-button-caption, .kdHybridMenu.minimalView .kdHybridMenuLeft .hybrid-menu-button .hybrid-menu-button-caption .v-icon.v-icon-angle_left, .kdHybridMenu.minimalView .kdHybridMenuLeft .hybrid-menu-button .hybrid-menu-button-caption .v-icon.v-icon-angle_down
     {
         position: absolute;
         display: none;
@@ -375,7 +378,7 @@
         z-index: 1100;
     }
 
-    .kdHybridMenu.minimalView .kdHybridMenuLeft .v-nativebutton-caption:before
+    .kdHybridMenu.minimalView .kdHybridMenuLeft .hybrid-menu-button-caption:before
     {
         content: '';
         position: absolute;
@@ -389,17 +392,17 @@
         border-color: transparent rgb(240, 240, 240) transparent transparent;
     }
 
-    .kdHybridMenu.minimalView .kdHybridMenuLeft .v-nativebutton:hover .v-nativebutton-caption, .kdHybridMenu.minimalView .kdHybridMenuLeft .v-nativebutton-caption:hover
+    .kdHybridMenu.minimalView .kdHybridMenuLeft .hybrid-menu-button:hover .hybrid-menu-button-caption, .kdHybridMenu.minimalView .kdHybridMenuLeft .hybrid-menu-button-caption:hover
     {
         display: block;
     }
 
-    .kdHybridMenu.minimalView .kdHybridMenuLeft .v-nativebutton.active
+    .kdHybridMenu.minimalView .kdHybridMenuLeft .hybrid-menu-button
     {
         border-left-width: 3px;
     }
 
-    .kdHybridMenu.minimalView .kdHybridMenuLeft .v-nativebutton:hover, .kdHybridMenu.minimalView .kdHybridMenuLeft .v-nativebutton.active:hover
+    .kdHybridMenu.minimalView .kdHybridMenuLeft .hybrid-menu-button:hover, .kdHybridMenu.minimalView .kdHybridMenuLeft .hybrid-menu-button:hover
     {
         border-left-width: 5px;
     }
@@ -445,12 +448,12 @@
         border-color: transparent rgb(245, 245, 245) transparent transparent;
     }
 
-    .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent .subMenu .v-nativebutton-caption:before, .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent .v-nativebutton:hover .v-nativebutton-caption
+    .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent .subMenu .hybrid-menu-button-caption:before, .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent .hybrid-menu-button:hover .hybrid-menu-button-caption
     {
         display: none;
     }
 
-    .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent .subMenu .v-nativebutton-caption, .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent .subMenu .v-nativebutton:hover .v-nativebutton-caption
+    .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent .subMenu .hybrid-menu-button-caption, .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent .subMenu .hybrid-menu-button:hover .hybrid-menu-button-caption
     {
         position: relative;
         display: unset;
@@ -480,7 +483,7 @@
     {
         width: calc(100% - 250px);
         left: 250px;
-        top: 40px;
+        top: $hybrid-menu-top-height;
         overflow-y: auto;
     }
     

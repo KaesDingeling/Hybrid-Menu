@@ -7,6 +7,7 @@ import com.vaadin.ui.CssLayout;
 import kaesdingeling.hybridmenu.component.DefaultMenuItemComponentProvider;
 import kaesdingeling.hybridmenu.data.MenuItem;
 import kaesdingeling.hybridmenu.enums.EAnimationSpeed;
+import kaesdingeling.hybridmenu.enums.EAnimationSpeedSubMenu;
 import kaesdingeling.hybridmenu.enums.EMenuNavigator;
 import kaesdingeling.hybridmenu.interfaces.MenuItemComponentProvider;
 import kaesdingeling.hybridmenu.menu.HybridMenu;
@@ -20,11 +21,13 @@ public abstract class HybridMenuVariant {
 
     public HybridMenu menu;
     public EAnimationSpeed animationSpeed;
+    public EAnimationSpeedSubMenu subMenuAnimationSpeed;
     public EMenuNavigator navigator;
 
-    public void init(HybridMenu menu, EAnimationSpeed animationSpeed, EMenuNavigator navigator) {
+    public void init(HybridMenu menu, EAnimationSpeed animationSpeed, EAnimationSpeedSubMenu subMenuAnimationSpeed, EMenuNavigator navigator) {
         this.menu = menu;
         this.animationSpeed = animationSpeed;
+        this.subMenuAnimationSpeed = subMenuAnimationSpeed;
         this.navigator = navigator;
         onInit();
     }

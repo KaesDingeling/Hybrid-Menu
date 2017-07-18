@@ -1,14 +1,16 @@
 package kaesdingeling.hybridmenu.component;
 
 import com.vaadin.event.LayoutEvents;
+import com.vaadin.server.FontIcon;
+import com.vaadin.server.Resource;
 import com.vaadin.server.Sizeable;
 import com.vaadin.shared.MouseEventDetails;
+import com.vaadin.shared.ui.ContentMode;
 import com.vaadin.ui.*;
 import kaesdingeling.hybridmenu.data.MenuItem;
 import kaesdingeling.hybridmenu.interfaces.MenuItemComponentProvider;
 
-import static kaesdingeling.hybridmenu.styles.HybridMenuStyles.MENU_SUBMENU;
-import static kaesdingeling.hybridmenu.styles.HybridMenuStyles.MENU_SUBMENU_OPEN;
+import static kaesdingeling.hybridmenu.styles.HybridMenuStyles.*;
 
 /**
  * Created by appreciated on 14.07.2017.
@@ -52,13 +54,20 @@ public class DefaultMenuItemComponentProvider implements MenuItemComponentProvid
 
     private HorizontalLayout getButton(MenuItem item) {
         HorizontalLayout layout = new HorizontalLayout();
+        layout.addStyleName(MENU_BUTTON);
         layout.setSpacing(false);
         layout.setWidth(100, Sizeable.Unit.PERCENTAGE);
-        Image image = new Image(null, item.getIcon());
-        image.setWidth(50, Sizeable.Unit.PIXELS);
+        Component resourceHolder = getResourceHolder(item);
+
+        HorizontalLayout wrapper = new HorizontalLayout(resourceHolder);
+        wrapper.setComponentAlignment(resourceHolder, Alignment.MIDDLE_CENTER);
+        wrapper.setWidth(40, Sizeable.Unit.PIXELS);
+
         Label label = new Label(item.getTitle());
-        layout.addComponent(image);
+        label.addStyleName(MENU_BUTTON_CAPTION);
+        layout.addComponent(wrapper);
         layout.addComponent(label);
+        layout.setComponentAlignment(label, Alignment.MIDDLE_LEFT);
         layout.setExpandRatio(label, 1.0f);
         if (item.isAllowClickToNavigate()) {
             layout.addLayoutClickListener((LayoutEvents.LayoutClickListener) layoutClickEvent -> {
@@ -68,5 +77,16 @@ public class DefaultMenuItemComponentProvider implements MenuItemComponentProvid
             });
         }
         return layout;
+    }
+
+    private Component getResourceHolder(MenuItem item) {
+        Resource resource = item.getIcon();
+        if (resource instanceof FontIcon) {
+            return new Label(((FontIcon) resource).getHtml(), ContentMode.HTML);
+        } else if (resource != null) {
+            return new Image(null, item.getIcon());
+        } else {
+            return new Label();
+        }
     }
 }

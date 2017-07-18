@@ -10,6 +10,7 @@ import com.vaadin.ui.UI;
 import kaesdingeling.hybridmenu.component.DefaultMenuItemComponentProvider;
 import kaesdingeling.hybridmenu.data.MenuItem;
 import kaesdingeling.hybridmenu.enums.EAnimationSpeed;
+import kaesdingeling.hybridmenu.enums.EAnimationSpeedSubMenu;
 import kaesdingeling.hybridmenu.enums.EMenuNavigator;
 import kaesdingeling.hybridmenu.enums.EMenuType;
 import kaesdingeling.hybridmenu.interfaces.MenuItemComponentProvider;
@@ -30,6 +31,7 @@ public class HybridMenu extends CssLayout {
     private EMenuNavigator naviType = EMenuNavigator.AUTO; // Default Navigator Type
     private EMenuType menuType = EMenuType.COMBINED; // Default Variant
     private EAnimationSpeed animationSpeed = EAnimationSpeed.FAST; // Default Animation Speed
+    private EAnimationSpeedSubMenu subMenuAnimationSpeed = EAnimationSpeedSubMenu.FAST; // Default Animation Speed
     private Navigator navigator;
     private ComponentContainer content;
     private HybridMenuVariant variant;
@@ -46,7 +48,7 @@ public class HybridMenu extends CssLayout {
     public void build() {
         // Navigator need to be initalised first
         variant = menuType.getVariant();
-        variant.init(this, animationSpeed, naviType);
+        variant.init(this, animationSpeed, subMenuAnimationSpeed, naviType);
 
         content = variant.getContentComponent();
 
@@ -57,6 +59,7 @@ public class HybridMenu extends CssLayout {
         Arrays.stream(variant.getComponents()).forEach(this::addComponent);
 
         addStyleName(MENU);
+        addStyleName(subMenuAnimationSpeed.getStyle());
         addComponent(content);
         if (naviType.equals(EMenuNavigator.SEMI_AUTOMATIC) || naviType.equals(EMenuNavigator.AUTO)) {
             UI.getCurrent().getNavigator().addViewChangeListener(new ViewChangeListener() {
