@@ -27,6 +27,7 @@ public class DefaultMenuItemComponentProvider implements MenuItemComponentProvid
             layout.setSpacing(false);
             layout.setWidth(100, Sizeable.Unit.PERCENTAGE);
             layout.setHeightUndefined();
+            layout.addStyleName(MENU_SUBMENU_MASTER);
 
             //Parent Button
             HorizontalLayout parentButton = getButton(item);
@@ -61,14 +62,16 @@ public class DefaultMenuItemComponentProvider implements MenuItemComponentProvid
 
         HorizontalLayout wrapper = new HorizontalLayout(resourceHolder);
         wrapper.setComponentAlignment(resourceHolder, Alignment.MIDDLE_CENTER);
-        wrapper.setWidth(40, Sizeable.Unit.PIXELS);
+        wrapper.addStyleName(MENU_BUTTON_RESOURCE);
 
         Label label = new Label(item.getTitle());
         label.addStyleName(MENU_BUTTON_CAPTION);
+
         layout.addComponent(wrapper);
         layout.addComponent(label);
         layout.setComponentAlignment(label, Alignment.MIDDLE_LEFT);
         layout.setExpandRatio(label, 1.0f);
+
         if (item.isAllowClickToNavigate()) {
             layout.addLayoutClickListener((LayoutEvents.LayoutClickListener) layoutClickEvent -> {
                 if (layoutClickEvent.getButton() == MouseEventDetails.MouseButton.LEFT) {

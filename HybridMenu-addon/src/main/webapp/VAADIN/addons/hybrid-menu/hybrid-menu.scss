@@ -1,8 +1,13 @@
 $hybrid-menu-top-height: 40px !default;
+$hybrid-menu-top-background: rgb(50, 50, 50) !default;
 $hybrid-menu-top-shadow: 0 0 5px 0 rgb(150, 150, 150) !default;
 $hybrid-menu-top-border-bottom: 3px solid rgb(100, 100, 100) !default;
-$hybrid-menu-border-bottom: 3px solid rgb(100, 100, 100) !default;
+
 $hybrid-menu-left-shadow: 0 0 5px 0 rgb(150, 150, 150) !default;
+$hybrid-menu-left-item-height: 45px !default;
+$hybrid-menu-left-resource-width: 45px !default;
+
+$hybrid-menu-font-color: rgb(245, 245, 245) !default;
 
 @mixin hybrid-menu {
     .kdHybridMenu
@@ -22,9 +27,9 @@ $hybrid-menu-left-shadow: 0 0 5px 0 rgb(150, 150, 150) !default;
         top: 0;
         height: $hybrid-menu-top-height;
         width: 100%;
-        background: rgb(50, 50, 50);
-        box-shadow: $top-shadow;
-        border-bottom: $top-border-bottom;
+        background: $hybrid-menu-top-background;
+        box-shadow: $hybrid-menu-top-shadow;
+        border-bottom: $hybrid-menu-top-border-bottom;
         z-index: 2000;
     }
 
@@ -35,7 +40,7 @@ $hybrid-menu-left-shadow: 0 0 5px 0 rgb(150, 150, 150) !default;
 
     .kdHybridMenuTop, .kdHybridMenuTop .v-icon
     {
-        color: rgb(245, 245, 245);
+        color: $hybrid-menu-font-color;
     }
 
     .kdHybridMenuTop .LEFT, .kdHybridMenuTop .v-caption-LEFT
@@ -158,7 +163,7 @@ $hybrid-menu-left-shadow: 0 0 5px 0 rgb(150, 150, 150) !default;
         height: 100%;
         z-index: 1000;
         overflow-y: auto;
-        box-shadow: $left-shadow;
+        box-shadow: $hybrid-menu-left-shadow;
     }
 
     .kdHybridMenu .kdHybridMenuLeft
@@ -237,23 +242,23 @@ $hybrid-menu-left-shadow: 0 0 5px 0 rgb(150, 150, 150) !default;
 
     .kdHybridMenuLeft .hybrid-menu-button
     {
-        padding-top: 8px;
-        padding-bottom: 8px;
         transition: background 0.3s, border 0.3s;
-        height: 45px !important;
+        height: $hybrid-menu-left-item-height !important;
         cursor: pointer;
         background: transparent;
         border-left: 0px solid rgb(110, 170, 30);
     }
 
-    .kdHybridMenuLeft .hybrid-menu-button .v-icon
+    .kdHybridMenuLeft .hybrid-menu-button-resource
     {
-        width: 20px;
+        line-height: $hybrid-menu-left-item-height;
+        width: $hybrid-menu-left-resource-width;
+        text-align: center;
     }
 
     .kdHybridMenuLeft .hybrid-menu-button .hybrid-menu-button-caption
     {
-        margin: 0;
+        line-height: $hybrid-menu-left-item-height;
     }
 
     .kdHybridMenuLeft .hybrid-menu-button .hybrid-menu-button-caption .v-icon.v-icon-angle_left, .kdHybridMenuLeft .hybrid-menu-button .hybrid-menu-button-caption .v-icon.v-icon-angle_down
