@@ -495,7 +495,13 @@ $hybrid-menu-font-color: rgb(245, 245, 245) !default;
         top: $hybrid-menu-top-height;
         overflow-y: auto;
     }
-    
+
+    .kdHybridMenu.kdHybridMenuTypeTop .kdHybridMenuBody
+    {
+        top: $hybrid-menu-top-height;
+        overflow-y: auto;
+    }
+
     .kdHybridMenu .slowAnimationResizeSpeed
     {
         transition: width 2s, left 2s;

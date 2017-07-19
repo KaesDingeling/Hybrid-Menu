@@ -49,6 +49,7 @@ public class HybridMenu extends CssLayout {
         // Navigator need to be initalised first
         variant = menuType.getVariant();
         variant.init(this, animationSpeed, subMenuAnimationSpeed, naviType);
+        addStyleName(variant.getStyle());
 
         content = variant.getContentComponent();
 
