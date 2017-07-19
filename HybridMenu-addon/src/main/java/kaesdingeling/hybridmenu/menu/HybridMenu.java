@@ -7,7 +7,7 @@ import com.vaadin.ui.Component;
 import com.vaadin.ui.ComponentContainer;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.UI;
-import kaesdingeling.hybridmenu.component.DefaultMenuItemComponentProvider;
+import kaesdingeling.hybridmenu.component.LeftMenuItemComponentProvider;
 import kaesdingeling.hybridmenu.data.MenuItem;
 import kaesdingeling.hybridmenu.enums.EAnimationSpeed;
 import kaesdingeling.hybridmenu.enums.EAnimationSpeedSubMenu;
@@ -41,7 +41,7 @@ public class HybridMenu extends CssLayout {
 
     private HashMap<Class<? extends View>, View> instances = new HashMap<>();
 
-    private MenuItemComponentProvider provider = new DefaultMenuItemComponentProvider();
+    private MenuItemComponentProvider provider = new LeftMenuItemComponentProvider();
 
     private boolean allowChangeView = true;
 
@@ -136,5 +136,13 @@ public class HybridMenu extends CssLayout {
 
     public Navigator getNavigator() {
         return navigator;
+    }
+
+    public void setMenuType(EMenuType menuType) {
+        this.menuType = menuType;
+    }
+
+    public EMenuType getMenuType() {
+        return menuType;
     }
 }

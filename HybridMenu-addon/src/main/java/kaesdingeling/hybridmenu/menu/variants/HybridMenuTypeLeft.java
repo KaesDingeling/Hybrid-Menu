@@ -3,6 +3,8 @@ package kaesdingeling.hybridmenu.menu.variants;
 import com.vaadin.ui.Component;
 import kaesdingeling.hybridmenu.data.MenuItem;
 
+import static kaesdingeling.hybridmenu.styles.HybridMenuStyles.MENU_TYPE_LEFT;
+
 /**
  * Created by appreciated on 15.07.2017.
  */
@@ -15,7 +17,7 @@ public class HybridMenuTypeLeft extends HybridMenuVariant {
 
     @Override
     public String getStyle() {
-        return null;
+        return MENU_TYPE_LEFT;
     }
 
     @Override

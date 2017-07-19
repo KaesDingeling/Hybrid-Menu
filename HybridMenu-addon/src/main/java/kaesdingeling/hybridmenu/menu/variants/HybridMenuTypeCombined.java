@@ -56,7 +56,7 @@ public class HybridMenuTypeCombined extends HybridMenuVariant {
 
     @Override
     public String getStyle() {
-        return null;
+        return MENU_TYPE_COMBINED;
     }
 
     public Component[] getComponents() {

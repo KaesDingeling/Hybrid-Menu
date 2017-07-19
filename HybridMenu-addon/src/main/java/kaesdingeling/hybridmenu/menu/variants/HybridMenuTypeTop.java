@@ -2,10 +2,12 @@ package kaesdingeling.hybridmenu.menu.variants;
 
 import com.vaadin.ui.Component;
 import com.vaadin.ui.CssLayout;
+import kaesdingeling.hybridmenu.component.TopMenuItemComponentProvider;
 import kaesdingeling.hybridmenu.data.MenuItem;
-import kaesdingeling.hybridmenu.enums.EMenuType;
+import kaesdingeling.hybridmenu.interfaces.MenuItemComponentProvider;
 
-import java.util.HashSet;
+import static kaesdingeling.hybridmenu.styles.HybridMenuStyles.MENU_TOP;
+import static kaesdingeling.hybridmenu.styles.HybridMenuStyles.MENU_TYPE_TOP;
 
 /**
  * Created by appreciated on 14.07.2017.
@@ -13,31 +15,23 @@ import java.util.HashSet;
 public class HybridMenuTypeTop extends HybridMenuVariant {
 
     private CssLayout topMenu;
-    private HashSet leftMenuList;
-    private CssLayout leftMenu;
-    private HashSet topMenuList;
-
+    private Component[] components;
 
     @Override
     public void onInit() {
-        if (navigator.equals(EMenuType.TOP)) {
-            topMenu = new CssLayout();
-            leftMenuList = new HashSet<>();
-        } else {
-            leftMenu = new CssLayout();
-            topMenuList = new HashSet<>();
-            leftMenu.addStyleName(animationSpeed.getStyle());
-        }
+        topMenu = new CssLayout();
+        topMenu.addStyleName(MENU_TOP);
+        components = new Component[]{topMenu};
     }
 
     @Override
     public String getStyle() {
-        return "kdHybridMenuTopMenu";
+        return MENU_TYPE_TOP;
     }
 
     @Override
     public Component[] getComponents() {
-        return new Component[0];
+        return components;
     }
 
     @Override
@@ -46,8 +40,13 @@ public class HybridMenuTypeTop extends HybridMenuVariant {
     }
 
     @Override
-    public void addItem(MenuItem menuItem) {
+    public MenuItemComponentProvider getProvider() {
+        return new TopMenuItemComponentProvider();
+    }
 
+    @Override
+    public void addItem(MenuItem menuItem) {
+        topMenu.addComponent(getProvider().getComponent(menuItem));
     }
 
 }

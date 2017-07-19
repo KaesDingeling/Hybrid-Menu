@@ -9,6 +9,11 @@ public class HybridMenuStyles {
     public static final String MENU_BODY = "kdHybridMenuBody";
     public static final String MENU_TOP = "kdHybridMenuTop";
     public static final String MENU_LEFT = "kdHybridMenuLeft";
+
+    public static final String MENU_TYPE_COMBINED = "kdHybridMenuTypeCombined";
+    public static final String MENU_TYPE_LEFT = "kdHybridMenuTypeLeft";
+    public static final String MENU_TYPE_TOP = "kdHybridMenuTypeTop";
+
     public static final String MENU_MINIMAL = "minimalView";
     public static final String MENU_TITLE = "menuTitle";
     public static final String MENU_SUBMENU = "subMenu";

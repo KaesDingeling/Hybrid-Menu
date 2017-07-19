@@ -488,7 +488,7 @@ $hybrid-menu-font-color: rgb(245, 245, 245) !default;
         z-index: 100;
     }
 
-    .kdHybridMenu .kdHybridMenuBody
+    .kdHybridMenu.kdHybridMenuTypeCombined .kdHybridMenuBody
     {
         width: calc(100% - 250px);
         left: 250px;

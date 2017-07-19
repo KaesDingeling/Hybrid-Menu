@@ -15,7 +15,7 @@ import static kaesdingeling.hybridmenu.styles.HybridMenuStyles.*;
 /**
  * Created by appreciated on 14.07.2017.
  */
-public class DefaultMenuItemComponentProvider implements MenuItemComponentProvider {
+public class LeftMenuItemComponentProvider implements MenuItemComponentProvider {
 
     @Override
     public Component getComponent(MenuItem item) {

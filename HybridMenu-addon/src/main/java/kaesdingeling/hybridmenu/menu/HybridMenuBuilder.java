@@ -4,7 +4,7 @@ import com.vaadin.navigator.View;
 import com.vaadin.server.FontIcon;
 import kaesdingeling.hybridmenu.data.MenuItem;
 import kaesdingeling.hybridmenu.enums.EMenuItemPosition;
-import kaesdingeling.hybridmenu.enums.EMenuPosition;
+import kaesdingeling.hybridmenu.enums.EMenuType;
 
 /**
  * Created by appreciated on 09.07.2017.
@@ -56,6 +56,11 @@ public class HybridMenuBuilder {
 
     public HybridMenuBuilder withItem(MenuItem home) {
         hybridMenu.addItem(home);
+        return this;
+    }
+
+    public HybridMenuBuilder withMenuType(EMenuType top) {
+        hybridMenu.setMenuType(top);
         return this;
     }
 }
