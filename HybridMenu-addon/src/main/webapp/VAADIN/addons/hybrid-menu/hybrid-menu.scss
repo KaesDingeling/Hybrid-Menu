@@ -290,7 +290,7 @@ $hybrid-menu-font-color: rgb(245, 245, 245) !default;
 
     .kdHybridMenuLeft .subMenu
     {
-        border-left: 1px solid rgb(230, 230, 230);
+        // border-left: 1px solid rgb(230, 230, 230); // this breaks the hover effect
         margin: 0 0 0 25px;
         width: calc(100% - 25px);
         overflow: hidden;
@@ -461,9 +461,13 @@ $hybrid-menu-font-color: rgb(245, 245, 245) !default;
     .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent .subMenu .hybrid-menu-button-caption, .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent .subMenu .hybrid-menu-button:hover .hybrid-menu-button-caption
     {
         position: relative;
-        display: unset;
+        display: none;
         left: unset;
         background: transparent;
+    }
+
+    .kdHybridMenu.minimalView .kdHybridMenuLeft .v-slot-hybrid-menu-button-caption {
+        display: none;
     }
 
     .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenu

@@ -61,7 +61,6 @@ public class DefaultMenuItemComponentProvider implements MenuItemComponentProvid
         Component resourceHolder = getResourceHolder(item);
 
         HorizontalLayout wrapper = new HorizontalLayout(resourceHolder);
-        wrapper.setComponentAlignment(resourceHolder, Alignment.MIDDLE_CENTER);
         wrapper.addStyleName(MENU_BUTTON_RESOURCE);
 
         Label label = new Label(item.getTitle());
