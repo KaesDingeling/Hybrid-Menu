@@ -1,6 +1,7 @@
 package kaesdingeling.hybridmenu.menu.variants;
 
 import com.vaadin.icons.VaadinIcons;
+import com.vaadin.server.Sizeable;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.CssLayout;
@@ -95,24 +96,26 @@ public class HybridMenuTypeCombined extends HybridMenuVariant {
     @Override
     public void addCustomItems(List<CustomMenuItem> customItems) {
         customItems.stream().forEach(customMenuItem -> {
+            Component component = customMenuItem.getComponent();
             switch (customMenuItem.getPosition()) {
                 case TOP:
                     switch (customMenuItem.getAlignment()) {
                         case LEFT:
-                            topMenu.addComponentAsFirst(customMenuItem.getComponent());
+                            topMenu.addComponentAsFirst(component);
                             break;
                         case RIGHT:
-                            topMenu.addComponent(customMenuItem.getComponent());
+                            topMenu.addComponent(component);
                             break;
                     }
                     break;
                 case LEFT:
+                    component.setWidth(100, Sizeable.Unit.PERCENTAGE);
                     switch (customMenuItem.getAlignment()) {
                         case TOP:
-                            leftMenu.addComponentAsFirst(customMenuItem.getComponent());
+                            leftMenu.addComponentAsFirst(component);
                             break;
                         case BOTTOM:
-                            leftMenu.addComponent(customMenuItem.getComponent());
+                            leftMenu.addComponent(component);
                             break;
                     }
                     break;
