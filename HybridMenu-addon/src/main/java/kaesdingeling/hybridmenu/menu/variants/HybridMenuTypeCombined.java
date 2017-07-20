@@ -6,9 +6,12 @@ import com.vaadin.ui.Component;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.themes.ValoTheme;
+import kaesdingeling.hybridmenu.data.CustomMenuItem;
 import kaesdingeling.hybridmenu.data.MenuItem;
 import kaesdingeling.hybridmenu.enums.EMenuItemPosition;
 import kaesdingeling.hybridmenu.enums.ETopMenuPosition;
+
+import java.util.List;
 
 import static kaesdingeling.hybridmenu.styles.HybridMenuStyles.*;
 
@@ -32,7 +35,7 @@ public class HybridMenuTypeCombined extends HybridMenuVariant {
         leftMenu = new CssLayout();
         topMenu.addStyleName(MENU_TOP);
         leftMenu.addStyleName(MENU_LEFT);
-        leftMenu.addStyleName(animationSpeed.getStyle());
+        leftMenu.addStyleName(getAnimationSpeed().getStyle());
         components = new Component[]{topMenu, leftMenu};
 
         menuTitle.setCaptionAsHtml(true);
@@ -43,12 +46,12 @@ public class HybridMenuTypeCombined extends HybridMenuVariant {
         menuResize.setIcon(VaadinIcons.ANGLE_LEFT);
         menuResize.addStyleName(ETopMenuPosition.LEFT.toString());
         menuResize.addClickListener(e -> {
-            if (menu.getStyleName().contains(MENU_MINIMAL)) {
+            if (getMenu().getStyleName().contains(MENU_MINIMAL)) {
                 menuResize.setIcon(VaadinIcons.ANGLE_LEFT);
-                menu.removeStyleName(MENU_MINIMAL);
+                getMenu().removeStyleName(MENU_MINIMAL);
             } else {
                 menuResize.setIcon(VaadinIcons.ANGLE_RIGHT);
-                menu.addStyleName(MENU_MINIMAL);
+                getMenu().addStyleName(MENU_MINIMAL);
             }
         });
         topMenu.addComponents(menuTitle, menuResize);
@@ -78,7 +81,7 @@ public class HybridMenuTypeCombined extends HybridMenuVariant {
     @Override
     public void addItem(MenuItem menuItem) {
         if (menuItem.getTargetClass() != null) {
-            menu.getNavigator().addView(menuItem.getTitle(), menuItem.getTargetClass());
+            getMenu().getNavigator().addView(menuItem.getTitle(), menuItem.getTargetClass());
         }
         EMenuItemPosition position = menuItem.getMenuItemPosition();
         if (position == EMenuItemPosition.LEFT || position == EMenuItemPosition.COMBINED) {
@@ -87,5 +90,11 @@ public class HybridMenuTypeCombined extends HybridMenuVariant {
         if (position == EMenuItemPosition.TOP || position == EMenuItemPosition.COMBINED) {
             topMenu.addComponent(getProvider().getComponent(menuItem));
         }
+    }
+
+    @Override
+    public void addCustomItems(List<CustomMenuItem> customItems) {
+        customItems.stream().forEach(customMenuItem -> {
+        });
     }
 }

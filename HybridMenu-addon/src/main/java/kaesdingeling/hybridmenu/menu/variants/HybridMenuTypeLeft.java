@@ -1,7 +1,10 @@
 package kaesdingeling.hybridmenu.menu.variants;
 
 import com.vaadin.ui.Component;
+import kaesdingeling.hybridmenu.data.CustomMenuItem;
 import kaesdingeling.hybridmenu.data.MenuItem;
+
+import java.util.List;
 
 import static kaesdingeling.hybridmenu.styles.HybridMenuStyles.MENU_TYPE_LEFT;
 
@@ -32,6 +35,11 @@ public class HybridMenuTypeLeft extends HybridMenuVariant {
 
     @Override
     public void addItem(MenuItem menuItem) {
+
+    }
+
+    @Override
+    public void addCustomItems(List<CustomMenuItem> customItems) {
 
     }
 

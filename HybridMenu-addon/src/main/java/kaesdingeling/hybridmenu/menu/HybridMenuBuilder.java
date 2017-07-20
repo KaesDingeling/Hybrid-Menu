@@ -2,8 +2,12 @@ package kaesdingeling.hybridmenu.menu;
 
 import com.vaadin.navigator.View;
 import com.vaadin.server.FontIcon;
+import com.vaadin.ui.Component;
+import kaesdingeling.hybridmenu.data.CustomMenuItem;
 import kaesdingeling.hybridmenu.data.MenuItem;
+import kaesdingeling.hybridmenu.enums.EAlignment;
 import kaesdingeling.hybridmenu.enums.EMenuItemPosition;
+import kaesdingeling.hybridmenu.enums.EMenuPosition;
 import kaesdingeling.hybridmenu.enums.EMenuType;
 
 /**
@@ -38,6 +42,12 @@ public class HybridMenuBuilder {
         return this;
     }
 
+    public HybridMenuBuilder withItem(String title, FontIcon icon, Class<? extends View> _class,
+                                      boolean addItem) {
+        hybridMenu.addItem(new MenuItem(title, icon, _class, addItem));
+        return this;
+    }
+
     public HybridMenuBuilder withItem(EMenuItemPosition menuPosition, String title, FontIcon icon, Class<? extends View> _class,
                                       String navigateTo, boolean addItem) {
         hybridMenu.addItem(new MenuItem(menuPosition, title, icon, _class, navigateTo, addItem));
@@ -63,4 +73,20 @@ public class HybridMenuBuilder {
         hybridMenu.setMenuType(top);
         return this;
     }
+
+    public HybridMenuBuilder withCustomComponent(Component component, EAlignment top) {
+        hybridMenu.addCustomMenuItem(component, top);
+        return this;
+    }
+
+    public HybridMenuBuilder withCustomComponent(Component component, EMenuPosition position, EAlignment top) {
+        hybridMenu.addCustomMenuItem(component, position, top);
+        return this;
+    }
+
+    public HybridMenuBuilder withCustomComponent(CustomMenuItem component) {
+        hybridMenu.addCustomMenuItem(component);
+        return this;
+    }
+
 }

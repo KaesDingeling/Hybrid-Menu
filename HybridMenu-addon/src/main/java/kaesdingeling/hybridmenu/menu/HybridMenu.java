@@ -8,11 +8,9 @@ import com.vaadin.ui.ComponentContainer;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.UI;
 import kaesdingeling.hybridmenu.component.LeftMenuItemComponentProvider;
+import kaesdingeling.hybridmenu.data.CustomMenuItem;
 import kaesdingeling.hybridmenu.data.MenuItem;
-import kaesdingeling.hybridmenu.enums.EAnimationSpeed;
-import kaesdingeling.hybridmenu.enums.EAnimationSpeedSubMenu;
-import kaesdingeling.hybridmenu.enums.EMenuNavigator;
-import kaesdingeling.hybridmenu.enums.EMenuType;
+import kaesdingeling.hybridmenu.enums.*;
 import kaesdingeling.hybridmenu.interfaces.MenuItemComponentProvider;
 import kaesdingeling.hybridmenu.menu.variants.HybridMenuVariant;
 import kaesdingeling.hybridmenu.page.DefaultPage;
@@ -38,6 +36,7 @@ public class HybridMenu extends CssLayout {
     private View defaultPage = new DefaultPage();
 
     List<MenuItem> items = new ArrayList<>();
+    List<CustomMenuItem> customItems = new ArrayList<>();
 
     private HashMap<Class<? extends View>, View> instances = new HashMap<>();
 
@@ -58,6 +57,7 @@ public class HybridMenu extends CssLayout {
 
         items.stream().forEach(variant::addItem);
         Arrays.stream(variant.getComponents()).forEach(this::addComponent);
+        variant.addCustomItems(customItems);
 
         addStyleName(MENU);
         addStyleName(subMenuAnimationSpeed.getStyle());
@@ -79,8 +79,16 @@ public class HybridMenu extends CssLayout {
     }
 
     public void addItem(MenuItem item) {
-        item.setOnClickListener(() -> navigateTo(item.getTitle()));
+        addClickListeners(item);
         items.add(item);
+    }
+
+    private void addClickListeners(MenuItem item) {
+        if (item.getChildItems().size() > 0) {
+            item.getChildItems().stream().forEach(subitems -> addClickListeners(subitems));
+        } else {
+            item.setOnClickListener(() -> navigateTo(item.getTitle()));
+        }
     }
 
     public void removeItem(Component component) {
@@ -145,5 +153,17 @@ public class HybridMenu extends CssLayout {
 
     public EMenuType getMenuType() {
         return menuType;
+    }
+
+    public void addCustomMenuItem(Component component, EAlignment top) {
+        addCustomMenuItem(component, EMenuPosition.LEFT, top);
+    }
+
+    public void addCustomMenuItem(Component component, EMenuPosition position, EAlignment top) {
+        addCustomMenuItem(new CustomMenuItem(component, position, top));
+    }
+
+    public void addCustomMenuItem(CustomMenuItem item) {
+        customItems.add(item);
     }
 }
