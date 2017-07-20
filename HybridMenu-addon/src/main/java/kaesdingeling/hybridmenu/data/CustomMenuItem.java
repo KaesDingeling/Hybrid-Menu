@@ -23,7 +23,7 @@ public class CustomMenuItem {
         return position;
     }
 
-    public EAlignment getTop() {
+    public EAlignment getAlignment() {
         return top;
     }
 }

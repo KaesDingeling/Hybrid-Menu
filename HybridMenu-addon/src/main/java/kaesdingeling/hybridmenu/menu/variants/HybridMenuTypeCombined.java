@@ -95,6 +95,28 @@ public class HybridMenuTypeCombined extends HybridMenuVariant {
     @Override
     public void addCustomItems(List<CustomMenuItem> customItems) {
         customItems.stream().forEach(customMenuItem -> {
+            switch (customMenuItem.getPosition()) {
+                case TOP:
+                    switch (customMenuItem.getAlignment()) {
+                        case LEFT:
+                            topMenu.addComponentAsFirst(customMenuItem.getComponent());
+                            break;
+                        case RIGHT:
+                            topMenu.addComponent(customMenuItem.getComponent());
+                            break;
+                    }
+                    break;
+                case LEFT:
+                    switch (customMenuItem.getAlignment()) {
+                        case TOP:
+                            leftMenu.addComponentAsFirst(customMenuItem.getComponent());
+                            break;
+                        case BOTTOM:
+                            leftMenu.addComponent(customMenuItem.getComponent());
+                            break;
+                    }
+                    break;
+            }
         });
     }
 }

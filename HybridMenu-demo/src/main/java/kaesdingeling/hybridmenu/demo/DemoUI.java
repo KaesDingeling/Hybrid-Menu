@@ -34,7 +34,7 @@ public class DemoUI extends UI {
         HybridMenu hybridMenu = HybridMenuBuilder.get()
                 .withMenuType(EMenuType.COMBINED)
                 .withItemTitle(EMenuItemPosition.LEFT, "a1", true)
-                .withCustomComponent(new Label(), EAlignment.TOP) // adding a custom Component the MenuType decides what to do with it
+                .withCustomComponent(new Label("miau"), EAlignment.TOP) // adding a custom Component the MenuType decides what to do with it
                 .withCustomComponent(new CustomMenuItem(new Label("test1234"), EMenuPosition.LEFT, EAlignment.BOTTOM))
                 .withItem("a2", VaadinIcons.HOME, HomePage.class, true)
                 .withItem("a3", VaadinIcons.COG, DefaultPage.class, true)
