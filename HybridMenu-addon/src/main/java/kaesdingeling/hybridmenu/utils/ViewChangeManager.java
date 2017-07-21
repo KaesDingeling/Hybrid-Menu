@@ -1,13 +1,7 @@
 package kaesdingeling.hybridmenu.utils;
 
-import java.util.List;
-
-import com.vaadin.icons.VaadinIcons;
-import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
-
-import kaesdingeling.hybridmenu.data.MenuItem;
-
 public class ViewChangeManager {
+    /*
 	public boolean manage(List<MenuItem> menuItemList, ViewChangeEvent event) {
 		boolean foundActiveButton = false;
 		if (menuItemList != null) {
@@ -65,5 +59,5 @@ public class ViewChangeManager {
 			}
 		}
 		return foundActiveButton;
-	}
+	}*/
 }

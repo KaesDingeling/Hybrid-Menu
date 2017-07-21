@@ -6,7 +6,7 @@
 	<artifactId>hybridmenu-demo</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1.17-ALPHA</version>
-	<name>HybridMenu Add-on Demo</name>
+    <name>HybridMenu Add-on Demo</name>
 
 	<prerequisites>
 		<maven>3</maven>
