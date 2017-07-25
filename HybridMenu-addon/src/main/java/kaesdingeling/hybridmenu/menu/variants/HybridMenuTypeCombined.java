@@ -9,7 +9,9 @@ import com.vaadin.ui.Label;
 import com.vaadin.ui.themes.ValoTheme;
 import kaesdingeling.hybridmenu.data.CustomMenuItem;
 import kaesdingeling.hybridmenu.data.MenuItem;
+import kaesdingeling.hybridmenu.enums.EAlignment;
 import kaesdingeling.hybridmenu.enums.EMenuItemPosition;
+import kaesdingeling.hybridmenu.enums.EMenuPosition;
 import kaesdingeling.hybridmenu.enums.ETopMenuPosition;
 
 import java.util.List;
@@ -21,8 +23,16 @@ import static kaesdingeling.hybridmenu.styles.HybridMenuStyles.*;
  */
 public class HybridMenuTypeCombined extends HybridMenuVariant {
 
-    private CssLayout topMenu;
-    private CssLayout leftMenu;
+    private CssLayout topMenu = new CssLayout();
+    private CssLayout topMenuHeader = new CssLayout();
+    private CssLayout topMenuContent = new CssLayout();
+    private CssLayout topMenuFooter = new CssLayout();
+
+    private CssLayout leftMenu = new CssLayout();
+    private CssLayout leftMenuHeader = new CssLayout();
+    private CssLayout leftMenuContent = new CssLayout();
+    private CssLayout leftMenuFooter = new CssLayout();
+
     private Label menuTitle;
     private Button menuResize;
     private Component[] components;
@@ -32,8 +42,7 @@ public class HybridMenuTypeCombined extends HybridMenuVariant {
         menuTitle = new Label();
         menuResize = new Button();
         menuResize.addStyleName(ValoTheme.BUTTON_BORDERLESS);
-        topMenu = new CssLayout();
-        leftMenu = new CssLayout();
+
         topMenu.addStyleName(MENU_TOP);
         leftMenu.addStyleName(MENU_LEFT);
         leftMenu.addStyleName(getAnimationSpeed().getStyle());
@@ -55,7 +64,15 @@ public class HybridMenuTypeCombined extends HybridMenuVariant {
                 getMenu().addStyleName(MENU_MINIMAL);
             }
         });
-        topMenu.addComponents(menuTitle, menuResize);
+        topMenuHeader.addComponents(menuTitle, menuResize);
+        topMenu.addStyleName("flex-row");
+        leftMenu.addStyleName("flex-column");
+
+        topMenuContent.addStyleNames("grow", "shrink");
+        leftMenuContent.addStyleNames("grow", "shrink");
+
+        topMenu.addComponents(topMenuHeader, topMenuContent, topMenuFooter);
+        leftMenu.addComponents(leftMenuHeader, leftMenuContent, leftMenuFooter);
     }
 
     @Override
@@ -86,10 +103,10 @@ public class HybridMenuTypeCombined extends HybridMenuVariant {
         }
         EMenuItemPosition position = menuItem.getMenuItemPosition();
         if (position == EMenuItemPosition.LEFT || position == EMenuItemPosition.COMBINED) {
-            leftMenu.addComponent(getProvider().getComponent(menuItem));
+            leftMenuContent.addComponent(getProvider().getComponent(menuItem));
         }
         if (position == EMenuItemPosition.TOP || position == EMenuItemPosition.COMBINED) {
-            topMenu.addComponent(getProvider().getComponent(menuItem));
+            leftMenuContent.addComponent(getProvider().getComponent(menuItem));
         }
     }
 
@@ -97,29 +114,38 @@ public class HybridMenuTypeCombined extends HybridMenuVariant {
     public void addCustomItems(List<CustomMenuItem> customItems) {
         customItems.stream().forEach(customMenuItem -> {
             Component component = customMenuItem.getComponent();
-            switch (customMenuItem.getPosition()) {
-                case TOP:
-                    switch (customMenuItem.getAlignment()) {
-                        case LEFT:
-                            topMenu.addComponentAsFirst(component);
-                            break;
-                        case RIGHT:
-                            topMenu.addComponent(component);
-                            break;
-                    }
-                    break;
-                case LEFT:
-                    component.setWidth(100, Sizeable.Unit.PERCENTAGE);
-                    switch (customMenuItem.getAlignment()) {
-                        case TOP:
-                            leftMenu.addComponentAsFirst(component);
-                            break;
-                        case BOTTOM:
-                            leftMenu.addComponent(component);
-                            break;
-                    }
-                    break;
-            }
+            addComponent(component, customMenuItem.getPosition(), customMenuItem.getAlignment());
         });
     }
+
+    public void addComponent(Component component, EMenuPosition position, EAlignment alignment) {
+        switch (position) {
+            case TOP:
+                switch (alignment) {
+                    case LEFT:
+                        topMenuHeader.addComponent(component);
+                        break;
+                    case RIGHT:
+                        topMenuFooter.addComponent(component);
+                        break;
+                    default:
+                        topMenuContent.addComponent(component);
+                }
+                break;
+            case LEFT:
+                component.setWidth(100, Sizeable.Unit.PERCENTAGE);
+                switch (alignment) {
+                    case TOP:
+                        leftMenuHeader.addComponent(component);
+                        break;
+                    case BOTTOM:
+                        leftMenuFooter.addComponent(component);
+                        break;
+                    default:
+                        leftMenuContent.addComponent(component);
+                }
+                break;
+        }
+    }
+
 }
