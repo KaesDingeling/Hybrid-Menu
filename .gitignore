@@ -6,3 +6,4 @@ target
 *.iml
 /HybridMenu-addon/bin/
 /HybridMenu-demo/bin/
+*.css
