@@ -1,5 +1,4 @@
 # Created by .ignore support plugin (hsz.mobi)
-target
 .classpath
 .project
 .settings
@@ -7,3 +6,5 @@ target
 /HybridMenu-addon/bin/
 /HybridMenu-demo/bin/
 *.css
+/HybridMenu-addon/target/
+/HybridMenu-demo/target/
