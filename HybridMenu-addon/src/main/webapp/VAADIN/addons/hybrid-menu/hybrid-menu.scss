@@ -7,6 +7,12 @@ $hybrid-menu-left-shadow: 0 0 5px 0 rgb(150, 150, 150) !default;
 $hybrid-menu-left-item-height: 45px !default;
 $hybrid-menu-left-resource-width: 45px !default;
 
+$hybrid-menu-item-border-left: 5px !default;
+$hybrid-menu-item-minimal-border-left: 3px !default;
+
+$hybrid-menu-item-border-left-hover: 7px !default;
+$hybrid-menu-item-minimal-border-left-hover: 5px !default;
+
 $hybrid-menu-font-color: rgb(245, 245, 245) !default;
 
 @mixin hybrid-menu {
@@ -273,25 +279,20 @@ $hybrid-menu-font-color: rgb(245, 245, 245) !default;
 
     .kdHybridMenuLeft .hybrid-menu-button
     {
-        border-left-width: 5px;
+        border-left-width: $hybrid-menu-item-border-left;
         border-left-color: rgb(40, 160, 220);
     }
 
     .kdHybridMenuLeft .hybrid-menu-button:hover
     {
-        background: rgb(230, 230, 230);
-        border-left-width: 7px;
-    }
-
-    .kdHybridMenuLeft .hybrid-menu-button:hover
-    {
         background: rgb(200, 200, 200);
+        border-left-width: $hybrid-menu-item-border-left-hover;
     }
 
     .kdHybridMenuLeft .subMenu
     {
         // border-left: 1px solid rgb(230, 230, 230); // this breaks the hover effect
-        margin: 0 0 0 25px;
+        padding: 0 0 0 25px;
         width: calc(100% - 25px);
         overflow: hidden;
         position: relative;
@@ -404,12 +405,12 @@ $hybrid-menu-font-color: rgb(245, 245, 245) !default;
 
     .kdHybridMenu.minimalView .kdHybridMenuLeft .hybrid-menu-button
     {
-        border-left-width: 3px;
+        border-left-width: $hybrid-menu-item-minimal-border-left;
     }
 
     .kdHybridMenu.minimalView .kdHybridMenuLeft .hybrid-menu-button:hover, .kdHybridMenu.minimalView .kdHybridMenuLeft .hybrid-menu-button:hover
     {
-        border-left-width: 5px;
+        border-left-width: $hybrid-menu-item-minimal-border-left-hover;
     }
 
     .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent .subMenu
@@ -528,4 +529,31 @@ $hybrid-menu-font-color: rgb(245, 245, 245) !default;
         width: calc(100% - 50px);
     }
 
+    .v-csslayout.flex-row {
+         display: flex;
+          flex-direction: row;
+    }
+    .v-csslayout.flex-column {
+        display: flex;
+        flex-direction: column;
+    }
+    .v-csslayout.flex-row > .grow,
+    .v-csslayout.flex-column > .grow {
+         flex: 1 0%;
+    }
+    .v-csslayout.flex-row > .shrink,
+    .v-csslayout.flex-column > .shrink {
+         flex: 0 1 0%;
+         overflow: auto;
+    }
+    .v-csslayout.flex-row > .shrink.grow,
+    .v-csslayout.flex-column > .shrink.grow {
+         flex: 1 1 0%;
+         overflow: auto;
+    }
+    .v-csslayout.center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 }
