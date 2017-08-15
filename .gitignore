@@ -8,3 +8,4 @@
 *.css
 /HybridMenu-addon/target/
 /HybridMenu-demo/target/
+/.idea/
