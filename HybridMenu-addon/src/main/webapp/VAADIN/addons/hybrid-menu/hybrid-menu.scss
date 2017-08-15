@@ -16,544 +16,516 @@ $hybrid-menu-item-minimal-border-left-hover: 5px !default;
 $hybrid-menu-font-color: rgb(245, 245, 245) !default;
 
 @mixin hybrid-menu {
-    .kdHybridMenu
-    {
-        position: relative;
-        display: block;
-        width: 100%;
-        top: 0;
-        left: 0;
-        height: 100%;
-    }
+  .kdHybridMenu {
+    position: relative;
+    display: block;
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 100%;
+  }
 
-    .kdHybridMenuTop
-    {
-        position: relative;
-        display: block;
-        top: 0;
-        height: $hybrid-menu-top-height;
-        width: 100%;
-        background: $hybrid-menu-top-background;
-        box-shadow: $hybrid-menu-top-shadow;
-        border-bottom: $hybrid-menu-top-border-bottom;
-        z-index: 2000;
-    }
+  .kdHybridMenuTop {
+    position: relative;
+    display: block;
+    top: 0;
+    height: $hybrid-menu-top-height;
+    width: 100%;
+    background: $hybrid-menu-top-background;
+    box-shadow: $hybrid-menu-top-shadow;
+    border-bottom: $hybrid-menu-top-border-bottom;
+    z-index: 2000;
+  }
 
-    .kdHybridMenu .kdHybridMenuTop
-    {
-        position: fixed;
-    }
+  .kdHybridMenu .kdHybridMenuTop {
+    position: fixed;
+  }
 
-    .kdHybridMenuTop, .kdHybridMenuTop .v-icon
-    {
-        color: $hybrid-menu-font-color;
-    }
+  .kdHybridMenuTop, .kdHybridMenuTop .v-icon {
+    color: $hybrid-menu-font-color;
+  }
 
-    .kdHybridMenuTop .LEFT, .kdHybridMenuTop .v-caption-LEFT
-    {
-        float: left;
-    }
+  .kdHybridMenuTop .LEFT, .kdHybridMenuTop .v-caption-LEFT {
+    float: left;
+  }
 
-    .kdHybridMenuTop .RIGHT
-    {
-        float: right;
-    }
+  .kdHybridMenuTop .RIGHT {
+    float: right;
+  }
 
-    .kdHybridMenuTop .v-caption-menuTitle
-    {
-        position: relative;
-        display: inline-block;
-        text-align: center;
-        font-size: 20px;
-        padding: 0;
-        margin: 0;
-        width: 250px;
-        height: 37px;
-        left: 0;
-        top: 0;
-    }
+  .kdHybridMenuTop .v-caption-menuTitle {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    font-size: 20px;
+    padding: 0;
+    margin: 0;
+    width: 250px;
+    height: 37px;
+    left: 0;
+    top: 0;
+  }
 
-    .kdHybridMenuTop .v-caption-menuTitle .v-captiontext
-    {
-        line-height: $hybrid-menu-top-height;
-    }
+  .kdHybridMenuTop .v-caption-menuTitle .v-captiontext {
+    line-height: $hybrid-menu-top-height;
+  }
 
-    .kdHybridMenuTop .hybrid-menu-button
-    {
-        position: relative;
-        display: inline-block;
-        border: none;
-        margin: 0;
-        height: 37px !important;
-        background: transparent;
-        cursor: pointer;
-        transition: background 0.3s;
-    }
+  .kdHybridMenuTop .hybrid-menu-button {
+    position: relative;
+    display: inline-block;
+    border: none;
+    margin: 0;
+    height: 37px !important;
+    background: transparent;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
 
-    .kdHybridMenuTop .hybrid-menu-button:hover
-    {
-        background: rgb(75, 75, 75);
-    }
+  .kdHybridMenuTop .hybrid-menu-button:hover {
+    background: rgb(75, 75, 75);
+  }
 
-    .kdHybridMenuTop .hybrid-menu-button .v-icon
-    {
-        font-size: 18px;
-    }
+  .kdHybridMenuTop .hybrid-menu-button .v-icon {
+    font-size: 18px;
+  }
 
-    .kdHybridMenuTop .menuTitle
-    {
-        display: none;
-    }
+  .kdHybridMenuTop .menuTitle {
+    display: none;
+  }
 
-    .kdHybridMenuTop .hybrid-menu-button img.v-icon
-    {
-        height: calc(100% - 8px);
-        border-radius: 50%;
-        margin: 0 -4px;
-        padding: 4px;
-    }
+  .kdHybridMenuTop .hybrid-menu-button img.v-icon {
+    height: calc(100% - 8px);
+    border-radius: 50%;
+    margin: 0 -4px;
+    padding: 4px;
+  }
 
-    .kdHybridMenuTop .subMenuMasterContent
-    {
-        position: relative;
-    }
+  .kdHybridMenuTop .subMenuMasterContent {
+    position: relative;
+  }
 
-    .kdHybridMenuTop .subMenuMasterContent .hybrid-menu-button .hybrid-menu-button-caption, .kdHybridMenuTop .subMenuMasterContent .subMenuTitle
-    {
-        display: none;
-    }
+  .kdHybridMenuTop .subMenuMasterContent .hybrid-menu-button .hybrid-menu-button-caption, .kdHybridMenuTop .subMenuMasterContent .subMenuTitle {
+    display: none;
+  }
 
-    .kdHybridMenuTop .subMenuMasterContent .subMenu .hybrid-menu-button .hybrid-menu-button-caption
-    {
-        display: block;
-        min-width: 125px;
-        text-align: center;
-        color: rgb(245, 245, 245);
-    }
+  .kdHybridMenuTop .subMenuMasterContent .subMenu .hybrid-menu-button .hybrid-menu-button-caption {
+    display: block;
+    min-width: 125px;
+    text-align: center;
+    color: rgb(245, 245, 245);
+  }
 
-    .kdHybridMenuTop .subMenuMasterContent .subMenu .hybrid-menu-button .hybrid-menu-button-caption .v-icon
-    {
-        padding-right: 5px;
-    }
+  .kdHybridMenuTop .subMenuMasterContent .subMenu .hybrid-menu-button .hybrid-menu-button-caption .v-icon {
+    padding-right: 5px;
+  }
 
-    .kdHybridMenuTop .subMenuMasterContent .subMenu
-    {
-        position: absolute;
-        top: 37px;
-        right: 0;
-        background: rgb(100, 100, 100);
-        z-index: 2100;
-        display: none;
-        padding-top: 3px;
-        width: auto;
-    }
+  .kdHybridMenuTop .subMenuMasterContent .subMenu {
+    position: absolute;
+    top: 37px;
+    right: 0;
+    background: rgb(100, 100, 100);
+    z-index: 2100;
+    display: none;
+    padding-top: 3px;
+    width: auto;
+  }
 
-    .kdHybridMenuTop .subMenuMasterContent:hover .subMenu
-    {
-        display: block;
-    }
+  .kdHybridMenuTop .subMenuMasterContent:hover .subMenu {
+    display: block;
+  }
 
-    .kdHybridMenuTop .subMenuMasterContent .subMenu .hybrid-menu-button
-    {
-        width: 100%;
-        padding: 0;
-    }
+  .kdHybridMenuTop .subMenuMasterContent .subMenu .hybrid-menu-button {
+    width: 100%;
+    padding: 0;
+  }
 
-    .kdHybridMenuLeft
-    {
-        position: relative;
-        background: rgb(240, 240, 240);
-        top: 0;
-        left: 0;
-        width: 250px;
-        height: 100%;
-        z-index: 1000;
-        overflow-y: auto;
-        box-shadow: $hybrid-menu-left-shadow;
-    }
+  .kdHybridMenuLeft {
+    position: relative;
+    background: rgb(240, 240, 240);
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    z-index: 1000;
+    overflow-y: auto;
+    box-shadow: $hybrid-menu-left-shadow;
+  }
 
-    .kdHybridMenu .kdHybridMenuLeft
-    {
-        position: fixed;
-        top: $hybrid-menu-top-height;
-        z-index: 1001;
-        overflow-y: auto;
-        height: calc(100% - $hybrid-menu-top-height);
-    }
-    
-    .kdHybridMenu.mediumAnimationResizeSpeed .kdHybridMenuLeft
-    {
-        transition: width 2s;
-    }
-    
-    .kdHybridMenu.mediumAnimationResizeSpeed .kdHybridMenuLeft
-    {
-        transition: width 1.5s;
-    }
-    
-    .kdHybridMenu.fastAnimationResizeSpeed .kdHybridMenuLeft
-    {
-        transition: width 0.75s;
-    }
-    
-    .kdHybridMenu.veryFastAnimationResizeSpeed .kdHybridMenuLeft
-    {
-        transition: width 0.3s;
-    }
+  .kdHybridMenu .kdHybridMenuLeft {
+    position: fixed;
+    top: $hybrid-menu-top-height;
+    z-index: 1001;
+    overflow-y: auto;
+    height: calc(100% - $hybrid-menu-top-height);
+  }
 
-    .kdHybridMenu.minimalView .kdHybridMenuLeft
-    {
-        width: 50px;
-        overflow: unset;
-    }
+  .kdHybridMenu.mediumAnimationResizeSpeed .kdHybridMenuLeft {
+    transition: width 2s;
+  }
 
-    .kdHybridMenuLeft .subMenuMasterContent
-    {
-        width: 100%;
-    }
-    .kdHybridMenuLeft .v-label {
-         transition: opacity 0.5s;
-         opacity: 1.0;
-    }
+  .kdHybridMenu.mediumAnimationResizeSpeed .kdHybridMenuLeft {
+    transition: width 1.5s;
+  }
 
-    .kdHybridMenu.minimalView .kdHybridMenuLeft .hybrid-menu-button-caption, .kdHybridMenu.minimalView .kdHybridMenuLeft .v-caption
-    {
-        opacity: 0.0;
-    }
+  .kdHybridMenu.fastAnimationResizeSpeed .kdHybridMenuLeft {
+    transition: width 0.75s;
+  }
 
-    .kdHybridMenuLeft .v-caption, .kdHybridMenuLeft .hybrid-menu-button
-    {
-        position: relative;
-        display: block;
-        width: 100%;
-        border: none;
-        color: rgb(50, 50, 50);
-    }
+  .kdHybridMenu.veryFastAnimationResizeSpeed .kdHybridMenuLeft {
+    transition: width 0.3s;
+  }
 
-    .kdHybridMenuLeft .v-caption
-    {
-        padding: 0;
-    }
+  .kdHybridMenu.minimalView .kdHybridMenuLeft {
+    width: 50px;
+    overflow: unset;
+  }
 
-    .kdHybridMenuLeft .v-caption .v-captiontext
-    {
-        padding: 8px 10px 5px;
-    }
+  .kdHybridMenuLeft .subMenuMasterContent {
+    width: 100%;
+  }
+  .kdHybridMenuLeft .v-label {
+    transition: opacity 0.5s;
+    opacity: 1.0;
+  }
 
-    .kdHybridMenuLeft .v-caption .v-captiontext .v-icon
-    {
-        margin-right: 10px;
-    }
+  .kdHybridMenu.minimalView .kdHybridMenuLeft .hybrid-menu-button-caption, .kdHybridMenu.minimalView .kdHybridMenuLeft .v-caption {
+    opacity: 0.0;
+  }
 
+  .kdHybridMenuLeft .v-caption, .kdHybridMenuLeft .hybrid-menu-button {
+    position: relative;
+    display: block;
+    width: 100%;
+    border: none;
+    color: rgb(50, 50, 50);
+  }
 
-    .kdHybridMenuLeft .hybrid-menu-button
-    {
-        transition: background 0.3s, border 0.3s;
-        height: $hybrid-menu-left-item-height !important;
-        cursor: pointer;
-        background: transparent;
-        border-left: 0px solid rgb(110, 170, 30);
-    }
+  .kdHybridMenuLeft .v-caption {
+    padding: 0;
+  }
 
-    .kdHybridMenuLeft .hybrid-menu-button-resource
-    {
-        line-height: $hybrid-menu-left-item-height;
-        width: $hybrid-menu-left-resource-width;
-        text-align: center;
-    }
+  .kdHybridMenuLeft .v-caption .v-captiontext {
+    padding: 8px 10px 5px;
+  }
 
-    .kdHybridMenuLeft .hybrid-menu-button .hybrid-menu-button-caption
-    {
-        line-height: $hybrid-menu-left-item-height;
-    }
+  .kdHybridMenuLeft .v-caption .v-captiontext .v-icon {
+    margin-right: 10px;
+  }
 
-    .kdHybridMenuLeft .hybrid-menu-button .hybrid-menu-button-caption .v-icon.v-icon-angle_left, .kdHybridMenuLeft .hybrid-menu-button .hybrid-menu-button-caption .v-icon.v-icon-angle_down
-    {
-        position: absolute;
-        right: 0;
-        font-size: 18px;
-        height: 30px;
-        width: 30px;
-        text-align: center;
-    }
+  .kdHybridMenuLeft .hybrid-menu-button {
+    transition: background 0.3s, border 0.3s;
+    height: $hybrid-menu-left-item-height !important;
+    cursor: pointer;
+    background: transparent;
+    border-left: 0px solid rgb(110, 170, 30);
+  }
 
-    .kdHybridMenuLeft .hybrid-menu-button
-    {
-        border-left-width: $hybrid-menu-item-border-left;
-        border-left-color: rgb(40, 160, 220);
-    }
+  .kdHybridMenuLeft .hybrid-menu-button-resource {
+    line-height: $hybrid-menu-left-item-height;
+    width: $hybrid-menu-left-resource-width;
+    text-align: center;
+  }
 
-    .kdHybridMenuLeft .hybrid-menu-button:hover
-    {
-        background: rgb(200, 200, 200);
-        border-left-width: $hybrid-menu-item-border-left-hover;
-    }
+  .kdHybridMenuLeft .hybrid-menu-button .hybrid-menu-button-caption {
+    line-height: $hybrid-menu-left-item-height;
+  }
 
-    .kdHybridMenuLeft .subMenu
-    {
-        // border-left: 1px solid rgb(230, 230, 230); // this breaks the hover effect
-        padding: 0 0 0 25px;
-        width: calc(100% - 25px);
-        overflow: hidden;
-        position: relative;
-        display: block;
-        max-height: 0;
-    }
-    
-    .slowAnimationResizeSpeed .kdHybridMenuLeft .subMenu
-    {
-         transition: max-height 2s ease-in-out;
-    }
-    
-    .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu
-    {
-         transition: max-height 1.5s ease-in-out;
-    }
-    
-    .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu
-    {
-         transition: max-height 0.75s ease-in-out;
-    }
-    
-    .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu
-    {
-         transition: max-height 0.3s ease-in-out;
-    }
+  .kdHybridMenuLeft .hybrid-menu-button .hybrid-menu-button-caption .v-icon.v-icon-angle_left, .kdHybridMenuLeft .hybrid-menu-button .hybrid-menu-button-caption .v-icon.v-icon-angle_down {
+    position: absolute;
+    right: 0;
+    font-size: 18px;
+    height: 30px;
+    width: 30px;
+    text-align: center;
+  }
 
-    .kdHybridMenuLeft .subMenu.open
-    {
-        max-height: 999px;
-    }
+  .kdHybridMenuLeft .hybrid-menu-button {
+    border-left-width: $hybrid-menu-item-border-left;
+    border-left-color: rgb(40, 160, 220);
+  }
 
-    .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_1, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_2, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_3, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_4, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_5, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_6, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_7, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_8, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_9, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_10, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_11, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_12, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_13, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_14, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_15, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_16, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_17, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_18, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_19, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_20
-    {
-        transition: height 2s ease-in-out !important;
-    }
-    
-    .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_1, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_2, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_3, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_4, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_5, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_6, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_7, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_8, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_9, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_10, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_11, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_12, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_13, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_14, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_15, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_16, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_17, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_18, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_19, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_20
-    {
-        transition: height 1.5s ease-in-out !important;
-    }
-    
-    .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_1, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_2, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_3, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_4, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_5, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_6, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_7, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_8, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_9, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_10, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_11, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_12, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_13, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_14, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_15, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_16, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_17, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_18, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_19, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_20
-    {
-        transition: height 0.75s ease-in-out !important;
-    }
-    
-    .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_1, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_2, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_3, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_4, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_5, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_6, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_7, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_8, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_9, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_10, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_11, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_12, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_13, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_14, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_15, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_16, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_17, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_18, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_19, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_20
-    {
-        transition: height 0.3s ease-in-out !important;
-    }
-    
-    .kdHybridMenuLeft .subMenu.subMenu_1, .kdHybridMenuLeft .subMenu.subMenu_2, .kdHybridMenuLeft .subMenu.subMenu_3, .kdHybridMenuLeft .subMenu.subMenu_4, .kdHybridMenuLeft .subMenu.subMenu_5, .kdHybridMenuLeft .subMenu.subMenu_6, .kdHybridMenuLeft .subMenu.subMenu_7, .kdHybridMenuLeft .subMenu.subMenu_8, .kdHybridMenuLeft .subMenu.subMenu_9, .kdHybridMenuLeft .subMenu.subMenu_10, .kdHybridMenuLeft .subMenu.subMenu_11, .kdHybridMenuLeft .subMenu.subMenu_12, .kdHybridMenuLeft .subMenu.subMenu_13, .kdHybridMenuLeft .subMenu.subMenu_14, .kdHybridMenuLeft .subMenu.subMenu_15, .kdHybridMenuLeft .subMenu.subMenu_16, .kdHybridMenuLeft .subMenu.subMenu_17, .kdHybridMenuLeft .subMenu.subMenu_18, .kdHybridMenuLeft .subMenu.subMenu_19, .kdHybridMenuLeft .subMenu.subMenu_20
-    {
-        max-height: unset !important;
-        height: 0;
-    }
+  .kdHybridMenuLeft .hybrid-menu-button:hover {
+    background: rgb(200, 200, 200);
+    border-left-width: $hybrid-menu-item-border-left-hover;
+  }
 
-    .kdHybridMenuLeft .subMenu.open.subMenu_1 { height: 45px; }
-    .kdHybridMenuLeft .subMenu.open.subMenu_2 { height: 90px; }
-    .kdHybridMenuLeft .subMenu.open.subMenu_3 { height: 135px; }
-    .kdHybridMenuLeft .subMenu.open.subMenu_4 { height: 180px; }
-    .kdHybridMenuLeft .subMenu.open.subMenu_5 { height: 225px; }
-    .kdHybridMenuLeft .subMenu.open.subMenu_6 { height: 270px; }
-    .kdHybridMenuLeft .subMenu.open.subMenu_7 { height: 315px; }
-    .kdHybridMenuLeft .subMenu.open.subMenu_8 { height: 350px; }
-    .kdHybridMenuLeft .subMenu.open.subMenu_9 { height: 395px; }
-    .kdHybridMenuLeft .subMenu.open.subMenu_10 { height: 440px; }
-    .kdHybridMenuLeft .subMenu.open.subMenu_11 { height: 485px; }
-    .kdHybridMenuLeft .subMenu.open.subMenu_12 { height: 530px; }
-    .kdHybridMenuLeft .subMenu.open.subMenu_13 { height: 575px; }
-    .kdHybridMenuLeft .subMenu.open.subMenu_14 { height: 620px; }
-    .kdHybridMenuLeft .subMenu.open.subMenu_15 { height: 665px; }
-    .kdHybridMenuLeft .subMenu.open.subMenu_16 { height: 710px; }
-    .kdHybridMenuLeft .subMenu.open.subMenu_17 { height: 755px; }
-    .kdHybridMenuLeft .subMenu.open.subMenu_18 { height: 800px; }
-    .kdHybridMenuLeft .subMenu.open.subMenu_19 { height: 845px; }
-    .kdHybridMenuLeft .subMenu.open.subMenu_20 { height: 890px; }
+  .kdHybridMenuLeft .subMenu {
+    // border-left: 1px solid rgb(230, 230, 230); // this breaks the hover effect
+    width: calc(100% - 25px);
+    overflow: hidden;
+    position: relative;
+    display: block;
+    max-height: 0;
+  }
 
-    .kdHybridMenu.minimalView .kdHybridMenuLeft .hybrid-menu-button-caption, .kdHybridMenu.minimalView .kdHybridMenuLeft .hybrid-menu-button .hybrid-menu-button-caption .v-icon.v-icon-angle_left, .kdHybridMenu.minimalView .kdHybridMenuLeft .hybrid-menu-button .hybrid-menu-button-caption .v-icon.v-icon-angle_down
-    {
-        position: absolute;
-        display: none;
-        background: rgb(240, 240, 240);
-        padding: 10px;
-        top: 0;
-        left: 43px;
-        height: 25px;
-        z-index: 1100;
-    }
+  .kdHybridMenu:not(.minimalView) .kdHybridMenuLeft .subMenu {
+    padding: 0 0 0 25px;
+  }
 
-    .kdHybridMenu.minimalView .kdHybridMenuLeft .hybrid-menu-button-caption:before
-    {
-        content: '';
-        position: absolute;
-        top: 15px;
-        left: -8px;
-        width: 0px;
-        height: 0px;
-        -webkit-transform: rotate(360deg);
-        border-style: solid;
-        border-width: 7.5px 10px 7.5px 0;
-        border-color: transparent rgb(240, 240, 240) transparent transparent;
-    }
+  .slowAnimationResizeSpeed .kdHybridMenuLeft .subMenu {
+    transition: max-height 2s ease-in-out;
+  }
 
-    .kdHybridMenu.minimalView .kdHybridMenuLeft .hybrid-menu-button:hover .hybrid-menu-button-caption, .kdHybridMenu.minimalView .kdHybridMenuLeft .hybrid-menu-button-caption:hover
-    {
-        display: block;
-    }
+  .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu {
+    transition: max-height 1.5s ease-in-out;
+  }
 
-    .kdHybridMenu.minimalView .kdHybridMenuLeft .hybrid-menu-button
-    {
-        border-left-width: $hybrid-menu-item-minimal-border-left;
-    }
+  .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu {
+    transition: max-height 0.75s ease-in-out;
+  }
 
-    .kdHybridMenu.minimalView .kdHybridMenuLeft .hybrid-menu-button:hover, .kdHybridMenu.minimalView .kdHybridMenuLeft .hybrid-menu-button:hover
-    {
-        border-left-width: $hybrid-menu-item-minimal-border-left-hover;
-    }
+  .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu {
+    transition: max-height 0.3s ease-in-out;
+  }
 
-    .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent .subMenu
-    {
-        height: 0;
-        width: 150px;
-        overflow: visible;
-        position: absolute;
-        margin-top: -45px;
-        left: 50px;
-        display: none;
-        background: rgb(240, 240, 240);
-    }
+  .kdHybridMenuLeft .subMenu.open {
+    max-height: 999px;
+  }
 
-    .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent:hover .subMenu
-    {
-        display: block;
-        height: auto;
-    }
+  .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_1, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_2, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_3, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_4, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_5, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_6, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_7, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_8, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_9, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_10, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_11, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_12, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_13, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_14, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_15, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_16, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_17, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_18, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_19, .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_20 {
+    transition: height 2s ease-in-out !important;
+  }
 
-    .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent:hover .subMenu .subMenuTitle
-    {
-        display: block;
-        background: rgb(245, 245, 245);
-        border-bottom: 1px solid rgb(220, 160, 40);
-        padding: 10px 15px;
-        height: 45px;
-    }
+  .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_1, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_2, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_3, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_4, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_5, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_6, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_7, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_8, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_9, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_10, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_11, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_12, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_13, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_14, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_15, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_16, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_17, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_18, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_19, .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_20 {
+    transition: height 1.5s ease-in-out !important;
+  }
 
-    .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent:hover .subMenu .subMenuTitle:before
-    {
-        content: '';
-        position: absolute;
-        top: 15px;
-        left: -8px;
-        width: 0px;
-        height: 0px;
-        -webkit-transform: rotate(360deg);
-        border-style: solid;
-        border-width: 7px 10px 7px 0;
-        border-color: transparent rgb(245, 245, 245) transparent transparent;
-    }
+  .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_1, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_2, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_3, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_4, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_5, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_6, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_7, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_8, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_9, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_10, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_11, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_12, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_13, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_14, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_15, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_16, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_17, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_18, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_19, .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_20 {
+    transition: height 0.75s ease-in-out !important;
+  }
 
-    .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent .subMenu .hybrid-menu-button-caption:before, .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent .hybrid-menu-button:hover .hybrid-menu-button-caption
-    {
-        display: none;
-    }
+  .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_1, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_2, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_3, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_4, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_5, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_6, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_7, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_8, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_9, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_10, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_11, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_12, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_13, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_14, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_15, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_16, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_17, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_18, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_19, .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_20 {
+    transition: height 0.3s ease-in-out !important;
+  }
 
-    .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent .subMenu .hybrid-menu-button-caption, .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent .subMenu .hybrid-menu-button:hover .hybrid-menu-button-caption
-    {
-        position: relative;
-        display: none;
-        left: unset;
-        background: transparent;
-    }
+  .kdHybridMenuLeft .subMenu.subMenu_1, .kdHybridMenuLeft .subMenu.subMenu_2, .kdHybridMenuLeft .subMenu.subMenu_3, .kdHybridMenuLeft .subMenu.subMenu_4, .kdHybridMenuLeft .subMenu.subMenu_5, .kdHybridMenuLeft .subMenu.subMenu_6, .kdHybridMenuLeft .subMenu.subMenu_7, .kdHybridMenuLeft .subMenu.subMenu_8, .kdHybridMenuLeft .subMenu.subMenu_9, .kdHybridMenuLeft .subMenu.subMenu_10, .kdHybridMenuLeft .subMenu.subMenu_11, .kdHybridMenuLeft .subMenu.subMenu_12, .kdHybridMenuLeft .subMenu.subMenu_13, .kdHybridMenuLeft .subMenu.subMenu_14, .kdHybridMenuLeft .subMenu.subMenu_15, .kdHybridMenuLeft .subMenu.subMenu_16, .kdHybridMenuLeft .subMenu.subMenu_17, .kdHybridMenuLeft .subMenu.subMenu_18, .kdHybridMenuLeft .subMenu.subMenu_19, .kdHybridMenuLeft .subMenu.subMenu_20 {
+    max-height: unset !important;
+    height: 0;
+  }
 
-    .kdHybridMenu.minimalView .kdHybridMenuLeft .v-slot-hybrid-menu-button-caption {
-        display: none;
-    }
+  .kdHybridMenuLeft .subMenu.open.subMenu_1 {
+    height: 45px;
+  }
+  .kdHybridMenuLeft .subMenu.open.subMenu_2 {
+    height: 90px;
+  }
+  .kdHybridMenuLeft .subMenu.open.subMenu_3 {
+    height: 135px;
+  }
+  .kdHybridMenuLeft .subMenu.open.subMenu_4 {
+    height: 180px;
+  }
+  .kdHybridMenuLeft .subMenu.open.subMenu_5 {
+    height: 225px;
+  }
+  .kdHybridMenuLeft .subMenu.open.subMenu_6 {
+    height: 270px;
+  }
+  .kdHybridMenuLeft .subMenu.open.subMenu_7 {
+    height: 315px;
+  }
+  .kdHybridMenuLeft .subMenu.open.subMenu_8 {
+    height: 350px;
+  }
+  .kdHybridMenuLeft .subMenu.open.subMenu_9 {
+    height: 395px;
+  }
+  .kdHybridMenuLeft .subMenu.open.subMenu_10 {
+    height: 440px;
+  }
+  .kdHybridMenuLeft .subMenu.open.subMenu_11 {
+    height: 485px;
+  }
+  .kdHybridMenuLeft .subMenu.open.subMenu_12 {
+    height: 530px;
+  }
+  .kdHybridMenuLeft .subMenu.open.subMenu_13 {
+    height: 575px;
+  }
+  .kdHybridMenuLeft .subMenu.open.subMenu_14 {
+    height: 620px;
+  }
+  .kdHybridMenuLeft .subMenu.open.subMenu_15 {
+    height: 665px;
+  }
+  .kdHybridMenuLeft .subMenu.open.subMenu_16 {
+    height: 710px;
+  }
+  .kdHybridMenuLeft .subMenu.open.subMenu_17 {
+    height: 755px;
+  }
+  .kdHybridMenuLeft .subMenu.open.subMenu_18 {
+    height: 800px;
+  }
+  .kdHybridMenuLeft .subMenu.open.subMenu_19 {
+    height: 845px;
+  }
+  .kdHybridMenuLeft .subMenu.open.subMenu_20 {
+    height: 890px;
+  }
 
-    .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenu
-    {
-        width: 100%;
-        margin-left: 0;
-    }
+  .kdHybridMenu.minimalView .kdHybridMenuLeft .hybrid-menu-button-caption, .kdHybridMenu.minimalView .kdHybridMenuLeft .hybrid-menu-button .hybrid-menu-button-caption .v-icon.v-icon-angle_left, .kdHybridMenu.minimalView .kdHybridMenuLeft .hybrid-menu-button .hybrid-menu-button-caption .v-icon.v-icon-angle_down {
+    position: absolute;
+    display: none;
+    background: rgb(240, 240, 240);
+    padding: 10px;
+    top: 0;
+    left: 43px;
+    height: 25px;
+    z-index: 1100;
+  }
 
-    .kdHybridMenuBody
-    {
-        top: 0;
-        left: 0;
-        position: relative;
-        display: block;
-        width: 100%;
-        height: 100%;
-        overflow-y: auto;
-        z-index: 100;
-    }
+  .kdHybridMenu.minimalView .kdHybridMenuLeft .hybrid-menu-button-caption:before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: -8px;
+    width: 0px;
+    height: 0px;
+    -webkit-transform: rotate(360deg);
+    border-style: solid;
+    border-width: 7.5px 10px 7.5px 0;
+    border-color: transparent rgb(240, 240, 240) transparent transparent;
+  }
 
-    .kdHybridMenu.kdHybridMenuTypeCombined .kdHybridMenuBody
-    {
-        width: calc(100% - 250px);
-        left: 250px;
-        top: $hybrid-menu-top-height;
-        overflow-y: auto;
-    }
+  .kdHybridMenu.minimalView .kdHybridMenuLeft .hybrid-menu-button:hover .hybrid-menu-button-caption, .kdHybridMenu.minimalView .kdHybridMenuLeft .hybrid-menu-button-caption:hover {
+    display: block;
+  }
 
-    .kdHybridMenu.kdHybridMenuTypeTop .kdHybridMenuBody
-    {
-        top: $hybrid-menu-top-height;
-        overflow-y: auto;
-    }
+  .kdHybridMenu.minimalView .kdHybridMenuLeft .hybrid-menu-button {
+    border-left-width: $hybrid-menu-item-minimal-border-left;
+  }
 
-    .kdHybridMenu .slowAnimationResizeSpeed
-    {
-        transition: width 2s, left 2s;
-    }
-    
-    .kdHybridMenu .mediumAnimationResizeSpeed
-    {
-        transition: width 1.5s, left 1.5s;
-    }
-    
-    .kdHybridMenu .fastAnimationResizeSpeed
-    {
-        transition: width 0.75s, left 0.75s;
-    }
-    
-    .kdHybridMenu .veryFastAnimationResizeSpeed
-    {
-        transition: width 0.3s, left 0.3s;
-    }
+  .kdHybridMenu.minimalView .kdHybridMenuLeft .hybrid-menu-button:hover, .kdHybridMenu.minimalView .kdHybridMenuLeft .hybrid-menu-button:hover {
+    border-left-width: $hybrid-menu-item-minimal-border-left-hover;
+  }
 
-    .kdHybridMenu.minimalView .kdHybridMenuBody
-    {
-        left: 50px;
-        width: calc(100% - 50px);
-    }
+  .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent .subMenu {
+    height: 0;
+    width: 150px;
+    overflow: visible;
+    position: absolute;
+    margin-top: -45px;
+    left: 50px;
+    display: none;
+    background: rgb(240, 240, 240);
+  }
 
-    .v-csslayout.flex-row {
-         display: flex;
-          flex-direction: row;
-    }
-    .v-csslayout.flex-column {
-        display: flex;
-        flex-direction: column;
-    }
-    .v-csslayout.flex-row > .grow,
-    .v-csslayout.flex-column > .grow {
-         flex: 1 0%;
-    }
-    .v-csslayout.flex-row > .shrink,
-    .v-csslayout.flex-column > .shrink {
-         flex: 0 1 0%;
-         overflow: auto;
-    }
-    .v-csslayout.flex-row > .shrink.grow,
-    .v-csslayout.flex-column > .shrink.grow {
-         flex: 1 1 0%;
-         overflow: auto;
-    }
-    .v-csslayout.center {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+  .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent:hover .subMenu {
+    display: block;
+    height: auto;
+  }
+
+  .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent:hover .subMenu .subMenuTitle {
+    display: block;
+    background: rgb(245, 245, 245);
+    border-bottom: 1px solid rgb(220, 160, 40);
+    padding: 10px 15px;
+    height: 45px;
+  }
+
+  .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent:hover .subMenu .subMenuTitle:before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: -8px;
+    width: 0px;
+    height: 0px;
+    -webkit-transform: rotate(360deg);
+    border-style: solid;
+    border-width: 7px 10px 7px 0;
+    border-color: transparent rgb(245, 245, 245) transparent transparent;
+  }
+
+  .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent .subMenu .hybrid-menu-button-caption:before, .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent .hybrid-menu-button:hover .hybrid-menu-button-caption {
+    display: none;
+  }
+
+  .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent .subMenu .hybrid-menu-button-caption, .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent .subMenu .hybrid-menu-button:hover .hybrid-menu-button-caption {
+    position: relative;
+    display: none;
+    left: unset;
+    background: transparent;
+  }
+
+  .kdHybridMenu.minimalView .kdHybridMenuLeft .v-slot-hybrid-menu-button-caption {
+    display: none;
+  }
+
+  .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenu {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .kdHybridMenuBody {
+    top: 0;
+    left: 0;
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    z-index: 100;
+  }
+
+  .kdHybridMenu.kdHybridMenuTypeCombined .kdHybridMenuBody {
+    width: calc(100% - 250px);
+    left: 250px;
+    top: $hybrid-menu-top-height;
+    overflow-y: auto;
+  }
+
+  .kdHybridMenu.kdHybridMenuTypeTop .kdHybridMenuBody {
+    top: $hybrid-menu-top-height;
+    overflow-y: auto;
+  }
+
+  .kdHybridMenu .slowAnimationResizeSpeed {
+    transition: width 2s, left 2s;
+  }
+
+  .kdHybridMenu .mediumAnimationResizeSpeed {
+    transition: width 1.5s, left 1.5s;
+  }
+
+  .kdHybridMenu .fastAnimationResizeSpeed {
+    transition: width 0.75s, left 0.75s;
+  }
+
+  .kdHybridMenu .veryFastAnimationResizeSpeed {
+    transition: width 0.3s, left 0.3s;
+  }
+
+  .kdHybridMenu.minimalView .kdHybridMenuBody {
+    left: 50px;
+    width: calc(100% - 50px);
+  }
+
+  .v-csslayout.flex-row {
+    display: flex;
+    flex-direction: row;
+  }
+  .v-csslayout.flex-column {
+    display: flex;
+    flex-direction: column;
+  }
+  .v-csslayout.flex-row > .grow,
+  .v-csslayout.flex-column > .grow {
+    flex: 1 0%;
+  }
+  .v-csslayout.flex-row > .shrink,
+  .v-csslayout.flex-column > .shrink {
+    flex: 0 1 0%;
+    overflow: auto;
+  }
+  .v-csslayout.flex-row > .shrink.grow,
+  .v-csslayout.flex-column > .shrink.grow {
+    flex: 1 1 0%;
+    overflow: auto;
+  }
+  .v-csslayout.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }

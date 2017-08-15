@@ -1,4 +1,4 @@
-package kaesdingeling.hybridmenu.component;
+package kaesdingeling.hybridmenu.provider;
 
 import com.vaadin.event.LayoutEvents;
 import com.vaadin.server.FontIcon;
@@ -8,14 +8,13 @@ import com.vaadin.shared.MouseEventDetails;
 import com.vaadin.shared.ui.ContentMode;
 import com.vaadin.ui.*;
 import kaesdingeling.hybridmenu.data.MenuItem;
-import kaesdingeling.hybridmenu.interfaces.MenuItemComponentProvider;
 
 import static kaesdingeling.hybridmenu.styles.HybridMenuStyles.*;
 
 /**
  * Created by appreciated on 14.07.2017.
  */
-public class LeftMenuItemComponentProvider implements MenuItemComponentProvider {
+public class VerticalMenuItemComponentProvider implements MenuItemComponentProvider {
 
     @Override
     public Component getComponent(MenuItem item) {

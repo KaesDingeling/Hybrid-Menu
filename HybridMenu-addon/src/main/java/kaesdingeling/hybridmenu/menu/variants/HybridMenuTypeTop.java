@@ -2,10 +2,10 @@ package kaesdingeling.hybridmenu.menu.variants;
 
 import com.vaadin.ui.Component;
 import com.vaadin.ui.CssLayout;
-import kaesdingeling.hybridmenu.component.TopMenuItemComponentProvider;
+import kaesdingeling.hybridmenu.provider.HorizontalMenuItemComponentProvider;
 import kaesdingeling.hybridmenu.data.CustomMenuItem;
 import kaesdingeling.hybridmenu.data.MenuItem;
-import kaesdingeling.hybridmenu.interfaces.MenuItemComponentProvider;
+import kaesdingeling.hybridmenu.provider.MenuItemComponentProvider;
 
 import java.util.List;
 
@@ -44,7 +44,7 @@ public class HybridMenuTypeTop extends HybridMenuVariant {
 
     @Override
     public MenuItemComponentProvider getProvider() {
-        return new TopMenuItemComponentProvider();
+        return new HorizontalMenuItemComponentProvider();
     }
 
     @Override

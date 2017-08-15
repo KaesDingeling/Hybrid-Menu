@@ -1,4 +1,4 @@
-package kaesdingeling.hybridmenu.interfaces;
+package kaesdingeling.hybridmenu.provider;
 
 import com.vaadin.ui.Component;
 import kaesdingeling.hybridmenu.data.MenuItem;

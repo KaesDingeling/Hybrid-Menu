@@ -4,13 +4,13 @@ package kaesdingeling.hybridmenu.menu.variants;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.ComponentContainer;
 import com.vaadin.ui.CssLayout;
-import kaesdingeling.hybridmenu.component.LeftMenuItemComponentProvider;
+import kaesdingeling.hybridmenu.provider.VerticalMenuItemComponentProvider;
 import kaesdingeling.hybridmenu.data.CustomMenuItem;
 import kaesdingeling.hybridmenu.data.MenuItem;
 import kaesdingeling.hybridmenu.enums.EAnimationSpeed;
 import kaesdingeling.hybridmenu.enums.EAnimationSpeedSubMenu;
 import kaesdingeling.hybridmenu.enums.EMenuNavigator;
-import kaesdingeling.hybridmenu.interfaces.MenuItemComponentProvider;
+import kaesdingeling.hybridmenu.provider.MenuItemComponentProvider;
 import kaesdingeling.hybridmenu.menu.HybridMenu;
 
 import java.util.List;
@@ -51,7 +51,7 @@ public abstract class HybridMenuVariant {
     public abstract void removeComponent(Component component);
 
     public MenuItemComponentProvider getProvider() {
-        return new LeftMenuItemComponentProvider();
+        return new VerticalMenuItemComponentProvider();
     }
 
     public abstract void addItem(MenuItem menuItem);

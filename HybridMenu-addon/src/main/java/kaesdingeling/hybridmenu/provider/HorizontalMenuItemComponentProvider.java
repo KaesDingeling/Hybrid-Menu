@@ -1,15 +1,14 @@
-package kaesdingeling.hybridmenu.component;
+package kaesdingeling.hybridmenu.provider;
 
 import com.vaadin.ui.Component;
 import com.vaadin.ui.MenuBar;
 import com.vaadin.ui.themes.ValoTheme;
 import kaesdingeling.hybridmenu.data.MenuItem;
-import kaesdingeling.hybridmenu.interfaces.MenuItemComponentProvider;
 
 /**
  * Created by appreciated on 14.07.2017.
  */
-public class TopMenuItemComponentProvider implements MenuItemComponentProvider {
+public class HorizontalMenuItemComponentProvider implements MenuItemComponentProvider {
 
     @Override
     public Component getComponent(final MenuItem item) {

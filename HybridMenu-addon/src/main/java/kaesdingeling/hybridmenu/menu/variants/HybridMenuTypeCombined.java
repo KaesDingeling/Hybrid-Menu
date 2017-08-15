@@ -87,10 +87,10 @@ public class HybridMenuTypeCombined extends HybridMenuVariant {
     @Override
     public void removeComponent(Component component) {
         if (component != null) {
-            if (topMenu.getComponentIndex(component) != -1) { // -1 will be returned if the component is not a child
+            if (topMenu.getComponentIndex(component) != -1) { // -1 will be returned if the provider is not a child
                 topMenu.removeComponent(component);
             }
-            if (leftMenu.getComponentIndex(component) != -1) { // if a component was added to both layout both will be removed
+            if (leftMenu.getComponentIndex(component) != -1) { // if a provider was added to both layout both will be removed
                 leftMenu.removeComponent(component);
             }
         }

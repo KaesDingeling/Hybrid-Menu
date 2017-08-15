@@ -15,7 +15,7 @@ import kaesdingeling.hybridmenu.menu.variants.HybridMenuVariant;
  * Created by appreciated on 09.07.2017.
  */
 public class HybridMenuBuilder {
-    HybridMenu hybridMenu;
+    private HybridMenu hybridMenu;
 
     private HybridMenuBuilder(HybridMenu hybridMenu) {
         this.hybridMenu = hybridMenu;
@@ -24,7 +24,6 @@ public class HybridMenuBuilder {
     public static HybridMenuBuilder get() {
         return new HybridMenuBuilder(new HybridMenu());
     }
-
 
     public HybridMenuBuilder withItem(EMenuItemPosition menuPosition, String title, Class<? extends View> _class,
                                       boolean addItem) {
@@ -61,8 +60,7 @@ public class HybridMenuBuilder {
     }
 
     public HybridMenu build() {
-        hybridMenu.build();
-        return hybridMenu;
+        return hybridMenu.build();
     }
 
     public HybridMenuBuilder withItem(MenuItem home) {

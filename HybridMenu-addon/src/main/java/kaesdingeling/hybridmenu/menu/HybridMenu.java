@@ -7,15 +7,14 @@ import com.vaadin.ui.Component;
 import com.vaadin.ui.ComponentContainer;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.UI;
-import kaesdingeling.hybridmenu.component.LeftMenuItemComponentProvider;
+import kaesdingeling.hybridmenu.provider.VerticalMenuItemComponentProvider;
 import kaesdingeling.hybridmenu.data.CustomMenuItem;
 import kaesdingeling.hybridmenu.data.MenuItem;
 import kaesdingeling.hybridmenu.enums.*;
-import kaesdingeling.hybridmenu.interfaces.MenuItemComponentProvider;
+import kaesdingeling.hybridmenu.provider.MenuItemComponentProvider;
 import kaesdingeling.hybridmenu.menu.variants.HybridMenuVariant;
 import kaesdingeling.hybridmenu.page.DefaultPage;
 
-import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -41,12 +40,12 @@ public class HybridMenu extends CssLayout {
 
     private HashMap<Class<? extends View>, View> instances = new HashMap<>();
 
-    private MenuItemComponentProvider provider = new LeftMenuItemComponentProvider();
+    private MenuItemComponentProvider provider = new VerticalMenuItemComponentProvider();
 
     private boolean allowChangeView = true;
     private HybridMenuVariant menuVariant;
 
-    public void build() {
+    public HybridMenu build() {
         // Navigator need to be initalised first
         if (variant == null) { // if the variant was set manually ignore the MenuType
             variant = menuType.getVariant();
@@ -76,6 +75,7 @@ public class HybridMenu extends CssLayout {
                 }
             });
         }
+        return this;
     }
 
     public void navigateTo(String viewName) {
