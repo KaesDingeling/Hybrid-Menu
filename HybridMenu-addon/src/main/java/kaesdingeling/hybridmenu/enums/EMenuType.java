@@ -6,21 +6,18 @@ import kaesdingeling.hybridmenu.menu.variants.HybridMenuTypeTop;
 import kaesdingeling.hybridmenu.menu.variants.HybridMenuVariant;
 
 public enum EMenuType {
-    LEFT, TOP, COMBINED;
+    LEFT(new HybridMenuTypeLeft()),
+    TOP(new HybridMenuTypeTop()),
+    COMBINED(new HybridMenuTypeCombined());
 
-    EMenuType() {
+    private HybridMenuVariant variant;
+
+    EMenuType(HybridMenuVariant variant) {
+        this.variant = variant;
     }
 
     public HybridMenuVariant getVariant() {
-        switch (this) {
-            case LEFT:
-                return new HybridMenuTypeLeft();
-            case TOP:
-                return new HybridMenuTypeTop();
-            case COMBINED:
-                return new HybridMenuTypeCombined();
-        }
-        return null;
+        return variant;
     }
 
 }

@@ -15,6 +15,7 @@ import kaesdingeling.hybridmenu.interfaces.MenuItemComponentProvider;
 import kaesdingeling.hybridmenu.menu.variants.HybridMenuVariant;
 import kaesdingeling.hybridmenu.page.DefaultPage;
 
+import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -43,10 +44,13 @@ public class HybridMenu extends CssLayout {
     private MenuItemComponentProvider provider = new LeftMenuItemComponentProvider();
 
     private boolean allowChangeView = true;
+    private HybridMenuVariant menuVariant;
 
     public void build() {
         // Navigator need to be initalised first
-        variant = menuType.getVariant();
+        if (variant == null) { // if the variant was set manually ignore the MenuType
+            variant = menuType.getVariant();
+        }
         variant.init(this, animationSpeed, subMenuAnimationSpeed, naviType);
         addStyleName(variant.getStyle());
 
@@ -165,5 +169,9 @@ public class HybridMenu extends CssLayout {
 
     public void addCustomMenuItem(CustomMenuItem item) {
         customItems.add(item);
+    }
+
+    public void setMenuVariant(HybridMenuVariant menuVariant) {
+        this.menuVariant = menuVariant;
     }
 }

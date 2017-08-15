@@ -9,6 +9,7 @@ import kaesdingeling.hybridmenu.enums.EAlignment;
 import kaesdingeling.hybridmenu.enums.EMenuItemPosition;
 import kaesdingeling.hybridmenu.enums.EMenuPosition;
 import kaesdingeling.hybridmenu.enums.EMenuType;
+import kaesdingeling.hybridmenu.menu.variants.HybridMenuVariant;
 
 /**
  * Created by appreciated on 09.07.2017.
@@ -71,6 +72,16 @@ public class HybridMenuBuilder {
 
     public HybridMenuBuilder withMenuType(EMenuType top) {
         hybridMenu.setMenuType(top);
+        return this;
+    }
+
+    /**
+     * This overrides the MenuType set with "withMenuType"
+     * @param variant
+     * @return
+     */
+    public HybridMenuBuilder withCustomMenuVariant(HybridMenuVariant variant) {
+        hybridMenu.setMenuVariant(variant);
         return this;
     }
 
