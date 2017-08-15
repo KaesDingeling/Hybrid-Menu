@@ -1,0 +1,96 @@
+// mobile
+@media only screen and (max-width: 768px) {
+  .kdHybridMenuResponsive {
+    .kdHybridMenuLeft {
+      left: -$hybrid-menu-left-width !important;
+    }
+    .kdHybridMenuLeft.hybrid-menu-responsive-open {
+      left: 0px !important;
+    }
+  }
+}
+
+// tablet horizontal
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .kdHybridMenuResponsive {
+    .kdHybridMenuTop {
+      display: none !important;
+    }
+    .kdHybridMenuLeft {
+      top: 0px !important;
+      left: 0px !important;
+      width: 50px !important;
+      height: 100% !important;
+      overflow-y: visible !important;
+      .kdHybridMenuLeftContent {
+        overflow-y: visible !important;
+      }
+      .subMenuMasterContent .subMenu {
+        height: 0;
+        width: 150px;
+        overflow: visible;
+        position: absolute;
+        margin-top: -45px;
+        left: 50px;
+        display: none;
+        padding: 0 0 0 0 !important;
+        background: rgb(240, 240, 240);
+      }
+      .hybrid-menu-button .hybrid-menu-button-caption {
+        display: none;
+      }
+      .subMenuMasterContent:hover .subMenu {
+        display: block;
+        height: auto;
+      }
+      .subMenuMasterContent:hover .subMenu .subMenuTitle {
+        display: block;
+        background: rgb(245, 245, 245);
+        border-bottom: 1px solid rgb(220, 160, 40);
+        padding: 10px 15px;
+        height: 45px;
+      }
+      .subMenuMasterContent:hover .subMenu .subMenuTitle:before {
+        content: '';
+        position: absolute;
+        top: 15px;
+        left: -8px;
+        width: 0px;
+        height: 0px;
+        -webkit-transform: rotate(360deg);
+        border-style: solid;
+        border-width: 7px 10px 7px 0;
+        border-color: transparent rgb(245, 245, 245) transparent transparent;
+      }
+      .subMenuMasterContent .hybrid-menu-button:hover .hybrid-menu-button-caption {
+        display: none;
+      }
+    }
+    .kdHybridMenuBody {
+      width: calc(100% - 50px) !important;
+      left: 50px !important;
+    }
+  }
+}
+
+// tablet vertical and desktop
+@media only screen and (min-width: 1024px) {
+  .kdHybridMenuResponsive {
+    .kdHybridMenuTop {
+      display: none !important;
+    }
+    .kdHybridMenuLeft {
+      top: 0px !important;
+      height: 100% !important;
+      width: $hybrid-menu-left-width !important;
+    }
+    .kdHybridMenuBody {
+      width: calc(100% - $hybrid-menu-left-width) !important;
+      left: $hybrid-menu-left-width !important;
+    }
+  }
+}
+
+@mixin hybrid-menu-responsive {
+
+}

@@ -9,10 +9,14 @@ public class HybridMenuStyles {
     public static final String MENU_BODY = "kdHybridMenuBody";
     public static final String MENU_TOP = "kdHybridMenuTop";
     public static final String MENU_LEFT = "kdHybridMenuLeft";
+    public static final String MENU_LEFT_FOOTER = "kdHybridMenuLeftFooter";
+    public static final String MENU_LEFT_CONTENT = "kdHybridMenuLeftContent";
+    public static final String MENU_LEFT_HEADER = "kdHybridMenuLeftHeader";
 
     public static final String MENU_TYPE_COMBINED = "kdHybridMenuTypeCombined";
     public static final String MENU_TYPE_LEFT = "kdHybridMenuTypeLeft";
     public static final String MENU_TYPE_TOP = "kdHybridMenuTypeTop";
+    public static final String MENU_TYPE_RESPONSIVE = "kdHybridMenuResponsive";
 
     public static final String MENU_MINIMAL = "minimalView";
     public static final String MENU_TITLE = "menuTitle";
@@ -48,6 +52,7 @@ public class HybridMenuStyles {
     public static final String MENU_BUTTON_CAPTION = "hybrid-menu-button-caption";
     public static final String MENU_BUTTON_RESOURCE = "hybrid-menu-button-resource";
 
+    public static final String MENU_RESPONSIVE_OPEN = "hybrid-menu-responsive-open";
 
     public static final String ANIMATION_SPEED_NONE = "";
     public static final String ANIMATION_SPEED_SLOW = "slowAnimationResizeSpeed";

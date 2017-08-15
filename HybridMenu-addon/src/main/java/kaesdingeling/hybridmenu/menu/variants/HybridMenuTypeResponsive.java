@@ -22,7 +22,7 @@ import static kaesdingeling.hybridmenu.styles.HybridMenuStyles.*;
 /**
  * Created by appreciated on 14.07.2017.
  */
-public class HybridMenuTypeCombined extends HybridMenuVariant {
+public class HybridMenuTypeResponsive extends HybridMenuVariant {
 
     private CssLayout topMenu = new CssLayout();
     private CssLayout topMenuHeader = new CssLayout();
@@ -35,15 +35,14 @@ public class HybridMenuTypeCombined extends HybridMenuVariant {
     private CssLayout leftMenuFooter = new CssLayout();
 
     private Label menuTitle;
-    private Button menuResize;
+    private Button menuToggle;
     private Component[] components;
 
     @Override
     public void onInit() {
         menuTitle = new Label();
-        menuResize = new Button();
-        menuResize.addStyleName(ValoTheme.BUTTON_BORDERLESS);
-
+        menuToggle = new Button();
+        menuToggle.addStyleName(ValoTheme.BUTTON_BORDERLESS);
         topMenu.addStyleName(MENU_TOP);
         leftMenu.addStyleName(MENU_LEFT);
         leftMenu.addStyleName(getAnimationSpeed().getStyle());
@@ -58,12 +57,12 @@ public class HybridMenuTypeCombined extends HybridMenuVariant {
         menuTitle.addStyleName(MENU_TITLE);
         menuTitle.addStyleName(ETopMenuPosition.LEFT.toString());
 
-        menuResize.setIcon(VaadinIcons.ANGLE_LEFT);
-        menuResize.addStyleName(ETopMenuPosition.LEFT.toString());
-        menuResize.addClickListener(e -> {
-            StyleName.toggle(getMenu(), MENU_MINIMAL);
+        menuToggle.setIcon(VaadinIcons.MENU);
+        menuToggle.addStyleName(ETopMenuPosition.LEFT.toString());
+        menuToggle.addClickListener(e -> {
+            StyleName.toggle(leftMenu, MENU_RESPONSIVE_OPEN);
         });
-        topMenuHeader.addComponents(menuTitle, menuResize);
+        topMenuHeader.addComponents(menuToggle, menuTitle);
         topMenu.addStyleName("flex-row");
         leftMenu.addStyleName("flex-column");
 
@@ -76,7 +75,7 @@ public class HybridMenuTypeCombined extends HybridMenuVariant {
 
     @Override
     public String getStyle() {
-        return MENU_TYPE_COMBINED;
+        return MENU_TYPE_RESPONSIVE;
     }
 
     public Component[] getComponents() {
@@ -146,5 +145,6 @@ public class HybridMenuTypeCombined extends HybridMenuVariant {
                 break;
         }
     }
+
 
 }

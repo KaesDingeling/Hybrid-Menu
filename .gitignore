@@ -5,7 +5,7 @@
 *.iml
 /HybridMenu-addon/bin/
 /HybridMenu-demo/bin/
-*.css
+**.css
 /HybridMenu-addon/target/
 /HybridMenu-demo/target/
 /.idea/

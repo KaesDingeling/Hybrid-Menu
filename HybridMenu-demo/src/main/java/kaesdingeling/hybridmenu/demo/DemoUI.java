@@ -3,6 +3,7 @@ package kaesdingeling.hybridmenu.demo;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.Title;
 import com.vaadin.annotations.VaadinServletConfiguration;
+import com.vaadin.annotations.Viewport;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
@@ -22,6 +23,7 @@ import javax.servlet.annotation.WebServlet;
 
 @Theme("demo")
 @Title("HybridMenu Add-on Demo")
+@Viewport("user-scalable=no,initial-scale=1.0")
 @SuppressWarnings("serial")
 public class DemoUI extends UI {
     @WebServlet(value = "/*", asyncSupported = true)
@@ -32,7 +34,7 @@ public class DemoUI extends UI {
     @Override
     protected void init(VaadinRequest request) {
         HybridMenu hybridMenu = HybridMenuBuilder.get()
-                .withMenuType(EMenuType.COMBINED)
+                .withMenuType(EMenuType.RESPONSIVE)
                 .withItemTitle(EMenuItemPosition.LEFT, "a1", true)
                 .withCustomComponent(new Label("miau"), EAlignment.TOP) // adding a custom Component the MenuType decides what to do with it
                 .withCustomComponent(new CustomMenuItem(new Label("test1234"), EMenuPosition.LEFT, EAlignment.BOTTOM))
