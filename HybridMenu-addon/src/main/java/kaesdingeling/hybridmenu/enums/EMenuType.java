@@ -1,24 +1,26 @@
 package kaesdingeling.hybridmenu.enums;
 
-import kaesdingeling.hybridmenu.menu.variants.HybridMenuTypeCombined;
-import kaesdingeling.hybridmenu.menu.variants.HybridMenuTypeLeft;
-import kaesdingeling.hybridmenu.menu.variants.HybridMenuTypeTop;
-import kaesdingeling.hybridmenu.menu.variants.HybridMenuVariant;
+import kaesdingeling.hybridmenu.menu.variants.*;
 
 public enum EMenuType {
-    LEFT, TOP, COMBINED;
+    LEFT(HybridMenuTypeLeft.class),
+    TOP(HybridMenuTypeTop.class),
+    COMBINED(HybridMenuTypeCombined.class),
+    RESPONSIVE(HybridMenuTypeResponsive.class);
 
-    EMenuType() {
+    private Class<? extends HybridMenuVariant> variant;
+
+    EMenuType(Class<? extends HybridMenuVariant> variant) {
+        this.variant = variant;
     }
 
     public HybridMenuVariant getVariant() {
-        switch (this) {
-            case LEFT:
-                return new HybridMenuTypeLeft();
-            case TOP:
-                return new HybridMenuTypeTop();
-            case COMBINED:
-                return new HybridMenuTypeCombined();
+        try {
+            return variant.newInstance();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
         }
         return null;
     }

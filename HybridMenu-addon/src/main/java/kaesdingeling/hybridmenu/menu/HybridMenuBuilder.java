@@ -9,12 +9,13 @@ import kaesdingeling.hybridmenu.enums.EAlignment;
 import kaesdingeling.hybridmenu.enums.EMenuItemPosition;
 import kaesdingeling.hybridmenu.enums.EMenuPosition;
 import kaesdingeling.hybridmenu.enums.EMenuType;
+import kaesdingeling.hybridmenu.menu.variants.HybridMenuVariant;
 
 /**
  * Created by appreciated on 09.07.2017.
  */
 public class HybridMenuBuilder {
-    HybridMenu hybridMenu;
+    private HybridMenu hybridMenu;
 
     private HybridMenuBuilder(HybridMenu hybridMenu) {
         this.hybridMenu = hybridMenu;
@@ -23,7 +24,6 @@ public class HybridMenuBuilder {
     public static HybridMenuBuilder get() {
         return new HybridMenuBuilder(new HybridMenu());
     }
-
 
     public HybridMenuBuilder withItem(EMenuItemPosition menuPosition, String title, Class<? extends View> _class,
                                       boolean addItem) {
@@ -60,8 +60,7 @@ public class HybridMenuBuilder {
     }
 
     public HybridMenu build() {
-        hybridMenu.build();
-        return hybridMenu;
+        return hybridMenu.build();
     }
 
     public HybridMenuBuilder withItem(MenuItem home) {
@@ -71,6 +70,16 @@ public class HybridMenuBuilder {
 
     public HybridMenuBuilder withMenuType(EMenuType top) {
         hybridMenu.setMenuType(top);
+        return this;
+    }
+
+    /**
+     * This overrides the MenuType set with "withMenuType"
+     * @param variant
+     * @return
+     */
+    public HybridMenuBuilder withCustomMenuVariant(HybridMenuVariant variant) {
+        hybridMenu.setMenuVariant(variant);
         return this;
     }
 

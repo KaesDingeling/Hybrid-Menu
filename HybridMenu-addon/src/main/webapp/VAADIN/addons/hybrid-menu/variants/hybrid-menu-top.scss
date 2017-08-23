@@ -1,0 +1,116 @@
+@mixin hybrid-menu-top {
+  .kdHybridMenuTop {
+    position: relative;
+    display: block;
+    top: 0;
+    height: $hybrid-menu-top-height;
+    width: 100%;
+    background: $hybrid-menu-top-background;
+    box-shadow: $hybrid-menu-top-shadow;
+    border-bottom: $hybrid-menu-top-border-bottom;
+    z-index: 2000;
+  }
+
+  .kdHybridMenu .kdHybridMenuTop {
+    position: fixed;
+  }
+
+  .kdHybridMenuTop, .kdHybridMenuTop .v-icon {
+    color: $hybrid-menu-font-color;
+  }
+
+  .kdHybridMenuTop .LEFT, .kdHybridMenuTop .v-caption-LEFT {
+    float: left;
+  }
+
+  .kdHybridMenuTop .RIGHT {
+    float: right;
+  }
+
+  .kdHybridMenuTop .v-caption-menuTitle {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    font-size: 20px;
+    padding: 0;
+    margin: 0;
+    width: 250px;
+    height: 37px;
+    left: 0;
+    top: 0;
+  }
+
+  .kdHybridMenuTop .v-caption-menuTitle .v-captiontext {
+    line-height: $hybrid-menu-top-height;
+  }
+
+  .kdHybridMenuTop .hybrid-menu-button {
+    position: relative;
+    display: inline-block;
+    border: none;
+    margin: 0;
+    height: 37px !important;
+    background: transparent;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .kdHybridMenuTop .hybrid-menu-button:hover {
+    background: rgb(75, 75, 75);
+  }
+
+  .kdHybridMenuTop .hybrid-menu-button .v-icon {
+    font-size: 18px;
+  }
+
+  .kdHybridMenuTop .menuTitle {
+    display: none;
+  }
+
+  .kdHybridMenuTop .hybrid-menu-button img.v-icon {
+    height: calc(100% - 8px);
+    border-radius: 50%;
+    margin: 0 -4px;
+    padding: 4px;
+  }
+
+  .kdHybridMenuTop .subMenuMasterContent {
+    position: relative;
+  }
+
+  .kdHybridMenuTop .subMenuMasterContent .hybrid-menu-button .hybrid-menu-button-caption, .kdHybridMenuTop .subMenuMasterContent .subMenuTitle {
+    display: none;
+  }
+
+  .kdHybridMenuTop .subMenuMasterContent .subMenu .hybrid-menu-button .hybrid-menu-button-caption {
+    display: block;
+    min-width: 125px;
+    text-align: center;
+    color: rgb(245, 245, 245);
+  }
+
+  .kdHybridMenuTop .subMenuMasterContent .subMenu .hybrid-menu-button .hybrid-menu-button-caption .v-icon {
+    padding-right: 5px;
+  }
+
+  .kdHybridMenuTop .subMenuMasterContent .subMenu {
+    position: absolute;
+    top: 37px;
+    right: 0;
+    background: rgb(100, 100, 100);
+    z-index: 2100;
+    display: none;
+    padding-top: 3px;
+    width: auto;
+  }
+
+  .kdHybridMenuTop .subMenuMasterContent:hover .subMenu {
+    display: block;
+  }
+
+  .kdHybridMenuTop .subMenuMasterContent .subMenu .hybrid-menu-button {
+    width: 100%;
+    padding: 0;
+  }
+
+}
