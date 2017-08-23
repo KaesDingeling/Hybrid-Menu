@@ -12508,7 +12508,6 @@ div.v-layout.v-horizontal.v-widget {
 	width: 100%;
 	top: 0;
 	left: 0;
-	height: 100%;
 }
 
 .demo .kdHybridMenuTop {
@@ -12553,25 +12552,25 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .demo .kdHybridMenuTop .v-caption-menuTitle .v-captiontext {
-	line-height: 40px;
+	padding: 2px 0 3px;
 }
 
-.demo .kdHybridMenuTop .hybrid-menu-button {
+.demo .kdHybridMenuTop .v-nativebutton {
 	position: relative;
 	display: inline-block;
 	border: none;
 	margin: 0;
-	height: 37px !important;
+	height: 37px;
 	background: transparent;
 	cursor: pointer;
 	transition: background 0.3s;
 }
 
-.demo .kdHybridMenuTop .hybrid-menu-button:hover {
+.demo .kdHybridMenuTop .v-nativebutton:hover {
 	background: #4b4b4b;
 }
 
-.demo .kdHybridMenuTop .hybrid-menu-button .v-icon {
+.demo .kdHybridMenuTop .v-nativebutton .v-icon {
 	font-size: 18px;
 }
 
@@ -12579,7 +12578,7 @@ div.v-layout.v-horizontal.v-widget {
 	display: none;
 }
 
-.demo .kdHybridMenuTop .hybrid-menu-button img.v-icon {
+.demo .kdHybridMenuTop .v-nativebutton img.v-icon {
 	height: calc(100% - 8px);
 	border-radius: 50%;
 	margin: 0 -4px;
@@ -12590,18 +12589,18 @@ div.v-layout.v-horizontal.v-widget {
 	position: relative;
 }
 
-.demo .kdHybridMenuTop .subMenuMasterContent .hybrid-menu-button .hybrid-menu-button-caption, .demo .kdHybridMenuTop .subMenuMasterContent .subMenuTitle {
+.demo .kdHybridMenuTop .subMenuMasterContent .v-nativebutton .v-nativebutton-caption, .demo .kdHybridMenuTop .subMenuMasterContent .subMenuTitle {
 	display: none;
 }
 
-.demo .kdHybridMenuTop .subMenuMasterContent .subMenu .hybrid-menu-button .hybrid-menu-button-caption {
+.demo .kdHybridMenuTop .subMenuMasterContent .subMenu .v-nativebutton .v-nativebutton-caption {
 	display: block;
 	min-width: 125px;
 	text-align: center;
 	color: #f5f5f5;
 }
 
-.demo .kdHybridMenuTop .subMenuMasterContent .subMenu .hybrid-menu-button .hybrid-menu-button-caption .v-icon {
+.demo .kdHybridMenuTop .subMenuMasterContent .subMenu .v-nativebutton .v-nativebutton-caption .v-icon {
 	padding-right: 5px;
 }
 
@@ -12620,9 +12619,30 @@ div.v-layout.v-horizontal.v-widget {
 	display: block;
 }
 
-.demo .kdHybridMenuTop .subMenuMasterContent .subMenu .hybrid-menu-button {
+.demo .kdHybridMenuTop .subMenuMasterContent .subMenu .v-nativebutton {
 	width: 100%;
 	padding: 0;
+}
+
+.demo .kdHybridMenuTop .v-nativebutton i.notiCounter {
+	color: #323232;
+	background: rgba(230, 130, 40, 0.8);
+	text-decoration: none;
+	font-style: normal;
+	padding: 0 3px;
+	position: absolute;
+	margin: 16px 0 0 -8px;
+	font-size: 10px;
+	border-radius: 3px;
+}
+
+.demo .kdHybridMenuTop .notiContainerBox {
+	position: absolute;
+	width: 200px !important;
+	min-height: 100px;
+	padding: 0 !important;
+	top: 40px;
+	right: 0;
 }
 
 .demo .kdHybridMenuLeft {
@@ -12645,19 +12665,19 @@ div.v-layout.v-horizontal.v-widget {
 	height: calc(100% - 40px);
 }
 
-.demo .kdHybridMenu.mediumAnimationResizeSpeed .kdHybridMenuLeft {
+.demo .kdHybridMenu.middelAnimationResizeSpeed .kdHybridMenuLeft {
 	transition: width 2s;
 }
 
-.demo .kdHybridMenu.mediumAnimationResizeSpeed .kdHybridMenuLeft {
+.demo .kdHybridMenu.middelAnimationResizeSpeed .kdHybridMenuLeft {
 	transition: width 1.5s;
 }
 
-.demo .kdHybridMenu.fastAnimationResizeSpeed .kdHybridMenuLeft {
+.demo .kdHybridMenu.highAnimationResizeSpeed .kdHybridMenuLeft {
 	transition: width 0.75s;
 }
 
-.demo .kdHybridMenu.veryFastAnimationResizeSpeed .kdHybridMenuLeft {
+.demo .kdHybridMenu.fastAnimationResizeSpeed .kdHybridMenuLeft {
 	transition: width 0.3s;
 }
 
@@ -12670,19 +12690,15 @@ div.v-layout.v-horizontal.v-widget {
 	width: 100%;
 }
 
-.demo .kdHybridMenuLeft .v-label {
-	transition: opacity 0.5s;
-	opacity: 1;
+.demo .kdHybridMenuLeft .v-label, .demo .kdHybridMenu.minimalView .kdHybridMenuLeft .v-caption {
+	display: none;
 }
 
-.demo .kdHybridMenu.minimalView .kdHybridMenuLeft .hybrid-menu-button-caption, .demo .kdHybridMenu.minimalView .kdHybridMenuLeft .v-caption {
-	opacity: 0;
-}
-
-.demo .kdHybridMenuLeft .v-caption, .demo .kdHybridMenuLeft .hybrid-menu-button {
+.demo .kdHybridMenuLeft .v-caption, .demo .kdHybridMenuLeft .v-nativebutton {
 	position: relative;
 	display: block;
 	width: 100%;
+	padding: 5px 15px;
 	border: none;
 	color: #323232;
 }
@@ -12699,25 +12715,26 @@ div.v-layout.v-horizontal.v-widget {
 	margin-right: 10px;
 }
 
-.demo .kdHybridMenuLeft .hybrid-menu-button {
+.demo .kdHybridMenuLeft .v-nativebutton {
+	padding-top: 8px;
+	padding-bottom: 8px;
 	transition: background 0.3s, border 0.3s;
-	height: 45px !important;
+	height: 45px;
 	cursor: pointer;
 	background: transparent;
 	border-left: 0px solid #6eaa1e;
 }
 
-.demo .kdHybridMenuLeft .hybrid-menu-button-resource {
-	line-height: 45px;
-	width: 45px;
-	text-align: center;
+.demo .kdHybridMenuLeft .v-nativebutton .v-icon {
+	width: 20px;
 }
 
-.demo .kdHybridMenuLeft .hybrid-menu-button .hybrid-menu-button-caption {
-	line-height: 45px;
+.demo .kdHybridMenuLeft .v-nativebutton .v-nativebutton-caption {
+	margin: 0;
+	padding: 0 0 0 10px;
 }
 
-.demo .kdHybridMenuLeft .hybrid-menu-button .hybrid-menu-button-caption .v-icon.v-icon-angle_left, .demo .kdHybridMenuLeft .hybrid-menu-button .hybrid-menu-button-caption .v-icon.v-icon-angle_down {
+.demo .kdHybridMenuLeft .v-nativebutton .v-nativebutton-caption .v-icon.v-icon-angle_left, .demo .kdHybridMenuLeft .v-nativebutton .v-nativebutton-caption .v-icon.v-icon-angle_down {
 	position: absolute;
 	right: 0;
 	font-size: 18px;
@@ -12726,21 +12743,23 @@ div.v-layout.v-horizontal.v-widget {
 	text-align: center;
 }
 
-.demo .kdHybridMenuLeft .hybrid-menu-button {
+.demo .kdHybridMenuLeft .v-nativebutton.active {
+	background: #dcdcdc;
 	border-left-width: 5px;
 	border-left-color: #28a0dc;
 }
 
-.demo .kdHybridMenuLeft .hybrid-menu-button:hover {
+.demo .kdHybridMenuLeft .v-nativebutton:hover {
 	background: #e6e6e6;
 	border-left-width: 7px;
 }
 
-.demo .kdHybridMenuLeft .hybrid-menu-button:hover {
+.demo .kdHybridMenuLeft .v-nativebutton.active:hover {
 	background: #c8c8c8;
 }
 
 .demo .kdHybridMenuLeft .subMenu {
+	border-left: 1px solid #e6e6e6;
 	margin: 0 0 0 25px;
 	width: calc(100% - 25px);
 	overflow: hidden;
@@ -12749,19 +12768,19 @@ div.v-layout.v-horizontal.v-widget {
 	max-height: 0;
 }
 
-.demo .slowAnimationResizeSpeed .kdHybridMenuLeft .subMenu {
+.demo .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu {
 	transition: max-height 2s ease-in-out;
 }
 
-.demo .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu {
+.demo .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu {
 	transition: max-height 1.5s ease-in-out;
 }
 
-.demo .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu {
+.demo .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu {
 	transition: max-height 0.75s ease-in-out;
 }
 
-.demo .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu {
+.demo .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu {
 	transition: max-height 0.3s ease-in-out;
 }
 
@@ -12769,19 +12788,19 @@ div.v-layout.v-horizontal.v-widget {
 	max-height: 999px;
 }
 
-.demo .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_1, .demo .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_2, .demo .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_3, .demo .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_4, .demo .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_5, .demo .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_6, .demo .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_7, .demo .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_8, .demo .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_9, .demo .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_10, .demo .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_11, .demo .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_12, .demo .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_13, .demo .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_14, .demo .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_15, .demo .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_16, .demo .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_17, .demo .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_18, .demo .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_19, .demo .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_20 {
+.demo .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_1, .demo .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_2, .demo .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_3, .demo .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_4, .demo .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_5, .demo .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_6, .demo .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_7, .demo .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_8, .demo .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_9, .demo .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_10, .demo .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_11, .demo .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_12, .demo .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_13, .demo .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_14, .demo .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_15, .demo .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_16, .demo .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_17, .demo .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_18, .demo .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_19, .demo .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_20 {
 	transition: height 2s ease-in-out !important;
 }
 
-.demo .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_1, .demo .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_2, .demo .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_3, .demo .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_4, .demo .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_5, .demo .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_6, .demo .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_7, .demo .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_8, .demo .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_9, .demo .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_10, .demo .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_11, .demo .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_12, .demo .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_13, .demo .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_14, .demo .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_15, .demo .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_16, .demo .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_17, .demo .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_18, .demo .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_19, .demo .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_20 {
+.demo .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_1, .demo .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_2, .demo .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_3, .demo .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_4, .demo .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_5, .demo .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_6, .demo .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_7, .demo .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_8, .demo .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_9, .demo .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_10, .demo .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_11, .demo .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_12, .demo .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_13, .demo .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_14, .demo .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_15, .demo .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_16, .demo .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_17, .demo .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_18, .demo .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_19, .demo .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_20 {
 	transition: height 1.5s ease-in-out !important;
 }
 
-.demo .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_1, .demo .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_2, .demo .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_3, .demo .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_4, .demo .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_5, .demo .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_6, .demo .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_7, .demo .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_8, .demo .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_9, .demo .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_10, .demo .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_11, .demo .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_12, .demo .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_13, .demo .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_14, .demo .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_15, .demo .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_16, .demo .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_17, .demo .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_18, .demo .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_19, .demo .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_20 {
+.demo .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_1, .demo .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_2, .demo .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_3, .demo .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_4, .demo .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_5, .demo .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_6, .demo .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_7, .demo .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_8, .demo .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_9, .demo .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_10, .demo .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_11, .demo .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_12, .demo .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_13, .demo .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_14, .demo .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_15, .demo .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_16, .demo .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_17, .demo .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_18, .demo .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_19, .demo .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_20 {
 	transition: height 0.75s ease-in-out !important;
 }
 
-.demo .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_1, .demo .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_2, .demo .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_3, .demo .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_4, .demo .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_5, .demo .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_6, .demo .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_7, .demo .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_8, .demo .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_9, .demo .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_10, .demo .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_11, .demo .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_12, .demo .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_13, .demo .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_14, .demo .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_15, .demo .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_16, .demo .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_17, .demo .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_18, .demo .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_19, .demo .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_20 {
+.demo .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_1, .demo .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_2, .demo .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_3, .demo .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_4, .demo .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_5, .demo .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_6, .demo .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_7, .demo .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_8, .demo .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_9, .demo .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_10, .demo .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_11, .demo .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_12, .demo .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_13, .demo .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_14, .demo .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_15, .demo .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_16, .demo .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_17, .demo .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_18, .demo .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_19, .demo .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_20 {
 	transition: height 0.3s ease-in-out !important;
 }
 
@@ -12870,7 +12889,7 @@ div.v-layout.v-horizontal.v-widget {
 	height: 890px;
 }
 
-.demo .kdHybridMenu.minimalView .kdHybridMenuLeft .hybrid-menu-button-caption, .demo .kdHybridMenu.minimalView .kdHybridMenuLeft .hybrid-menu-button .hybrid-menu-button-caption .v-icon.v-icon-angle_left, .demo .kdHybridMenu.minimalView .kdHybridMenuLeft .hybrid-menu-button .hybrid-menu-button-caption .v-icon.v-icon-angle_down {
+.demo .kdHybridMenu.minimalView .kdHybridMenuLeft .v-nativebutton-caption, .demo .kdHybridMenu.minimalView .kdHybridMenuLeft .v-nativebutton .v-nativebutton-caption .v-icon.v-icon-angle_left, .demo .kdHybridMenu.minimalView .kdHybridMenuLeft .v-nativebutton .v-nativebutton-caption .v-icon.v-icon-angle_down {
 	position: absolute;
 	display: none;
 	background: #f0f0f0;
@@ -12881,7 +12900,7 @@ div.v-layout.v-horizontal.v-widget {
 	z-index: 1100;
 }
 
-.demo .kdHybridMenu.minimalView .kdHybridMenuLeft .hybrid-menu-button-caption:before {
+.demo .kdHybridMenu.minimalView .kdHybridMenuLeft .v-nativebutton-caption:before {
 	content: "";
 	position: absolute;
 	top: 15px;
@@ -12894,15 +12913,15 @@ div.v-layout.v-horizontal.v-widget {
 	border-color: transparent #f0f0f0 transparent transparent;
 }
 
-.demo .kdHybridMenu.minimalView .kdHybridMenuLeft .hybrid-menu-button:hover .hybrid-menu-button-caption, .demo .kdHybridMenu.minimalView .kdHybridMenuLeft .hybrid-menu-button-caption:hover {
+.demo .kdHybridMenu.minimalView .kdHybridMenuLeft .v-nativebutton:hover .v-nativebutton-caption, .demo .kdHybridMenu.minimalView .kdHybridMenuLeft .v-nativebutton-caption:hover {
 	display: block;
 }
 
-.demo .kdHybridMenu.minimalView .kdHybridMenuLeft .hybrid-menu-button {
+.demo .kdHybridMenu.minimalView .kdHybridMenuLeft .v-nativebutton.active {
 	border-left-width: 3px;
 }
 
-.demo .kdHybridMenu.minimalView .kdHybridMenuLeft .hybrid-menu-button:hover {
+.demo .kdHybridMenu.minimalView .kdHybridMenuLeft .v-nativebutton:hover, .demo .kdHybridMenu.minimalView .kdHybridMenuLeft .v-nativebutton.active:hover {
 	border-left-width: 5px;
 }
 
@@ -12943,19 +12962,15 @@ div.v-layout.v-horizontal.v-widget {
 	border-color: transparent #f5f5f5 transparent transparent;
 }
 
-.demo .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent .subMenu .hybrid-menu-button-caption:before, .demo .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent .hybrid-menu-button:hover .hybrid-menu-button-caption {
+.demo .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent .subMenu .v-nativebutton-caption:before, .demo .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent .v-nativebutton:hover .v-nativebutton-caption {
 	display: none;
 }
 
-.demo .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent .subMenu .hybrid-menu-button-caption, .demo .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent .subMenu .hybrid-menu-button:hover .hybrid-menu-button-caption {
+.demo .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent .subMenu .v-nativebutton-caption, .demo .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent .subMenu .v-nativebutton:hover .v-nativebutton-caption {
 	position: relative;
-	display: none;
+	display: unset;
 	left: unset;
 	background: transparent;
-}
-
-.demo .kdHybridMenu.minimalView .kdHybridMenuLeft .v-slot-hybrid-menu-button-caption {
-	display: none;
 }
 
 .demo .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenu {
@@ -12969,36 +12984,30 @@ div.v-layout.v-horizontal.v-widget {
 	position: relative;
 	display: block;
 	width: 100%;
-	height: 100%;
 	overflow-y: auto;
 	z-index: 100;
 }
 
-.demo .kdHybridMenu.kdHybridMenuTypeCombined .kdHybridMenuBody {
+.demo .kdHybridMenu .kdHybridMenuBody {
 	width: calc(100% - 250px);
 	left: 250px;
 	top: 40px;
 	overflow-y: auto;
 }
 
-.demo .kdHybridMenu.kdHybridMenuTypeTop .kdHybridMenuBody {
-	top: 40px;
-	overflow-y: auto;
-}
-
-.demo .kdHybridMenu .slowAnimationResizeSpeed {
+.demo .kdHybridMenu.middelAnimationResizeSpeed .kdHybridMenuBody {
 	transition: width 2s, left 2s;
 }
 
-.demo .kdHybridMenu .mediumAnimationResizeSpeed {
+.demo .kdHybridMenu.middelAnimationResizeSpeed .kdHybridMenuBody {
 	transition: width 1.5s, left 1.5s;
 }
 
-.demo .kdHybridMenu .fastAnimationResizeSpeed {
+.demo .kdHybridMenu.highAnimationResizeSpeed .kdHybridMenuBody {
 	transition: width 0.75s, left 0.75s;
 }
 
-.demo .kdHybridMenu .veryFastAnimationResizeSpeed {
+.demo .kdHybridMenu.fastAnimationResizeSpeed .kdHybridMenuBody {
 	transition: width 0.3s, left 0.3s;
 }
 

@@ -1,85 +1,532 @@
-$hybrid-menu-top-height: 40px !default;
-$hybrid-menu-top-background: rgb(50, 50, 50) !default;
-$hybrid-menu-top-shadow: 0 0 5px 0 rgb(150, 150, 150) !default;
-$hybrid-menu-top-border-bottom: 3px solid rgb(100, 100, 100) !default;
-
-$hybrid-menu-left-shadow: 0 0 5px 0 rgb(150, 150, 150) !default;
-$hybrid-menu-left-item-height: 45px !default;
-$hybrid-menu-left-resource-width: 45px !default;
-$hybrid-menu-left-width: 300px !default;
-
-$hybrid-menu-item-border-left: 5px !default;
-$hybrid-menu-item-minimal-border-left: 3px !default;
-
-$hybrid-menu-item-border-left-hover: 7px !default;
-$hybrid-menu-item-minimal-border-left-hover: 5px !default;
-
-$hybrid-menu-font-color: rgb(245, 245, 245) !default;
-
-@import "variants/hybrid-menu-top.scss";
-@import "variants/hybrid-menu-left.scss";
-@import "variants/hybrid-menu-combined.scss";
-@import "variants/hybrid-menu-responsive.scss";
-@import "flexbox.scss";
-
 @mixin hybrid-menu {
-  .kdHybridMenu {
-    position: relative;
-    display: block;
-    width: 100%;
-    top: 0;
-    left: 0;
-    height: 100%;
-  }
+    .kdHybridMenu
+    {
+        position: relative;
+        display: block;
+        width: 100%;
+        top: 0;
+        left: 0;
+    }
 
-  @include hybrid-menu-top;
-  @include hybrid-menu-left;
-  @include hybrid-menu-combined;
-  @include hybrid-menu-responsive;
+    .kdHybridMenuTop
+    {
+        position: relative;
+        display: block;
+        top: 0;
+        height: 40px;
+        width: 100%;
+        background: rgb(50, 50, 50);
+        box-shadow: 0 0 5px 0 rgb(150, 150, 150);
+        border-bottom: 3px solid rgb(100, 100, 100);
+        z-index: 2000;
+    }
 
-  .kdHybridMenuBody {
-    top: 0;
-    left: 0;
-    position: relative;
-    display: block;
-    width: 100%;
-    height: 100%;
-    overflow-y: auto;
-    z-index: 100;
-  }
+    .kdHybridMenu .kdHybridMenuTop
+    {
+        position: fixed;
+    }
 
-  .kdHybridMenu.kdHybridMenuTypeCombined .kdHybridMenuBody {
-    width: calc(100% - 250px);
-    left: 250px;
-    top: $hybrid-menu-top-height;
-    overflow-y: auto;
-  }
+    .kdHybridMenuTop, .kdHybridMenuTop .v-icon
+    {
+        color: rgb(245, 245, 245);
+    }
 
-  .kdHybridMenu.kdHybridMenuTypeTop .kdHybridMenuBody {
-    top: $hybrid-menu-top-height;
-    overflow-y: auto;
-  }
+    .kdHybridMenuTop .LEFT, .kdHybridMenuTop .v-caption-LEFT
+    {
+        float: left;
+    }
 
-  .kdHybridMenu .slowAnimationResizeSpeed {
-    transition: width 2s, left 2s;
-  }
+    .kdHybridMenuTop .RIGHT
+    {
+        float: right;
+    }
 
-  .kdHybridMenu .mediumAnimationResizeSpeed {
-    transition: width 1.5s, left 1.5s;
-  }
+    .kdHybridMenuTop .v-caption-menuTitle
+    {
+        position: relative;
+        display: inline-block;
+        text-align: center;
+        font-size: 20px;
+        padding: 0;
+        margin: 0;
+        width: 250px;
+        height: 37px;
+        left: 0;
+        top: 0;
+    }
 
-  .kdHybridMenu .fastAnimationResizeSpeed {
-    transition: width 0.75s, left 0.75s;
-  }
+    .kdHybridMenuTop .v-caption-menuTitle .v-captiontext
+    {
+        padding: 2px 0 3px;
+    }
 
-  .kdHybridMenu .veryFastAnimationResizeSpeed {
-    transition: width 0.3s, left 0.3s;
-  }
+    .kdHybridMenuTop .v-nativebutton
+    {
+        position: relative;
+        display: inline-block;
+        border: none;
+        margin: 0;
+        height: 37px;
+        background: transparent;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
 
-  .kdHybridMenu.minimalView .kdHybridMenuBody {
-    left: 50px;
-    width: calc(100% - 50px);
-  }
+    .kdHybridMenuTop .v-nativebutton:hover
+    {
+        background: rgb(75, 75, 75);
+    }
 
-  @include flexbox;
+    .kdHybridMenuTop .v-nativebutton .v-icon
+    {
+        font-size: 18px;
+    }
+
+    .kdHybridMenuTop .menuTitle
+    {
+        display: none;
+    }
+
+    .kdHybridMenuTop .v-nativebutton img.v-icon
+    {
+        height: calc(100% - 8px);
+        border-radius: 50%;
+        margin: 0 -4px;
+        padding: 4px;
+    }
+
+    .kdHybridMenuTop .subMenuMasterContent
+    {
+        position: relative;
+    }
+
+    .kdHybridMenuTop .subMenuMasterContent .v-nativebutton .v-nativebutton-caption, .kdHybridMenuTop .subMenuMasterContent .subMenuTitle
+    {
+        display: none;
+    }
+
+    .kdHybridMenuTop .subMenuMasterContent .subMenu .v-nativebutton .v-nativebutton-caption
+    {
+        display: block;
+        min-width: 125px;
+        text-align: center;
+        color: rgb(245, 245, 245);
+    }
+
+    .kdHybridMenuTop .subMenuMasterContent .subMenu .v-nativebutton .v-nativebutton-caption .v-icon
+    {
+        padding-right: 5px;
+    }
+
+    .kdHybridMenuTop .subMenuMasterContent .subMenu
+    {
+        position: absolute;
+        top: 37px;
+        right: 0;
+        background: rgb(100, 100, 100);
+        z-index: 2100;
+        display: none;
+        padding-top: 3px;
+        width: auto;
+    }
+
+    .kdHybridMenuTop .subMenuMasterContent:hover .subMenu
+    {
+        display: block;
+    }
+
+    .kdHybridMenuTop .subMenuMasterContent .subMenu .v-nativebutton
+    {
+        width: 100%;
+        padding: 0;
+    }
+    
+    .kdHybridMenuTop .v-nativebutton i.notiCounter
+    {
+        color: rgb(245, 245, 245);
+        background: rgb(2, 112, 191);
+        text-decoration: none;
+        font-style: normal;
+        padding: 0 3px;
+        position: absolute;
+        margin: 16px 0 0 -8px;
+        font-size: 10px;
+        border-radius: 3px;
+    }
+    
+    .kdHybridMenuTop .notiContainerBox
+    {
+        position: absolute;
+        width: 200px !important;
+        padding: 0 !important;
+        box-shadow: 0 0 5px 0 rgb(150, 150, 150);
+        border: 1px solid rgb(100, 100, 100);
+        top: 39px;
+        right: 0;
+    }
+
+    .kdHybridMenuLeft
+    {
+        position: relative;
+        background: rgb(240, 240, 240);
+        top: 0;
+        left: 0;
+        width: 250px;
+        height: 100%;
+        z-index: 1000;
+        overflow-y: auto;
+        box-shadow: 0 0 5px 0 rgb(150, 150, 150);
+    }
+
+    .kdHybridMenu .kdHybridMenuLeft
+    {
+        position: fixed;
+        top: 40px;
+        z-index: 1001;
+        overflow-y: auto;
+        height: calc(100% - 40px);
+    }
+    
+    .kdHybridMenu.middelAnimationResizeSpeed .kdHybridMenuLeft
+    {
+        transition: width 2s;
+    }
+    
+    .kdHybridMenu.middelAnimationResizeSpeed .kdHybridMenuLeft
+    {
+        transition: width 1.5s;
+    }
+    
+    .kdHybridMenu.highAnimationResizeSpeed .kdHybridMenuLeft
+    {
+        transition: width 0.75s;
+    }
+    
+    .kdHybridMenu.fastAnimationResizeSpeed .kdHybridMenuLeft
+    {
+        transition: width 0.3s;
+    }
+
+    .kdHybridMenu.minimalView .kdHybridMenuLeft
+    {
+        width: 50px;
+        overflow: unset;
+    }
+
+    .kdHybridMenuLeft .subMenuMasterContent
+    {
+        width: 100%;
+    }
+
+    .kdHybridMenuLeft .v-label, .kdHybridMenu.minimalView .kdHybridMenuLeft .v-caption
+    {
+        display: none;
+    }
+
+    .kdHybridMenuLeft .v-caption, .kdHybridMenuLeft .v-nativebutton
+    {
+        position: relative;
+        display: block;
+        width: 100%;
+        padding: 5px 15px;
+        border: none;
+        color: rgb(50, 50, 50);
+    }
+
+    .kdHybridMenuLeft .v-caption
+    {
+        padding: 0;
+    }
+
+    .kdHybridMenuLeft .v-caption .v-captiontext
+    {
+        padding: 8px 10px 5px;
+    }
+
+    .kdHybridMenuLeft .v-caption .v-captiontext .v-icon
+    {
+        margin-right: 10px;
+    }
+
+
+    .kdHybridMenuLeft .v-nativebutton
+    {
+        padding-top: 8px;
+        padding-bottom: 8px;
+        transition: background 0.3s, border 0.3s;
+        height: 45px;
+        cursor: pointer;
+        background: transparent;
+        border-left: 0px solid rgb(110, 170, 30);
+    }
+
+    .kdHybridMenuLeft .v-nativebutton .v-icon
+    {
+        width: 20px;
+    }
+
+    .kdHybridMenuLeft .v-nativebutton .v-nativebutton-caption
+    {
+        margin: 0;
+        padding: 0 0 0 10px;
+    }
+
+    .kdHybridMenuLeft .v-nativebutton .v-nativebutton-caption .v-icon.v-icon-angle_left, .kdHybridMenuLeft .v-nativebutton .v-nativebutton-caption .v-icon.v-icon-angle_down
+    {
+        position: absolute;
+        right: 0;
+        font-size: 18px;
+        height: 30px;
+        width: 30px;
+        text-align: center;
+    }
+
+    .kdHybridMenuLeft .v-nativebutton.active
+    {
+        background: rgb(220, 220, 220);
+        border-left-width: 5px;
+        border-left-color: rgb(40, 160, 220);
+    }
+
+    .kdHybridMenuLeft .v-nativebutton:hover
+    {
+        background: rgb(230, 230, 230);
+        border-left-width: 7px;
+    }
+
+    .kdHybridMenuLeft .v-nativebutton.active:hover
+    {
+        background: rgb(200, 200, 200);
+    }
+
+    .kdHybridMenuLeft .subMenu
+    {
+        border-left: 1px solid rgb(230, 230, 230);
+        margin: 0 0 0 25px;
+        width: calc(100% - 25px);
+        overflow: hidden;
+        position: relative;
+        display: block;
+        max-height: 0;
+    }
+    
+    .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu
+    {
+         transition: max-height 2s ease-in-out;
+    }
+    
+    .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu
+    {
+         transition: max-height 1.5s ease-in-out;
+    }
+    
+    .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu
+    {
+         transition: max-height 0.75s ease-in-out;
+    }
+    
+    .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu
+    {
+         transition: max-height 0.3s ease-in-out;
+    }
+
+    .kdHybridMenuLeft .subMenu.open
+    {
+        max-height: 999px;
+    }
+
+    .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_1, .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_2, .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_3, .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_4, .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_5, .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_6, .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_7, .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_8, .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_9, .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_10, .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_11, .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_12, .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_13, .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_14, .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_15, .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_16, .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_17, .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_18, .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_19, .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_20
+    {
+        transition: height 2s ease-in-out !important;
+    }
+    
+    .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_1, .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_2, .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_3, .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_4, .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_5, .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_6, .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_7, .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_8, .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_9, .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_10, .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_11, .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_12, .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_13, .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_14, .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_15, .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_16, .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_17, .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_18, .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_19, .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_20
+    {
+        transition: height 1.5s ease-in-out !important;
+    }
+    
+    .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_1, .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_2, .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_3, .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_4, .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_5, .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_6, .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_7, .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_8, .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_9, .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_10, .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_11, .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_12, .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_13, .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_14, .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_15, .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_16, .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_17, .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_18, .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_19, .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_20
+    {
+        transition: height 0.75s ease-in-out !important;
+    }
+    
+    .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_1, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_2, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_3, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_4, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_5, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_6, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_7, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_8, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_9, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_10, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_11, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_12, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_13, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_14, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_15, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_16, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_17, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_18, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_19, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_20
+    {
+        transition: height 0.3s ease-in-out !important;
+    }
+    
+    .kdHybridMenuLeft .subMenu.subMenu_1, .kdHybridMenuLeft .subMenu.subMenu_2, .kdHybridMenuLeft .subMenu.subMenu_3, .kdHybridMenuLeft .subMenu.subMenu_4, .kdHybridMenuLeft .subMenu.subMenu_5, .kdHybridMenuLeft .subMenu.subMenu_6, .kdHybridMenuLeft .subMenu.subMenu_7, .kdHybridMenuLeft .subMenu.subMenu_8, .kdHybridMenuLeft .subMenu.subMenu_9, .kdHybridMenuLeft .subMenu.subMenu_10, .kdHybridMenuLeft .subMenu.subMenu_11, .kdHybridMenuLeft .subMenu.subMenu_12, .kdHybridMenuLeft .subMenu.subMenu_13, .kdHybridMenuLeft .subMenu.subMenu_14, .kdHybridMenuLeft .subMenu.subMenu_15, .kdHybridMenuLeft .subMenu.subMenu_16, .kdHybridMenuLeft .subMenu.subMenu_17, .kdHybridMenuLeft .subMenu.subMenu_18, .kdHybridMenuLeft .subMenu.subMenu_19, .kdHybridMenuLeft .subMenu.subMenu_20
+    {
+        max-height: unset !important;
+        height: 0;
+    }
+
+    .kdHybridMenuLeft .subMenu.open.subMenu_1 { height: 45px; }
+    .kdHybridMenuLeft .subMenu.open.subMenu_2 { height: 90px; }
+    .kdHybridMenuLeft .subMenu.open.subMenu_3 { height: 135px; }
+    .kdHybridMenuLeft .subMenu.open.subMenu_4 { height: 180px; }
+    .kdHybridMenuLeft .subMenu.open.subMenu_5 { height: 225px; }
+    .kdHybridMenuLeft .subMenu.open.subMenu_6 { height: 270px; }
+    .kdHybridMenuLeft .subMenu.open.subMenu_7 { height: 315px; }
+    .kdHybridMenuLeft .subMenu.open.subMenu_8 { height: 350px; }
+    .kdHybridMenuLeft .subMenu.open.subMenu_9 { height: 395px; }
+    .kdHybridMenuLeft .subMenu.open.subMenu_10 { height: 440px; }
+    .kdHybridMenuLeft .subMenu.open.subMenu_11 { height: 485px; }
+    .kdHybridMenuLeft .subMenu.open.subMenu_12 { height: 530px; }
+    .kdHybridMenuLeft .subMenu.open.subMenu_13 { height: 575px; }
+    .kdHybridMenuLeft .subMenu.open.subMenu_14 { height: 620px; }
+    .kdHybridMenuLeft .subMenu.open.subMenu_15 { height: 665px; }
+    .kdHybridMenuLeft .subMenu.open.subMenu_16 { height: 710px; }
+    .kdHybridMenuLeft .subMenu.open.subMenu_17 { height: 755px; }
+    .kdHybridMenuLeft .subMenu.open.subMenu_18 { height: 800px; }
+    .kdHybridMenuLeft .subMenu.open.subMenu_19 { height: 845px; }
+    .kdHybridMenuLeft .subMenu.open.subMenu_20 { height: 890px; }
+
+    .kdHybridMenu.minimalView .kdHybridMenuLeft .v-nativebutton-caption, .kdHybridMenu.minimalView .kdHybridMenuLeft .v-nativebutton .v-nativebutton-caption .v-icon.v-icon-angle_left, .kdHybridMenu.minimalView .kdHybridMenuLeft .v-nativebutton .v-nativebutton-caption .v-icon.v-icon-angle_down
+    {
+        position: absolute;
+        display: none;
+        background: rgb(240, 240, 240);
+        padding: 10px;
+        top: 0;
+        left: 43px;
+        height: 25px;
+        z-index: 1100;
+    }
+
+    .kdHybridMenu.minimalView .kdHybridMenuLeft .v-nativebutton-caption:before
+    {
+        content: '';
+        position: absolute;
+        top: 15px;
+        left: -8px;
+        width: 0px;
+        height: 0px;
+        -webkit-transform: rotate(360deg);
+        border-style: solid;
+        border-width: 7.5px 10px 7.5px 0;
+        border-color: transparent rgb(240, 240, 240) transparent transparent;
+    }
+
+    .kdHybridMenu.minimalView .kdHybridMenuLeft .v-nativebutton:hover .v-nativebutton-caption, .kdHybridMenu.minimalView .kdHybridMenuLeft .v-nativebutton-caption:hover
+    {
+        display: block;
+    }
+
+    .kdHybridMenu.minimalView .kdHybridMenuLeft .v-nativebutton.active
+    {
+        border-left-width: 3px;
+    }
+
+    .kdHybridMenu.minimalView .kdHybridMenuLeft .v-nativebutton:hover, .kdHybridMenu.minimalView .kdHybridMenuLeft .v-nativebutton.active:hover
+    {
+        border-left-width: 5px;
+    }
+
+
+    .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent .subMenu
+    {
+        height: 0;
+        width: 150px;
+        overflow: visible;
+        position: absolute;
+        margin-top: -45px;
+        left: 50px;
+        display: none;
+        background: rgb(240, 240, 240);
+    }
+
+    .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent:hover .subMenu
+    {
+        display: block;
+        height: auto;
+    }
+
+    .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent:hover .subMenu .subMenuTitle
+    {
+        display: block;
+        background: rgb(245, 245, 245);
+        border-bottom: 1px solid rgb(220, 160, 40);
+        padding: 10px 15px;
+        height: 45px;
+    }
+
+    .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent:hover .subMenu .subMenuTitle:before
+    {
+        content: '';
+        position: absolute;
+        top: 15px;
+        left: -8px;
+        width: 0px;
+        height: 0px;
+        -webkit-transform: rotate(360deg);
+        border-style: solid;
+        border-width: 7px 10px 7px 0;
+        border-color: transparent rgb(245, 245, 245) transparent transparent;
+    }
+
+    .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent .subMenu .v-nativebutton-caption:before, .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent .v-nativebutton:hover .v-nativebutton-caption
+    {
+        display: none;
+    }
+
+    .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent .subMenu .v-nativebutton-caption, .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent .subMenu .v-nativebutton:hover .v-nativebutton-caption
+    {
+        position: relative;
+        display: unset;
+        left: unset;
+        background: transparent;
+    }
+
+    .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenu
+    {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .kdHybridMenuBody
+    {
+        top: 0;
+        left: 0;
+        position: relative;
+        display: block;
+        width: 100%;
+        overflow-y: auto;
+        z-index: 100;
+    }
+
+    .kdHybridMenu .kdHybridMenuBody
+    {
+        width: calc(100% - 250px);
+        left: 250px;
+        top: 40px;
+        overflow-y: auto;
+    }
+    
+    .kdHybridMenu.middelAnimationResizeSpeed .kdHybridMenuBody
+    {
+        transition: width 2s, left 2s;
+    }
+    
+    .kdHybridMenu.middelAnimationResizeSpeed .kdHybridMenuBody
+    {
+        transition: width 1.5s, left 1.5s;
+    }
+    
+    .kdHybridMenu.highAnimationResizeSpeed .kdHybridMenuBody
+    {
+        transition: width 0.75s, left 0.75s;
+    }
+    
+    .kdHybridMenu.fastAnimationResizeSpeed .kdHybridMenuBody
+    {
+        transition: width 0.3s, left 0.3s;
+    }
+
+    .kdHybridMenu.minimalView .kdHybridMenuBody
+    {
+        left: 50px;
+        width: calc(100% - 50px);
+    }
+
 }
