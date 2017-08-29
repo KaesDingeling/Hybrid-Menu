@@ -1,532 +1,684 @@
 @mixin hybrid-menu {
-    .kdHybridMenu
+    .hybridMenu
     {
-        position: relative;
-        display: block;
-        width: 100%;
-        top: 0;
-        left: 0;
+        z-index: 1;
     }
 
-    .kdHybridMenuTop
+    .hybridMenu .contentBox
     {
-        position: relative;
-        display: block;
-        top: 0;
-        height: 40px;
-        width: 100%;
-        background: rgb(50, 50, 50);
-        box-shadow: 0 0 5px 0 rgb(150, 150, 150);
-        border-bottom: 3px solid rgb(100, 100, 100);
-        z-index: 2000;
+        padding: 15px !important;
     }
 
-    .kdHybridMenu .kdHybridMenuTop
+    /* Left Menu */
+    .hybridMenu .leftMenu
     {
-        position: fixed;
-    }
-
-    .kdHybridMenuTop, .kdHybridMenuTop .v-icon
-    {
-        color: rgb(245, 245, 245);
-    }
-
-    .kdHybridMenuTop .LEFT, .kdHybridMenuTop .v-caption-LEFT
-    {
-        float: left;
-    }
-
-    .kdHybridMenuTop .RIGHT
-    {
-        float: right;
-    }
-
-    .kdHybridMenuTop .v-caption-menuTitle
-    {
-        position: relative;
-        display: inline-block;
-        text-align: center;
-        font-size: 20px;
-        padding: 0;
-        margin: 0;
-        width: 250px;
-        height: 37px;
-        left: 0;
-        top: 0;
-    }
-
-    .kdHybridMenuTop .v-caption-menuTitle .v-captiontext
-    {
-        padding: 2px 0 3px;
-    }
-
-    .kdHybridMenuTop .v-nativebutton
-    {
-        position: relative;
-        display: inline-block;
-        border: none;
-        margin: 0;
-        height: 37px;
-        background: transparent;
-        cursor: pointer;
-        transition: background 0.3s;
-    }
-
-    .kdHybridMenuTop .v-nativebutton:hover
-    {
-        background: rgb(75, 75, 75);
-    }
-
-    .kdHybridMenuTop .v-nativebutton .v-icon
-    {
-        font-size: 18px;
-    }
-
-    .kdHybridMenuTop .menuTitle
-    {
-        display: none;
-    }
-
-    .kdHybridMenuTop .v-nativebutton img.v-icon
-    {
-        height: calc(100% - 8px);
-        border-radius: 50%;
-        margin: 0 -4px;
-        padding: 4px;
-    }
-
-    .kdHybridMenuTop .subMenuMasterContent
-    {
-        position: relative;
-    }
-
-    .kdHybridMenuTop .subMenuMasterContent .v-nativebutton .v-nativebutton-caption, .kdHybridMenuTop .subMenuMasterContent .subMenuTitle
-    {
-        display: none;
-    }
-
-    .kdHybridMenuTop .subMenuMasterContent .subMenu .v-nativebutton .v-nativebutton-caption
-    {
-        display: block;
-        min-width: 125px;
-        text-align: center;
-        color: rgb(245, 245, 245);
-    }
-
-    .kdHybridMenuTop .subMenuMasterContent .subMenu .v-nativebutton .v-nativebutton-caption .v-icon
-    {
-        padding-right: 5px;
-    }
-
-    .kdHybridMenuTop .subMenuMasterContent .subMenu
-    {
-        position: absolute;
-        top: 37px;
-        right: 0;
-        background: rgb(100, 100, 100);
-        z-index: 2100;
-        display: none;
-        padding-top: 3px;
-        width: auto;
-    }
-
-    .kdHybridMenuTop .subMenuMasterContent:hover .subMenu
-    {
-        display: block;
-    }
-
-    .kdHybridMenuTop .subMenuMasterContent .subMenu .v-nativebutton
-    {
-        width: 100%;
-        padding: 0;
-    }
-    
-    .kdHybridMenuTop .v-nativebutton i.notiCounter
-    {
-        color: rgb(245, 245, 245);
-        background: rgb(2, 112, 191);
-        text-decoration: none;
-        font-style: normal;
-        padding: 0 3px;
-        position: absolute;
-        margin: 16px 0 0 -8px;
-        font-size: 10px;
-        border-radius: 3px;
-    }
-    
-    .kdHybridMenuTop .notiContainerBox
-    {
-        position: absolute;
-        width: 200px !important;
         padding: 0 !important;
-        box-shadow: 0 0 5px 0 rgb(150, 150, 150);
-        border: 1px solid rgb(100, 100, 100);
-        top: 39px;
-        right: 0;
-    }
-
-    .kdHybridMenuLeft
-    {
-        position: relative;
-        background: rgb(240, 240, 240);
-        top: 0;
-        left: 0;
-        width: 250px;
-        height: 100%;
-        z-index: 1000;
-        overflow-y: auto;
-        box-shadow: 0 0 5px 0 rgb(150, 150, 150);
-    }
-
-    .kdHybridMenu .kdHybridMenuLeft
-    {
-        position: fixed;
-        top: 40px;
-        z-index: 1001;
-        overflow-y: auto;
-        height: calc(100% - 40px);
-    }
-    
-    .kdHybridMenu.middelAnimationResizeSpeed .kdHybridMenuLeft
-    {
-        transition: width 2s;
-    }
-    
-    .kdHybridMenu.middelAnimationResizeSpeed .kdHybridMenuLeft
-    {
-        transition: width 1.5s;
-    }
-    
-    .kdHybridMenu.highAnimationResizeSpeed .kdHybridMenuLeft
-    {
-        transition: width 0.75s;
-    }
-    
-    .kdHybridMenu.fastAnimationResizeSpeed .kdHybridMenuLeft
-    {
-        transition: width 0.3s;
-    }
-
-    .kdHybridMenu.minimalView .kdHybridMenuLeft
-    {
-        width: 50px;
-        overflow: unset;
-    }
-
-    .kdHybridMenuLeft .subMenuMasterContent
-    {
-        width: 100%;
-    }
-
-    .kdHybridMenuLeft .v-label, .kdHybridMenu.minimalView .kdHybridMenuLeft .v-caption
-    {
-        display: none;
-    }
-
-    .kdHybridMenuLeft .v-caption, .kdHybridMenuLeft .v-nativebutton
-    {
-        position: relative;
-        display: block;
-        width: 100%;
-        padding: 5px 15px;
-        border: none;
-        color: rgb(50, 50, 50);
-    }
-
-    .kdHybridMenuLeft .v-caption
-    {
-        padding: 0;
-    }
-
-    .kdHybridMenuLeft .v-caption .v-captiontext
-    {
-        padding: 8px 10px 5px;
-    }
-
-    .kdHybridMenuLeft .v-caption .v-captiontext .v-icon
-    {
-        margin-right: 10px;
-    }
-
-
-    .kdHybridMenuLeft .v-nativebutton
-    {
-        padding-top: 8px;
-        padding-bottom: 8px;
-        transition: background 0.3s, border 0.3s;
-        height: 45px;
-        cursor: pointer;
-        background: transparent;
-        border-left: 0px solid rgb(110, 170, 30);
-    }
-
-    .kdHybridMenuLeft .v-nativebutton .v-icon
-    {
-        width: 20px;
-    }
-
-    .kdHybridMenuLeft .v-nativebutton .v-nativebutton-caption
-    {
-        margin: 0;
-        padding: 0 0 0 10px;
-    }
-
-    .kdHybridMenuLeft .v-nativebutton .v-nativebutton-caption .v-icon.v-icon-angle_left, .kdHybridMenuLeft .v-nativebutton .v-nativebutton-caption .v-icon.v-icon-angle_down
-    {
-        position: absolute;
-        right: 0;
-        font-size: 18px;
-        height: 30px;
-        width: 30px;
-        text-align: center;
-    }
-
-    .kdHybridMenuLeft .v-nativebutton.active
-    {
-        background: rgb(220, 220, 220);
-        border-left-width: 5px;
-        border-left-color: rgb(40, 160, 220);
-    }
-
-    .kdHybridMenuLeft .v-nativebutton:hover
-    {
-        background: rgb(230, 230, 230);
-        border-left-width: 7px;
-    }
-
-    .kdHybridMenuLeft .v-nativebutton.active:hover
-    {
-        background: rgb(200, 200, 200);
-    }
-
-    .kdHybridMenuLeft .subMenu
-    {
-        border-left: 1px solid rgb(230, 230, 230);
-        margin: 0 0 0 25px;
-        width: calc(100% - 25px);
-        overflow: hidden;
-        position: relative;
-        display: block;
-        max-height: 0;
-    }
-    
-    .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu
-    {
-         transition: max-height 2s ease-in-out;
-    }
-    
-    .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu
-    {
-         transition: max-height 1.5s ease-in-out;
-    }
-    
-    .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu
-    {
-         transition: max-height 0.75s ease-in-out;
-    }
-    
-    .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu
-    {
-         transition: max-height 0.3s ease-in-out;
-    }
-
-    .kdHybridMenuLeft .subMenu.open
-    {
-        max-height: 999px;
-    }
-
-    .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_1, .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_2, .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_3, .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_4, .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_5, .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_6, .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_7, .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_8, .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_9, .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_10, .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_11, .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_12, .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_13, .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_14, .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_15, .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_16, .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_17, .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_18, .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_19, .lowAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_20
-    {
-        transition: height 2s ease-in-out !important;
-    }
-    
-    .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_1, .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_2, .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_3, .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_4, .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_5, .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_6, .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_7, .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_8, .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_9, .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_10, .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_11, .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_12, .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_13, .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_14, .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_15, .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_16, .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_17, .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_18, .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_19, .middelAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_20
-    {
-        transition: height 1.5s ease-in-out !important;
-    }
-    
-    .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_1, .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_2, .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_3, .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_4, .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_5, .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_6, .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_7, .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_8, .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_9, .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_10, .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_11, .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_12, .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_13, .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_14, .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_15, .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_16, .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_17, .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_18, .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_19, .highAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_20
-    {
-        transition: height 0.75s ease-in-out !important;
-    }
-    
-    .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_1, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_2, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_3, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_4, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_5, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_6, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_7, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_8, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_9, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_10, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_11, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_12, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_13, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_14, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_15, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_16, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_17, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_18, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_19, .fastAnimationSubMenuSpeed .kdHybridMenuLeft .subMenu.subMenu_20
-    {
-        transition: height 0.3s ease-in-out !important;
-    }
-    
-    .kdHybridMenuLeft .subMenu.subMenu_1, .kdHybridMenuLeft .subMenu.subMenu_2, .kdHybridMenuLeft .subMenu.subMenu_3, .kdHybridMenuLeft .subMenu.subMenu_4, .kdHybridMenuLeft .subMenu.subMenu_5, .kdHybridMenuLeft .subMenu.subMenu_6, .kdHybridMenuLeft .subMenu.subMenu_7, .kdHybridMenuLeft .subMenu.subMenu_8, .kdHybridMenuLeft .subMenu.subMenu_9, .kdHybridMenuLeft .subMenu.subMenu_10, .kdHybridMenuLeft .subMenu.subMenu_11, .kdHybridMenuLeft .subMenu.subMenu_12, .kdHybridMenuLeft .subMenu.subMenu_13, .kdHybridMenuLeft .subMenu.subMenu_14, .kdHybridMenuLeft .subMenu.subMenu_15, .kdHybridMenuLeft .subMenu.subMenu_16, .kdHybridMenuLeft .subMenu.subMenu_17, .kdHybridMenuLeft .subMenu.subMenu_18, .kdHybridMenuLeft .subMenu.subMenu_19, .kdHybridMenuLeft .subMenu.subMenu_20
-    {
-        max-height: unset !important;
-        height: 0;
-    }
-
-    .kdHybridMenuLeft .subMenu.open.subMenu_1 { height: 45px; }
-    .kdHybridMenuLeft .subMenu.open.subMenu_2 { height: 90px; }
-    .kdHybridMenuLeft .subMenu.open.subMenu_3 { height: 135px; }
-    .kdHybridMenuLeft .subMenu.open.subMenu_4 { height: 180px; }
-    .kdHybridMenuLeft .subMenu.open.subMenu_5 { height: 225px; }
-    .kdHybridMenuLeft .subMenu.open.subMenu_6 { height: 270px; }
-    .kdHybridMenuLeft .subMenu.open.subMenu_7 { height: 315px; }
-    .kdHybridMenuLeft .subMenu.open.subMenu_8 { height: 350px; }
-    .kdHybridMenuLeft .subMenu.open.subMenu_9 { height: 395px; }
-    .kdHybridMenuLeft .subMenu.open.subMenu_10 { height: 440px; }
-    .kdHybridMenuLeft .subMenu.open.subMenu_11 { height: 485px; }
-    .kdHybridMenuLeft .subMenu.open.subMenu_12 { height: 530px; }
-    .kdHybridMenuLeft .subMenu.open.subMenu_13 { height: 575px; }
-    .kdHybridMenuLeft .subMenu.open.subMenu_14 { height: 620px; }
-    .kdHybridMenuLeft .subMenu.open.subMenu_15 { height: 665px; }
-    .kdHybridMenuLeft .subMenu.open.subMenu_16 { height: 710px; }
-    .kdHybridMenuLeft .subMenu.open.subMenu_17 { height: 755px; }
-    .kdHybridMenuLeft .subMenu.open.subMenu_18 { height: 800px; }
-    .kdHybridMenuLeft .subMenu.open.subMenu_19 { height: 845px; }
-    .kdHybridMenuLeft .subMenu.open.subMenu_20 { height: 890px; }
-
-    .kdHybridMenu.minimalView .kdHybridMenuLeft .v-nativebutton-caption, .kdHybridMenu.minimalView .kdHybridMenuLeft .v-nativebutton .v-nativebutton-caption .v-icon.v-icon-angle_left, .kdHybridMenu.minimalView .kdHybridMenuLeft .v-nativebutton .v-nativebutton-caption .v-icon.v-icon-angle_down
-    {
-        position: absolute;
-        display: none;
-        background: rgb(240, 240, 240);
-        padding: 10px;
-        top: 0;
-        left: 43px;
-        height: 25px;
-        z-index: 1100;
-    }
-
-    .kdHybridMenu.minimalView .kdHybridMenuLeft .v-nativebutton-caption:before
-    {
-        content: '';
-        position: absolute;
-        top: 15px;
-        left: -8px;
-        width: 0px;
-        height: 0px;
-        -webkit-transform: rotate(360deg);
-        border-style: solid;
-        border-width: 7.5px 10px 7.5px 0;
-        border-color: transparent rgb(240, 240, 240) transparent transparent;
-    }
-
-    .kdHybridMenu.minimalView .kdHybridMenuLeft .v-nativebutton:hover .v-nativebutton-caption, .kdHybridMenu.minimalView .kdHybridMenuLeft .v-nativebutton-caption:hover
-    {
-        display: block;
-    }
-
-    .kdHybridMenu.minimalView .kdHybridMenuLeft .v-nativebutton.active
-    {
-        border-left-width: 3px;
-    }
-
-    .kdHybridMenu.minimalView .kdHybridMenuLeft .v-nativebutton:hover, .kdHybridMenu.minimalView .kdHybridMenuLeft .v-nativebutton.active:hover
-    {
-        border-left-width: 5px;
-    }
-
-
-    .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent .subMenu
-    {
-        height: 0;
-        width: 150px;
-        overflow: visible;
-        position: absolute;
-        margin-top: -45px;
-        left: 50px;
-        display: none;
-        background: rgb(240, 240, 240);
-    }
-
-    .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent:hover .subMenu
-    {
-        display: block;
-        height: auto;
-    }
-
-    .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent:hover .subMenu .subMenuTitle
-    {
-        display: block;
-        background: rgb(245, 245, 245);
-        border-bottom: 1px solid rgb(220, 160, 40);
-        padding: 10px 15px;
-        height: 45px;
-    }
-
-    .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent:hover .subMenu .subMenuTitle:before
-    {
-        content: '';
-        position: absolute;
-        top: 15px;
-        left: -8px;
-        width: 0px;
-        height: 0px;
-        -webkit-transform: rotate(360deg);
-        border-style: solid;
-        border-width: 7px 10px 7px 0;
-        border-color: transparent rgb(245, 245, 245) transparent transparent;
-    }
-
-    .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent .subMenu .v-nativebutton-caption:before, .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent .v-nativebutton:hover .v-nativebutton-caption
-    {
-        display: none;
-    }
-
-    .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent .subMenu .v-nativebutton-caption, .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent .subMenu .v-nativebutton:hover .v-nativebutton-caption
-    {
-        position: relative;
-        display: unset;
-        left: unset;
-        background: transparent;
-    }
-
-    .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenu
-    {
-        width: 100%;
-        margin-left: 0;
-    }
-
-    .kdHybridMenuBody
-    {
-        top: 0;
-        left: 0;
-        position: relative;
-        display: block;
-        width: 100%;
         overflow-y: auto;
         z-index: 100;
     }
 
-    .kdHybridMenu .kdHybridMenuBody
+    .hybridMenu .leftMenu .v-slot
     {
-        width: calc(100% - 250px);
-        left: 250px;
-        top: 40px;
-        overflow-y: auto;
-    }
-    
-    .kdHybridMenu.middelAnimationResizeSpeed .kdHybridMenuBody
-    {
-        transition: width 2s, left 2s;
-    }
-    
-    .kdHybridMenu.middelAnimationResizeSpeed .kdHybridMenuBody
-    {
-        transition: width 1.5s, left 1.5s;
-    }
-    
-    .kdHybridMenu.highAnimationResizeSpeed .kdHybridMenuBody
-    {
-        transition: width 0.75s, left 0.75s;
-    }
-    
-    .kdHybridMenu.fastAnimationResizeSpeed .kdHybridMenuBody
-    {
-        transition: width 0.3s, left 0.3s;
+        height: auto !important;
     }
 
-    .kdHybridMenu.minimalView .kdHybridMenuBody
+    .hybridMenu .leftMenu .menuButton
     {
-        left: 50px;
-        width: calc(100% - 50px);
+        background: transparent;
+        display: block;
+        cursor: pointer;
+        -webkit-transition: background 0.3s, border-left 0.3s, height 0.5s;
+        -moz-transition: background 0.3s, border-left 0.3s, height 0.5s;
+        -ms-transition: background 0.3s, border-left 0.3s, height 0.5s; /* IE10 is actually unprefixed */
+        -o-transition: background 0.3s, border-left 0.3s, height 0.5s;
+        transition: background 0.3s, border-left 0.3s, height 0.5s;
+        border-left: 0 solid transparent;
+        overflow: hidden;
     }
 
+    .hybridMenu .leftMenu .menuButton.active
+    {
+        border-left-width: 3px;
+    }
+
+    .hybridMenu .leftMenu .menuButton:hover, .hybridMenu .leftMenu .menuButton.active:hover
+    {
+        border-left-width: 5px;
+    }
+
+    .hybridMenu .leftMenu .menuButton-wrap
+    {
+        display: block;
+        transition: border 0.3s;
+        position: relative;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%); /* IE10 is actually unprefixed */
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+
+    .hybridMenu .leftMenu .menuButton-wrap .v-icon
+    {
+        margin-left: 10px;
+        width: 25px;
+        text-align: center;
+    }
+
+    .hybridMenu .leftMenu .menuButton-wrap .menuButton-caption
+    {
+        font-size: 17px;
+    }
+
+    .hybridMenu .leftMenu.minimal .menuButton-wrap .menuButton-caption
+    {
+        position: absolute;
+    }
+
+    .hybridMenu .leftMenu .menuButton.subMenuButton .menuButton-caption .v-icon
+    {
+        position: absolute;
+        right: 5px;
+        margin: 0;
+        height: 30px;
+        width: 30px;
+        -webkit-transition: transform 0.3s ease-in-out;
+        -moz-transition: transform 0.3s ease-in-out;
+        -ms-transition: transform 0.3s ease-in-out; /* IE10 is actually unprefixed */
+        -o-transition: transform 0.3s ease-in-out;
+        transition: transform 0.3s ease-in-out;
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg); /* IE10 is actually unprefixed */
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    .hybridMenu .leftMenu .menuButton.subMenuButton.active .menuButton-caption .v-icon
+    {
+        -webkit-transform: rotate(-180deg);
+        -moz-transform: rotate(-180deg);
+        -ms-transform: rotate(-180deg); /* IE10 is actually unprefixed */
+        -o-transform: rotate(-180deg);
+        transform: rotate(-180deg);
+    }
+
+    .hybridMenu .centralContent .v-expand
+    {
+        -webkit-transition: padding-left 0.75s ease-in-out;
+        -moz-transition: padding-left 0.75s ease-in-out;
+        -ms-transition: padding-left 0.75s ease-in-out; /* IE10 is actually unprefixed */
+        -o-transition: padding-left 0.75s ease-in-out;
+        transition: padding-left 0.75s ease-in-out;
+        z-index: 10;
+    }
+
+    .hybridMenu .centralContent .v-expand .v-expand
+    {
+        transition: unset;
+    }
+
+    .hybridMenu .v-slot-leftMenu
+    {
+        -webkit-transition: margin-left 0.75s ease-in-out;
+        -moz-transition: margin-left 0.75s ease-in-out;
+        -ms-transition: margin-left 0.75s ease-in-out; /* IE10 is actually unprefixed */
+        -o-transition: margin-left 0.75s ease-in-out;
+        transition: margin-left 0.75s ease-in-out;
+    }
+
+    .hybridMenu .leftMenu
+    {
+        -webkit-transition: width 0.75s ease-in-out;
+        -moz-transition: width 0.75s ease-in-out;
+        -ms-transition: width 0.75s ease-in-out; /* IE10 is actually unprefixed */
+        -o-transition: width 0.75s ease-in-out;
+        transition: width 0.75s ease-in-out;
+    }
+
+    .hybridMenu .leftMenu .menuSubMenuContent
+    {
+        border-left: 1px solid transparent;
+        margin-left: 24px;
+        width: calc(100% - 24px) !important;
+    }
+
+    .hybridMenu .leftMenu .v-slot-menuSubMenuContent
+    {
+        position: relative;
+        overflow: hidden;
+        display: block;
+        max-height: 0;
+        -webkit-transition: max-height 0.5s ease-in-out;
+        -moz-transition: max-height 0.5s ease-in-out;
+        -ms-transition: max-height 0.5s ease-in-out; /* IE10 is actually unprefixed */
+        -o-transition: max-height 0.5s ease-in-out;
+        transition: max-height 0.5s ease-in-out;
+    }
+
+    .hybridMenu .leftMenu .v-slot-menuSubMenuContent.v-slot-open
+    {
+        max-height: 1000px;
+    }
+
+
+
+
+    /* Top Menu */
+    .hybridMenu .topMenu
+    {
+        z-index: 1000;
+    }
+
+    .hybridMenu .topMenu .v-slot.v-align-middle
+    {
+        width: auto !important;
+        display: inline-block;
+    }
+
+    .hybridMenu .topMenu .v-slot.v-align-right.v-align-middle
+    {
+        float: right;
+    }
+
+    .hybridMenu .topMenu .v-slot.v-slot-labelTitle .v-caption-labelTitle
+    {
+        padding-left: 10px;
+        padding-right: 10px;
+        width: 230px;
+        text-align: center;
+        font-size: 18px;
+        margin-bottom: -2px;
+    }
+
+    .hybridMenu .topMenu .v-slot.v-slot-labelTitle .v-caption-labelTitle .v-icon
+    {
+        max-height: 23px;
+    }
+
+    .hybridMenu .topMenu .menuLabel.labelTitle
+    {
+        display: none;
+    }
+
+    .hybridMenu .topMenu .menuSubMenu
+    {
+        position: relative;
+        height: 100%;
+        display: inline-block;
+    }
+
+    .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent
+    {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        border-top: 1px solid transparent;
+        padding: 0;
+        opacity: 0;
+        z-index: -1;
+        margin-top: -100%;
+        -webkit-transition: margin-top 0.3s ease-in-out, opacity 0.3s ease-in-out, z-index 0.3s ease-in-out;
+        -moz-transition: margin-top 0.3s ease-in-out, opacity 0.3s ease-in-out, z-index 0.3s ease-in-out;
+        -ms-transition: margin-top 0.3s ease-in-out, opacity 0.3s ease-in-out, z-index 0.3s ease-in-out; /* IE10 is actually unprefixed */
+        -o-transition: margin-top 0.3s ease-in-out, opacity 0.3s ease-in-out, z-index 0.3s ease-in-out;
+        transition: margin-top 0.3s ease-in-out, opacity 0.3s ease-in-out, z-index 0.3s ease-in-out;
+        pointer-events: none;
+    }
+
+    .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.open
+    {
+        pointer-events: auto;
+        margin-top: 0;
+        opacity: 1;
+        z-index: 100;
+    }
+
+    .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent .v-slot
+    {
+        height: auto;
+    }
+
+    .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuLabel
+    {
+        display: block;
+        opacity: 0.75;
+        padding: 5px 10px 5px 15px;
+        font-size: 12px;
+    }
+
+    .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuButton
+    {
+        display: block;
+        padding: 4px 10px 3px 15px;
+        font-size: 14px;
+        cursor: pointer;
+        background: transparent;
+        -webkit-transition: background 0.3s ease-in-out;
+        -moz-transition: background 0.3s ease-in-out;
+        -ms-transition: background 0.3s ease-in-out; /* IE10 is actually unprefixed */
+        -o-transition: background 0.3s ease-in-out;
+        transition: background 0.3s ease-in-out;
+    }
+
+    .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuHr
+    {
+        height: 1px;
+        margin: 6px 0;
+        overflow: hidden;
+        width: 100%;
+        display: block;
+    }
+
+    .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox
+    {
+
+    }
+
+    .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notificationTitle, .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .goToNotisButton
+    {
+        padding: 5px 10px 5px 15px;
+        font-size: 14px;
+        display: block;
+    }
+
+    .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notificationEmptyMessage
+    {
+        display: block;
+        opacity: 0.75;
+        text-align: center;
+        padding: 5px;
+    }
+
+    .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .goToNotisButton
+    {
+        padding: 5px 10px;
+        text-align: center;
+        cursor: pointer;
+        -webkit-transition: background 0.3s ease-in-out;
+        -moz-transition: background 0.3s ease-in-out;
+        -ms-transition: background 0.3s ease-in-out; /* IE10 is actually unprefixed */
+        -o-transition: background 0.3s ease-in-out;
+        transition: background 0.3s ease-in-out;
+    }
+
+    .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage
+    {
+        border-bottom: 1px solid transparent;
+        background: transparent;
+        -webkit-transition: background 0.3s ease-in-out;
+        -moz-transition: background 0.3s ease-in-out;
+        -ms-transition: background 0.3s ease-in-out; /* IE10 is actually unprefixed */
+        -o-transition: background 0.3s ease-in-out;
+        transition: background 0.3s ease-in-out;
+    }
+
+    .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .v-slot:last-child .notiMessage
+    {
+        border-bottom-width: 0;
+    }
+
+    .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage .v-slot:first-child
+    {
+        width: 100% !important;
+    }
+
+    .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage .v-slot:last-child
+    {
+        height: 0 !important;
+        width: 0 !important;
+    }
+
+    .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage .v-has-caption
+    {
+        width: calc(100% - 75px);
+        margin-left: 75px;
+    }
+
+    .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage .v-has-caption .v-icon
+    {
+        position: absolute;
+        left: 0;
+        padding: 10px;
+        width: 55px;
+        text-align: center;
+        vertical-align: middle;
+        max-height: 55px;
+        display: block;
+    }
+
+    .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage .v-has-caption .v-captiontext
+    {
+        margin: 0;
+        font-size: 16px;
+        font-weight: 500;
+        padding: 4px 15px 0 0;
+        width: calc(100% - 15px);
+        display: block;
+        position: relative;
+    }
+
+    .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage .notiMessageContent
+    {
+        width: 100%;
+        font-size: 14px;
+        opacity: 0.75;
+        padding: 0 5px 0 0;
+        display: block;
+        position: relative;
+    }
+
+    .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage .notiMessageButton
+    {
+        position: absolute;
+        cursor: pointer;
+        right: 2px;
+        margin-top: 3px;
+        opacity: 0.25;
+        -webkit-transition: color 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        -moz-transition: color 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        -ms-transition: color 0.3s ease-in-out, opacity 0.3s ease-in-out; /* IE10 is actually unprefixed */
+        -o-transition: color 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        transition: color 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    }
+
+    .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage .notiMessageButton:hover
+    {
+        opacity: 1;
+    }
+
+
+    .hybridMenu .topMenu .menuButton
+    {
+        height: 100%;
+        cursor: pointer;
+        padding: 0 12px;
+        background: transparent;
+        -webkit-transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+        -moz-transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+        -ms-transition: background 0.3s ease-in-out, color 0.3s ease-in-out; /* IE10 is actually unprefixed */
+        -o-transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+        transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+    }
+
+    .hybridMenu .topMenu .menuButton-wrap
+    {
+        display: block;
+        position: relative;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%); /* IE10 is actually unprefixed */
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+
+    .hybridMenu .topMenu .menuButton.iconRight .v-icon
+    {
+        float: right;
+    }
+
+    .hybridMenu .topMenu .menuButton.iconRight .menuButton-caption
+    {
+        margin-right: 7px;
+        margin-left: 0;
+    }
+
+    .hybridMenu .topMenu .menuButton.profilView .v-icon
+    {
+        max-height: 23px;
+        border-radius: 50%;
+        margin-left: 5px;
+    }
+
+    .hybridMenu .topMenu .menuButton.captionOutside .menuButton-wrap
+    {
+        top: 0;
+        height: 100%;
+        transform: unset;
+    }
+
+    .hybridMenu .topMenu .menuButton.captionOutside .v-icon
+    {
+        display: block;
+        transition: border 0.3s;
+        position: relative;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%); /* IE10 is actually unprefixed */
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+
+    .hybridMenu .topMenu .menuButton.captionOutside .menuButton-caption .toolTop
+    {
+        position: absolute;
+        z-index: 100;
+        font-size: 10px;
+        line-height: 12px;
+        padding: 2px 5px;
+        border-radius: 6px;
+        top: 8px;
+    }
+
+    .hybridMenu .topMenu .menuButton.captionOutside .menuButton-caption .caption
+    {
+        position: absolute;
+        top: 100%;
+        right: -12px;
+        border-top: 1px solid transparent;
+        padding: 5px 15px 7px;
+        opacity: 0;
+        z-index: -1;
+        margin-top: -100%;
+        -webkit-transition: margin-top 0.3s ease-in-out, opacity 0.3s ease-in-out, z-index 0.3s ease-in-out;
+        -moz-transition: margin-top 0.3s ease-in-out, opacity 0.3s ease-in-out, z-index 0.3s ease-in-out;
+        -ms-transition: margin-top 0.3s ease-in-out, opacity 0.3s ease-in-out, z-index 0.3s ease-in-out; /* IE10 is actually unprefixed */
+        -o-transition: margin-top 0.3s ease-in-out, opacity 0.3s ease-in-out, z-index 0.3s ease-in-out;
+        transition: margin-top 0.3s ease-in-out, opacity 0.3s ease-in-out, z-index 0.3s ease-in-out;
+        pointer-events: none;
+    }
+
+    .hybridMenu .topMenu .menuButton.captionOutside:hover .menuButton-caption .caption
+    {
+        margin-top: 0;
+        opacity: 1;
+        z-index: 100;
+    }
+
+
+
+
+    /* Theme - Default */
+    .hybridMenu.hybridTheme_default
+    {
+        color: rgb(66, 66, 66);
+        background: rgb(245, 245, 245);
+    }
+
+    .hybridMenu.hybridTheme_default .v-slot-topMenu
+    {
+        background: rgb(224, 224, 224);
+        border-bottom: 1px solid rgb(245, 245, 245);
+    }
+
+    .hybridMenu.hybridTheme_default .v-slot-leftMenu
+    {
+        background: rgb(238, 238, 238);
+    }
+
+    .hybridMenu.hybridTheme_default .leftMenu .menuButton.active
+    {
+        border-left-color: rgb(0, 145, 234);
+        background: rgba(189, 189, 189, 0.5);
+    }
+
+    .hybridMenu.hybridTheme_default .leftMenu .menuButton:hover
+    {
+        border-left-color: rgb(255, 109, 0);
+        background: rgba(224, 224, 224, 0.5);
+    }
+
+    .hybridMenu.hybridTheme_default .leftMenu .menuButton.active:hover
+    {
+        border-left-color: rgb(0, 145, 234);
+    }
+
+    .hybridMenu.hybridTheme_default .leftMenu .menuSubMenuContent
+    {
+        border-left-color: rgba(189, 189, 189, 0.5);
+    }
+
+    .hybridMenu.hybridTheme_default .contentBox
+    {
+        background: rgb(245, 245, 245);
+    }
+
+    .hybridMenu.hybridTheme_default .topMenu .menuButton.captionOutside .menuButton-caption .caption, .hybridMenu.hybridTheme_default .topMenu .menuSubMenu .menuSubMenuContent
+    {
+        border-top-color: rgb(255, 109, 0);
+        background: rgb(238, 238, 238);
+    }
+
+    .hybridMenu.hybridTheme_default .topMenu .menuButton.active
+    {
+        background: rgb(238, 238, 238);
+    }
+
+    .hybridMenu.hybridTheme_default .topMenu .menuButton:hover
+    {
+        color: rgb(245, 245, 245);
+        background: rgb(255, 109, 0);
+    }
+
+    .hybridMenu.hybridTheme_default .topMenu .menuButton:hover .menuButton-caption .caption, .hybridMenu.hybridTheme_default .topMenu .menuButton .menuButton-caption .caption
+    {
+        color: rgb(66, 66, 66) !important;
+    }
+
+    .hybridMenu.hybridTheme_default .topMenu .menuButton.captionOutside .menuButton-caption .toolTop
+    {
+        color: rgb(255, 255, 255);
+        background: rgb(33, 150, 243);
+    }
+
+    .hybridMenu.hybridTheme_default .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuHr, .hybridMenu.hybridTheme_default .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuButton:hover
+    {
+        background: rgba(189, 189, 189, 0.5);
+    }
+
+    .hybridMenu.hybridTheme_default .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notificationTitle, .hybridMenu.hybridTheme_default .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .goToNotisButton
+    {
+        background: rgb(224, 224, 224);
+    }
+
+    .hybridMenu.hybridTheme_default .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .goToNotisButton:hover, .hybridMenu.hybridTheme_default .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage:hover
+    {
+        background: rgba(224, 224, 224, 0.5);
+    }
+
+    .hybridMenu.hybridTheme_default .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage .notiMessageButton:hover
+    {
+        color: rgb(183, 28, 28);
+    }
+
+    .hybridMenu.hybridTheme_default .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage
+    {
+        border-bottom-color: rgb(189, 189, 189);
+    }
+
+
+
+    /* Theme - Default-Dark */
+    .hybridMenu.hybridTheme_default_dark
+    {
+        color: rgb(245, 245, 245);
+        background: rgb(117, 117, 117);
+    }
+
+    .hybridMenu.hybridTheme_default_dark .v-slot-topMenu
+    {
+        background: rgb(66, 66, 66);
+        border-bottom: 1px solid rgb(117, 117, 117);
+    }
+
+    .hybridMenu.hybridTheme_default_dark .v-slot-leftMenu
+    {
+        background: rgb(97, 97, 97);
+    }
+
+    .hybridMenu.hybridTheme_default_dark .leftMenu .menuButton.active
+    {
+        border-left-color: rgb(0, 145, 234);
+        background: rgba(117, 117, 117, 0.5);
+    }
+
+    .hybridMenu.hybridTheme_default_dark .leftMenu .menuButton:hover
+    {
+        border-left-color: rgb(255, 109, 0);
+        background: rgba(66, 66, 66, 0.5);
+    }
+
+    .hybridMenu.hybridTheme_default_dark .leftMenu .menuButton.active:hover
+    {
+        border-left-color: rgb(0, 145, 234);
+    }
+
+    .hybridMenu.hybridTheme_default_dark .leftMenu .menuSubMenuContent
+    {
+        border-left-color: rgb(117, 117, 117);
+    }
+
+    .hybridMenu.hybridTheme_default_dark .contentBox
+    {
+        background: rgba(117, 117, 117, 0.5);
+    }
+
+    .hybridMenu.hybridTheme_default_dark .topMenu .menuButton.captionOutside .menuButton-caption .caption, .hybridMenu.hybridTheme_default_dark .topMenu .menuSubMenu .menuSubMenuContent
+    {
+        border-top-color: rgb(255, 109, 0);
+        background: rgb(97, 97, 97);
+    }
+
+    .hybridMenu.hybridTheme_default_dark .topMenu .menuButton.active
+    {
+        background: rgb(97, 97, 97);
+    }
+
+    .hybridMenu.hybridTheme_default_dark .topMenu .menuButton:hover
+    {
+        background: rgb(255, 109, 0);
+    }
+
+    .hybridMenu.hybridTheme_default_dark .topMenu .menuButton.captionOutside .menuButton-caption .toolTop
+    {
+        background: rgb(33, 150, 243);
+    }
+
+    .hybridMenu.hybridTheme_default_dark .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuHr, .hybridMenu.hybridTheme_default_dark .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuButton:hover
+    {
+        background: rgb(117, 117, 117);
+    }
+
+    .hybridMenu.hybridTheme_default_dark .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notificationTitle, .hybridMenu.hybridTheme_default_dark .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .goToNotisButton
+    {
+        background: rgb(66, 66, 66);
+    }
+
+    .hybridMenu.hybridTheme_default_dark .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .goToNotisButton:hover, .hybridMenu.hybridTheme_default_dark .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage:hover
+    {
+        background: rgba(66, 66, 66, 0.5);
+    }
+
+    .hybridMenu.hybridTheme_default_dark .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage .notiMessageButton:hover
+    {
+        color: rgb(183, 28, 28);
+    }
+
+    .hybridMenu.hybridTheme_default_dark .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage
+    {
+        border-bottom-color: rgb(117, 117, 117);
+    }
 }

@@ -1,6 +1,7 @@
 # Created by .ignore support plugin (hsz.mobi)
 .classpath
 .settings
+.class
 *.iml
 /HybridMenu-addon/bin/
 /HybridMenu-demo/bin/
