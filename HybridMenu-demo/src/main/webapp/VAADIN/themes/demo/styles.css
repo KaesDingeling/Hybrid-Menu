@@ -12502,507 +12502,576 @@ div.v-layout.v-horizontal.v-widget {
 	overflow: hidden;
 }
 
-.demo .kdHybridMenu {
-	position: relative;
-	display: block;
-	width: 100%;
-	top: 0;
-	left: 0;
-	height: 100%;
+.hybridMenu {
+	z-index: 1;
 }
 
-.demo .kdHybridMenuTop {
-	position: relative;
-	display: block;
-	top: 0;
-	height: 40px;
-	width: 100%;
-	background: #323232;
-	box-shadow: 0 0 5px 0 #969696;
-	border-bottom: 3px solid #646464;
-	z-index: 2000;
+.hybridMenu .contentBox {
+	padding: 15px !important;
 }
 
-.demo .kdHybridMenu .kdHybridMenuTop {
-	position: fixed;
-}
-
-.demo .kdHybridMenuTop, .demo .kdHybridMenuTop .v-icon {
-	color: #f5f5f5;
-}
-
-.demo .kdHybridMenuTop .LEFT, .demo .kdHybridMenuTop .v-caption-LEFT {
-	float: left;
-}
-
-.demo .kdHybridMenuTop .RIGHT {
-	float: right;
-}
-
-.demo .kdHybridMenuTop .v-caption-menuTitle {
-	position: relative;
-	display: inline-block;
-	text-align: center;
-	font-size: 20px;
-	padding: 0;
-	margin: 0;
-	width: 250px;
-	height: 37px;
-	left: 0;
-	top: 0;
-}
-
-.demo .kdHybridMenuTop .v-caption-menuTitle .v-captiontext {
-	line-height: 40px;
-}
-
-.demo .kdHybridMenuTop .hybrid-menu-button {
-	position: relative;
-	display: inline-block;
-	border: none;
-	margin: 0;
-	height: 37px !important;
-	background: transparent;
-	cursor: pointer;
-	transition: background 0.3s;
-}
-
-.demo .kdHybridMenuTop .hybrid-menu-button:hover {
-	background: #4b4b4b;
-}
-
-.demo .kdHybridMenuTop .hybrid-menu-button .v-icon {
-	font-size: 18px;
-}
-
-.demo .kdHybridMenuTop .menuTitle {
-	display: none;
-}
-
-.demo .kdHybridMenuTop .hybrid-menu-button img.v-icon {
-	height: calc(100% - 8px);
-	border-radius: 50%;
-	margin: 0 -4px;
-	padding: 4px;
-}
-
-.demo .kdHybridMenuTop .subMenuMasterContent {
-	position: relative;
-}
-
-.demo .kdHybridMenuTop .subMenuMasterContent .hybrid-menu-button .hybrid-menu-button-caption, .demo .kdHybridMenuTop .subMenuMasterContent .subMenuTitle {
-	display: none;
-}
-
-.demo .kdHybridMenuTop .subMenuMasterContent .subMenu .hybrid-menu-button .hybrid-menu-button-caption {
-	display: block;
-	min-width: 125px;
-	text-align: center;
-	color: #f5f5f5;
-}
-
-.demo .kdHybridMenuTop .subMenuMasterContent .subMenu .hybrid-menu-button .hybrid-menu-button-caption .v-icon {
-	padding-right: 5px;
-}
-
-.demo .kdHybridMenuTop .subMenuMasterContent .subMenu {
-	position: absolute;
-	top: 37px;
-	right: 0;
-	background: #646464;
-	z-index: 2100;
-	display: none;
-	padding-top: 3px;
-	width: auto;
-}
-
-.demo .kdHybridMenuTop .subMenuMasterContent:hover .subMenu {
-	display: block;
-}
-
-.demo .kdHybridMenuTop .subMenuMasterContent .subMenu .hybrid-menu-button {
-	width: 100%;
-	padding: 0;
-}
-
-.demo .kdHybridMenuLeft {
-	position: relative;
-	background: #f0f0f0;
-	top: 0;
-	left: 0;
-	width: 250px;
-	height: 100%;
-	z-index: 1000;
-	overflow-y: auto;
-	box-shadow: 0 0 5px 0 #969696;
-}
-
-.demo .kdHybridMenu .kdHybridMenuLeft {
-	position: fixed;
-	top: 40px;
-	z-index: 1001;
-	overflow-y: auto;
-	height: calc(100% - 40px);
-}
-
-.demo .kdHybridMenu.mediumAnimationResizeSpeed .kdHybridMenuLeft {
-	transition: width 2s;
-}
-
-.demo .kdHybridMenu.mediumAnimationResizeSpeed .kdHybridMenuLeft {
-	transition: width 1.5s;
-}
-
-.demo .kdHybridMenu.fastAnimationResizeSpeed .kdHybridMenuLeft {
-	transition: width 0.75s;
-}
-
-.demo .kdHybridMenu.veryFastAnimationResizeSpeed .kdHybridMenuLeft {
-	transition: width 0.3s;
-}
-
-.demo .kdHybridMenu.minimalView .kdHybridMenuLeft {
-	width: 50px;
-	overflow: unset;
-}
-
-.demo .kdHybridMenuLeft .subMenuMasterContent {
-	width: 100%;
-}
-
-.demo .kdHybridMenuLeft .v-label {
-	transition: opacity 0.5s;
-	opacity: 1;
-}
-
-.demo .kdHybridMenu.minimalView .kdHybridMenuLeft .hybrid-menu-button-caption, .demo .kdHybridMenu.minimalView .kdHybridMenuLeft .v-caption {
-	opacity: 0;
-}
-
-.demo .kdHybridMenuLeft .v-caption, .demo .kdHybridMenuLeft .hybrid-menu-button {
-	position: relative;
-	display: block;
-	width: 100%;
-	border: none;
-	color: #323232;
-}
-
-.demo .kdHybridMenuLeft .v-caption {
-	padding: 0;
-}
-
-.demo .kdHybridMenuLeft .v-caption .v-captiontext {
-	padding: 8px 10px 5px;
-}
-
-.demo .kdHybridMenuLeft .v-caption .v-captiontext .v-icon {
-	margin-right: 10px;
-}
-
-.demo .kdHybridMenuLeft .hybrid-menu-button {
-	transition: background 0.3s, border 0.3s;
-	height: 45px !important;
-	cursor: pointer;
-	background: transparent;
-	border-left: 0px solid #6eaa1e;
-}
-
-.demo .kdHybridMenuLeft .hybrid-menu-button-resource {
-	line-height: 45px;
-	width: 45px;
-	text-align: center;
-}
-
-.demo .kdHybridMenuLeft .hybrid-menu-button .hybrid-menu-button-caption {
-	line-height: 45px;
-}
-
-.demo .kdHybridMenuLeft .hybrid-menu-button .hybrid-menu-button-caption .v-icon.v-icon-angle_left, .demo .kdHybridMenuLeft .hybrid-menu-button .hybrid-menu-button-caption .v-icon.v-icon-angle_down {
-	position: absolute;
-	right: 0;
-	font-size: 18px;
-	height: 30px;
-	width: 30px;
-	text-align: center;
-}
-
-.demo .kdHybridMenuLeft .hybrid-menu-button {
-	border-left-width: 5px;
-	border-left-color: #28a0dc;
-}
-
-.demo .kdHybridMenuLeft .hybrid-menu-button:hover {
-	background: #e6e6e6;
-	border-left-width: 7px;
-}
-
-.demo .kdHybridMenuLeft .hybrid-menu-button:hover {
-	background: #c8c8c8;
-}
-
-.demo .kdHybridMenuLeft .subMenu {
-	margin: 0 0 0 25px;
-	width: calc(100% - 25px);
-	overflow: hidden;
-	position: relative;
-	display: block;
-	max-height: 0;
-}
-
-.demo .slowAnimationResizeSpeed .kdHybridMenuLeft .subMenu {
-	transition: max-height 2s ease-in-out;
-}
-
-.demo .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu {
-	transition: max-height 1.5s ease-in-out;
-}
-
-.demo .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu {
-	transition: max-height 0.75s ease-in-out;
-}
-
-.demo .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu {
-	transition: max-height 0.3s ease-in-out;
-}
-
-.demo .kdHybridMenuLeft .subMenu.open {
-	max-height: 999px;
-}
-
-.demo .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_1, .demo .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_2, .demo .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_3, .demo .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_4, .demo .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_5, .demo .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_6, .demo .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_7, .demo .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_8, .demo .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_9, .demo .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_10, .demo .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_11, .demo .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_12, .demo .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_13, .demo .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_14, .demo .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_15, .demo .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_16, .demo .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_17, .demo .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_18, .demo .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_19, .demo .slowAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_20 {
-	transition: height 2s ease-in-out !important;
-}
-
-.demo .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_1, .demo .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_2, .demo .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_3, .demo .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_4, .demo .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_5, .demo .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_6, .demo .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_7, .demo .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_8, .demo .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_9, .demo .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_10, .demo .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_11, .demo .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_12, .demo .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_13, .demo .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_14, .demo .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_15, .demo .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_16, .demo .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_17, .demo .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_18, .demo .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_19, .demo .mediumAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_20 {
-	transition: height 1.5s ease-in-out !important;
-}
-
-.demo .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_1, .demo .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_2, .demo .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_3, .demo .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_4, .demo .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_5, .demo .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_6, .demo .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_7, .demo .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_8, .demo .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_9, .demo .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_10, .demo .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_11, .demo .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_12, .demo .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_13, .demo .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_14, .demo .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_15, .demo .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_16, .demo .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_17, .demo .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_18, .demo .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_19, .demo .fastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_20 {
-	transition: height 0.75s ease-in-out !important;
-}
-
-.demo .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_1, .demo .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_2, .demo .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_3, .demo .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_4, .demo .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_5, .demo .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_6, .demo .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_7, .demo .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_8, .demo .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_9, .demo .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_10, .demo .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_11, .demo .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_12, .demo .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_13, .demo .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_14, .demo .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_15, .demo .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_16, .demo .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_17, .demo .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_18, .demo .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_19, .demo .veryFastAnimationSpeedSubMenu .kdHybridMenuLeft .subMenu.subMenu_20 {
-	transition: height 0.3s ease-in-out !important;
-}
-
-.demo .kdHybridMenuLeft .subMenu.subMenu_1, .demo .kdHybridMenuLeft .subMenu.subMenu_2, .demo .kdHybridMenuLeft .subMenu.subMenu_3, .demo .kdHybridMenuLeft .subMenu.subMenu_4, .demo .kdHybridMenuLeft .subMenu.subMenu_5, .demo .kdHybridMenuLeft .subMenu.subMenu_6, .demo .kdHybridMenuLeft .subMenu.subMenu_7, .demo .kdHybridMenuLeft .subMenu.subMenu_8, .demo .kdHybridMenuLeft .subMenu.subMenu_9, .demo .kdHybridMenuLeft .subMenu.subMenu_10, .demo .kdHybridMenuLeft .subMenu.subMenu_11, .demo .kdHybridMenuLeft .subMenu.subMenu_12, .demo .kdHybridMenuLeft .subMenu.subMenu_13, .demo .kdHybridMenuLeft .subMenu.subMenu_14, .demo .kdHybridMenuLeft .subMenu.subMenu_15, .demo .kdHybridMenuLeft .subMenu.subMenu_16, .demo .kdHybridMenuLeft .subMenu.subMenu_17, .demo .kdHybridMenuLeft .subMenu.subMenu_18, .demo .kdHybridMenuLeft .subMenu.subMenu_19, .demo .kdHybridMenuLeft .subMenu.subMenu_20 {
-	max-height: unset !important;
-	height: 0;
-}
-
-.demo .kdHybridMenuLeft .subMenu.open.subMenu_1 {
-	height: 45px;
-}
-
-.demo .kdHybridMenuLeft .subMenu.open.subMenu_2 {
-	height: 90px;
-}
-
-.demo .kdHybridMenuLeft .subMenu.open.subMenu_3 {
-	height: 135px;
-}
-
-.demo .kdHybridMenuLeft .subMenu.open.subMenu_4 {
-	height: 180px;
-}
-
-.demo .kdHybridMenuLeft .subMenu.open.subMenu_5 {
-	height: 225px;
-}
-
-.demo .kdHybridMenuLeft .subMenu.open.subMenu_6 {
-	height: 270px;
-}
-
-.demo .kdHybridMenuLeft .subMenu.open.subMenu_7 {
-	height: 315px;
-}
-
-.demo .kdHybridMenuLeft .subMenu.open.subMenu_8 {
-	height: 350px;
-}
-
-.demo .kdHybridMenuLeft .subMenu.open.subMenu_9 {
-	height: 395px;
-}
-
-.demo .kdHybridMenuLeft .subMenu.open.subMenu_10 {
-	height: 440px;
-}
-
-.demo .kdHybridMenuLeft .subMenu.open.subMenu_11 {
-	height: 485px;
-}
-
-.demo .kdHybridMenuLeft .subMenu.open.subMenu_12 {
-	height: 530px;
-}
-
-.demo .kdHybridMenuLeft .subMenu.open.subMenu_13 {
-	height: 575px;
-}
-
-.demo .kdHybridMenuLeft .subMenu.open.subMenu_14 {
-	height: 620px;
-}
-
-.demo .kdHybridMenuLeft .subMenu.open.subMenu_15 {
-	height: 665px;
-}
-
-.demo .kdHybridMenuLeft .subMenu.open.subMenu_16 {
-	height: 710px;
-}
-
-.demo .kdHybridMenuLeft .subMenu.open.subMenu_17 {
-	height: 755px;
-}
-
-.demo .kdHybridMenuLeft .subMenu.open.subMenu_18 {
-	height: 800px;
-}
-
-.demo .kdHybridMenuLeft .subMenu.open.subMenu_19 {
-	height: 845px;
-}
-
-.demo .kdHybridMenuLeft .subMenu.open.subMenu_20 {
-	height: 890px;
-}
-
-.demo .kdHybridMenu.minimalView .kdHybridMenuLeft .hybrid-menu-button-caption, .demo .kdHybridMenu.minimalView .kdHybridMenuLeft .hybrid-menu-button .hybrid-menu-button-caption .v-icon.v-icon-angle_left, .demo .kdHybridMenu.minimalView .kdHybridMenuLeft .hybrid-menu-button .hybrid-menu-button-caption .v-icon.v-icon-angle_down {
-	position: absolute;
-	display: none;
-	background: #f0f0f0;
-	padding: 10px;
-	top: 0;
-	left: 43px;
-	height: 25px;
-	z-index: 1100;
-}
-
-.demo .kdHybridMenu.minimalView .kdHybridMenuLeft .hybrid-menu-button-caption:before {
-	content: "";
-	position: absolute;
-	top: 15px;
-	left: -8px;
-	width: 0px;
-	height: 0px;
-	-webkit-transform: rotate(360deg);
-	border-style: solid;
-	border-width: 7.5px 10px 7.5px 0;
-	border-color: transparent #f0f0f0 transparent transparent;
-}
-
-.demo .kdHybridMenu.minimalView .kdHybridMenuLeft .hybrid-menu-button:hover .hybrid-menu-button-caption, .demo .kdHybridMenu.minimalView .kdHybridMenuLeft .hybrid-menu-button-caption:hover {
-	display: block;
-}
-
-.demo .kdHybridMenu.minimalView .kdHybridMenuLeft .hybrid-menu-button {
-	border-left-width: 3px;
-}
-
-.demo .kdHybridMenu.minimalView .kdHybridMenuLeft .hybrid-menu-button:hover {
-	border-left-width: 5px;
-}
-
-.demo .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent .subMenu {
-	height: 0;
-	width: 150px;
-	overflow: visible;
-	position: absolute;
-	margin-top: -45px;
-	left: 50px;
-	display: none;
-	background: #f0f0f0;
-}
-
-.demo .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent:hover .subMenu {
-	display: block;
-	height: auto;
-}
-
-.demo .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent:hover .subMenu .subMenuTitle {
-	display: block;
-	background: #f5f5f5;
-	border-bottom: 1px solid #dca028;
-	padding: 10px 15px;
-	height: 45px;
-}
-
-.demo .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent:hover .subMenu .subMenuTitle:before {
-	content: "";
-	position: absolute;
-	top: 15px;
-	left: -8px;
-	width: 0px;
-	height: 0px;
-	-webkit-transform: rotate(360deg);
-	border-style: solid;
-	border-width: 7px 10px 7px 0;
-	border-color: transparent #f5f5f5 transparent transparent;
-}
-
-.demo .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent .subMenu .hybrid-menu-button-caption:before, .demo .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent .hybrid-menu-button:hover .hybrid-menu-button-caption {
-	display: none;
-}
-
-.demo .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent .subMenu .hybrid-menu-button-caption, .demo .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenuMasterContent .subMenu .hybrid-menu-button:hover .hybrid-menu-button-caption {
-	position: relative;
-	display: none;
-	left: unset;
-	background: transparent;
-}
-
-.demo .kdHybridMenu.minimalView .kdHybridMenuLeft .v-slot-hybrid-menu-button-caption {
-	display: none;
-}
-
-.demo .kdHybridMenu.minimalView .kdHybridMenuLeft .subMenu {
-	width: 100%;
-	margin-left: 0;
-}
-
-.demo .kdHybridMenuBody {
-	top: 0;
-	left: 0;
-	position: relative;
-	display: block;
-	width: 100%;
-	height: 100%;
+.hybridMenu .leftMenu {
+	padding: 0 !important;
 	overflow-y: auto;
 	z-index: 100;
 }
 
-.demo .kdHybridMenu.kdHybridMenuTypeCombined .kdHybridMenuBody {
-	width: calc(100% - 250px);
-	left: 250px;
-	top: 40px;
-	overflow-y: auto;
+.hybridMenu .leftMenu .v-slot {
+	height: auto !important;
 }
 
-.demo .kdHybridMenu.kdHybridMenuTypeTop .kdHybridMenuBody {
-	top: 40px;
-	overflow-y: auto;
+.hybridMenu .leftMenu .menuButton {
+	background: transparent;
+	display: block;
+	cursor: pointer;
+	-webkit-transition: background 0.3s, border-left 0.3s, height 0.5s;
+	-moz-transition: background 0.3s, border-left 0.3s, height 0.5s;
+	-ms-transition: background 0.3s, border-left 0.3s, height 0.5s;
+	-o-transition: background 0.3s, border-left 0.3s, height 0.5s;
+	transition: background 0.3s, border-left 0.3s, height 0.5s;
+	border-left: 0 solid transparent;
+	overflow: hidden;
 }
 
-.demo .kdHybridMenu .slowAnimationResizeSpeed {
-	transition: width 2s, left 2s;
+.hybridMenu .leftMenu .menuButton.active {
+	border-left-width: 3px;
 }
 
-.demo .kdHybridMenu .mediumAnimationResizeSpeed {
-	transition: width 1.5s, left 1.5s;
+.hybridMenu .leftMenu .menuButton:hover, .hybridMenu .leftMenu .menuButton.active:hover {
+	border-left-width: 5px;
 }
 
-.demo .kdHybridMenu .fastAnimationResizeSpeed {
-	transition: width 0.75s, left 0.75s;
+.hybridMenu .leftMenu .menuButton-wrap {
+	display: block;
+	transition: border 0.3s;
+	position: relative;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	transform: translateY(-50%);
 }
 
-.demo .kdHybridMenu .veryFastAnimationResizeSpeed {
-	transition: width 0.3s, left 0.3s;
+.hybridMenu .leftMenu .menuButton-wrap .v-icon {
+	margin-left: 10px;
+	width: 25px;
+	text-align: center;
 }
 
-.demo .kdHybridMenu.minimalView .kdHybridMenuBody {
-	left: 50px;
-	width: calc(100% - 50px);
+.hybridMenu .leftMenu .menuButton-wrap .menuButton-caption {
+	font-size: 17px;
+}
+
+.hybridMenu .leftMenu.minimal .menuButton-wrap .menuButton-caption {
+	position: absolute;
+}
+
+.hybridMenu .leftMenu .menuButton.subMenuButton .menuButton-caption .v-icon {
+	position: absolute;
+	right: 5px;
+	margin: 0;
+	height: 30px;
+	width: 30px;
+	-webkit-transition: transform 0.3s ease-in-out;
+	-moz-transition: transform 0.3s ease-in-out;
+	-ms-transition: transform 0.3s ease-in-out;
+	-o-transition: transform 0.3s ease-in-out;
+	transition: transform 0.3s ease-in-out;
+	-webkit-transform: rotate(0deg);
+	-moz-transform: rotate(0deg);
+	-ms-transform: rotate(0deg);
+	-o-transform: rotate(0deg);
+	transform: rotate(0deg);
+}
+
+.hybridMenu .leftMenu .menuButton.subMenuButton.active .menuButton-caption .v-icon {
+	-webkit-transform: rotate(-180deg);
+	-moz-transform: rotate(-180deg);
+	-ms-transform: rotate(-180deg);
+	-o-transform: rotate(-180deg);
+	transform: rotate(-180deg);
+}
+
+.hybridMenu .centralContent .v-expand {
+	-webkit-transition: padding-left 0.75s ease-in-out;
+	-moz-transition: padding-left 0.75s ease-in-out;
+	-ms-transition: padding-left 0.75s ease-in-out;
+	-o-transition: padding-left 0.75s ease-in-out;
+	transition: padding-left 0.75s ease-in-out;
+	z-index: 10;
+}
+
+.hybridMenu .centralContent .v-expand .v-expand {
+	transition: unset;
+}
+
+.hybridMenu .v-slot-leftMenu {
+	-webkit-transition: margin-left 0.75s ease-in-out;
+	-moz-transition: margin-left 0.75s ease-in-out;
+	-ms-transition: margin-left 0.75s ease-in-out;
+	-o-transition: margin-left 0.75s ease-in-out;
+	transition: margin-left 0.75s ease-in-out;
+}
+
+.hybridMenu .leftMenu {
+	-webkit-transition: width 0.75s ease-in-out;
+	-moz-transition: width 0.75s ease-in-out;
+	-ms-transition: width 0.75s ease-in-out;
+	-o-transition: width 0.75s ease-in-out;
+	transition: width 0.75s ease-in-out;
+}
+
+.hybridMenu .leftMenu .menuSubMenuContent {
+	border-left: 1px solid transparent;
+	margin-left: 24px;
+	width: calc(100% - 24px) !important;
+}
+
+.hybridMenu .leftMenu .v-slot-menuSubMenuContent {
+	position: relative;
+	overflow: hidden;
+	display: block;
+	max-height: 0;
+	-webkit-transition: max-height 0.5s ease-in-out;
+	-moz-transition: max-height 0.5s ease-in-out;
+	-ms-transition: max-height 0.5s ease-in-out;
+	-o-transition: max-height 0.5s ease-in-out;
+	transition: max-height 0.5s ease-in-out;
+}
+
+.hybridMenu .leftMenu .v-slot-menuSubMenuContent.v-slot-open {
+	max-height: 1000px;
+}
+
+.hybridMenu .topMenu {
+	z-index: 1000;
+}
+
+.hybridMenu .topMenu .v-slot.v-align-middle {
+	width: auto !important;
+	display: inline-block;
+}
+
+.hybridMenu .topMenu .v-slot.v-align-right.v-align-middle {
+	float: right;
+}
+
+.hybridMenu .topMenu .v-slot.v-slot-labelTitle .v-caption-labelTitle {
+	padding-left: 10px;
+	padding-right: 10px;
+	width: 230px;
+	text-align: center;
+	font-size: 18px;
+	margin-bottom: -2px;
+}
+
+.hybridMenu .topMenu .v-slot.v-slot-labelTitle .v-caption-labelTitle .v-icon {
+	max-height: 23px;
+}
+
+.hybridMenu .topMenu .menuLabel.labelTitle {
+	display: none;
+}
+
+.hybridMenu .topMenu .menuSubMenu {
+	position: relative;
+	height: 100%;
+	display: inline-block;
+}
+
+.hybridMenu .topMenu .menuSubMenu .menuSubMenuContent {
+	position: absolute;
+	top: 100%;
+	right: 0;
+	border-top: 1px solid transparent;
+	padding: 0;
+	opacity: 0;
+	z-index: -1;
+	margin-top: -100%;
+	-webkit-transition: margin-top 0.3s ease-in-out, opacity 0.3s ease-in-out, z-index 0.3s ease-in-out;
+	-moz-transition: margin-top 0.3s ease-in-out, opacity 0.3s ease-in-out, z-index 0.3s ease-in-out;
+	-ms-transition: margin-top 0.3s ease-in-out, opacity 0.3s ease-in-out, z-index 0.3s ease-in-out;
+	-o-transition: margin-top 0.3s ease-in-out, opacity 0.3s ease-in-out, z-index 0.3s ease-in-out;
+	transition: margin-top 0.3s ease-in-out, opacity 0.3s ease-in-out, z-index 0.3s ease-in-out;
+	pointer-events: none;
+}
+
+.hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.open {
+	pointer-events: auto;
+	margin-top: 0;
+	opacity: 1;
+	z-index: 100;
+}
+
+.hybridMenu .topMenu .menuSubMenu .menuSubMenuContent .v-slot {
+	height: auto;
+}
+
+.hybridMenu .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuLabel {
+	display: block;
+	opacity: 0.75;
+	padding: 5px 10px 5px 15px;
+	font-size: 12px;
+}
+
+.hybridMenu .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuButton {
+	display: block;
+	padding: 4px 10px 3px 15px;
+	font-size: 14px;
+	cursor: pointer;
+	background: transparent;
+	-webkit-transition: background 0.3s ease-in-out;
+	-moz-transition: background 0.3s ease-in-out;
+	-ms-transition: background 0.3s ease-in-out;
+	-o-transition: background 0.3s ease-in-out;
+	transition: background 0.3s ease-in-out;
+}
+
+.hybridMenu .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuHr {
+	height: 1px;
+	margin: 6px 0;
+	overflow: hidden;
+	width: 100%;
+	display: block;
+}
+
+.hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notificationTitle, .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .goToNotisButton {
+	padding: 5px 10px 5px 15px;
+	font-size: 14px;
+	display: block;
+}
+
+.hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notificationEmptyMessage {
+	display: block;
+	opacity: 0.75;
+	text-align: center;
+	padding: 5px;
+}
+
+.hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .goToNotisButton {
+	padding: 5px 10px;
+	text-align: center;
+	cursor: pointer;
+	-webkit-transition: background 0.3s ease-in-out;
+	-moz-transition: background 0.3s ease-in-out;
+	-ms-transition: background 0.3s ease-in-out;
+	-o-transition: background 0.3s ease-in-out;
+	transition: background 0.3s ease-in-out;
+}
+
+.hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage {
+	border-bottom: 1px solid transparent;
+	background: transparent;
+	-webkit-transition: background 0.3s ease-in-out;
+	-moz-transition: background 0.3s ease-in-out;
+	-ms-transition: background 0.3s ease-in-out;
+	-o-transition: background 0.3s ease-in-out;
+	transition: background 0.3s ease-in-out;
+}
+
+.hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .v-slot:last-child .notiMessage {
+	border-bottom-width: 0;
+}
+
+.hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage .v-slot:first-child {
+	width: 100% !important;
+}
+
+.hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage .v-slot:last-child {
+	height: 0 !important;
+	width: 0 !important;
+}
+
+.hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage .v-has-caption {
+	width: calc(100% - 75px);
+	margin-left: 75px;
+}
+
+.hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage .v-has-caption .v-icon {
+	position: absolute;
+	left: 0;
+	padding: 10px;
+	width: 55px;
+	text-align: center;
+	vertical-align: middle;
+	max-height: 55px;
+	display: block;
+}
+
+.hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage .v-has-caption .v-captiontext {
+	margin: 0;
+	font-size: 16px;
+	font-weight: 500;
+	padding: 4px 15px 0 0;
+	width: calc(100% - 15px);
+	display: block;
+	position: relative;
+}
+
+.hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage .notiMessageContent {
+	width: 100%;
+	font-size: 14px;
+	opacity: 0.75;
+	padding: 0 5px 0 0;
+	display: block;
+	position: relative;
+}
+
+.hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage .notiMessageButton {
+	position: absolute;
+	cursor: pointer;
+	right: 2px;
+	margin-top: 3px;
+	opacity: 0.25;
+	-webkit-transition: color 0.3s ease-in-out, opacity 0.3s ease-in-out;
+	-moz-transition: color 0.3s ease-in-out, opacity 0.3s ease-in-out;
+	-ms-transition: color 0.3s ease-in-out, opacity 0.3s ease-in-out;
+	-o-transition: color 0.3s ease-in-out, opacity 0.3s ease-in-out;
+	transition: color 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage .notiMessageButton:hover {
+	opacity: 1;
+}
+
+.hybridMenu .topMenu .menuButton {
+	height: 100%;
+	cursor: pointer;
+	padding: 0 12px;
+	background: transparent;
+	-webkit-transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+	-moz-transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+	-ms-transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+	-o-transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+	transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.hybridMenu .topMenu .menuButton-wrap {
+	display: block;
+	position: relative;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+.hybridMenu .topMenu .menuButton.iconRight .v-icon {
+	float: right;
+}
+
+.hybridMenu .topMenu .menuButton.iconRight .menuButton-caption {
+	margin-right: 7px;
+	margin-left: 0;
+}
+
+.hybridMenu .topMenu .menuButton.profilView .v-icon {
+	max-height: 23px;
+	border-radius: 50%;
+	margin-left: 5px;
+}
+
+.hybridMenu .topMenu .menuButton.captionOutside .menuButton-wrap {
+	top: 0;
+	height: 100%;
+	transform: unset;
+}
+
+.hybridMenu .topMenu .menuButton.captionOutside .v-icon {
+	display: block;
+	transition: border 0.3s;
+	position: relative;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+.hybridMenu .topMenu .menuButton.captionOutside .menuButton-caption .toolTop {
+	position: absolute;
+	z-index: 100;
+	font-size: 10px;
+	line-height: 12px;
+	padding: 2px 5px;
+	border-radius: 6px;
+	top: 8px;
+}
+
+.hybridMenu .topMenu .menuButton.captionOutside .menuButton-caption .caption {
+	position: absolute;
+	top: 100%;
+	right: -12px;
+	border-top: 1px solid transparent;
+	padding: 5px 15px 7px;
+	opacity: 0;
+	z-index: -1;
+	margin-top: -100%;
+	-webkit-transition: margin-top 0.3s ease-in-out, opacity 0.3s ease-in-out, z-index 0.3s ease-in-out;
+	-moz-transition: margin-top 0.3s ease-in-out, opacity 0.3s ease-in-out, z-index 0.3s ease-in-out;
+	-ms-transition: margin-top 0.3s ease-in-out, opacity 0.3s ease-in-out, z-index 0.3s ease-in-out;
+	-o-transition: margin-top 0.3s ease-in-out, opacity 0.3s ease-in-out, z-index 0.3s ease-in-out;
+	transition: margin-top 0.3s ease-in-out, opacity 0.3s ease-in-out, z-index 0.3s ease-in-out;
+	pointer-events: none;
+}
+
+.hybridMenu .topMenu .menuButton.captionOutside:hover .menuButton-caption .caption {
+	margin-top: 0;
+	opacity: 1;
+	z-index: 100;
+}
+
+.hybridMenu.hybridTheme_default {
+	color: #424242;
+	background: #f5f5f5;
+}
+
+.hybridMenu.hybridTheme_default .v-slot-topMenu {
+	background: #e0e0e0;
+	border-bottom: 1px solid #f5f5f5;
+}
+
+.hybridMenu.hybridTheme_default .v-slot-leftMenu {
+	background: #eeeeee;
+}
+
+.hybridMenu.hybridTheme_default .leftMenu .menuButton.active {
+	border-left-color: #0091ea;
+	background: rgba(189, 189, 189, 0.5);
+}
+
+.hybridMenu.hybridTheme_default .leftMenu .menuButton:hover {
+	border-left-color: #ff6d00;
+	background: rgba(224, 224, 224, 0.5);
+}
+
+.hybridMenu.hybridTheme_default .leftMenu .menuButton.active:hover {
+	border-left-color: #0091ea;
+}
+
+.hybridMenu.hybridTheme_default .leftMenu .menuSubMenuContent {
+	border-left-color: rgba(189, 189, 189, 0.5);
+}
+
+.hybridMenu.hybridTheme_default .contentBox {
+	background: #f5f5f5;
+}
+
+.hybridMenu.hybridTheme_default .topMenu .menuButton.captionOutside .menuButton-caption .caption, .hybridMenu.hybridTheme_default .topMenu .menuSubMenu .menuSubMenuContent {
+	border-top-color: #ff6d00;
+	background: #eeeeee;
+}
+
+.hybridMenu.hybridTheme_default .topMenu .menuButton.active {
+	background: #eeeeee;
+}
+
+.hybridMenu.hybridTheme_default .topMenu .menuButton:hover {
+	color: #f5f5f5;
+	background: #ff6d00;
+}
+
+.hybridMenu.hybridTheme_default .topMenu .menuButton:hover .menuButton-caption .caption, .hybridMenu.hybridTheme_default .topMenu .menuButton .menuButton-caption .caption {
+	color: #424242 !important;
+}
+
+.hybridMenu.hybridTheme_default .topMenu .menuButton.captionOutside .menuButton-caption .toolTop {
+	color: white;
+	background: #2196f3;
+}
+
+.hybridMenu.hybridTheme_default .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuHr, .hybridMenu.hybridTheme_default .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuButton:hover {
+	background: rgba(189, 189, 189, 0.5);
+}
+
+.hybridMenu.hybridTheme_default .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notificationTitle, .hybridMenu.hybridTheme_default .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .goToNotisButton {
+	background: #e0e0e0;
+}
+
+.hybridMenu.hybridTheme_default .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .goToNotisButton:hover, .hybridMenu.hybridTheme_default .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage:hover {
+	background: rgba(224, 224, 224, 0.5);
+}
+
+.hybridMenu.hybridTheme_default .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage .notiMessageButton:hover {
+	color: #b71c1c;
+}
+
+.hybridMenu.hybridTheme_default .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage {
+	border-bottom-color: #bdbdbd;
+}
+
+.hybridMenu.hybridTheme_default_dark {
+	color: #f5f5f5;
+	background: #757575;
+}
+
+.hybridMenu.hybridTheme_default_dark .v-slot-topMenu {
+	background: #424242;
+	border-bottom: 1px solid #757575;
+}
+
+.hybridMenu.hybridTheme_default_dark .v-slot-leftMenu {
+	background: #616161;
+}
+
+.hybridMenu.hybridTheme_default_dark .leftMenu .menuButton.active {
+	border-left-color: #0091ea;
+	background: rgba(117, 117, 117, 0.5);
+}
+
+.hybridMenu.hybridTheme_default_dark .leftMenu .menuButton:hover {
+	border-left-color: #ff6d00;
+	background: rgba(66, 66, 66, 0.5);
+}
+
+.hybridMenu.hybridTheme_default_dark .leftMenu .menuButton.active:hover {
+	border-left-color: #0091ea;
+}
+
+.hybridMenu.hybridTheme_default_dark .leftMenu .menuSubMenuContent {
+	border-left-color: #757575;
+}
+
+.hybridMenu.hybridTheme_default_dark .contentBox {
+	background: rgba(117, 117, 117, 0.5);
+}
+
+.hybridMenu.hybridTheme_default_dark .topMenu .menuButton.captionOutside .menuButton-caption .caption, .hybridMenu.hybridTheme_default_dark .topMenu .menuSubMenu .menuSubMenuContent {
+	border-top-color: #ff6d00;
+	background: #616161;
+}
+
+.hybridMenu.hybridTheme_default_dark .topMenu .menuButton.active {
+	background: #616161;
+}
+
+.hybridMenu.hybridTheme_default_dark .topMenu .menuButton:hover {
+	background: #ff6d00;
+}
+
+.hybridMenu.hybridTheme_default_dark .topMenu .menuButton.captionOutside .menuButton-caption .toolTop {
+	background: #2196f3;
+}
+
+.hybridMenu.hybridTheme_default_dark .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuHr, .hybridMenu.hybridTheme_default_dark .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuButton:hover {
+	background: #757575;
+}
+
+.hybridMenu.hybridTheme_default_dark .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notificationTitle, .hybridMenu.hybridTheme_default_dark .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .goToNotisButton {
+	background: #424242;
+}
+
+.hybridMenu.hybridTheme_default_dark .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .goToNotisButton:hover, .hybridMenu.hybridTheme_default_dark .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage:hover {
+	background: rgba(66, 66, 66, 0.5);
+}
+
+.hybridMenu.hybridTheme_default_dark .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage .notiMessageButton:hover {
+	color: #b71c1c;
+}
+
+.hybridMenu.hybridTheme_default_dark .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage {
+	border-bottom-color: #757575;
 }

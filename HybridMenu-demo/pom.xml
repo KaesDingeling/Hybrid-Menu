@@ -5,8 +5,8 @@
 	<groupId>org.vaadin.addons</groupId>
 	<artifactId>hybridmenu-demo</artifactId>
 	<packaging>war</packaging>
-	<version>0.0.1.17-ALPHA</version>
-    <name>HybridMenu Add-on Demo</name>
+	<version>2.0.1-ALPHA</version>
+	<name>HybridMenu Add-on Demo</name>
 
 	<prerequisites>
 		<maven>3</maven>
@@ -16,8 +16,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-		<vaadin.version>8.1.1</vaadin.version>
-		<vaadin.plugin.version>8.1.1</vaadin.plugin.version>
+		<vaadin.version>8.0.6</vaadin.version>
+		<vaadin.plugin.version>8.0.6</vaadin.plugin.version>
 		<jetty.plugin.version>9.3.9.v20160517</jetty.plugin.version>
 	</properties>
 
