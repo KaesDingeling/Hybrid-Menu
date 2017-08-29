@@ -62,7 +62,7 @@ public class HybridMenu extends VerticalLayout {
 			if (menuDesign == null) {
 				menuDesign = EMenuDesign.DEFAULT;
 			}
-			if (naviRootContent != null) {
+			if (naviRootContent == null) {
 				naviRootContent = new VerticalLayout();
 			}
 			addStyleName(menuDesign.getName());
@@ -108,6 +108,10 @@ public class HybridMenu extends VerticalLayout {
 			setExpandRatio(leftMenuContent, 1);
 			buildRunning = true;
 		}
+	}
+	
+	public Layout getContent() {
+		return naviRootContent;
 	}
 	
 	public void setDesign(EMenuDesign menuDesign) {

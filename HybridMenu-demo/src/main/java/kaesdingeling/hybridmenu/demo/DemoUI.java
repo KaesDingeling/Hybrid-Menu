@@ -255,27 +255,6 @@ public class DemoUI extends UI {
 				.setNavigateTo(HomePage.class)
 				.build(hybridMenu);
     	
-    	
-    	
-    	/*
-    	
-    	
-    	
-    	MenuItem topHomePage = hybridMenu.createItem(EMenuPosition.TOP, "Home", FontAwesome.HOME, HomePage.class, true);
-    	
-    	topHomePage.getButton().addStyleName(ETopMenuPosition.RIGHT.toString());
-    	
-    	
-    	MenuItem userSettings = hybridMenu.createItem(EMenuPosition.TOP, new ThemeResource("images/profilDummy.jpg"), false);
-    	MenuItem logout = hybridMenu.createItem(null, FontAwesome.SIGN_OUT.getHtml() + "Logout", MemberPage.class, false);
-    	
-    	userSettings.getButton().addStyleName("buttonWithoutCaption");
-    	userSettings.getButton().addStyleName(ETopMenuPosition.RIGHT.toString());
-    	userSettings.addSubMenuItem(logout);
-    	
-    	hybridMenu.addItem(userSettings);
-    	*/
-    	
     	setContent(hybridMenu);
     	VaadinSession.getCurrent().setAttribute(HybridMenu.class, hybridMenu);
     }
