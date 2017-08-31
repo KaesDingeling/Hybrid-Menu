@@ -10,7 +10,7 @@ import kaesdingeling.hybridmenu.data.enums.EMenuDesign;
 @SuppressWarnings("deprecation")
 public class MenuConfig {
 	private EMenuComponents menuComponents = EMenuComponents.LEFT_WITH_TOP;
-	private EMenuDesign menuDesign = EMenuDesign.DEFAULT;
+	private EMenuDesign menuDesign = EMenuDesign.DARK;
 	private EMenuAnimationSpeed menuAnimationSpeed = EMenuAnimationSpeed.HIGH;
 	private Resource notificationRemoveIcon = FontAwesome.TIMES;
 	private Resource subMenuIcon = FontAwesome.ANGLE_UP;

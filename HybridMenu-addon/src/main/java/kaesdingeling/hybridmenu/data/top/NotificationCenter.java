@@ -136,4 +136,18 @@ public class NotificationCenter {
 		notiMessages.removeComponent(menuNotification.get());
 		refresh();
 	}
+	
+	public List<MenuNotification> getAll() {
+		return notiList;
+	}
+	
+	public void removeAll() {
+		removeAll(notiList);
+	}
+	
+	public void removeAll(List<MenuNotification> menuNotificationList) {
+		for (int i = 0; i < menuNotificationList.size(); i++) {
+			remove(menuNotificationList.get(i));
+		}
+	}
 }
