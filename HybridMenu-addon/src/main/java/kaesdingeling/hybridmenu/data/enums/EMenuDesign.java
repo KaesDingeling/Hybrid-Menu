@@ -1,7 +1,7 @@
 package kaesdingeling.hybridmenu.data.enums;
 
 public enum EMenuDesign {
-	DEFAULT("hybridTheme_default"), DEFALT_DARK("hybridTheme_default_dark");
+	WHITE("design_white"), DARK("design_dark"), DARK_VAADIN_MATERIAL_CONFORM("design_dark_vaadin_material_conform");
 	
 	private String name = null;
 	

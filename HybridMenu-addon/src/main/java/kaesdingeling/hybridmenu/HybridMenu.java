@@ -32,7 +32,6 @@ public class HybridMenu extends VerticalLayout {
 	
 	/* Settings */
 	private EMenuComponents menuComponents = null;
-	private EMenuDesign menuDesign = null;
 	
 	/* Components */
 	private Layout naviRootContent = null;
@@ -59,13 +58,10 @@ public class HybridMenu extends VerticalLayout {
 			if (menuComponents == null) {
 				menuComponents = EMenuComponents.LEFT_WITH_TOP;
 			}
-			if (menuDesign == null) {
-				menuDesign = EMenuDesign.DEFAULT;
-			}
 			if (naviRootContent == null) {
 				naviRootContent = new VerticalLayout();
 			}
-			addStyleName(menuDesign.getName());
+			addStyleName(config.getMenuDesign().getName());
 			naviRootContent.setWidth("100%");
 			naviRootContent.setStyleName("contentBox");
 			if (initNavigator) {
@@ -114,12 +110,6 @@ public class HybridMenu extends VerticalLayout {
 		return naviRootContent;
 	}
 	
-	public void setDesign(EMenuDesign menuDesign) {
-		if (!buildRunning) {
-			this.menuDesign = menuDesign;
-		}
-	}
-	
 	public void setInitNavigator(boolean initNavigator) {
 		if (!buildRunning) {
 			this.initNavigator = initNavigator;
@@ -154,9 +144,9 @@ public class HybridMenu extends VerticalLayout {
 	
 	public void switchTheme(EMenuDesign menuDesign) {
 		if (menuDesign != null) {
-			removeStyleName(this.menuDesign.getName());
-			this.menuDesign = menuDesign;
-			addStyleName(this.menuDesign.getName());
+			removeStyleName(this.config.getMenuDesign().getName());
+			config.setMenuDesign(menuDesign);
+			addStyleName(this.config.getMenuDesign().getName());
 		}
 	}
 	

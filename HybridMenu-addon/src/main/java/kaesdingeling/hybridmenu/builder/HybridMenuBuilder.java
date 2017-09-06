@@ -5,7 +5,6 @@ import com.vaadin.ui.Layout;
 import kaesdingeling.hybridmenu.HybridMenu;
 import kaesdingeling.hybridmenu.data.MenuConfig;
 import kaesdingeling.hybridmenu.data.enums.EMenuComponents;
-import kaesdingeling.hybridmenu.data.enums.EMenuDesign;
 
 public class HybridMenuBuilder {
 	private HybridMenu hybridMenu;
@@ -20,11 +19,6 @@ public class HybridMenuBuilder {
     
     public HybridMenuBuilder setContent(Layout component) {
     	hybridMenu.setContent(component);
-    	return this;
-    }
-    
-    public HybridMenuBuilder setDesign(EMenuDesign menuDesign) {
-    	hybridMenu.setDesign(menuDesign);
     	return this;
     }
     

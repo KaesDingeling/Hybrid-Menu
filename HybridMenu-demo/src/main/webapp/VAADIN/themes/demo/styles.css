@@ -12502,25 +12502,25 @@ div.v-layout.v-horizontal.v-widget {
 	overflow: hidden;
 }
 
-.hybridMenu {
+.demo .hybridMenu {
 	z-index: 1;
 }
 
-.hybridMenu .contentBox {
+.demo .hybridMenu .contentBox {
 	padding: 15px !important;
 }
 
-.hybridMenu .leftMenu {
+.demo .hybridMenu .leftMenu {
 	padding: 0 !important;
 	overflow-y: auto;
 	z-index: 100;
 }
 
-.hybridMenu .leftMenu .v-slot {
+.demo .hybridMenu .leftMenu .v-slot {
 	height: auto !important;
 }
 
-.hybridMenu .leftMenu .menuButton {
+.demo .hybridMenu .leftMenu .menuButton {
 	background: transparent;
 	display: block;
 	cursor: pointer;
@@ -12533,15 +12533,15 @@ div.v-layout.v-horizontal.v-widget {
 	overflow: hidden;
 }
 
-.hybridMenu .leftMenu .menuButton.active {
+.demo .hybridMenu .leftMenu .menuButton.active {
 	border-left-width: 3px;
 }
 
-.hybridMenu .leftMenu .menuButton:hover, .hybridMenu .leftMenu .menuButton.active:hover {
+.demo .hybridMenu .leftMenu .menuButton:hover, .demo .hybridMenu .leftMenu .menuButton.active:hover {
 	border-left-width: 5px;
 }
 
-.hybridMenu .leftMenu .menuButton-wrap {
+.demo .hybridMenu .leftMenu .menuButton-wrap {
 	display: block;
 	transition: border 0.3s;
 	position: relative;
@@ -12553,21 +12553,21 @@ div.v-layout.v-horizontal.v-widget {
 	transform: translateY(-50%);
 }
 
-.hybridMenu .leftMenu .menuButton-wrap .v-icon {
+.demo .hybridMenu .leftMenu .menuButton-wrap .v-icon {
 	margin-left: 10px;
 	width: 25px;
 	text-align: center;
 }
 
-.hybridMenu .leftMenu .menuButton-wrap .menuButton-caption {
+.demo .hybridMenu .leftMenu .menuButton-wrap .menuButton-caption {
 	font-size: 17px;
 }
 
-.hybridMenu .leftMenu.minimal .menuButton-wrap .menuButton-caption {
+.demo .hybridMenu .leftMenu.minimal .menuButton-wrap .menuButton-caption {
 	position: absolute;
 }
 
-.hybridMenu .leftMenu .menuButton.subMenuButton .menuButton-caption .v-icon {
+.demo .hybridMenu .leftMenu .menuButton.subMenuButton .menuButton-caption .v-icon {
 	position: absolute;
 	right: 5px;
 	margin: 0;
@@ -12585,7 +12585,7 @@ div.v-layout.v-horizontal.v-widget {
 	transform: rotate(0deg);
 }
 
-.hybridMenu .leftMenu .menuButton.subMenuButton.active .menuButton-caption .v-icon {
+.demo .hybridMenu .leftMenu .menuButton.subMenuButton.active .menuButton-caption .v-icon {
 	-webkit-transform: rotate(-180deg);
 	-moz-transform: rotate(-180deg);
 	-ms-transform: rotate(-180deg);
@@ -12593,7 +12593,7 @@ div.v-layout.v-horizontal.v-widget {
 	transform: rotate(-180deg);
 }
 
-.hybridMenu .centralContent .v-expand {
+.demo .hybridMenu .centralContent .v-expand {
 	-webkit-transition: padding-left 0.75s ease-in-out;
 	-moz-transition: padding-left 0.75s ease-in-out;
 	-ms-transition: padding-left 0.75s ease-in-out;
@@ -12602,11 +12602,11 @@ div.v-layout.v-horizontal.v-widget {
 	z-index: 10;
 }
 
-.hybridMenu .centralContent .v-expand .v-expand {
+.demo .hybridMenu .centralContent .v-expand .v-expand {
 	transition: unset;
 }
 
-.hybridMenu .v-slot-leftMenu {
+.demo .hybridMenu .v-slot-leftMenu {
 	-webkit-transition: margin-left 0.75s ease-in-out;
 	-moz-transition: margin-left 0.75s ease-in-out;
 	-ms-transition: margin-left 0.75s ease-in-out;
@@ -12614,7 +12614,7 @@ div.v-layout.v-horizontal.v-widget {
 	transition: margin-left 0.75s ease-in-out;
 }
 
-.hybridMenu .leftMenu {
+.demo .hybridMenu .leftMenu {
 	-webkit-transition: width 0.75s ease-in-out;
 	-moz-transition: width 0.75s ease-in-out;
 	-ms-transition: width 0.75s ease-in-out;
@@ -12622,13 +12622,13 @@ div.v-layout.v-horizontal.v-widget {
 	transition: width 0.75s ease-in-out;
 }
 
-.hybridMenu .leftMenu .menuSubMenuContent {
+.demo .hybridMenu .leftMenu .menuSubMenuContent {
 	border-left: 1px solid transparent;
 	margin-left: 24px;
 	width: calc(100% - 24px) !important;
 }
 
-.hybridMenu .leftMenu .v-slot-menuSubMenuContent {
+.demo .hybridMenu .leftMenu .v-slot-menuSubMenuContent {
 	position: relative;
 	overflow: hidden;
 	display: block;
@@ -12640,24 +12640,24 @@ div.v-layout.v-horizontal.v-widget {
 	transition: max-height 0.5s ease-in-out;
 }
 
-.hybridMenu .leftMenu .v-slot-menuSubMenuContent.v-slot-open {
+.demo .hybridMenu .leftMenu .v-slot-menuSubMenuContent.v-slot-open {
 	max-height: 1000px;
 }
 
-.hybridMenu .topMenu {
+.demo .hybridMenu .topMenu {
 	z-index: 1000;
 }
 
-.hybridMenu .topMenu .v-slot.v-align-middle {
+.demo .hybridMenu .topMenu .v-slot.v-align-middle {
 	width: auto !important;
 	display: inline-block;
 }
 
-.hybridMenu .topMenu .v-slot.v-align-right.v-align-middle {
+.demo .hybridMenu .topMenu .v-slot.v-align-right.v-align-middle {
 	float: right;
 }
 
-.hybridMenu .topMenu .v-slot.v-slot-labelTitle .v-caption-labelTitle {
+.demo .hybridMenu .topMenu .v-slot.v-slot-labelTitle .v-caption-labelTitle {
 	padding-left: 10px;
 	padding-right: 10px;
 	width: 230px;
@@ -12666,21 +12666,21 @@ div.v-layout.v-horizontal.v-widget {
 	margin-bottom: -2px;
 }
 
-.hybridMenu .topMenu .v-slot.v-slot-labelTitle .v-caption-labelTitle .v-icon {
+.demo .hybridMenu .topMenu .v-slot.v-slot-labelTitle .v-caption-labelTitle .v-icon {
 	max-height: 23px;
 }
 
-.hybridMenu .topMenu .menuLabel.labelTitle {
+.demo .hybridMenu .topMenu .menuLabel.labelTitle {
 	display: none;
 }
 
-.hybridMenu .topMenu .menuSubMenu {
+.demo .hybridMenu .topMenu .menuSubMenu {
 	position: relative;
 	height: 100%;
 	display: inline-block;
 }
 
-.hybridMenu .topMenu .menuSubMenu .menuSubMenuContent {
+.demo .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent {
 	position: absolute;
 	top: 100%;
 	right: 0;
@@ -12697,25 +12697,25 @@ div.v-layout.v-horizontal.v-widget {
 	pointer-events: none;
 }
 
-.hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.open {
+.demo .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.open {
 	pointer-events: auto;
 	margin-top: 0;
 	opacity: 1;
 	z-index: 100;
 }
 
-.hybridMenu .topMenu .menuSubMenu .menuSubMenuContent .v-slot {
+.demo .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent .v-slot {
 	height: auto;
 }
 
-.hybridMenu .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuLabel {
+.demo .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuLabel {
 	display: block;
 	opacity: 0.75;
 	padding: 5px 10px 5px 15px;
 	font-size: 12px;
 }
 
-.hybridMenu .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuButton {
+.demo .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuButton {
 	display: block;
 	padding: 4px 10px 3px 15px;
 	font-size: 14px;
@@ -12728,7 +12728,7 @@ div.v-layout.v-horizontal.v-widget {
 	transition: background 0.3s ease-in-out;
 }
 
-.hybridMenu .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuHr {
+.demo .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuHr {
 	height: 1px;
 	margin: 6px 0;
 	overflow: hidden;
@@ -12736,20 +12736,20 @@ div.v-layout.v-horizontal.v-widget {
 	display: block;
 }
 
-.hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notificationTitle, .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .goToNotisButton {
+.demo .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notificationTitle, .demo .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .goToNotisButton {
 	padding: 5px 10px 5px 15px;
 	font-size: 14px;
 	display: block;
 }
 
-.hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notificationEmptyMessage {
+.demo .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notificationEmptyMessage {
 	display: block;
 	opacity: 0.75;
 	text-align: center;
 	padding: 5px;
 }
 
-.hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .goToNotisButton {
+.demo .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .goToNotisButton {
 	padding: 5px 10px;
 	text-align: center;
 	cursor: pointer;
@@ -12760,7 +12760,7 @@ div.v-layout.v-horizontal.v-widget {
 	transition: background 0.3s ease-in-out;
 }
 
-.hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage {
+.demo .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage {
 	border-bottom: 1px solid transparent;
 	background: transparent;
 	-webkit-transition: background 0.3s ease-in-out;
@@ -12770,25 +12770,25 @@ div.v-layout.v-horizontal.v-widget {
 	transition: background 0.3s ease-in-out;
 }
 
-.hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .v-slot:last-child .notiMessage {
+.demo .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .v-slot:last-child .notiMessage {
 	border-bottom-width: 0;
 }
 
-.hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage .v-slot:first-child {
+.demo .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage .v-slot:first-child {
 	width: 100% !important;
 }
 
-.hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage .v-slot:last-child {
+.demo .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage .v-slot:last-child {
 	height: 0 !important;
 	width: 0 !important;
 }
 
-.hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage .v-has-caption {
+.demo .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage .v-has-caption {
 	width: calc(100% - 75px);
 	margin-left: 75px;
 }
 
-.hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage .v-has-caption .v-icon {
+.demo .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage .v-has-caption .v-icon {
 	position: absolute;
 	left: 0;
 	padding: 10px;
@@ -12799,7 +12799,7 @@ div.v-layout.v-horizontal.v-widget {
 	display: block;
 }
 
-.hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage .v-has-caption .v-captiontext {
+.demo .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage .v-has-caption .v-captiontext {
 	margin: 0;
 	font-size: 16px;
 	font-weight: 500;
@@ -12809,7 +12809,7 @@ div.v-layout.v-horizontal.v-widget {
 	position: relative;
 }
 
-.hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage .notiMessageContent {
+.demo .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage .notiMessageContent {
 	width: 100%;
 	font-size: 14px;
 	opacity: 0.75;
@@ -12818,7 +12818,7 @@ div.v-layout.v-horizontal.v-widget {
 	position: relative;
 }
 
-.hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage .notiMessageButton {
+.demo .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage .notiMessageButton {
 	position: absolute;
 	cursor: pointer;
 	right: 2px;
@@ -12831,11 +12831,11 @@ div.v-layout.v-horizontal.v-widget {
 	transition: color 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
 
-.hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage .notiMessageButton:hover {
+.demo .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage .notiMessageButton:hover {
 	opacity: 1;
 }
 
-.hybridMenu .topMenu .menuButton {
+.demo .hybridMenu .topMenu .menuButton {
 	height: 100%;
 	cursor: pointer;
 	padding: 0 12px;
@@ -12847,7 +12847,7 @@ div.v-layout.v-horizontal.v-widget {
 	transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
-.hybridMenu .topMenu .menuButton-wrap {
+.demo .hybridMenu .topMenu .menuButton-wrap {
 	display: block;
 	position: relative;
 	top: 50%;
@@ -12858,28 +12858,28 @@ div.v-layout.v-horizontal.v-widget {
 	transform: translateY(-50%);
 }
 
-.hybridMenu .topMenu .menuButton.iconRight .v-icon {
+.demo .hybridMenu .topMenu .menuButton.iconRight .v-icon {
 	float: right;
 }
 
-.hybridMenu .topMenu .menuButton.iconRight .menuButton-caption {
+.demo .hybridMenu .topMenu .menuButton.iconRight .menuButton-caption {
 	margin-right: 7px;
 	margin-left: 0;
 }
 
-.hybridMenu .topMenu .menuButton.profilView .v-icon {
+.demo .hybridMenu .topMenu .menuButton.profilView .v-icon {
 	max-height: 23px;
 	border-radius: 50%;
 	margin-left: 5px;
 }
 
-.hybridMenu .topMenu .menuButton.captionOutside .menuButton-wrap {
+.demo .hybridMenu .topMenu .menuButton.captionOutside .menuButton-wrap {
 	top: 0;
 	height: 100%;
 	transform: unset;
 }
 
-.hybridMenu .topMenu .menuButton.captionOutside .v-icon {
+.demo .hybridMenu .topMenu .menuButton.captionOutside .v-icon {
 	display: block;
 	transition: border 0.3s;
 	position: relative;
@@ -12891,7 +12891,7 @@ div.v-layout.v-horizontal.v-widget {
 	transform: translateY(-50%);
 }
 
-.hybridMenu .topMenu .menuButton.captionOutside .menuButton-caption .toolTop {
+.demo .hybridMenu .topMenu .menuButton.captionOutside .menuButton-caption .toolTop {
 	position: absolute;
 	z-index: 100;
 	font-size: 10px;
@@ -12901,7 +12901,7 @@ div.v-layout.v-horizontal.v-widget {
 	top: 8px;
 }
 
-.hybridMenu .topMenu .menuButton.captionOutside .menuButton-caption .caption {
+.demo .hybridMenu .topMenu .menuButton.captionOutside .menuButton-caption .caption {
 	position: absolute;
 	top: 100%;
 	right: -12px;
@@ -12918,160 +12918,233 @@ div.v-layout.v-horizontal.v-widget {
 	pointer-events: none;
 }
 
-.hybridMenu .topMenu .menuButton.captionOutside:hover .menuButton-caption .caption {
+.demo .hybridMenu .topMenu .menuButton.captionOutside:hover .menuButton-caption .caption {
 	margin-top: 0;
 	opacity: 1;
 	z-index: 100;
 }
 
-.hybridMenu.hybridTheme_default {
+.demo .hybridMenu.design_white {
 	color: #424242;
 	background: #f5f5f5;
 }
 
-.hybridMenu.hybridTheme_default .v-slot-topMenu {
+.demo .hybridMenu.design_white .v-slot-topMenu {
 	background: #e0e0e0;
 	border-bottom: 1px solid #f5f5f5;
 }
 
-.hybridMenu.hybridTheme_default .v-slot-leftMenu {
+.demo .hybridMenu.design_white .v-slot-leftMenu {
 	background: #eeeeee;
 }
 
-.hybridMenu.hybridTheme_default .leftMenu .menuButton.active {
+.demo .hybridMenu.design_white .leftMenu .menuButton.active {
 	border-left-color: #0091ea;
 	background: rgba(189, 189, 189, 0.5);
 }
 
-.hybridMenu.hybridTheme_default .leftMenu .menuButton:hover {
+.demo .hybridMenu.design_white .leftMenu .menuButton:hover {
 	border-left-color: #ff6d00;
 	background: rgba(224, 224, 224, 0.5);
 }
 
-.hybridMenu.hybridTheme_default .leftMenu .menuButton.active:hover {
+.demo .hybridMenu.design_white .leftMenu .menuButton.active:hover {
 	border-left-color: #0091ea;
 }
 
-.hybridMenu.hybridTheme_default .leftMenu .menuSubMenuContent {
+.demo .hybridMenu.design_white .leftMenu .menuSubMenuContent {
 	border-left-color: rgba(189, 189, 189, 0.5);
 }
 
-.hybridMenu.hybridTheme_default .contentBox {
+.demo .hybridMenu.design_white .contentBox {
 	background: #f5f5f5;
 }
 
-.hybridMenu.hybridTheme_default .topMenu .menuButton.captionOutside .menuButton-caption .caption, .hybridMenu.hybridTheme_default .topMenu .menuSubMenu .menuSubMenuContent {
+.demo .hybridMenu.design_white .topMenu .menuButton.captionOutside .menuButton-caption .caption, .demo .hybridMenu.design_white .topMenu .menuSubMenu .menuSubMenuContent {
 	border-top-color: #ff6d00;
 	background: #eeeeee;
 }
 
-.hybridMenu.hybridTheme_default .topMenu .menuButton.active {
+.demo .hybridMenu.design_white .topMenu .menuButton.active {
 	background: #eeeeee;
 }
 
-.hybridMenu.hybridTheme_default .topMenu .menuButton:hover {
+.demo .hybridMenu.design_white .topMenu .menuButton:hover {
 	color: #f5f5f5;
 	background: #ff6d00;
 }
 
-.hybridMenu.hybridTheme_default .topMenu .menuButton:hover .menuButton-caption .caption, .hybridMenu.hybridTheme_default .topMenu .menuButton .menuButton-caption .caption {
+.demo .hybridMenu.design_white .topMenu .menuButton:hover .menuButton-caption .caption, .demo .hybridMenu.design_white .topMenu .menuButton .menuButton-caption .caption {
 	color: #424242 !important;
 }
 
-.hybridMenu.hybridTheme_default .topMenu .menuButton.captionOutside .menuButton-caption .toolTop {
+.demo .hybridMenu.design_white .topMenu .menuButton.captionOutside .menuButton-caption .toolTop {
 	color: white;
 	background: #2196f3;
 }
 
-.hybridMenu.hybridTheme_default .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuHr, .hybridMenu.hybridTheme_default .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuButton:hover {
+.demo .hybridMenu.design_white .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuHr, .demo .hybridMenu.design_white .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuButton:hover {
 	background: rgba(189, 189, 189, 0.5);
 }
 
-.hybridMenu.hybridTheme_default .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notificationTitle, .hybridMenu.hybridTheme_default .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .goToNotisButton {
+.demo .hybridMenu.design_white .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notificationTitle, .demo .hybridMenu.design_white .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .goToNotisButton {
 	background: #e0e0e0;
 }
 
-.hybridMenu.hybridTheme_default .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .goToNotisButton:hover, .hybridMenu.hybridTheme_default .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage:hover {
+.demo .hybridMenu.design_white .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .goToNotisButton:hover, .demo .hybridMenu.design_white .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage:hover {
 	background: rgba(224, 224, 224, 0.5);
 }
 
-.hybridMenu.hybridTheme_default .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage .notiMessageButton:hover {
+.demo .hybridMenu.design_white .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage .notiMessageButton:hover {
 	color: #b71c1c;
 }
 
-.hybridMenu.hybridTheme_default .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage {
+.demo .hybridMenu.design_white .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage {
 	border-bottom-color: #bdbdbd;
 }
 
-.hybridMenu.hybridTheme_default_dark {
+.demo .hybridMenu.design_dark {
 	color: #f5f5f5;
 	background: #757575;
 }
 
-.hybridMenu.hybridTheme_default_dark .v-slot-topMenu {
+.demo .hybridMenu.design_dark .v-slot-topMenu {
 	background: #424242;
 	border-bottom: 1px solid #757575;
 }
 
-.hybridMenu.hybridTheme_default_dark .v-slot-leftMenu {
+.demo .hybridMenu.design_dark .v-slot-leftMenu {
 	background: #616161;
 }
 
-.hybridMenu.hybridTheme_default_dark .leftMenu .menuButton.active {
+.demo .hybridMenu.design_dark .leftMenu .menuButton.active {
 	border-left-color: #0091ea;
 	background: rgba(117, 117, 117, 0.5);
 }
 
-.hybridMenu.hybridTheme_default_dark .leftMenu .menuButton:hover {
+.demo .hybridMenu.design_dark .leftMenu .menuButton:hover {
 	border-left-color: #ff6d00;
 	background: rgba(66, 66, 66, 0.5);
 }
 
-.hybridMenu.hybridTheme_default_dark .leftMenu .menuButton.active:hover {
+.demo .hybridMenu.design_dark .leftMenu .menuButton.active:hover {
 	border-left-color: #0091ea;
 }
 
-.hybridMenu.hybridTheme_default_dark .leftMenu .menuSubMenuContent {
+.demo .hybridMenu.design_dark .leftMenu .menuSubMenuContent {
 	border-left-color: #757575;
 }
 
-.hybridMenu.hybridTheme_default_dark .contentBox {
+.demo .hybridMenu.design_dark .contentBox {
 	background: rgba(117, 117, 117, 0.5);
 }
 
-.hybridMenu.hybridTheme_default_dark .topMenu .menuButton.captionOutside .menuButton-caption .caption, .hybridMenu.hybridTheme_default_dark .topMenu .menuSubMenu .menuSubMenuContent {
+.demo .hybridMenu.design_dark .topMenu .menuButton.captionOutside .menuButton-caption .caption, .demo .hybridMenu.design_dark .topMenu .menuSubMenu .menuSubMenuContent {
 	border-top-color: #ff6d00;
 	background: #616161;
 }
 
-.hybridMenu.hybridTheme_default_dark .topMenu .menuButton.active {
+.demo .hybridMenu.design_dark .topMenu .menuButton.active {
 	background: #616161;
 }
 
-.hybridMenu.hybridTheme_default_dark .topMenu .menuButton:hover {
+.demo .hybridMenu.design_dark .topMenu .menuButton:hover {
 	background: #ff6d00;
 }
 
-.hybridMenu.hybridTheme_default_dark .topMenu .menuButton.captionOutside .menuButton-caption .toolTop {
+.demo .hybridMenu.design_dark .topMenu .menuButton.captionOutside .menuButton-caption .toolTop {
 	background: #2196f3;
 }
 
-.hybridMenu.hybridTheme_default_dark .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuHr, .hybridMenu.hybridTheme_default_dark .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuButton:hover {
+.demo .hybridMenu.design_dark .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuHr, .demo .hybridMenu.design_dark .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuButton:hover {
 	background: #757575;
 }
 
-.hybridMenu.hybridTheme_default_dark .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notificationTitle, .hybridMenu.hybridTheme_default_dark .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .goToNotisButton {
+.demo .hybridMenu.design_dark .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notificationTitle, .demo .hybridMenu.design_dark .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .goToNotisButton {
 	background: #424242;
 }
 
-.hybridMenu.hybridTheme_default_dark .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .goToNotisButton:hover, .hybridMenu.hybridTheme_default_dark .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage:hover {
+.demo .hybridMenu.design_dark .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .goToNotisButton:hover, .demo .hybridMenu.design_dark .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage:hover {
 	background: rgba(66, 66, 66, 0.5);
 }
 
-.hybridMenu.hybridTheme_default_dark .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage .notiMessageButton:hover {
+.demo .hybridMenu.design_dark .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage .notiMessageButton:hover {
 	color: #b71c1c;
 }
 
-.hybridMenu.hybridTheme_default_dark .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage {
+.demo .hybridMenu.design_dark .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage {
+	border-bottom-color: #757575;
+}
+
+.demo .hybridMenu.design_dark_vaadin_material_conform {
+	color: #f5f5f5;
+	background: #757575;
+}
+
+.demo .hybridMenu.design_dark_vaadin_material_conform .v-slot-topMenu {
+	background: #424242;
+	border-bottom: 1px solid #757575;
+}
+
+.demo .hybridMenu.design_dark_vaadin_material_conform .v-slot-leftMenu {
+	background: #616161;
+}
+
+.demo .hybridMenu.design_dark_vaadin_material_conform .leftMenu .menuButton.active {
+	border-left-color: #0091ea;
+	background: rgba(117, 117, 117, 0.5);
+}
+
+.demo .hybridMenu.design_dark_vaadin_material_conform .leftMenu .menuButton:hover {
+	border-left-color: #ff6d00;
+	background: rgba(66, 66, 66, 0.5);
+}
+
+.demo .hybridMenu.design_dark_vaadin_material_conform .leftMenu .menuButton.active:hover {
+	border-left-color: #0091ea;
+}
+
+.demo .hybridMenu.design_dark_vaadin_material_conform .leftMenu .menuSubMenuContent {
+	border-left-color: #757575;
+}
+
+.demo .hybridMenu.design_dark_vaadin_material_conform .contentBox {
+	background: rgba(117, 117, 117, 0.5);
+}
+
+.demo .hybridMenu.design_dark_vaadin_material_conform .topMenu .menuButton.captionOutside .menuButton-caption .caption, .demo .hybridMenu.design_dark_vaadin_material_conform .topMenu .menuSubMenu .menuSubMenuContent {
+	border-top-color: #ff6d00;
+	background: #616161;
+}
+
+.demo .hybridMenu.design_dark_vaadin_material_conform .topMenu .menuButton.active {
+	background: #616161;
+}
+
+.demo .hybridMenu.design_dark_vaadin_material_conform .topMenu .menuButton:hover {
+	background: #ff6d00;
+}
+
+.demo .hybridMenu.design_dark_vaadin_material_conform .topMenu .menuButton.captionOutside .menuButton-caption .toolTop {
+	background: #2196f3;
+}
+
+.demo .hybridMenu.design_dark_vaadin_material_conform .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuHr, .demo .hybridMenu.design_dark_vaadin_material_conform .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuButton:hover {
+	background: #757575;
+}
+
+.demo .hybridMenu.design_dark_vaadin_material_conform .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notificationTitle, .demo .hybridMenu.design_dark_vaadin_material_conform .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .goToNotisButton {
+	background: #424242;
+}
+
+.demo .hybridMenu.design_dark_vaadin_material_conform .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .goToNotisButton:hover, .demo .hybridMenu.design_dark_vaadin_material_conform .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage:hover {
+	background: rgba(66, 66, 66, 0.5);
+}
+
+.demo .hybridMenu.design_dark_vaadin_material_conform .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage .notiMessageButton:hover {
+	color: #b71c1c;
+}
+
+.demo .hybridMenu.design_dark_vaadin_material_conform .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage {
 	border-bottom-color: #757575;
 }

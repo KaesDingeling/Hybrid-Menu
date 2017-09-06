@@ -6,15 +6,15 @@ import com.vaadin.ui.HorizontalLayout;
 import kaesdingeling.hybridmenu.data.top.MenuNotification;
 import kaesdingeling.hybridmenu.data.top.NotificationCenter;
 
-public class MenuNotificationCenter {
+public class MenuNotificationCenterBuilder {
 	private MenuNotification menuNotification;
 	
-	private MenuNotificationCenter(MenuNotification menuNotification) {
+	private MenuNotificationCenterBuilder(MenuNotification menuNotification) {
         this.menuNotification = menuNotification;
     }
 
-    public static MenuNotificationCenter get(String title) {
-        return new MenuNotificationCenter(new MenuNotification(title));
+    public static MenuNotificationCenterBuilder get(String title) {
+        return new MenuNotificationCenterBuilder(new MenuNotification(title));
     }
     
     public static void remove(MenuNotification menuNotification) {
@@ -29,17 +29,17 @@ public class MenuNotificationCenter {
     	return menuNotification.get();
     }
     
-    public MenuNotificationCenter withTitle(String title) {
+    public MenuNotificationCenterBuilder withTitle(String title) {
     	menuNotification.setTitle(title);
     	return this;
     }
     
-    public MenuNotificationCenter withIcon(Resource icon) {
+    public MenuNotificationCenterBuilder withIcon(Resource icon) {
     	menuNotification.setIcon(icon);
     	return this;
     }
     
-    public MenuNotificationCenter withDescription(String description) {
+    public MenuNotificationCenterBuilder withDescription(String description) {
     	menuNotification.setDescription(description);
     	return this;
     }

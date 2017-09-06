@@ -18,12 +18,13 @@ import com.vaadin.ui.VerticalLayout;
 
 import kaesdingeling.hybridmenu.HybridMenu;
 import kaesdingeling.hybridmenu.builder.HybridMenuBuilder;
-import kaesdingeling.hybridmenu.builder.MenuNotificationCenter;
+import kaesdingeling.hybridmenu.builder.MenuNotificationCenterBuilder;
 import kaesdingeling.hybridmenu.builder.left.LeftMenuButtonBuilder;
 import kaesdingeling.hybridmenu.builder.left.LeftMenuSubMenuBuilder;
 import kaesdingeling.hybridmenu.builder.top.TopMenuButtonBuilder;
 import kaesdingeling.hybridmenu.builder.top.TopMenuLabelBuilder;
 import kaesdingeling.hybridmenu.builder.top.TopMenuSubContentBuilder;
+import kaesdingeling.hybridmenu.data.MenuConfig;
 import kaesdingeling.hybridmenu.data.enums.EMenuComponents;
 import kaesdingeling.hybridmenu.data.enums.EMenuDesign;
 import kaesdingeling.hybridmenu.data.enums.EMenuStyle;
@@ -48,10 +49,13 @@ public class DemoUI extends UI {
 
     @Override
     protected void init(VaadinRequest request) {
+    	MenuConfig menuConfig = new MenuConfig();
+    	menuConfig.setMenuDesign(EMenuDesign.DARK_VAADIN_MATERIAL_CONFORM);
+    	
     	HybridMenu hybridMenu = HybridMenuBuilder.get()
     			.setContent(new VerticalLayout())
     			.setMenuComponent(EMenuComponents.LEFT_WITH_TOP)
-    			.setDesign(EMenuDesign.DEFALT_DARK)
+    			.setConfig(menuConfig)
     			.build();
     	
     	UI.getCurrent().getNavigator().addView(HomePage.class.getSimpleName(), HomePage.class);
@@ -128,31 +132,44 @@ public class DemoUI extends UI {
     			.setConfig(hybridMenu.getConfig())
     			.build(hybridMenu);
     	
-    	MenuButton darkThemeButton = LeftMenuButtonBuilder.get()
-    			.setCaption("Dark Theme")
-    			.setIcon(VaadinIcons.PALETE)
-    			.setUseOwnListener(true)
-    			.build();
-    	darkThemeButton.addClickListener(new ClickListener() {
-			@Override
-			public void buttonClick(ClickEvent event) {
-				hybridMenu.switchTheme(EMenuDesign.DEFALT_DARK);
-			}
-		});
-    	demoSettings.addLeftMenuButton(darkThemeButton);
-    	
-    	MenuButton whiteThemeButton = LeftMenuButtonBuilder.get()
+    	MenuButton designWhite = LeftMenuButtonBuilder.get()
     			.setCaption("White Theme")
     			.setIcon(VaadinIcons.PALETE)
     			.setUseOwnListener(true)
     			.build();
-    	whiteThemeButton.addClickListener(new ClickListener() {
+    	designWhite.addClickListener(new ClickListener() {
 			@Override
 			public void buttonClick(ClickEvent event) {
-				hybridMenu.switchTheme(EMenuDesign.DEFAULT);
+				hybridMenu.switchTheme(EMenuDesign.WHITE);
 			}
 		});
-    	demoSettings.addLeftMenuButton(whiteThemeButton);
+    	demoSettings.addLeftMenuButton(designWhite);
+    	
+    	MenuButton designDark = LeftMenuButtonBuilder.get()
+    			.setCaption("Dark Theme")
+    			.setIcon(VaadinIcons.PALETE)
+    			.setUseOwnListener(true)
+    			.build();
+    	designDark.addClickListener(new ClickListener() {
+			@Override
+			public void buttonClick(ClickEvent event) {
+				hybridMenu.switchTheme(EMenuDesign.DARK);
+			}
+		});
+    	demoSettings.addLeftMenuButton(designDark);
+    	
+    	MenuButton designDarkVaadinMaterialConform = LeftMenuButtonBuilder.get()
+    			.setCaption("White Theme")
+    			.setIcon(VaadinIcons.PALETE)
+    			.setUseOwnListener(true)
+    			.build();
+    	designDarkVaadinMaterialConform.addClickListener(new ClickListener() {
+			@Override
+			public void buttonClick(ClickEvent event) {
+				hybridMenu.switchTheme(EMenuDesign.DARK_VAADIN_MATERIAL_CONFORM);
+			}
+		});
+    	demoSettings.addLeftMenuButton(designDarkVaadinMaterialConform);
     	
     	MenuButton toggleMinimalViewButton = LeftMenuButtonBuilder.get()
     			.setCaption("Toggle MinimalView")
@@ -242,7 +259,7 @@ public class DemoUI extends UI {
 				.build(hybridMenu);
     	
     	testNoti.addClickListener(e -> {
-    		MenuNotificationCenter.get("Test")
+    		MenuNotificationCenterBuilder.get("Test")
     			.withDescription("deasdasd")
     			.withIcon(VaadinIcons.ANCHOR)
     			.add(notificationCenter);
