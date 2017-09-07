@@ -1,16 +1,8 @@
 package kaesdingeling.hybridmenu;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.ViewChangeListener;
-import com.vaadin.ui.Alignment;
-import com.vaadin.ui.HorizontalLayout;
-import com.vaadin.ui.Layout;
-import com.vaadin.ui.UI;
-import com.vaadin.ui.VerticalLayout;
-
+import com.vaadin.ui.*;
 import kaesdingeling.hybridmenu.data.MenuConfig;
 import kaesdingeling.hybridmenu.data.MenuItem;
 import kaesdingeling.hybridmenu.data.MenuTopItem;
@@ -20,6 +12,9 @@ import kaesdingeling.hybridmenu.data.leftmenu.MenuButton;
 import kaesdingeling.hybridmenu.data.leftmenu.MenuSubMenu;
 import kaesdingeling.hybridmenu.page.DefaultPage;
 import kaesdingeling.hybridmenu.utils.ViewChangeManager;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class HybridMenu extends VerticalLayout {
 	private static final long serialVersionUID = -4055770717384786366L;
@@ -47,7 +42,6 @@ public class HybridMenu extends VerticalLayout {
 		setStyleName("hybridMenu");
 		setMargin(false);
 		setSpacing(false);
-		
 	}
 	
 	public void build() {
@@ -172,16 +166,6 @@ public class HybridMenu extends VerticalLayout {
 		return config;
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	public boolean addMenuItem(MenuItem menuItem) {
 		if (menuItem != null) {
 			if (menuItem instanceof MenuTopItem && menuComponents.equals(EMenuComponents.LEFT_WITH_TOP) && topMenu != null) {
@@ -202,20 +186,4 @@ public class HybridMenu extends VerticalLayout {
 			return false;
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
