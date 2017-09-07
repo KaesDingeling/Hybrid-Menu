@@ -1,7 +1,5 @@
 package kaesdingeling.hybridmenu.demo;
 
-import javax.servlet.annotation.WebServlet;
-
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.Title;
 import com.vaadin.annotations.VaadinServletConfiguration;
@@ -15,7 +13,6 @@ import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
-
 import kaesdingeling.hybridmenu.HybridMenu;
 import kaesdingeling.hybridmenu.builder.HybridMenuBuilder;
 import kaesdingeling.hybridmenu.builder.MenuNotificationCenterBuilder;
@@ -37,6 +34,8 @@ import kaesdingeling.hybridmenu.demo.page.GroupPage;
 import kaesdingeling.hybridmenu.demo.page.HomePage;
 import kaesdingeling.hybridmenu.demo.page.MemberPage;
 import kaesdingeling.hybridmenu.demo.page.SettingsPage;
+
+import javax.servlet.annotation.WebServlet;
 
 @Theme("demo")
 @Title("HybridMenu Add-on Demo")
@@ -183,16 +182,6 @@ public class DemoUI extends UI {
 			}
 		});
     	demoSettings.addLeftMenuButton(toggleMinimalViewButton);
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
     	
     	TopMenuButtonBuilder.get()
     			.setCaption("Home")
