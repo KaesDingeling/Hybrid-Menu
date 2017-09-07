@@ -488,8 +488,20 @@
         z-index: 100;
     }
 
+  // bug fix chrome
+  .menuButton:focus {
+    outline: none;
+  }
 
-
+  .hybridMenu .v-slot-topMenu {
+    box-shadow: 0px 6px 10px -3px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 101;
+  }
+  .hybridMenu .leftMenu {
+    box-shadow: 1px -1px 10px 0px rgba(0, 0, 0, 0.3);
+    position: relative;
+  }
 
     /* Theme - White */
     .hybridMenu.design_white
@@ -501,7 +513,6 @@
     .hybridMenu.design_white .v-slot-topMenu
     {
         background: rgb(224, 224, 224);
-        border-bottom: 1px solid rgb(245, 245, 245);
     }
 
     .hybridMenu.design_white .v-slot-leftMenu
@@ -601,7 +612,6 @@
     .hybridMenu.design_dark .v-slot-topMenu
     {
         background: rgb(66, 66, 66);
-        border-bottom: 1px solid rgb(117, 117, 117);
     }
 
     .hybridMenu.design_dark .v-slot-leftMenu
@@ -694,7 +704,6 @@
     .hybridMenu.design_dark_vaadin_material_conform .v-slot-topMenu
     {
         background: rgb(33, 33, 33);
-        border-bottom: 1px solid rgb(83, 83, 83);
     }
 
     .hybridMenu.design_dark_vaadin_material_conform .v-slot-leftMenu
