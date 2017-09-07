@@ -1,6 +1,7 @@
 package kaesdingeling.hybridmenu.data.top;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import com.vaadin.ui.Alignment;
@@ -13,6 +14,7 @@ import com.vaadin.ui.VerticalLayout;
 import kaesdingeling.hybridmenu.HybridMenu;
 import kaesdingeling.hybridmenu.builder.top.TopMenuSubContentBuilder;
 import kaesdingeling.hybridmenu.data.MenuConfig;
+import kaesdingeling.hybridmenu.data.enums.EMenuNotificationCenterSort;
 
 public class NotificationCenter {
 	private MenuConfig menuConfig = null;
@@ -54,6 +56,9 @@ public class NotificationCenter {
 		notificationBox = subContent.getSubContent();
 		notificationBox.setWidth("350px");
 		notificationBox.addStyleName("notificationBox");
+		notificationBox.addComponentDetachListener(e -> {
+			System.out.println("detach");
+		});
 	}
 	
 	private void buildStep2(String title) {
@@ -91,6 +96,11 @@ public class NotificationCenter {
 		} else if (!notiMessages.isVisible()) {
 			emptyMessage.setVisible(false);
 			notiMessages.setVisible(true);
+			if (menuConfig.getMenuNotificationCenterSort().equals(EMenuNotificationCenterSort.DOWNWARDS)) {
+				notiList.sort(Comparator.comparing(MenuNotification::getCreated));
+			} else {
+				notiList.sort(Comparator.comparing(MenuNotification::getCreated).reversed());
+			}
 			subContent.getButton().setIcon(menuConfig.getNotificationCenterIcon());
 			subContent.getButton().setToolTip(String.valueOf(notiList.size()));
 		} else {

@@ -6,12 +6,14 @@ import com.vaadin.server.Resource;
 import kaesdingeling.hybridmenu.data.enums.EMenuAnimationSpeed;
 import kaesdingeling.hybridmenu.data.enums.EMenuComponents;
 import kaesdingeling.hybridmenu.data.enums.EMenuDesign;
+import kaesdingeling.hybridmenu.data.enums.EMenuNotificationCenterSort;
 
 @SuppressWarnings("deprecation")
 public class MenuConfig {
 	private EMenuComponents menuComponents = EMenuComponents.LEFT_WITH_TOP;
 	private EMenuDesign menuDesign = EMenuDesign.DARK;
 	private EMenuAnimationSpeed menuAnimationSpeed = EMenuAnimationSpeed.HIGH;
+	private EMenuNotificationCenterSort menuNotificationCenterSort = EMenuNotificationCenterSort.DOWNWARDS;
 	private Resource notificationRemoveIcon = FontAwesome.TIMES;
 	private Resource subMenuIcon = FontAwesome.ANGLE_UP;
 	private Resource topMenuLeftMenuMaxSizeIcon = FontAwesome.ANGLE_RIGHT;
@@ -21,6 +23,12 @@ public class MenuConfig {
 	private int leftMenuButtonHeight = 50;
 	private int leftMenuLabelHeight = 45;
 	
+	public EMenuNotificationCenterSort getMenuNotificationCenterSort() {
+		return menuNotificationCenterSort;
+	}
+	public void setMenuNotificationCenterSort(EMenuNotificationCenterSort menuNotificationCenterSort) {
+		this.menuNotificationCenterSort = menuNotificationCenterSort;
+	}
 	public Resource getNotificationRemoveIcon() {
 		return notificationRemoveIcon;
 	}

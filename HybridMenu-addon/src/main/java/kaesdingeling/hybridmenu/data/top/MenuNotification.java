@@ -9,6 +9,7 @@ public class MenuNotification {
 	private String description;
 	private NotificationCenter notificationCenter;
 	private HorizontalLayout messageLayout;
+	private long created;
 	
 	public MenuNotification(String title) {
 		this.title = title;
@@ -40,8 +41,12 @@ public class MenuNotification {
 	public void setMessageLayout(HorizontalLayout messageLayout) {
 		this.messageLayout = messageLayout;
 	}
+	public long getCreated() {
+		return created;
+	}
 	public void add() {
 		if (notificationCenter != null) {
+			created = System.currentTimeMillis();
 			notificationCenter.add(this);
 		}
 	}
