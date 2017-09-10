@@ -3,6 +3,10 @@
     {
         z-index: 1;
     }
+    
+    .hybridMenu .menuButton:focus {
+        outline: none;
+    }
 
     .hybridMenu .contentBox
     {
@@ -13,8 +17,13 @@
     .hybridMenu .leftMenu
     {
         padding: 0 !important;
-        overflow-y: auto;
         z-index: 100;
+        position: relative;
+        -webkit-transition: width 0.75s ease-in-out;
+        -moz-transition: width 0.75s ease-in-out;
+        -ms-transition: width 0.75s ease-in-out; /* IE10 is actually unprefixed */
+        -o-transition: width 0.75s ease-in-out;
+        transition: width 0.75s ease-in-out;
     }
 
     .hybridMenu .leftMenu .v-slot
@@ -71,11 +80,6 @@
         font-size: 17px;
     }
 
-    .hybridMenu .leftMenu.minimal .menuButton-wrap .menuButton-caption
-    {
-        position: absolute;
-    }
-
     .hybridMenu .leftMenu .menuButton.subMenuButton .menuButton-caption .v-icon
     {
         position: absolute;
@@ -128,15 +132,6 @@
         transition: margin-left 0.75s ease-in-out;
     }
 
-    .hybridMenu .leftMenu
-    {
-        -webkit-transition: width 0.75s ease-in-out;
-        -moz-transition: width 0.75s ease-in-out;
-        -ms-transition: width 0.75s ease-in-out; /* IE10 is actually unprefixed */
-        -o-transition: width 0.75s ease-in-out;
-        transition: width 0.75s ease-in-out;
-    }
-
     .hybridMenu .leftMenu .menuSubMenuContent
     {
         border-left: 1px solid transparent;
@@ -161,11 +156,112 @@
     {
         max-height: 1000px;
     }
+    
+    /* Left Menu - Minmal */
+    .hybridMenu .leftMenu.minimal .menuButton
+    {
+        overflow: unset !important;
+    }
+    
+    .hybridMenu .leftMenu.minimal .menuButton .v-icon
+    {
+        width: 100% !important;
+        margin: 0 !important;
+    }
+    
+    .hybridMenu .leftMenu.minimal .menuButton-caption
+    {
+        position: absolute;
+        padding: 12px;
+        margin: -12px 0 0 -100%;
+        height: 26px;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.5s, margin-left 0.5s;
+        white-space: nowrap;
+    }
+    
+    .hybridMenu .leftMenu.minimal .menuButton-caption .v-icon
+    {
+        display: none;
+    }
+    
+    .hybridMenu .leftMenu.minimal .menuButton:hover .menuButton-caption
+    {
+        opacity: 1;
+        margin-left: 0;
+        pointer-events: auto;
+    }
+    
+    .hybridMenu .leftMenu.minimal .menuSubMenu .v-slot-menuSubMenuContent
+    {
+        max-height: 1000px !important;
+        overflow: unset !important;
+        position: absolute !important;
+        opacity: 0;
+        margin: 0;
+        pointer-events: none;
+        width: auto !important;
+        transition: visibility 0s 0.5s, opacity 0.5s, margin-left 0.5s;
+        visibility: hidden;
+    }
+    
+    .hybridMenu .leftMenu.minimal .menuSubMenuContent
+    {
+        border-left: 0 !important;
+        margin-left: 0 !important;
+        width: auto !important;
+    }
 
+    .hybridMenu .leftMenu.minimal .menuSubMenu:hover > .v-slot-subMenuButton .menuButton-caption
+    {
+        opacity: 1;
+        margin-left: 0;
+        pointer-events: auto;
+    }
+
+    .hybridMenu .leftMenu.minimal .menuSubMenu .v-slot-subMenuButton:hover ~ .v-slot-menuSubMenuContent, .hybridMenu .leftMenu.minimal .menuSubMenu > .v-slot-menuSubMenuContent:hover
+    {
+        margin-left: 61px;
+        pointer-events: auto;
+        opacity: 1;
+        visibility: visible;
+        transition-delay: 0s;
+    }
+    
+    .hybridMenu .leftMenu.minimal .menuSubMenuContent .v-slot, .hybridMenu .leftMenu.minimal .menuSubMenuContent .menuButton
+    {
+        width: auto !important;
+        display: block !important;
+    }
+    
+    .hybridMenu .leftMenu.minimal .menuSubMenuContent .v-icon
+    {
+        margin-left: 10px !important;
+        width: 25px !important;
+        position: absolute !important;
+        z-index: 102;
+    }
+    
+    .hybridMenu .leftMenu.minimal .menuSubMenuContent .menuButton-caption
+    {
+        position: relative !important;
+        pointer-events: auto !important;
+        opacity: 1 !important;
+        margin: 0 !important;
+        padding: 0 10px 0 35px !important;
+        z-index: 101;
+        background: transparent !important;
+    }
 
 
 
     /* Top Menu */
+    .hybridMenu .v-slot-topMenu {
+        position: relative;
+        z-index: 101;
+    }
+    
     .hybridMenu .topMenu
     {
         z-index: 1000;
@@ -312,6 +408,8 @@
         -ms-transition: background 0.3s ease-in-out; /* IE10 is actually unprefixed */
         -o-transition: background 0.3s ease-in-out;
         transition: background 0.3s ease-in-out;
+        padding-bottom: 14px;
+        position: relative;
     }
 
     .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .v-slot:last-child .notiMessage
@@ -353,10 +451,15 @@
         margin: 0;
         font-size: 16px;
         font-weight: 500;
-        padding: 4px 15px 0 0;
+        padding: 2px 15px 0 0;
         width: calc(100% - 15px);
         display: block;
         position: relative;
+    }
+    
+    .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage .v-caption
+    {
+        padding-bottom: 2px !important;
     }
 
     .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage .notiMessageContent
@@ -387,7 +490,21 @@
     {
         opacity: 1;
     }
-
+    
+    .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent .messageBox
+    {
+        overflow-y: auto;
+        overflow-x: hidden;
+        max-height: 200px;
+    }
+    
+    .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent .messageBox .v-slot-created
+    {
+        position: absolute;
+        bottom: 1px;
+        left: 75px;
+        font-size: 9px;
+    }
 
     .hybridMenu .topMenu .menuButton
     {
@@ -487,22 +604,8 @@
         opacity: 1;
         z-index: 100;
     }
-
-  // bug fix chrome
-  .menuButton:focus {
-    outline: none;
-  }
-
-  .hybridMenu .v-slot-topMenu {
-    box-shadow: 0px 6px 10px -3px rgba(0, 0, 0, 0.3);
-    position: relative;
-    z-index: 101;
-  }
-  .hybridMenu .leftMenu {
-    box-shadow: 1px -1px 10px 0px rgba(0, 0, 0, 0.3);
-    position: relative;
-  }
-
+    
+    
     /* Theme - White */
     .hybridMenu.design_white
     {
@@ -512,12 +615,18 @@
 
     .hybridMenu.design_white .v-slot-topMenu
     {
+        box-shadow: 0px 6px 7px -3px rgba(189, 189, 189, 0.3);
         background: rgb(224, 224, 224);
     }
 
     .hybridMenu.design_white .v-slot-leftMenu
     {
         background: rgb(238, 238, 238);
+    }
+    
+    .hybridMenu.design_white .leftMenu
+    {
+        box-shadow: 1px -1px 7px 0px rgba(189, 189, 189, 0.3);
     }
 
     .hybridMenu.design_white .leftMenu .menuButton.active
@@ -540,6 +649,16 @@
     .hybridMenu.design_white .leftMenu .menuSubMenuContent
     {
         border-left-color: rgba(189, 189, 189, 0.5);
+    }
+    
+    .hybridMenu.design_dark .leftMenu.minimal .menuButton-caption
+    {
+        background: rgb(238, 238, 238);
+    }
+    
+    .hybridMenu.design_dark .leftMenu.minimal .v-slot-menuSubMenuContent
+    {
+        background: rgba(238, 238, 238, 0.5);
     }
 
     .hybridMenu.design_white .contentBox
@@ -611,12 +730,18 @@
 
     .hybridMenu.design_dark .v-slot-topMenu
     {
+        box-shadow: 0px 6px 7px -3px rgba(117, 117, 117, 0.3);
         background: rgb(66, 66, 66);
     }
 
     .hybridMenu.design_dark .v-slot-leftMenu
     {
         background: rgb(97, 97, 97);
+    }
+    
+    .hybridMenu.design_dark .leftMenu
+    {
+        box-shadow: 1px -1px 7px 0px rgba(117, 117, 117, 0.3);
     }
 
     .hybridMenu.design_dark .leftMenu .menuButton.active
@@ -639,6 +764,16 @@
     .hybridMenu.design_dark .leftMenu .menuSubMenuContent
     {
         border-left-color: rgb(117, 117, 117);
+    }
+    
+    .hybridMenu.design_dark .leftMenu.minimal .menuButton-caption
+    {
+        background: rgb(97, 97, 97);
+    }
+    
+    .hybridMenu.design_dark .leftMenu.minimal .v-slot-menuSubMenuContent
+    {
+        background: rgba(97, 97, 97, 0.5);
     }
 
     .hybridMenu.design_dark .contentBox
@@ -703,12 +838,18 @@
 
     .hybridMenu.design_dark_vaadin_material_conform .v-slot-topMenu
     {
+        box-shadow: 0px 6px 7px -3px rgba(0, 0, 0, 0.3);
         background: rgb(33, 33, 33);
     }
 
     .hybridMenu.design_dark_vaadin_material_conform .v-slot-leftMenu
     {
         background: rgb(53, 53, 53);
+    }
+    
+    .hybridMenu.design_dark_vaadin_material_conform .leftMenu
+    {
+        box-shadow: 1px -1px 7px 0px rgba(0, 0, 0, 0.3);
     }
 
     .hybridMenu.design_dark_vaadin_material_conform .leftMenu .menuButton.active
@@ -731,6 +872,16 @@
     .hybridMenu.design_dark_vaadin_material_conform .leftMenu .menuSubMenuContent
     {
         border-left-color: rgb(83, 83, 83);
+    }
+    
+    .hybridMenu.design_dark_vaadin_material_conform .leftMenu.minimal .menuButton-caption
+    {
+        background: rgb(53, 53, 53);
+    }
+    
+    .hybridMenu.design_dark_vaadin_material_conform .leftMenu.minimal .v-slot-menuSubMenuContent
+    {
+        background: rgba(53, 53, 53, 0.5);
     }
 
     .hybridMenu.design_dark_vaadin_material_conform .contentBox

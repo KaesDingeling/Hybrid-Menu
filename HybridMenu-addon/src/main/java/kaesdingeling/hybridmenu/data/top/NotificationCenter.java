@@ -1,7 +1,9 @@
 package kaesdingeling.hybridmenu.data.top;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
 import com.vaadin.ui.Alignment;
@@ -25,6 +27,7 @@ public class NotificationCenter {
 	private Label emptyMessage = null;
 	private Label title = null;
 	private List<MenuNotification> notiList = new ArrayList<MenuNotification>();
+	private SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy.MM.dd HH:mm");
 	
 	@Deprecated
 	public NotificationCenter() {
@@ -112,15 +115,20 @@ public class NotificationCenter {
 		notiList.add(menuNotification);
 		HorizontalLayout horizontalLayout = new HorizontalLayout();
 		Label label = new Label();
+		Label created = new Label();
 		Button button = new Button();
 		
 		label.setCaption(menuNotification.getTitle());
 		label.setValue(menuNotification.getDescription());
 		label.setIcon(menuNotification.getIcon());
+		created.setValue(dateFormatter.format(new Date(menuNotification.getCreated())));
 		
 		horizontalLayout.setPrimaryStyleName("notiMessage");
 		label.setPrimaryStyleName("notiMessageContent");
+		created.setPrimaryStyleName("notiMessageCreated");
 		button.setPrimaryStyleName("notiMessageButton");
+		
+		created.setStyleName("created");
 		
 		button.setIcon(menuConfig.getNotificationRemoveIcon());
 		
@@ -136,7 +144,7 @@ public class NotificationCenter {
 		horizontalLayout.setWidth("100%");
 		horizontalLayout.setMargin(false);
 		horizontalLayout.setSpacing(false);
-		horizontalLayout.addComponents(label, button);
+		horizontalLayout.addComponents(label, created, button);
 		notiMessages.addComponent(horizontalLayout);
 		refresh();
 	}
@@ -159,5 +167,13 @@ public class NotificationCenter {
 		for (int i = 0; i < menuNotificationList.size(); i++) {
 			remove(menuNotificationList.get(i));
 		}
+	}
+	
+	public void open(boolean open) {
+		subContent.setOpen(open);
+	}
+	
+	public boolean isOpen() {
+		return subContent.isOpen();
 	}
 }
