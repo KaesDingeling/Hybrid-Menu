@@ -6,10 +6,12 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
+import com.vaadin.server.Page;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.JavaScript;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.VerticalLayout;
 
@@ -28,10 +30,7 @@ public class NotificationCenter {
 	private Label title = null;
 	private List<MenuNotification> notiList = new ArrayList<MenuNotification>();
 	private SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy.MM.dd HH:mm");
-	
-	@Deprecated
-	public NotificationCenter() {
-	}
+	private long lastOpen = 0L;
 	
 	public NotificationCenter(String emptyMessage, String title, Alignment alignment, HybridMenu hybridMenu) {
 		buildStep1(alignment, hybridMenu);
@@ -56,12 +55,18 @@ public class NotificationCenter {
     			.setAlignment(alignment)
     			.build(hybridMenu);
 		subContent.getButton().addStyleName("captionOutside");
+		if (menuConfig.isNotificationCenterOpenIsReaded()) {
+			subContent.getButton().addClickListener(e -> {
+				if (subContent.isOpen()) {
+					for (MenuNotification menuNotification : notiList) {
+						menuNotification.setReaded(true);
+					}
+				}
+			});
+		}
 		notificationBox = subContent.getSubContent();
 		notificationBox.setWidth("350px");
 		notificationBox.addStyleName("notificationBox");
-		notificationBox.addComponentDetachListener(e -> {
-			System.out.println("detach");
-		});
 	}
 	
 	private void buildStep2(String title) {
@@ -82,6 +87,25 @@ public class NotificationCenter {
 		notiMessages.setPrimaryStyleName("messageBox");
 		notificationBox.addComponents(this.emptyMessage, notiMessages);
 		refresh();
+		JavaScript.getCurrent().addFunction("moveOutFromNoti", e -> {
+			if ((lastOpen + 200) < System.currentTimeMillis()) {
+				open(false);
+			}
+        });
+		subContent.getSubContent().setId("moveOutFromNoti");
+		subContent.getButton().addClickListener(e -> {
+			if (subContent.isOpen()) {
+				lastOpen = System.currentTimeMillis();
+			}
+		});
+		
+		Page.getCurrent().getJavaScript().execute("var specifiedElement = document.getElementById('moveOutFromNoti');\n" + 
+				"    document.addEventListener('click', function(event) {\n" + 
+				"        var isClickInside = specifiedElement.contains(event.target);\n" + 
+				"        if (!isClickInside) {\n" + 
+				"          moveOutFromNoti();\n" + 
+				"        }\n" + 
+				"    });");
 	}
 	
 	public void setShowAllButton(String caption, ClickListener clickListener) {
@@ -91,7 +115,13 @@ public class NotificationCenter {
 	}
 	
 	public void refresh() {
-		if (notiList.size() == 0 && notiMessages.isVisible()) {
+		int size = 0;
+		for (MenuNotification menuNotification : notiList) {
+			if (!menuNotification.isReaded()) {
+				size++;
+			}
+		}
+		if (size == 0 && notiMessages.isVisible()) {
 			emptyMessage.setVisible(true);
 			notiMessages.setVisible(false);
 			subContent.getButton().setIcon(menuConfig.getNotificationCenterEmptyIcon());
@@ -105,9 +135,9 @@ public class NotificationCenter {
 				notiList.sort(Comparator.comparing(MenuNotification::getCreated).reversed());
 			}
 			subContent.getButton().setIcon(menuConfig.getNotificationCenterIcon());
-			subContent.getButton().setToolTip(String.valueOf(notiList.size()));
+			subContent.getButton().setToolTip(String.valueOf(size));
 		} else {
-			subContent.getButton().setToolTip(String.valueOf(notiList.size()));
+			subContent.getButton().setToolTip(String.valueOf(size));
 		}
 	}
 	
@@ -171,6 +201,9 @@ public class NotificationCenter {
 	
 	public void open(boolean open) {
 		subContent.setOpen(open);
+		if (open) {
+			lastOpen = System.currentTimeMillis();
+		}
 	}
 	
 	public boolean isOpen() {

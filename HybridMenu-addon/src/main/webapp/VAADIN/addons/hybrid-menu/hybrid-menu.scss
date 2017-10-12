@@ -278,24 +278,17 @@
         float: right;
     }
 
-    .hybridMenu .topMenu .v-slot.v-slot-labelTitle .v-caption-labelTitle
-    {
-        padding-left: 10px;
-        padding-right: 10px;
-        width: 230px;
-        text-align: center;
-        font-size: 18px;
-        margin-bottom: -2px;
-    }
-
-    .hybridMenu .topMenu .v-slot.v-slot-labelTitle .v-caption-labelTitle .v-icon
-    {
-        max-height: 23px;
-    }
-
     .hybridMenu .topMenu .menuLabel.labelTitle
     {
-        display: none;
+        padding: 0 15px;
+        width: 250px;
+        text-align: center;
+        font-size: 18px;
+    }
+
+    .hybridMenu .topMenu .menuLabel.labelTitle img
+    {
+        max-height: 23px;
     }
 
     .hybridMenu .topMenu .menuSubMenu
@@ -651,12 +644,12 @@
         border-left-color: rgba(189, 189, 189, 0.5);
     }
     
-    .hybridMenu.design_dark .leftMenu.minimal .menuButton-caption
+    .hybridMenu.design_white .leftMenu.minimal .menuButton-caption
     {
         background: rgb(238, 238, 238);
     }
     
-    .hybridMenu.design_dark .leftMenu.minimal .v-slot-menuSubMenuContent
+    .hybridMenu.design_white .leftMenu.minimal .v-slot-menuSubMenuContent
     {
         background: rgba(238, 238, 238, 0.5);
     }
@@ -719,6 +712,133 @@
         border-bottom-color: rgb(189, 189, 189);
     }
     
+    
+    
+    /* Theme - White Blue */
+    .hybridMenu.design_white_blue
+    {
+        color: rgb(66, 66, 66);
+        background: rgb(245, 245, 245);
+    }
+
+    .hybridMenu.design_white_blue .v-slot-topMenu
+    {
+        box-shadow: 0px 6px 7px -3px rgba(189, 189, 189, 0.3);
+        background: rgb(25, 118, 210);
+        color: rgb(255, 255, 255);
+    }
+
+    .hybridMenu.design_white_blue .v-slot-leftMenu
+    {
+        background: rgb(238, 238, 238);
+    }
+    
+    .hybridMenu.design_white_blue .leftMenu
+    {
+        box-shadow: 1px -1px 7px 0px rgba(189, 189, 189, 0.3);
+    }
+
+    .hybridMenu.design_white_blue .leftMenu .menuButton.active
+    {
+        border-left-color: rgb(0, 145, 234);
+        background: rgba(189, 189, 189, 0.5);
+    }
+
+    .hybridMenu.design_white_blue .leftMenu .menuButton:hover
+    {
+        border-left-color: rgb(21, 101, 192);
+        background: rgba(224, 224, 224, 0.5);
+    }
+
+    .hybridMenu.design_white_blue .leftMenu .menuButton.active:hover
+    {
+        border-left-color: rgb(0, 145, 234);
+    }
+
+    .hybridMenu.design_white_blue .leftMenu .menuSubMenuContent
+    {
+        border-left-color: rgba(189, 189, 189, 0.5);
+    }
+    
+    .hybridMenu.design_white_blue .leftMenu.minimal .menuButton-caption
+    {
+        background: rgb(238, 238, 238);
+    }
+    
+    .hybridMenu.design_white_blue .leftMenu.minimal .v-slot-menuSubMenuContent
+    {
+        background: rgba(238, 238, 238, 0.5);
+    }
+
+    .hybridMenu.design_white_blue .contentBox
+    {
+        background: rgb(245, 245, 245);
+    }
+
+    .hybridMenu.design_white_blue .topMenu .menuButton.captionOutside .menuButton-caption .caption, .hybridMenu.design_white_blue .topMenu .menuSubMenu .menuSubMenuContent
+    {
+        border-top-color: rgb(187, 222, 251);
+        background: rgb(238, 238, 238);
+        color: rgb(66, 66, 66);
+    }
+
+    .hybridMenu.design_white_blue .topMenu .menuButton.active
+    {
+        background: rgb(30, 136, 229);
+    }
+
+    .hybridMenu.design_white_blue .topMenu .menuButton:hover
+    {
+        color: rgb(245, 245, 245);
+        background: rgb(21, 101, 192);
+    }
+
+    .hybridMenu.design_white_blue .topMenu .menuButton.captionOutside .menuButton-caption .toolTop
+    {
+        color: rgb(0, 145, 234);
+        background: rgb(227, 242, 253);
+    }
+    
+    .hybridMenu.design_white_blue .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuHr, .hybridMenu.design_white_blue .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuButton:hover
+    {
+        background: rgba(189, 189, 189, 0.5);
+    }
+
+    .hybridMenu.design_white_blue .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notificationTitle, .hybridMenu.design_white_blue .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .goToNotisButton
+    {
+        background: rgb(0, 145, 234);
+        color: rgb(255, 255, 255);
+    }
+    
+    .hybridMenu.design_white_blue .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .goToNotisButton:hover
+    {
+        background: rgb(25, 118, 210);
+    }
+
+    .hybridMenu.design_white_blue .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage:hover
+    {
+        background: rgba(189, 189, 189, 0.5);
+    }
+    
+    .hybridMenu.design_white_blue .topMenu .menuSubMenu .menuSubMenuContent.notificationBox
+    {
+        background: rgb(238, 238, 238);
+    }
+    
+    .hybridMenu.design_white_blue .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .messageBox, .hybridMenu.design_white_blue .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notificationEmptyMessage
+    {
+        color: rgb(66, 66, 66);
+    }
+
+    .hybridMenu.design_white_blue .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage .notiMessageButton:hover
+    {
+        color: rgb(183, 28, 28);
+    }
+
+    .hybridMenu.design_white_blue .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage
+    {
+        border-bottom-color: rgb(189, 189, 189);
+    }
     
     
     /* Theme - Dark */

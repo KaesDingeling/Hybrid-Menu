@@ -9,6 +9,7 @@ public class MenuNotification {
 	private String description;
 	private NotificationCenter notificationCenter;
 	private HorizontalLayout messageLayout;
+	private boolean isReaded;
 	private long created;
 	
 	public MenuNotification(String title) {
@@ -43,6 +44,12 @@ public class MenuNotification {
 	}
 	public long getCreated() {
 		return created;
+	}
+	public boolean isReaded() {
+		return isReaded;
+	}
+	public void setReaded(boolean isReaded) {
+		this.isReaded = isReaded;
 	}
 	public void add() {
 		if (notificationCenter != null) {

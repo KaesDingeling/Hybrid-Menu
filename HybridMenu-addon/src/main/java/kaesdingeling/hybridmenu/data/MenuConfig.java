@@ -20,9 +20,16 @@ public class MenuConfig {
 	private Resource topMenuLeftMenuMinSizeIcon = FontAwesome.ANGLE_LEFT;
 	private Resource notificationCenterIcon = FontAwesome.BELL;
 	private Resource notificationCenterEmptyIcon = FontAwesome.BELL_O;
+	private boolean notificationCenterOpenIsReaded = true;
 	private int leftMenuButtonHeight = 50;
 	private int leftMenuLabelHeight = 45;
 	
+	public boolean isNotificationCenterOpenIsReaded() {
+		return notificationCenterOpenIsReaded;
+	}
+	public void setNotificationCenterOpenIsReaded(boolean notificationCenterOpenIsReaded) {
+		this.notificationCenterOpenIsReaded = notificationCenterOpenIsReaded;
+	}
 	public EMenuNotificationCenterSort getMenuNotificationCenterSort() {
 		return menuNotificationCenterSort;
 	}
