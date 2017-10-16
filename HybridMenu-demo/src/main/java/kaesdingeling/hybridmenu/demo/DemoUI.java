@@ -29,6 +29,7 @@ import kaesdingeling.hybridmenu.data.leftmenu.MenuButton;
 import kaesdingeling.hybridmenu.data.leftmenu.MenuSubMenu;
 import kaesdingeling.hybridmenu.data.top.NotificationCenter;
 import kaesdingeling.hybridmenu.data.top.TopMenuButton;
+import kaesdingeling.hybridmenu.data.top.TopMenuLabel;
 import kaesdingeling.hybridmenu.data.top.TopMenuSubContent;
 import kaesdingeling.hybridmenu.demo.page.GroupPage;
 import kaesdingeling.hybridmenu.demo.page.HomePage;
@@ -158,17 +159,27 @@ public class DemoUI extends UI {
     	demoSettings.addLeftMenuButton(designDark);
     	
     	MenuButton designDarkVaadinMaterialConform = LeftMenuButtonBuilder.get()
-    			.setCaption("White Theme")
+    			.setCaption("Dark Material Theme")
     			.setIcon(VaadinIcons.PALETE)
     			.setUseOwnListener(true)
     			.build();
-    	designDarkVaadinMaterialConform.addClickListener(new ClickListener() {
-			@Override
-			public void buttonClick(ClickEvent event) {
-				hybridMenu.switchTheme(EMenuDesign.DARK_VAADIN_MATERIAL_CONFORM);
-			}
+    	designDarkVaadinMaterialConform.addClickListener(e -> {
+			hybridMenu.switchTheme(EMenuDesign.DARK_VAADIN_MATERIAL_CONFORM);
 		});
     	demoSettings.addLeftMenuButton(designDarkVaadinMaterialConform);
+    	
+    	MenuButton designWhiteColor = LeftMenuButtonBuilder.get()
+    			.setCaption("White Color Theme")
+    			.setIcon(VaadinIcons.PALETE)
+    			.setUseOwnListener(true)
+    			.build();
+    	designWhiteColor.addClickListener(new ClickListener() {
+			@Override
+			public void buttonClick(ClickEvent event) {
+				hybridMenu.switchTheme(EMenuDesign.WHITE_BLUE);
+			}
+		});
+    	demoSettings.addLeftMenuButton(designWhiteColor);
     	
     	MenuButton toggleMinimalViewButton = LeftMenuButtonBuilder.get()
     			.setCaption("Toggle MinimalView")
@@ -235,11 +246,14 @@ public class DemoUI extends UI {
     		
     	});
     	
-    	TopMenuLabelBuilder.get()
+    	TopMenuLabel label = TopMenuLabelBuilder.get()
     			.setCaption("<b>Hybrid</b> Menu")
-    			.addStyleName(EMenuStyle.LABEL_TITLE)
     			.setIcon(new ThemeResource("images/hybridmenu-Logo.png"))
     			.build(hybridMenu);
+    	
+    	label.getComponent().addClickListener(e -> {
+    		UI.getCurrent().getNavigator().navigateTo(HomePage.class.getSimpleName());
+    	});
     	
     	TopMenuButton testNoti = TopMenuButtonBuilder.get()
 				.setCaption("Add test noti")

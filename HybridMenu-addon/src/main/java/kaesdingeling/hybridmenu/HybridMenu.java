@@ -100,6 +100,16 @@ public class HybridMenu extends VerticalLayout {
 		}
 	}
 	
+	public void setLeftMenuVisible(boolean visible) {
+		leftMenu.setVisible(visible);
+	}
+	
+	public void setTopMenuVisible(boolean visible) {
+		if (topMenu != null) {
+			topMenu.setVisible(visible);
+		}
+	}
+	
 	public Layout getContent() {
 		return naviRootContent;
 	}
