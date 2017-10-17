@@ -62,154 +62,39 @@ public class DemoUI extends UI {
     	UI.getCurrent().getNavigator().addView(GroupPage.class.getSimpleName(), GroupPage.class);
     	UI.getCurrent().getNavigator().addView(MemberPage.class.getSimpleName(), MemberPage.class);
     	UI.getCurrent().getNavigator().addView(SettingsPage.class.getSimpleName(), SettingsPage.class);
+
+		if(hybridMenu.getMenuComponents().equals(EMenuComponents.ONLY_LEFT))
+    	buildLeftMenu(hybridMenu);
+		else
+			if(hybridMenu.getMenuComponents().equals(EMenuComponents.LEFT_WITH_TOP)) {
+				buildLeftMenu(hybridMenu);
+				buildTopOnlyMenu(hybridMenu);
+			}else
+				buildTopOnlyMenu(hybridMenu);
+
     	
-    	MenuButton homeButton = LeftMenuButtonBuilder.get()
-    			.setCaption("Home")
-    			.setIcon(VaadinIcons.HOME)
-    			.navigateTo(HomePage.class)
-    			.build();
-    	
-    	hybridMenu.addLeftMenuButton(homeButton);
-    	
-    	MenuButton settingsButton = LeftMenuButtonBuilder.get()
-    			.setCaption("Settings")
-    			.setIcon(VaadinIcons.COGS)
-    			.navigateTo(SettingsPage.class)
-    			.build();
-    	
-    	hybridMenu.addLeftMenuButton(settingsButton);
-    	
-    	
-    	
-    	MenuSubMenu memberList = LeftMenuSubMenuBuilder.get()
-    			.setCaption("Member")
-    			.setIcon(VaadinIcons.USERS)
-    			.setConfig(hybridMenu.getConfig())
-    			.build(hybridMenu);
-    	
-    	memberList.addLeftMenuButton(LeftMenuButtonBuilder.get()
-    			.setCaption("Settings")
-    			.setIcon(VaadinIcons.COGS)
-    			.navigateTo(SettingsPage.class)
-    			.build());
-    	
-    	memberList.addLeftMenuButton(LeftMenuButtonBuilder.get()
-    			.setCaption("Member")
-    			.setIcon(VaadinIcons.USER)
-    			.navigateTo(MemberPage.class)
-    			.build());
-    	
-    	memberList.addLeftMenuButton(LeftMenuButtonBuilder.get()
-    			.setCaption("Group")
-    			.setIcon(VaadinIcons.USERS)
-    			.navigateTo(GroupPage.class)
-    			.build());
-    	
-    	
-    	MenuSubMenu memberListTwo = LeftMenuSubMenuBuilder.get()
-    			.setCaption("member")
-    			.setIcon(VaadinIcons.USERS)
-    			.setConfig(hybridMenu.getConfig())
-    			.build(memberList);
-    	
-    	memberListTwo.addLeftMenuButton(LeftMenuButtonBuilder.get()
-    			.setCaption("Settings")
-    			.setIcon(VaadinIcons.COGS)
-    			.navigateTo(SettingsPage.class)
-    			.build());
-    	
-    	memberListTwo.addLeftMenuButton(LeftMenuButtonBuilder.get()
-    			.setCaption("Member")
-    			.setIcon(VaadinIcons.USER)
-    			.navigateTo(MemberPage.class)
-    			.build());
-    	
-    	
-    	
-    	MenuSubMenu demoSettings = LeftMenuSubMenuBuilder.get()
-    			.setCaption("Settings")
-    			.setIcon(VaadinIcons.COGS)
-    			.setConfig(hybridMenu.getConfig())
-    			.build(hybridMenu);
-    	
-    	MenuButton designWhite = LeftMenuButtonBuilder.get()
-    			.setCaption("White Theme")
-    			.setIcon(VaadinIcons.PALETE)
-    			.setUseOwnListener(true)
-    			.build();
-    	designWhite.addClickListener(new ClickListener() {
-			@Override
-			public void buttonClick(ClickEvent event) {
-				hybridMenu.switchTheme(EMenuDesign.WHITE);
-			}
-		});
-    	demoSettings.addLeftMenuButton(designWhite);
-    	
-    	MenuButton designDark = LeftMenuButtonBuilder.get()
-    			.setCaption("Dark Theme")
-    			.setIcon(VaadinIcons.PALETE)
-    			.setUseOwnListener(true)
-    			.build();
-    	designDark.addClickListener(new ClickListener() {
-			@Override
-			public void buttonClick(ClickEvent event) {
-				hybridMenu.switchTheme(EMenuDesign.DARK);
-			}
-		});
-    	demoSettings.addLeftMenuButton(designDark);
-    	
-    	MenuButton designDarkVaadinMaterialConform = LeftMenuButtonBuilder.get()
-    			.setCaption("Dark Material Theme")
-    			.setIcon(VaadinIcons.PALETE)
-    			.setUseOwnListener(true)
-    			.build();
-    	designDarkVaadinMaterialConform.addClickListener(e -> {
-			hybridMenu.switchTheme(EMenuDesign.DARK_VAADIN_MATERIAL_CONFORM);
-		});
-    	demoSettings.addLeftMenuButton(designDarkVaadinMaterialConform);
-    	
-    	MenuButton designWhiteColor = LeftMenuButtonBuilder.get()
-    			.setCaption("White Color Theme")
-    			.setIcon(VaadinIcons.PALETE)
-    			.setUseOwnListener(true)
-    			.build();
-    	designWhiteColor.addClickListener(new ClickListener() {
-			@Override
-			public void buttonClick(ClickEvent event) {
-				hybridMenu.switchTheme(EMenuDesign.WHITE_BLUE);
-			}
-		});
-    	demoSettings.addLeftMenuButton(designWhiteColor);
-    	
-    	MenuButton toggleMinimalViewButton = LeftMenuButtonBuilder.get()
-    			.setCaption("Toggle MinimalView")
-    			.setIcon(VaadinIcons.PALETE)
-    			.setUseOwnListener(true)
-    			.build();
-    	toggleMinimalViewButton.addClickListener(new ClickListener() {
-			@Override
-			public void buttonClick(ClickEvent event) {
-				hybridMenu.setLeftMenuMinimal(!hybridMenu.isLeftMenuMinimal());
-			}
-		});
-    	demoSettings.addLeftMenuButton(toggleMinimalViewButton);
-    	
-    	TopMenuButtonBuilder.get()
-    			.setCaption("Home")
-    			.setIcon(VaadinIcons.HOME)
-    			.setAlignment(Alignment.MIDDLE_RIGHT)
-    			.setNavigateTo(HomePage.class)
-    			.build(hybridMenu);
-    	
-    	TopMenuButtonBuilder.get()
-    			.setCaption("Member")
-    			.setIcon(VaadinIcons.USER)
-    			.setAlignment(Alignment.MIDDLE_RIGHT)
-    			.setHideCaption(false)
-    			.setNavigateTo(MemberPage.class)
-    			.build(hybridMenu);
-    	
-    	TopMenuButtonBuilder.get()
+
+    	setContent(hybridMenu);
+    	VaadinSession.getCurrent().setAttribute(HybridMenu.class, hybridMenu);
+    }
+
+	private void buildTopOnlyMenu(HybridMenu hybridMenu) {
+		TopMenuButtonBuilder.get()
+				.setCaption("Home")
+				.setIcon(VaadinIcons.HOME)
+				.setAlignment(Alignment.MIDDLE_RIGHT)
+				.setNavigateTo(HomePage.class)
+				.build(hybridMenu);
+
+		TopMenuButtonBuilder.get()
+				.setCaption("Member")
+				.setIcon(VaadinIcons.USER)
+				.setAlignment(Alignment.MIDDLE_RIGHT)
+				.setHideCaption(false)
+				.setNavigateTo(MemberPage.class)
+				.build(hybridMenu);
+
+		TopMenuButtonBuilder.get()
 				.setCaption("Member")
 				.setIcon(VaadinIcons.USER)
 				.setAlignment(Alignment.MIDDLE_RIGHT)
@@ -217,65 +102,196 @@ public class DemoUI extends UI {
 				.addStyleName(EMenuStyle.ICON_RIGHT)
 				.setNavigateTo(MemberPage.class)
 				.build(hybridMenu);
-    	
-    	TopMenuSubContent userAccountMenu = TopMenuSubContentBuilder.get()
-    			.setButtonCaption("Test User")
-    			.setButtonIcon(new ThemeResource("images/profilDummy.jpg"))
-    			.addButtonStyleName(EMenuStyle.ICON_RIGHT)
-    			.addButtonStyleName(EMenuStyle.PROFILVIEW)
-    			.setAlignment(Alignment.MIDDLE_RIGHT)
-    			.build(hybridMenu);
-    	
-    	userAccountMenu.addLabel("Account");
-    	userAccountMenu.addHr();
-    	userAccountMenu.addButton("Test");
-    	userAccountMenu.addHr();
-    	userAccountMenu.addButton("Test 2");
-    	
-    	TopMenuButtonBuilder.get()
+
+		TopMenuSubContent userAccountMenu = TopMenuSubContentBuilder.get()
+				.setButtonCaption("Test User")
+				.setButtonIcon(new ThemeResource("images/profilDummy.jpg"))
+				.addButtonStyleName(EMenuStyle.ICON_RIGHT)
+				.addButtonStyleName(EMenuStyle.PROFILVIEW)
+				.setAlignment(Alignment.MIDDLE_RIGHT)
+				.build(hybridMenu);
+
+		userAccountMenu.addLabel("Account");
+		userAccountMenu.addHr();
+		userAccountMenu.addButton("Test");
+		userAccountMenu.addHr();
+		userAccountMenu.addButton("Test 2");
+
+		TopMenuButtonBuilder.get()
 				.setCaption("Home")
 				.setIcon(VaadinIcons.HOME)
 				.setAlignment(Alignment.MIDDLE_RIGHT)
 				.setToolTip("5")
 				.setNavigateTo(HomePage.class)
 				.build(hybridMenu);
-    	
-    	NotificationCenter notificationCenter = new NotificationCenter("No notifications found!", "Notifications", Alignment.MIDDLE_RIGHT, hybridMenu);
-    	
-    	notificationCenter.setShowAllButton("See All Notifications >", e -> {
-    		
-    	});
-    	
-    	TopMenuLabel label = TopMenuLabelBuilder.get()
-    			.setCaption("<b>Hybrid</b> Menu")
-    			.setIcon(new ThemeResource("images/hybridmenu-Logo.png"))
-    			.build(hybridMenu);
-    	
-    	label.getComponent().addClickListener(e -> {
-    		UI.getCurrent().getNavigator().navigateTo(HomePage.class.getSimpleName());
-    	});
-    	
-    	TopMenuButton testNoti = TopMenuButtonBuilder.get()
+
+		NotificationCenter notificationCenter = new NotificationCenter("No notifications found!", "Notifications", Alignment.MIDDLE_RIGHT, hybridMenu);
+
+		notificationCenter.setShowAllButton("See All Notifications >", e -> {
+
+		});
+
+		TopMenuLabel label = TopMenuLabelBuilder.get()
+				.setCaption("<b>Hybrid</b> Menu")
+				.setIcon(new ThemeResource("images/hybridmenu-Logo.png"))
+				.build(hybridMenu);
+
+		label.getComponent().addClickListener(e -> {
+			UI.getCurrent().getNavigator().navigateTo(HomePage.class.getSimpleName());
+		});
+
+		TopMenuButton testNoti = TopMenuButtonBuilder.get()
 				.setCaption("Add test noti")
 				.setIcon(VaadinIcons.BELL_O)
 				.setUseOwnListener(true)
 				.build(hybridMenu);
-    	
-    	testNoti.addClickListener(e -> {
-    		MenuNotificationCenterBuilder.get("Test")
-    			.withDescription("deasdasd")
-    			.withIcon(VaadinIcons.ANCHOR)
-    			.add(notificationCenter);
-    	});
-    	
-    	
-    	TopMenuButtonBuilder.get()
+
+		testNoti.addClickListener(e -> {
+			MenuNotificationCenterBuilder.get("Test")
+					.withDescription("deasdasd")
+					.withIcon(VaadinIcons.ANCHOR)
+					.add(notificationCenter);
+		});
+
+
+		TopMenuButtonBuilder.get()
 				.setCaption("Home")
 				.setIcon(VaadinIcons.HOME)
 				.setNavigateTo(HomePage.class)
 				.build(hybridMenu);
-    	
-    	setContent(hybridMenu);
-    	VaadinSession.getCurrent().setAttribute(HybridMenu.class, hybridMenu);
-    }
+
+	}
+
+	private void buildLeftMenu(HybridMenu hybridMenu) {
+		MenuButton homeButton = LeftMenuButtonBuilder.get()
+				.setCaption("Home")
+				.setIcon(VaadinIcons.HOME)
+				.navigateTo(HomePage.class)
+				.build();
+
+		hybridMenu.addLeftMenuButton(homeButton);
+
+		MenuButton settingsButton = LeftMenuButtonBuilder.get()
+				.setCaption("Settings")
+				.setIcon(VaadinIcons.COGS)
+				.navigateTo(SettingsPage.class)
+				.build();
+
+		hybridMenu.addLeftMenuButton(settingsButton);
+
+
+
+		MenuSubMenu memberList = LeftMenuSubMenuBuilder.get()
+				.setCaption("Member")
+				.setIcon(VaadinIcons.USERS)
+				.setConfig(hybridMenu.getConfig())
+				.build(hybridMenu);
+
+		memberList.addLeftMenuButton(LeftMenuButtonBuilder.get()
+				.setCaption("Settings")
+				.setIcon(VaadinIcons.COGS)
+				.navigateTo(SettingsPage.class)
+				.build());
+
+		memberList.addLeftMenuButton(LeftMenuButtonBuilder.get()
+				.setCaption("Member")
+				.setIcon(VaadinIcons.USER)
+				.navigateTo(MemberPage.class)
+				.build());
+
+		memberList.addLeftMenuButton(LeftMenuButtonBuilder.get()
+				.setCaption("Group")
+				.setIcon(VaadinIcons.USERS)
+				.navigateTo(GroupPage.class)
+				.build());
+
+
+		MenuSubMenu memberListTwo = LeftMenuSubMenuBuilder.get()
+				.setCaption("member")
+				.setIcon(VaadinIcons.USERS)
+				.setConfig(hybridMenu.getConfig())
+				.build(memberList);
+
+		memberListTwo.addLeftMenuButton(LeftMenuButtonBuilder.get()
+				.setCaption("Settings")
+				.setIcon(VaadinIcons.COGS)
+				.navigateTo(SettingsPage.class)
+				.build());
+
+		memberListTwo.addLeftMenuButton(LeftMenuButtonBuilder.get()
+				.setCaption("Member")
+				.setIcon(VaadinIcons.USER)
+				.navigateTo(MemberPage.class)
+				.build());
+
+
+
+		MenuSubMenu demoSettings = LeftMenuSubMenuBuilder.get()
+				.setCaption("Settings")
+				.setIcon(VaadinIcons.COGS)
+				.setConfig(hybridMenu.getConfig())
+				.build(hybridMenu);
+
+		MenuButton designWhite = LeftMenuButtonBuilder.get()
+				.setCaption("White Theme")
+				.setIcon(VaadinIcons.PALETE)
+				.setUseOwnListener(true)
+				.build();
+		designWhite.addClickListener(new ClickListener() {
+			@Override
+			public void buttonClick(ClickEvent event) {
+				hybridMenu.switchTheme(EMenuDesign.WHITE);
+			}
+		});
+		demoSettings.addLeftMenuButton(designWhite);
+
+		MenuButton designDark = LeftMenuButtonBuilder.get()
+				.setCaption("Dark Theme")
+				.setIcon(VaadinIcons.PALETE)
+				.setUseOwnListener(true)
+				.build();
+		designDark.addClickListener(new ClickListener() {
+			@Override
+			public void buttonClick(ClickEvent event) {
+				hybridMenu.switchTheme(EMenuDesign.DARK);
+			}
+		});
+		demoSettings.addLeftMenuButton(designDark);
+
+		MenuButton designDarkVaadinMaterialConform = LeftMenuButtonBuilder.get()
+				.setCaption("Dark Material Theme")
+				.setIcon(VaadinIcons.PALETE)
+				.setUseOwnListener(true)
+				.build();
+		designDarkVaadinMaterialConform.addClickListener(e -> {
+			hybridMenu.switchTheme(EMenuDesign.DARK_VAADIN_MATERIAL_CONFORM);
+		});
+		demoSettings.addLeftMenuButton(designDarkVaadinMaterialConform);
+
+		MenuButton designWhiteColor = LeftMenuButtonBuilder.get()
+				.setCaption("White Color Theme")
+				.setIcon(VaadinIcons.PALETE)
+				.setUseOwnListener(true)
+				.build();
+		designWhiteColor.addClickListener(new ClickListener() {
+			@Override
+			public void buttonClick(ClickEvent event) {
+				hybridMenu.switchTheme(EMenuDesign.WHITE_BLUE);
+			}
+		});
+		demoSettings.addLeftMenuButton(designWhiteColor);
+
+		MenuButton toggleMinimalViewButton = LeftMenuButtonBuilder.get()
+				.setCaption("Toggle MinimalView")
+				.setIcon(VaadinIcons.PALETE)
+				.setUseOwnListener(true)
+				.build();
+		toggleMinimalViewButton.addClickListener(new ClickListener() {
+			@Override
+			public void buttonClick(ClickEvent event) {
+				hybridMenu.setLeftMenuMinimal(!hybridMenu.isLeftMenuMinimal());
+			}
+		});
+		demoSettings.addLeftMenuButton(toggleMinimalViewButton);
+	}
 }
