@@ -54,7 +54,7 @@ public class DemoUI extends UI {
     	
     	HybridMenu hybridMenu = HybridMenuBuilder.get()
     			.setContent(new VerticalLayout())
-    			.setMenuComponent(EMenuComponents.LEFT_WITH_TOP)
+    			.setMenuComponent(EMenuComponents.ONLY_TOP)
     			.setConfig(menuConfig)
     			.build();
     	

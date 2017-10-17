@@ -69,6 +69,7 @@ public class HybridMenu extends VerticalLayout {
 					@Override
 					public boolean beforeViewChange(ViewChangeEvent event) {
 						viewChangeManager.manage(leftMenu, event);
+						viewChangeManager.manage(topMenu, event);
 						viewChangeManager.manage(menuItemList, event);
 						return true;
 					}
@@ -118,6 +119,15 @@ public class HybridMenu extends VerticalLayout {
 		topMenu.setSpacing(false);
 		topMenu.setStyleName("topMenu");
 		addComponent(topMenu);
+		leftMenuContent = new HorizontalLayout();
+		leftMenuContent.setStyleName("centralContent");
+		leftMenuContent.addComponents(naviRootContent);
+		leftMenuContent.setExpandRatio(naviRootContent, 1);
+		leftMenuContent.setComponentAlignment(naviRootContent, Alignment.TOP_CENTER);
+
+		addComponent(leftMenuContent);
+		setExpandRatio(leftMenuContent, 1);
+
 	}
 
 	public void setLeftMenuVisible(boolean visible) {
