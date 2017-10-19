@@ -284,6 +284,8 @@
         width: 250px;
         text-align: center;
         font-size: 18px;
+        outline: 0 !important;
+        cursor: pointer !important;
     }
 
     .hybridMenu .topMenu .menuLabel.labelTitle img
@@ -583,6 +585,7 @@
         opacity: 0;
         z-index: -1;
         margin-top: -100%;
+        white-space: nowrap;
         -webkit-transition: margin-top 0.3s ease-in-out, opacity 0.3s ease-in-out, z-index 0.3s ease-in-out;
         -moz-transition: margin-top 0.3s ease-in-out, opacity 0.3s ease-in-out, z-index 0.3s ease-in-out;
         -ms-transition: margin-top 0.3s ease-in-out, opacity 0.3s ease-in-out, z-index 0.3s ease-in-out; /* IE10 is actually unprefixed */

@@ -15026,6 +15026,8 @@ div.v-layout.v-horizontal.v-widget {
 	width: 250px;
 	text-align: center;
 	font-size: 18px;
+	outline: 0 !important;
+	cursor: pointer !important;
 }
 
 .demo .hybridMenu .topMenu .menuLabel.labelTitle img {
