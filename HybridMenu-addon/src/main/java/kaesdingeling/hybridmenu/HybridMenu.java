@@ -18,24 +18,25 @@ import java.util.List;
 
 public class HybridMenu extends VerticalLayout {
 	private static final long serialVersionUID = -4055770717384786366L;
-	
+
 	private ViewChangeManager viewChangeManager = new ViewChangeManager();
 	private MenuConfig config = null;
 	private boolean buildRunning = false;
 	private boolean initNavigator = true;
 	private boolean initViewChangeManager = true;
-	
+
+
 	/* Settings */
 	private EMenuComponents menuComponents = null;
-	
+
 	/* Components */
 	private Layout naviRootContent = null;
 	private HorizontalLayout topMenu = null;
 	private HorizontalLayout leftMenuContent = null;
 	private VerticalLayout leftMenu = null;
-	
+
 	private List<MenuItem> menuItemList = new ArrayList<MenuItem>();
-	
+
 	public HybridMenu() {
 		super();
 		setSizeFull();
@@ -43,7 +44,7 @@ public class HybridMenu extends VerticalLayout {
 		setMargin(false);
 		setSpacing(false);
 	}
-	
+
 	public void build() {
 		if (!buildRunning) {
 			if (config == null) {
@@ -68,84 +69,113 @@ public class HybridMenu extends VerticalLayout {
 					@Override
 					public boolean beforeViewChange(ViewChangeEvent event) {
 						viewChangeManager.manage(leftMenu, event);
+						viewChangeManager.manage(topMenu, event);
 						viewChangeManager.manage(menuItemList, event);
 						return true;
 					}
 				});
 			}
-			leftMenu = new VerticalLayout();
-			leftMenu.setWidth("250px");
-			leftMenu.setHeight("100%");
-			leftMenu.setSpacing(false);
-			leftMenu.setStyleName("leftMenu");
-			leftMenuContent = new HorizontalLayout();
-			leftMenuContent.setSizeFull();
-			leftMenuContent.setSpacing(false);
-			leftMenuContent.setStyleName("centralContent");
-			leftMenuContent.addComponents(leftMenu, naviRootContent);
-			leftMenuContent.setExpandRatio(naviRootContent, 1);
-			leftMenuContent.setComponentAlignment(leftMenu, Alignment.MIDDLE_LEFT);
-			leftMenuContent.setComponentAlignment(naviRootContent, Alignment.TOP_CENTER);
-			if (this.menuComponents.equals(EMenuComponents.LEFT_WITH_TOP)) {
-				topMenu = new HorizontalLayout();
-				topMenu.setHeight("50px");
-				topMenu.setWidth("100%");
-				topMenu.setSpacing(false);
-				topMenu.setStyleName("topMenu");
-				addComponent(topMenu);
+			if(this.menuComponents.equals(EMenuComponents.ONLY_TOP)){
+				buildTopMenu();
+				buildRunning =true;
 			}
-			addComponent(leftMenuContent);
-			setExpandRatio(leftMenuContent, 1);
-			buildRunning = true;
+			if (this.menuComponents.equals(EMenuComponents.ONLY_LEFT)) {
+				buildLeftMenu();
+				buildRunning = true;
+			}
+			if(this.menuComponents.equals(EMenuComponents.LEFT_WITH_TOP)){
+				buildTopMenu();
+				buildLeftMenu();
+				buildRunning = true;
+			}
+
+
 		}
 	}
-	
+
+	private void buildLeftMenu() {
+		leftMenu = new VerticalLayout();
+		leftMenu.setWidth("250px");
+		leftMenu.setHeight("100%");
+		leftMenu.setSpacing(false);
+		leftMenu.setStyleName("leftMenu");
+		leftMenuContent = new HorizontalLayout();
+		leftMenuContent.setSizeFull();
+		leftMenuContent.setSpacing(false);
+		leftMenuContent.setStyleName("centralContent");
+		leftMenuContent.addComponents(leftMenu, naviRootContent);
+		leftMenuContent.setExpandRatio(naviRootContent, 1);
+		leftMenuContent.setComponentAlignment(leftMenu, Alignment.MIDDLE_LEFT);
+		leftMenuContent.setComponentAlignment(naviRootContent, Alignment.TOP_CENTER);
+		addComponent(leftMenuContent);
+		setExpandRatio(leftMenuContent, 1);
+
+	}
+
+	private void buildTopMenu() {
+		topMenu = new HorizontalLayout();
+		topMenu.setHeight("50px");
+		topMenu.setWidth("100%");
+		topMenu.setSpacing(false);
+		topMenu.setStyleName("topMenu");
+		addComponent(topMenu);
+		leftMenuContent = new HorizontalLayout();
+		leftMenuContent.setStyleName("centralContent");
+		leftMenuContent.addComponents(naviRootContent);
+		leftMenuContent.setExpandRatio(naviRootContent, 1);
+		leftMenuContent.setComponentAlignment(naviRootContent, Alignment.TOP_CENTER);
+
+		addComponent(leftMenuContent);
+		setExpandRatio(leftMenuContent, 1);
+
+	}
+
 	public void setLeftMenuVisible(boolean visible) {
 		leftMenu.setVisible(visible);
 	}
-	
+
 	public void setTopMenuVisible(boolean visible) {
 		if (topMenu != null) {
 			topMenu.setVisible(visible);
 		}
 	}
-	
+
 	public Layout getContent() {
 		return naviRootContent;
 	}
-	
+
 	public void setInitNavigator(boolean initNavigator) {
 		if (!buildRunning) {
 			this.initNavigator = initNavigator;
 		}
 	}
-	
+
 	public void setContent(Layout component) {
 		if (!buildRunning) {
 			naviRootContent = component;
 		}
 	}
-	
+
 	public void setConfig(MenuConfig config) {
 		if (!buildRunning) {
 			this.config = config;
 		}
 	}
-	
+
 	public void setMenuComponent(EMenuComponents menuComponents) {
 		if (!buildRunning) {
 			this.menuComponents = menuComponents;
 		}
-    }
-	
+	}
+
 	public void addLeftMenuButton(MenuButton menuButton) {
 		leftMenu.addComponent(menuButton);
 	}
-	
+
 	public void addLeftMenuSubMenu(MenuSubMenu menuSubMenu) {
 		leftMenu.addComponent(menuSubMenu);
 	}
-	
+
 	public void switchTheme(EMenuDesign menuDesign) {
 		if (menuDesign != null) {
 			removeStyleName(this.config.getMenuDesign().getName());
@@ -153,7 +183,7 @@ public class HybridMenu extends VerticalLayout {
 			addStyleName(this.config.getMenuDesign().getName());
 		}
 	}
-	
+
 	public void setLeftMenuMinimal(boolean minimal) {
 		if (minimal) {
 			if (!leftMenu.getStyleName().contains("minimal")) {
@@ -167,21 +197,23 @@ public class HybridMenu extends VerticalLayout {
 			}
 		}
 	}
-	
+
 	public boolean isLeftMenuMinimal() {
 		return leftMenu.getStyleName().contains("minimal");
 	}
-	
+
 	public MenuConfig getConfig() {
 		return config;
 	}
-	
+
 	public boolean addMenuItem(MenuItem menuItem) {
 		if (menuItem != null) {
+			if (menuItem instanceof MenuTopItem && menuComponents.equals(EMenuComponents.ONLY_TOP) && topMenu != null) {
+				addTopMenuItem(menuItem);
+				return true;
+			}
 			if (menuItem instanceof MenuTopItem && menuComponents.equals(EMenuComponents.LEFT_WITH_TOP) && topMenu != null) {
-				topMenu.addComponent(menuItem.getComponent());
-				topMenu.setComponentAlignment(menuItem.getComponent(), ((MenuTopItem) menuItem).getAlignment());
-				menuItemList.add(menuItem);
+				addTopMenuItem(menuItem);
 				return true;
 			} else {
 				if (leftMenu != null) {
@@ -195,5 +227,20 @@ public class HybridMenu extends VerticalLayout {
 		} else {
 			return false;
 		}
+	}
+
+	private void addTopMenuItem(MenuItem menuItem) {
+		topMenu.addComponent(menuItem.getComponent());
+		topMenu.setComponentAlignment(menuItem.getComponent(), ((MenuTopItem) menuItem).getAlignment());
+		menuItemList.add(menuItem);
+	}
+
+
+	public EMenuComponents getMenuComponents() {
+		return menuComponents;
+	}
+
+	public void setMenuComponents(EMenuComponents menuComponents) {
+		this.menuComponents = menuComponents;
 	}
 }

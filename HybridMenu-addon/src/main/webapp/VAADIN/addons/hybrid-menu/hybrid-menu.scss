@@ -26,6 +26,10 @@
         transition: width 0.75s ease-in-out;
     }
 
+    .hybridMenu .leftMenu:not(.minimal) {
+      overflow: auto;
+    }
+
     .hybridMenu .leftMenu .v-slot
     {
         height: auto !important;
