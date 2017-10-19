@@ -3,6 +3,7 @@ package kaesdingeling.hybridmenu.utils;
 import java.util.List;
 
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
+import com.vaadin.ui.AbstractOrderedLayout;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.VerticalLayout;
 
@@ -11,7 +12,7 @@ import kaesdingeling.hybridmenu.data.leftmenu.MenuButton;
 import kaesdingeling.hybridmenu.data.leftmenu.MenuSubMenu;
 
 public class ViewChangeManager {
-	public boolean manage(VerticalLayout menuContent, ViewChangeEvent event) {
+	public boolean manage(AbstractOrderedLayout menuContent, ViewChangeEvent event) {
 		boolean foundActiveButton = false;
 		if (menuContent != null) {
 			for (int i = 0; i < menuContent.getComponentCount(); i++) {
