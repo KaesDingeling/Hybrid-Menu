@@ -14803,6 +14803,10 @@ div.v-layout.v-horizontal.v-widget {
 	transition: width 0.75s ease-in-out;
 }
 
+.demo .hybridMenu .leftMenu:not(.minimal) {
+	overflow: auto;
+}
+
 .demo .hybridMenu .leftMenu .v-slot {
 	height: auto !important;
 }
@@ -15289,6 +15293,7 @@ div.v-layout.v-horizontal.v-widget {
 	opacity: 0;
 	z-index: -1;
 	margin-top: -100%;
+	white-space: nowrap;
 	-webkit-transition: margin-top 0.3s ease-in-out, opacity 0.3s ease-in-out, z-index 0.3s ease-in-out;
 	-moz-transition: margin-top 0.3s ease-in-out, opacity 0.3s ease-in-out, z-index 0.3s ease-in-out;
 	-ms-transition: margin-top 0.3s ease-in-out, opacity 0.3s ease-in-out, z-index 0.3s ease-in-out;

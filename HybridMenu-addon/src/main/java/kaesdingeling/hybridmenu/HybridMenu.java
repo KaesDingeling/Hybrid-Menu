@@ -75,21 +75,21 @@ public class HybridMenu extends VerticalLayout {
 					}
 				});
 			}
-			if(this.menuComponents.equals(EMenuComponents.ONLY_TOP)){
-				buildTopMenu();
-				buildRunning =true;
+			switch (menuComponents) {
+				case ONLY_TOP:
+					buildTopMenu();
+					break;
+				case ONLY_LEFT:
+					buildLeftMenu();
+					break;
+				case LEFT_WITH_TOP:
+					buildTopMenu();
+					buildLeftMenu();
+					break;
+				default:
+					break;
 			}
-			if (this.menuComponents.equals(EMenuComponents.ONLY_LEFT)) {
-				buildLeftMenu();
-				buildRunning = true;
-			}
-			if(this.menuComponents.equals(EMenuComponents.LEFT_WITH_TOP)){
-				buildTopMenu();
-				buildLeftMenu();
-				buildRunning = true;
-			}
-
-
+			buildRunning = true;
 		}
 	}
 
@@ -119,14 +119,16 @@ public class HybridMenu extends VerticalLayout {
 		topMenu.setSpacing(false);
 		topMenu.setStyleName("topMenu");
 		addComponent(topMenu);
-		leftMenuContent = new HorizontalLayout();
-		leftMenuContent.setStyleName("centralContent");
-		leftMenuContent.addComponents(naviRootContent);
-		leftMenuContent.setExpandRatio(naviRootContent, 1);
-		leftMenuContent.setComponentAlignment(naviRootContent, Alignment.TOP_CENTER);
-
-		addComponent(leftMenuContent);
-		setExpandRatio(leftMenuContent, 1);
+		if (!menuComponents.equals(EMenuComponents.LEFT_WITH_TOP)) {
+			leftMenuContent = new HorizontalLayout();
+			leftMenuContent.setStyleName("centralContent");
+			leftMenuContent.addComponents(naviRootContent);
+			leftMenuContent.setExpandRatio(naviRootContent, 1);
+			leftMenuContent.setComponentAlignment(naviRootContent, Alignment.TOP_CENTER);
+	
+			addComponent(leftMenuContent);
+			setExpandRatio(leftMenuContent, 1);
+		}
 
 	}
 
