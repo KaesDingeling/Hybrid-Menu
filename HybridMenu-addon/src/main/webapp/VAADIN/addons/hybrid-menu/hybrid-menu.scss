@@ -2,16 +2,139 @@
     .hybridMenu
     {
         z-index: 1;
+    
+        .menuButton:focus {
+            outline: none;
+        }
+
+        .contentBox
+        {
+            padding: 15px !important;
+        }
+
+        .v-slot-notificationList
+        {
+            position: fixed !important;
+            right: 0 !important;
+            top: 0 !important;
+            width: auto !important;
+            height: auto !important;
+            overflow: auto !important;
+            max-height: 100%;
+        }
+
+        .topMenu .v-slot-notificationList
+        {
+            top: 50px !important;
+            max-height: calc(100% - 50px) !important;
+        }
+        
+        
+        /* Notification */
+        .notificationItem
+        {
+            margin: 7px 15px;
+            width: 300px;
+            padding: 5px;
+            display: block;
+            border-radius: 3px;
+            position: relative;
+
+            .v-caption
+            {
+                display: block;
+
+                .v-captiontext
+                {
+                    font-size: 18px;
+                    margin: 0 0 0 7px;
+
+                    p.timeAgo
+                    {
+                        display: inline-block;
+                        margin: 6px 0 0 7px;
+                        font-size: 10px;
+                        position: absolute;
+                    }
+                    
+                    p.timeAgo:before
+                    {
+                        content: '';
+                        display: inline-block;
+                        border-radius: 50%;
+                        height: 4px;
+                        width: 4px;
+                        margin: 0 7px 1px 0;
+                    }
+                }
+            }
+            
+            .v-label
+            {
+                display: block;
+                margin: 0 7px 3px;
+                font-size: 14px;
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+            
+            .notificationItemCloseButton
+            {
+                position: absolute;
+                top: 0;
+                right: 0;
+                font-size: 12px;
+                height: 20px;
+                width: 25px;
+                cursor: pointer;
+                border-radius: 0 3px 0 3px;
+                
+                span.v-icon
+                {
+                    padding: 6px;
+                    transition: color 0.3s ease-in-out;
+                    border-radius: 0 3px 0 3px;
+                }
+                
+                span.notificationItemCloseButton-caption
+                {
+                    display: none !important;
+                }
+            }
+        }
+        
+        .notificationList .v-slot-notificationItem.v-slot-notificationItemShow:first-child .notificationItem
+        {
+            margin-top: 15px;
+        }
+        
+        .notificationList .v-slot-notificationItem.v-slot-notificationItemShow:last-child .notificationItem
+        {
+            margin-bottom: 15px;
+        }
+        
+        .v-slot-notificationItem
+        {
+            transform: scale(0);
+            transition: transform 0.5s ease-in-out, height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+            height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        
+        .notificationList .v-slot-notificationItem:first-child.v-slot-notificationItemShow, .notificationList .v-slot-notificationItem:last-child.v-slot-notificationItemShow
+        {
+            height: 90px !important;
+        }
+        
+        .v-slot-notificationItem.v-slot-notificationItemShow
+        {
+            opacity: 1;
+            transform: scale(1);
+            height: 83px;
+        }
     }
     
-    .hybridMenu .menuButton:focus {
-        outline: none;
-    }
-
-    .hybridMenu .contentBox
-    {
-        padding: 15px !important;
-    }
 
     /* Left Menu */
     .hybridMenu .leftMenu
@@ -311,7 +434,69 @@
         right: 0;
         border-top: 1px solid transparent;
         padding: 0;
-        opacity: 0;
+        opacity: 0;.hybridMenu
+    {
+        z-index: 1;
+    
+        .menuButton:focus {
+            outline: none;
+        }
+
+        .contentBox
+        {
+            padding: 15px !important;
+        }
+
+        .v-slot-notificationList
+        {
+            position: absolute !important;
+            right: 0 !important;
+        }
+
+        .topMenu .v-slot-notificationList
+        {
+            position: absolute !important;
+            right: 0 !important;
+            top: 50px !important;
+            width: auto !important;
+            max-height: calc(100% - 50px) !important;
+            overflow: auto !important;
+        }
+        
+        
+        /* Notification */
+        .notificationItem
+        {
+            margin: 15px;
+            width: 300px;
+            padding: 5px;
+            display: block;
+            border-radius: 3px;
+
+            .v-caption
+            {
+                display: block;
+
+                .v-captiontext
+                {
+                    font-size: 18px;
+                    margin: 0 0 0 7px;
+
+                    p.timeAgo
+                    {
+                        display: inline-block;
+                        margin: 0 0 0 5px;
+                        font-size: 10px;
+
+                        :before
+                        {
+                            content: '';
+                        }
+                    }
+                }
+            }
+        }
+    }
         z-index: -1;
         margin-top: -100%;
         -webkit-transition: margin-top 0.3s ease-in-out, opacity 0.3s ease-in-out, z-index 0.3s ease-in-out;
@@ -957,10 +1142,81 @@
     
     
     /* Theme - Dark Vaadin Material Conform */
+    $dark-material-color: rgb(245, 245, 245);
+    $dark-material-background: rgb(83, 83, 83);
+    
     .hybridMenu.design_dark_vaadin_material_conform
     {
-        color: rgb(245, 245, 245);
-        background: rgb(83, 83, 83);
+        color: $dark-material-color;
+        background: $dark-material-background;
+        
+        
+        /* Notification */
+        .notificationItem
+        {
+            background: rgb(53, 53, 53);
+            box-shadow: 0px 6px 7px -3px rgba(53, 53, 53, 0.7);
+
+            .v-caption .v-captiontext
+            {
+                color: rgb(100, 255, 218);
+
+                p.timeAgo
+                {
+                    color: $dark-material-color;
+                }
+                
+                p.timeAgo:before
+                {
+                    background: $dark-material-color;
+                }
+            }
+            
+            .notificationItemCloseButton
+            {
+                span.v-icon
+                {
+                    color: rgba(245, 245, 245, 0.5);
+                }
+                
+                span.v-icon:hover
+                {
+                    color: rgb(255, 87, 34);
+                }
+            }
+        }
+        
+        .notificationItem.notificationPriorityMedium
+        {
+            background: rgb(0, 96, 100);
+            box-shadow: 0px 6px 7px -3px rgba(0, 96, 100, 0.7);
+
+            .v-caption .v-captiontext
+            {
+                color: $dark-material-color;
+            }
+            
+            .notificationItemCloseButton span.v-icon:hover
+            {
+                color: $dark-material-color;
+            }
+        }
+        
+        .notificationItem.notificationPriorityHigh
+        {
+            background: rgb(191, 54, 12);
+            box-shadow: 0px 6px 7px -3px rgba(191, 54, 12, 0.7);
+
+            .v-caption .v-captiontext
+            {
+                color: $dark-material-color;
+            }
+            
+            .notificationItemCloseButton span.v-icon:hover
+            {
+                color: $dark-material-color;
+            }
+        }
     }
 
     .hybridMenu.design_dark_vaadin_material_conform .v-slot-topMenu

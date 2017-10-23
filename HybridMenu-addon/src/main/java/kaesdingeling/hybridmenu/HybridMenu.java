@@ -3,6 +3,8 @@ package kaesdingeling.hybridmenu;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.*;
+
+import kaesdingeling.hybridmenu.components.NotificationCenter;
 import kaesdingeling.hybridmenu.data.MenuConfig;
 import kaesdingeling.hybridmenu.data.MenuItem;
 import kaesdingeling.hybridmenu.data.MenuTopItem;
@@ -34,6 +36,7 @@ public class HybridMenu extends VerticalLayout {
 	private HorizontalLayout topMenu = null;
 	private HorizontalLayout leftMenuContent = null;
 	private VerticalLayout leftMenu = null;
+	private NotificationCenter notificationCenter = null;
 
 	private List<MenuItem> menuItemList = new ArrayList<MenuItem>();
 
@@ -78,13 +81,16 @@ public class HybridMenu extends VerticalLayout {
 			switch (menuComponents) {
 				case ONLY_TOP:
 					buildTopMenu();
+					topMenu.addComponent(notificationCenter);
 					break;
 				case ONLY_LEFT:
 					buildLeftMenu();
+					leftMenu.addComponent(notificationCenter);
 					break;
 				case LEFT_WITH_TOP:
 					buildTopMenu();
 					buildLeftMenu();
+					topMenu.addComponent(notificationCenter);
 					break;
 				default:
 					break;
@@ -236,7 +242,12 @@ public class HybridMenu extends VerticalLayout {
 		topMenu.setComponentAlignment(menuItem.getComponent(), ((MenuTopItem) menuItem).getAlignment());
 		menuItemList.add(menuItem);
 	}
-
+	public void setNotificationCenter(NotificationCenter notificationCenter) {
+		this.notificationCenter = notificationCenter;
+	}
+	public NotificationCenter getNotificationCenter() {
+		return notificationCenter;
+	}
 
 	public EMenuComponents getMenuComponents() {
 		return menuComponents;

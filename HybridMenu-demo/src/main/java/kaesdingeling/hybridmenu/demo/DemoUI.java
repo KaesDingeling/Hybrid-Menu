@@ -3,6 +3,8 @@ package kaesdingeling.hybridmenu.demo;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.Title;
 import com.vaadin.annotations.VaadinServletConfiguration;
+import com.vaadin.event.LayoutEvents.LayoutClickEvent;
+import com.vaadin.event.LayoutEvents.LayoutClickListener;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.server.ThemeResource;
 import com.vaadin.server.VaadinRequest;
@@ -16,18 +18,22 @@ import com.vaadin.ui.VerticalLayout;
 import kaesdingeling.hybridmenu.HybridMenu;
 import kaesdingeling.hybridmenu.builder.HybridMenuBuilder;
 import kaesdingeling.hybridmenu.builder.MenuNotificationCenterBuilder;
+import kaesdingeling.hybridmenu.builder.NotificationBuilder;
 import kaesdingeling.hybridmenu.builder.left.LeftMenuButtonBuilder;
 import kaesdingeling.hybridmenu.builder.left.LeftMenuSubMenuBuilder;
 import kaesdingeling.hybridmenu.builder.top.TopMenuButtonBuilder;
 import kaesdingeling.hybridmenu.builder.top.TopMenuLabelBuilder;
 import kaesdingeling.hybridmenu.builder.top.TopMenuSubContentBuilder;
+import kaesdingeling.hybridmenu.components.NotificationCenter;
 import kaesdingeling.hybridmenu.data.MenuConfig;
+import kaesdingeling.hybridmenu.data.Notification;
 import kaesdingeling.hybridmenu.data.enums.EMenuComponents;
 import kaesdingeling.hybridmenu.data.enums.EMenuDesign;
 import kaesdingeling.hybridmenu.data.enums.EMenuStyle;
+import kaesdingeling.hybridmenu.data.enums.ENotificationPriority;
 import kaesdingeling.hybridmenu.data.leftmenu.MenuButton;
 import kaesdingeling.hybridmenu.data.leftmenu.MenuSubMenu;
-import kaesdingeling.hybridmenu.data.top.NotificationCenter;
+import kaesdingeling.hybridmenu.data.listeners.INotificationClickListener;
 import kaesdingeling.hybridmenu.data.top.TopMenuButton;
 import kaesdingeling.hybridmenu.data.top.TopMenuLabel;
 import kaesdingeling.hybridmenu.data.top.TopMenuSubContent;
@@ -46,16 +52,23 @@ public class DemoUI extends UI {
     @VaadinServletConfiguration(productionMode = true, ui = DemoUI.class)
     public static class Servlet extends VaadinServlet {
     }
+    
+    private NotificationCenter notiCenter = null;
 
     @Override
     protected void init(VaadinRequest request) {
+    	UI.getCurrent().setPollInterval(5000);
+    	
     	MenuConfig menuConfig = new MenuConfig();
     	menuConfig.setMenuDesign(EMenuDesign.DARK_VAADIN_MATERIAL_CONFORM);
+    	
+    	notiCenter = new NotificationCenter(5000);
     	
     	HybridMenu hybridMenu = HybridMenuBuilder.get()
     			.setContent(new VerticalLayout())
     			.setMenuComponent(EMenuComponents.LEFT_WITH_TOP)
     			.setConfig(menuConfig)
+    			.withNotificationCenter(notiCenter)
     			.build();
     	
     	UI.getCurrent().getNavigator().addView(HomePage.class.getSimpleName(), HomePage.class);
@@ -124,12 +137,14 @@ public class DemoUI extends UI {
 				.setToolTip("5")
 				.setNavigateTo(HomePage.class)
 				.build(hybridMenu);
-
-		NotificationCenter notificationCenter = new NotificationCenter("No notifications found!", "Notifications", Alignment.MIDDLE_RIGHT, hybridMenu);
-
-		notificationCenter.setShowAllButton("See All Notifications >", e -> {
-
-		});
+		
+		TopMenuButton notiButton = TopMenuButtonBuilder.get()
+			.setCaption("Home")
+			.setIcon(VaadinIcons.BELL_O)
+			.setAlignment(Alignment.MIDDLE_RIGHT)
+			.build(hybridMenu);
+		
+		notiCenter.setNotificationButton(notiButton);
 
 		TopMenuLabel label = TopMenuLabelBuilder.get()
 				.setCaption("<b>Hybrid</b> Menu")
@@ -140,17 +155,59 @@ public class DemoUI extends UI {
 			UI.getCurrent().getNavigator().navigateTo(HomePage.class.getSimpleName());
 		});
 
-		TopMenuButton testNoti = TopMenuButtonBuilder.get()
-				.setCaption("Add test noti")
+		TopMenuButton notiButtonLow = TopMenuButtonBuilder.get()
+				.setCaption("Add Low noti")
 				.setIcon(VaadinIcons.BELL_O)
 				.setUseOwnListener(true)
 				.build(hybridMenu);
-
-		testNoti.addClickListener(e -> {
-			MenuNotificationCenterBuilder.get("Test")
-					.withDescription("deasdasd")
-					.withIcon(VaadinIcons.ANCHOR)
-					.add(notificationCenter);
+		
+		TopMenuButton notiButtonMedium = TopMenuButtonBuilder.get()
+				.setCaption("Add Medium noti")
+				.setIcon(VaadinIcons.BELL_O)
+				.setUseOwnListener(true)
+				.build(hybridMenu);
+		
+		TopMenuButton notiButtonHigh = TopMenuButtonBuilder.get()
+				.setCaption("Add High noti")
+				.setIcon(VaadinIcons.BELL_O)
+				.setUseOwnListener(true)
+				.build(hybridMenu);
+		
+		notiButtonLow.addClickListener(e -> {
+			NotificationBuilder.get(notiCenter)
+			.withCaption("Test")
+			.withDescription("descriptifghhgjghjkfjhgjfhjfoikjrsadopherduiothjreouithruetijpertheriuhton")
+			.withCloseButton()
+			.build();
+		});
+		
+		notiButtonMedium.addClickListener(e -> {
+			NotificationBuilder.get(notiCenter)
+			.withCaption("Test")
+			.withDescription("sdfgdfhg")
+			.withPriority(ENotificationPriority.MEDIUM)
+			.withLayoutClickListener(new INotificationClickListener() {
+				@Override
+				public void click(LayoutClickEvent event, Notification notification) {
+					notification.remove();
+				}
+			})
+			.build();
+		});
+		
+		notiButtonHigh.addClickListener(e -> {
+			NotificationBuilder.get(notiCenter)
+				.withCaption("Test")
+				.withDescription("descriptifghhgjghjkfjhgjfhjfoikjrsadopherduiothjreouithruetijpertheriuhton")
+				.withPriority(ENotificationPriority.HIGH)
+				.withCloseButton()
+				.withLayoutClickListener(new INotificationClickListener() {
+					@Override
+					public void click(LayoutClickEvent event, Notification notification) {
+						notification.remove();
+					}
+				})
+				.build();
 		});
 
 

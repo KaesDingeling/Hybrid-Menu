@@ -3,6 +3,7 @@ package kaesdingeling.hybridmenu.builder;
 import com.vaadin.ui.Layout;
 
 import kaesdingeling.hybridmenu.HybridMenu;
+import kaesdingeling.hybridmenu.components.NotificationCenter;
 import kaesdingeling.hybridmenu.data.MenuConfig;
 import kaesdingeling.hybridmenu.data.enums.EMenuComponents;
 
@@ -29,6 +30,11 @@ public class HybridMenuBuilder {
     
     public HybridMenuBuilder setConfig(MenuConfig config) {
     	hybridMenu.setConfig(config);
+    	return this;
+    }
+    
+    public HybridMenuBuilder withNotificationCenter(NotificationCenter notificationCenter) {
+    	hybridMenu.setNotificationCenter(notificationCenter);
     	return this;
     }
     
