@@ -27,6 +27,7 @@
         {
             top: 50px !important;
             max-height: calc(100% - 50px) !important;
+            margin: 8px 0 0;
         }
         
         
@@ -103,16 +104,6 @@
             }
         }
         
-        .notificationList .v-slot-notificationItem.v-slot-notificationItemShow:first-child .notificationItem
-        {
-            margin-top: 15px;
-        }
-        
-        .notificationList .v-slot-notificationItem.v-slot-notificationItemShow:last-child .notificationItem
-        {
-            margin-bottom: 15px;
-        }
-        
         .v-slot-notificationItem
         {
             transform: scale(0);
@@ -120,11 +111,6 @@
             height: 0;
             opacity: 0;
             overflow: hidden;
-        }
-        
-        .notificationList .v-slot-notificationItem:first-child.v-slot-notificationItemShow, .notificationList .v-slot-notificationItem:last-child.v-slot-notificationItemShow
-        {
-            height: 90px !important;
         }
         
         .v-slot-notificationItem.v-slot-notificationItemShow
@@ -790,531 +776,314 @@
         z-index: 100;
     }
     
+    $white-color: rgb(66, 66, 66);
+    $dark-color: rgb(245, 245, 245);
+    
+    $default-color-hide: 50%;
+    $default-menu-button-border-color-hover: rgb(255, 109, 0);
+    $default-menu-button-border-color-active: rgb(0, 145, 234);
+    $default-notification-prio-shadow: 70%;
+    $default-notification-prio-medium-background: rgb(0, 96, 100);
+    $default-notification-prio-high-background: rgb(191, 54, 12);
+    
+    $white-background-zone-one: rgb(245, 245, 245);
+    $white-background-zone-two: rgb(238, 238, 238);
+    $white-background-zone-three: rgb(224, 224, 224);
+    $white-menus-box-shadow-color: rgb(189, 189, 189);
+    
+    $white-blue-background-zone-three: rgb(25, 118, 210);
+    
+    $dark-background-zone-one: rgb(83, 83, 83);
+    $dark-background-zone-two: rgb(53, 53, 53);
+    $dark-background-zone-three: rgb(33, 33, 33);
+    $dark-menus-box-shadow-color: rgb(0, 0, 0);
     
     /* Theme - White */
     .hybridMenu.design_white
     {
-        color: rgb(66, 66, 66);
-        background: rgb(245, 245, 245);
+        @include hybridMenuThemeBuilder(
+            $white-color,
+            $dark-color,
+            $default-color-hide,
+            $white-background-zone-one,
+            $white-background-zone-two,
+            $white-background-zone-three,
+            $white-menus-box-shadow-color,
+            $default-menu-button-border-color-hover,
+            $default-menu-button-border-color-active,
+            $default-notification-prio-shadow,
+            $white-background-zone-two,
+            $default-notification-prio-medium-background,
+            $default-notification-prio-high-background
+            );
     }
-
-    .hybridMenu.design_white .v-slot-topMenu
-    {
-        box-shadow: 0px 6px 7px -3px rgba(189, 189, 189, 0.3);
-        background: rgb(224, 224, 224);
-    }
-
-    .hybridMenu.design_white .v-slot-leftMenu
-    {
-        background: rgb(238, 238, 238);
-    }
-    
-    .hybridMenu.design_white .leftMenu
-    {
-        box-shadow: 1px -1px 7px 0px rgba(189, 189, 189, 0.3);
-    }
-
-    .hybridMenu.design_white .leftMenu .menuButton.active
-    {
-        border-left-color: rgb(0, 145, 234);
-        background: rgba(189, 189, 189, 0.5);
-    }
-
-    .hybridMenu.design_white .leftMenu .menuButton:hover
-    {
-        border-left-color: rgb(255, 109, 0);
-        background: rgba(224, 224, 224, 0.5);
-    }
-
-    .hybridMenu.design_white .leftMenu .menuButton.active:hover
-    {
-        border-left-color: rgb(0, 145, 234);
-    }
-
-    .hybridMenu.design_white .leftMenu .menuSubMenuContent
-    {
-        border-left-color: rgba(189, 189, 189, 0.5);
-    }
-    
-    .hybridMenu.design_white .leftMenu.minimal .menuButton-caption
-    {
-        background: rgb(238, 238, 238);
-    }
-    
-    .hybridMenu.design_white .leftMenu.minimal .v-slot-menuSubMenuContent
-    {
-        background: rgba(238, 238, 238, 0.5);
-    }
-
-    .hybridMenu.design_white .contentBox
-    {
-        background: rgb(245, 245, 245);
-    }
-
-    .hybridMenu.design_white .topMenu .menuButton.captionOutside .menuButton-caption .caption, .hybridMenu.design_white .topMenu .menuSubMenu .menuSubMenuContent
-    {
-        border-top-color: rgb(255, 109, 0);
-        background: rgb(238, 238, 238);
-    }
-
-    .hybridMenu.design_white .topMenu .menuButton.active
-    {
-        background: rgb(238, 238, 238);
-    }
-
-    .hybridMenu.design_white .topMenu .menuButton:hover
-    {
-        color: rgb(245, 245, 245);
-        background: rgb(255, 109, 0);
-    }
-
-    .hybridMenu.design_white .topMenu .menuButton:hover .menuButton-caption .caption, .hybridMenu.design_white .topMenu .menuButton .menuButton-caption .caption
-    {
-        color: rgb(66, 66, 66) !important;
-    }
-
-    .hybridMenu.design_white .topMenu .menuButton.captionOutside .menuButton-caption .toolTop
-    {
-        color: rgb(255, 255, 255);
-        background: rgb(33, 150, 243);
-    }
-
-    .hybridMenu.design_white .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuHr, .hybridMenu.design_white .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuButton:hover
-    {
-        background: rgba(189, 189, 189, 0.5);
-    }
-
-    .hybridMenu.design_white .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notificationTitle, .hybridMenu.design_white .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .goToNotisButton
-    {
-        background: rgb(224, 224, 224);
-    }
-
-    .hybridMenu.design_white .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .goToNotisButton:hover, .hybridMenu.design_white .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage:hover
-    {
-        background: rgba(224, 224, 224, 0.5);
-    }
-
-    .hybridMenu.design_white .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage .notiMessageButton:hover
-    {
-        color: rgb(183, 28, 28);
-    }
-
-    .hybridMenu.design_white .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage
-    {
-        border-bottom-color: rgb(189, 189, 189);
-    }
-    
-    
     
     /* Theme - White Blue */
     .hybridMenu.design_white_blue
     {
-        color: rgb(66, 66, 66);
-        background: rgb(245, 245, 245);
+        @include hybridMenuThemeBuilder(
+            $white-color,
+            $dark-color,
+            $default-color-hide,
+            $white-background-zone-one,
+            $white-background-zone-two,
+            $white-blue-background-zone-three,
+            $white-menus-box-shadow-color,
+            $default-menu-button-border-color-hover,
+            $default-menu-button-border-color-active,
+            $default-notification-prio-shadow,
+            $white-background-zone-two,
+            $default-notification-prio-medium-background,
+            $default-notification-prio-high-background
+            );
     }
-
-    .hybridMenu.design_white_blue .v-slot-topMenu
-    {
-        box-shadow: 0px 6px 7px -3px rgba(189, 189, 189, 0.3);
-        background: rgb(25, 118, 210);
-        color: rgb(255, 255, 255);
-    }
-
-    .hybridMenu.design_white_blue .v-slot-leftMenu
-    {
-        background: rgb(238, 238, 238);
-    }
-    
-    .hybridMenu.design_white_blue .leftMenu
-    {
-        box-shadow: 1px -1px 7px 0px rgba(189, 189, 189, 0.3);
-    }
-
-    .hybridMenu.design_white_blue .leftMenu .menuButton.active
-    {
-        border-left-color: rgb(0, 145, 234);
-        background: rgba(189, 189, 189, 0.5);
-    }
-
-    .hybridMenu.design_white_blue .leftMenu .menuButton:hover
-    {
-        border-left-color: rgb(21, 101, 192);
-        background: rgba(224, 224, 224, 0.5);
-    }
-
-    .hybridMenu.design_white_blue .leftMenu .menuButton.active:hover
-    {
-        border-left-color: rgb(0, 145, 234);
-    }
-
-    .hybridMenu.design_white_blue .leftMenu .menuSubMenuContent
-    {
-        border-left-color: rgba(189, 189, 189, 0.5);
-    }
-    
-    .hybridMenu.design_white_blue .leftMenu.minimal .menuButton-caption
-    {
-        background: rgb(238, 238, 238);
-    }
-    
-    .hybridMenu.design_white_blue .leftMenu.minimal .v-slot-menuSubMenuContent
-    {
-        background: rgba(238, 238, 238, 0.5);
-    }
-
-    .hybridMenu.design_white_blue .contentBox
-    {
-        background: rgb(245, 245, 245);
-    }
-
-    .hybridMenu.design_white_blue .topMenu .menuButton.captionOutside .menuButton-caption .caption, .hybridMenu.design_white_blue .topMenu .menuSubMenu .menuSubMenuContent
-    {
-        border-top-color: rgb(187, 222, 251);
-        background: rgb(238, 238, 238);
-        color: rgb(66, 66, 66);
-    }
-
-    .hybridMenu.design_white_blue .topMenu .menuButton.active
-    {
-        background: rgb(30, 136, 229);
-    }
-
-    .hybridMenu.design_white_blue .topMenu .menuButton:hover
-    {
-        color: rgb(245, 245, 245);
-        background: rgb(21, 101, 192);
-    }
-
-    .hybridMenu.design_white_blue .topMenu .menuButton.captionOutside .menuButton-caption .toolTop
-    {
-        color: rgb(0, 145, 234);
-        background: rgb(227, 242, 253);
-    }
-    
-    .hybridMenu.design_white_blue .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuHr, .hybridMenu.design_white_blue .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuButton:hover
-    {
-        background: rgba(189, 189, 189, 0.5);
-    }
-
-    .hybridMenu.design_white_blue .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notificationTitle, .hybridMenu.design_white_blue .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .goToNotisButton
-    {
-        background: rgb(0, 145, 234);
-        color: rgb(255, 255, 255);
-    }
-    
-    .hybridMenu.design_white_blue .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .goToNotisButton:hover
-    {
-        background: rgb(25, 118, 210);
-    }
-
-    .hybridMenu.design_white_blue .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage:hover
-    {
-        background: rgba(189, 189, 189, 0.5);
-    }
-    
-    .hybridMenu.design_white_blue .topMenu .menuSubMenu .menuSubMenuContent.notificationBox
-    {
-        background: rgb(238, 238, 238);
-    }
-    
-    .hybridMenu.design_white_blue .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .messageBox, .hybridMenu.design_white_blue .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notificationEmptyMessage
-    {
-        color: rgb(66, 66, 66);
-    }
-
-    .hybridMenu.design_white_blue .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage .notiMessageButton:hover
-    {
-        color: rgb(183, 28, 28);
-    }
-
-    .hybridMenu.design_white_blue .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage
-    {
-        border-bottom-color: rgb(189, 189, 189);
-    }
-    
     
     /* Theme - Dark */
     .hybridMenu.design_dark
     {
-        color: rgb(245, 245, 245);
-        background: rgb(117, 117, 117);
+        @include hybridMenuThemeBuilder(
+            $white-color,
+            $dark-color,
+            $default-color-hide,
+            $dark-background-zone-one,
+            $dark-background-zone-two,
+            $dark-background-zone-three,
+            $dark-menus-box-shadow-color,
+            $default-menu-button-border-color-hover,
+            $default-menu-button-border-color-active,
+            $default-notification-prio-shadow,
+            $dark-background-zone-two,
+            $default-notification-prio-medium-background,
+            $default-notification-prio-high-background
+            );
     }
-
-    .hybridMenu.design_dark .v-slot-topMenu
-    {
-        box-shadow: 0px 6px 7px -3px rgba(117, 117, 117, 0.3);
-        background: rgb(66, 66, 66);
-    }
-
-    .hybridMenu.design_dark .v-slot-leftMenu
-    {
-        background: rgb(97, 97, 97);
-    }
-    
-    .hybridMenu.design_dark .leftMenu
-    {
-        box-shadow: 1px -1px 7px 0px rgba(117, 117, 117, 0.3);
-    }
-
-    .hybridMenu.design_dark .leftMenu .menuButton.active
-    {
-        border-left-color: rgb(0, 145, 234);
-        background: rgba(117, 117, 117, 0.5);
-    }
-
-    .hybridMenu.design_dark .leftMenu .menuButton:hover
-    {
-        border-left-color: rgb(255, 109, 0);
-        background: rgba(66, 66, 66, 0.5);
-    }
-
-    .hybridMenu.design_dark .leftMenu .menuButton.active:hover
-    {
-        border-left-color: rgb(0, 145, 234);
-    }
-
-    .hybridMenu.design_dark .leftMenu .menuSubMenuContent
-    {
-        border-left-color: rgb(117, 117, 117);
-    }
-    
-    .hybridMenu.design_dark .leftMenu.minimal .menuButton-caption
-    {
-        background: rgb(97, 97, 97);
-    }
-    
-    .hybridMenu.design_dark .leftMenu.minimal .v-slot-menuSubMenuContent
-    {
-        background: rgba(97, 97, 97, 0.5);
-    }
-
-    .hybridMenu.design_dark .contentBox
-    {
-        background: rgba(117, 117, 117, 0.5);
-    }
-
-    .hybridMenu.design_dark .topMenu .menuButton.captionOutside .menuButton-caption .caption, .hybridMenu.design_dark .topMenu .menuSubMenu .menuSubMenuContent
-    {
-        border-top-color: rgb(255, 109, 0);
-        background: rgb(97, 97, 97);
-    }
-
-    .hybridMenu.design_dark .topMenu .menuButton.active
-    {
-        background: rgb(97, 97, 97);
-    }
-
-    .hybridMenu.design_dark .topMenu .menuButton:hover
-    {
-        background: rgb(255, 109, 0);
-    }
-
-    .hybridMenu.design_dark .topMenu .menuButton.captionOutside .menuButton-caption .toolTop
-    {
-        background: rgb(33, 150, 243);
-    }
-
-    .hybridMenu.design_dark .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuHr, .hybridMenu.design_dark .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuButton:hover
-    {
-        background: rgb(117, 117, 117);
-    }
-
-    .hybridMenu.design_dark .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notificationTitle, .hybridMenu.design_dark .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .goToNotisButton
-    {
-        background: rgb(66, 66, 66);
-    }
-
-    .hybridMenu.design_dark .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .goToNotisButton:hover, .hybridMenu.design_dark .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage:hover
-    {
-        background: rgba(66, 66, 66, 0.5);
-    }
-
-    .hybridMenu.design_dark .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage .notiMessageButton:hover
-    {
-        color: rgb(183, 28, 28);
-    }
-
-    .hybridMenu.design_dark .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage
-    {
-        border-bottom-color: rgb(117, 117, 117);
-    }
-    
-    
     
     /* Theme - Dark Vaadin Material Conform */
-    $dark-material-color: rgb(245, 245, 245);
-    $dark-material-background: rgb(83, 83, 83);
-    
     .hybridMenu.design_dark_vaadin_material_conform
     {
-        color: $dark-material-color;
-        background: $dark-material-background;
+        @include hybridMenuThemeBuilder(
+            $white-color,
+            $dark-color,
+            $default-color-hide,
+            $dark-background-zone-one,
+            $dark-background-zone-two,
+            $dark-background-zone-three,
+            $dark-menus-box-shadow-color,
+            $default-menu-button-border-color-hover,
+            $default-menu-button-border-color-active,
+            $default-notification-prio-shadow,
+            $dark-background-zone-two,
+            $default-notification-prio-medium-background,
+            $default-notification-prio-high-background
+            );
+    }
+}
+
+@mixin hybridMenuThemeBuilder(
+    $white-color,
+    $dark-color,
+    $color-hide,
+    $background-zone-one,
+    $background-zone-two,
+    $background-zone-three,
+    $menus-box-shadow-color,
+    $menu-button-border-color-hover,
+    $menu-button-border-color-active,
+    $notification-prio-shadow,
+    $notification-prio-low-background,
+    $notification-prio-medium-background,
+    $notification-prio-high-background)
+{
+    color: colorDedect($background-zone-one, $dark-color, $white-color);
+    background: $background-zone-one;
+
+
+    /* Notification */
+    .notificationItem
+    {
+        background: $notification-prio-low-background;
+        box-shadow: 0px 6px 7px -3px rgba($notification-prio-low-background, calc($notification-prio-shadow / 100));
+        color: colorDedect($notification-prio-low-background, $dark-color, $white-color);
         
-        
-        /* Notification */
-        .notificationItem
+        .v-caption .v-captiontext
         {
-            background: rgb(53, 53, 53);
-            box-shadow: 0px 6px 7px -3px rgba(53, 53, 53, 0.7);
-
-            .v-caption .v-captiontext
+            p.timeAgo
             {
-                color: rgb(100, 255, 218);
-
-                p.timeAgo
-                {
-                    color: $dark-material-color;
-                }
-                
-                p.timeAgo:before
-                {
-                    background: $dark-material-color;
-                }
+                color: colorDedect($notification-prio-low-background, $dark-color, $white-color);
             }
-            
-            .notificationItemCloseButton
+
+            p.timeAgo:before
             {
-                span.v-icon
-                {
-                    color: rgba(245, 245, 245, 0.5);
-                }
-                
-                span.v-icon:hover
-                {
-                    color: rgb(255, 87, 34);
-                }
+                background: colorDedect($notification-prio-low-background, $dark-color, $white-color);
+            }
+        }
+
+        .notificationItemCloseButton
+        {
+            span.v-icon
+            {
+                color: rgba(colorDedect($notification-prio-low-background, $dark-color, $white-color), 0.5);
+            }
+
+            span.v-icon:hover
+            {
+                color: rgb(255, 87, 34);
+            }
+        }
+    }
+
+    .notificationItem.notificationPriorityMedium
+    {
+        background: $notification-prio-medium-background;
+        box-shadow: 0px 6px 7px -3px rgba($notification-prio-medium-background, calc($notification-prio-shadow / 100));
+        color: colorDedect($notification-prio-medium-background, $dark-color, $white-color);
+        
+        .v-caption .v-captiontext
+        {
+            color: colorDedect($notification-prio-medium-background, $dark-color, $white-color);
+            
+            p.timeAgo
+            {
+                color: colorDedect($notification-prio-medium-background, $dark-color, $white-color);
+            }
+
+            p.timeAgo:before
+            {
+                background: colorDedect($notification-prio-medium-background, $dark-color, $white-color);
             }
         }
         
-        .notificationItem.notificationPriorityMedium
+        .notificationItemCloseButton
         {
-            background: rgb(0, 96, 100);
-            box-shadow: 0px 6px 7px -3px rgba(0, 96, 100, 0.7);
-
-            .v-caption .v-captiontext
+            span.v-icon
             {
-                color: $dark-material-color;
+                color: rgba(colorDedect($notification-prio-medium-background, $dark-color, $white-color), 0.5);
             }
+        }
+    }
+
+    .notificationItem.notificationPriorityHigh
+    {
+        background: $notification-prio-high-background;
+        box-shadow: 0px 6px 7px -3px rgba($notification-prio-high-background, calc($notification-prio-shadow / 100));
+        color: colorDedect($notification-prio-high-background, $dark-color, $white-color);
+        
+        .v-caption .v-captiontext
+        {
+            color: colorDedect($notification-prio-high-background, $dark-color, $white-color);
             
-            .notificationItemCloseButton span.v-icon:hover
+            p.timeAgo
             {
-                color: $dark-material-color;
+                color: colorDedect($notification-prio-high-background, $dark-color, $white-color);
+            }
+
+            p.timeAgo:before
+            {
+                background: colorDedect($notification-prio-high-background, $dark-color, $white-color);
             }
         }
         
-        .notificationItem.notificationPriorityHigh
+        .notificationItemCloseButton
         {
-            background: rgb(191, 54, 12);
-            box-shadow: 0px 6px 7px -3px rgba(191, 54, 12, 0.7);
-
-            .v-caption .v-captiontext
+            span.v-icon
             {
-                color: $dark-material-color;
-            }
-            
-            .notificationItemCloseButton span.v-icon:hover
-            {
-                color: $dark-material-color;
+                color: rgba(colorDedect($notification-prio-high-background, $dark-color, $white-color), 0.5);
             }
         }
     }
 
-    .hybridMenu.design_dark_vaadin_material_conform .v-slot-topMenu
+    .v-slot-topMenu
     {
-        box-shadow: 0px 6px 7px -3px rgba(0, 0, 0, 0.3);
-        background: rgb(33, 33, 33);
+        box-shadow: 0px 6px 7px -3px rgba($menus-box-shadow-color, 0.5);
+        background: $background-zone-three;
+        color: colorDedect($background-zone-three, $dark-color, $white-color);
     }
 
-    .hybridMenu.design_dark_vaadin_material_conform .v-slot-leftMenu
+    .v-slot-leftMenu
     {
-        background: rgb(53, 53, 53);
-    }
-    
-    .hybridMenu.design_dark_vaadin_material_conform .leftMenu
-    {
-        box-shadow: 1px -1px 7px 0px rgba(0, 0, 0, 0.3);
+        background: $background-zone-two;
     }
 
-    .hybridMenu.design_dark_vaadin_material_conform .leftMenu .menuButton.active
+    .leftMenu
     {
-        border-left-color: rgb(0, 145, 234);
-        background: rgba(83, 83, 83, 0.5);
+        box-shadow: 1px -1px 7px 0px rgba($menus-box-shadow-color, 0.3);
+
+        .menuButton.active
+        {
+            border-left-color: $menu-button-border-color-active;
+            background: rgba($background-zone-one, 0.5);
+        }
+
+        .menuButton:hover
+        {
+            border-left-color: $menu-button-border-color-hover;
+            background: rgba($background-zone-three, 0.5);
+        }
+
+        .menuButton.active:hover
+        {
+            border-left-color: $menu-button-border-color-active;
+        }
+
+        .menuSubMenuContent
+        {
+            border-left-color: $background-zone-one;
+        }
     }
 
-    .hybridMenu.design_dark_vaadin_material_conform .leftMenu .menuButton:hover
+    .leftMenu.minimal .menuButton-caption
     {
-        border-left-color: rgb(255, 109, 0);
-        background: rgba(33, 33, 33, 0.5);
+        background: $background-zone-two;
     }
 
-    .hybridMenu.design_dark_vaadin_material_conform .leftMenu .menuButton.active:hover
+    .leftMenu.minimal .v-slot-menuSubMenuContent
     {
-        border-left-color: rgb(0, 145, 234);
+        background: rgba($background-zone-two, 0.5);
     }
 
-    .hybridMenu.design_dark_vaadin_material_conform .leftMenu .menuSubMenuContent
+    .contentBox
     {
-        border-left-color: rgb(83, 83, 83);
-    }
-    
-    .hybridMenu.design_dark_vaadin_material_conform .leftMenu.minimal .menuButton-caption
-    {
-        background: rgb(53, 53, 53);
-    }
-    
-    .hybridMenu.design_dark_vaadin_material_conform .leftMenu.minimal .v-slot-menuSubMenuContent
-    {
-        background: rgba(53, 53, 53, 0.5);
+        background: rgba($background-zone-one, 0.5);
     }
 
-    .hybridMenu.design_dark_vaadin_material_conform .contentBox
+    .topMenu
     {
-        background: rgba(83, 83, 83, 0.5);
-    }
+        .menuButton.captionOutside .menuButton-caption .caption, .menuSubMenu .menuSubMenuContent
+        {
+            border-top-color: $menu-button-border-color-hover;
+            background: $background-zone-two;
+        }
 
-    .hybridMenu.design_dark_vaadin_material_conform .topMenu .menuButton.captionOutside .menuButton-caption .caption, .hybridMenu.design_dark_vaadin_material_conform .topMenu .menuSubMenu .menuSubMenuContent
-    {
-        border-top-color: rgb(255, 109, 0);
-        background: rgb(53, 53, 53);
-    }
+        .menuButton.active
+        {
+            background: $background-zone-two;
+        }
 
-    .hybridMenu.design_dark_vaadin_material_conform .topMenu .menuButton.active
-    {
-        background: rgb(53, 53, 53);
-    }
+        .menuButton:hover
+        {
+            background: $menu-button-border-color-hover;
+        }
 
-    .hybridMenu.design_dark_vaadin_material_conform .topMenu .menuButton:hover
-    {
-        background: rgb(255, 109, 0);
-    }
+        .menuButton.captionOutside .menuButton-caption .toolTop
+        {
+            background: $menu-button-border-color-active;
+            color: colorDedect($menu-button-border-color-active, $dark-color, $white-color);
+        }
 
-    .hybridMenu.design_dark_vaadin_material_conform .topMenu .menuButton.captionOutside .menuButton-caption .toolTop
-    {
-        background: rgb(33, 150, 243);
+        .menuSubMenu
+        {
+            .menuSubMenuContent .menuSubMenuHr, .menuSubMenuContent .menuSubMenuButton:hover
+            {
+                background: $background-zone-one;
+            }
+        }
     }
+}
 
-    .hybridMenu.design_dark_vaadin_material_conform .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuHr, .hybridMenu.design_dark_vaadin_material_conform .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuButton:hover
-    {
-        background: rgb(83, 83, 83);
-    }
-
-    .hybridMenu.design_dark_vaadin_material_conform .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notificationTitle, .hybridMenu.design_dark_vaadin_material_conform .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .goToNotisButton
-    {
-        background: rgb(33, 33, 33);
-    }
-
-    .hybridMenu.design_dark_vaadin_material_conform .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .goToNotisButton:hover, .hybridMenu.design_dark_vaadin_material_conform .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage:hover
-    {
-        background: rgba(33, 33, 33, 0.5);
-    }
-
-    .hybridMenu.design_dark_vaadin_material_conform .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage .notiMessageButton:hover
-    {
-        color: rgb(183, 28, 28);
-    }
-
-    .hybridMenu.design_dark_vaadin_material_conform .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage
-    {
-        border-bottom-color: rgb(83, 83, 83);
+@function colorDedect($background, $dark-color, $white-color) {
+    @if (lightness($background) > 50) {
+        @return $white-color;
+    } @else {
+        @return $dark-color;
     }
 }

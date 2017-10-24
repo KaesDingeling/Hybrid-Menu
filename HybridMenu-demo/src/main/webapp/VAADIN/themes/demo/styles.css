@@ -14805,6 +14805,7 @@ div.v-layout.v-horizontal.v-widget {
 .demo .hybridMenu .topMenu .v-slot-notificationList {
 	top: 50px !important;
 	max-height: calc(100% - 50px) !important;
+	margin: 8px 0 0;
 }
 
 .demo .hybridMenu .notificationItem {
@@ -14870,24 +14871,12 @@ div.v-layout.v-horizontal.v-widget {
 	display: none !important;
 }
 
-.demo .hybridMenu .notificationList .v-slot-notificationItem.v-slot-notificationItemShow:first-child .notificationItem {
-	margin-top: 15px;
-}
-
-.demo .hybridMenu .notificationList .v-slot-notificationItem.v-slot-notificationItemShow:last-child .notificationItem {
-	margin-bottom: 15px;
-}
-
 .demo .hybridMenu .v-slot-notificationItem {
 	transform: scale(0);
 	transition: transform 0.5s ease-in-out, height 0.5s ease-in-out, opacity 0.5s ease-in-out;
 	height: 0;
 	opacity: 0;
 	overflow: hidden;
-}
-
-.demo .hybridMenu .notificationList .v-slot-notificationItem:first-child.v-slot-notificationItemShow, .demo .hybridMenu .notificationList .v-slot-notificationItem:last-child.v-slot-notificationItemShow {
-	height: 90px !important;
 }
 
 .demo .hybridMenu .v-slot-notificationItem.v-slot-notificationItemShow {
@@ -15470,9 +15459,76 @@ div.v-layout.v-horizontal.v-widget {
 	background: #f5f5f5;
 }
 
+.demo .hybridMenu.design_white .notificationItem {
+	background: #eeeeee;
+	box-shadow: 0px 6px 7px -3px rgba(238, 238, 238, 0);
+	color: #424242;
+}
+
+.demo .hybridMenu.design_white .notificationItem .v-caption .v-captiontext p.timeAgo {
+	color: #424242;
+}
+
+.demo .hybridMenu.design_white .notificationItem .v-caption .v-captiontext p.timeAgo:before {
+	background: #424242;
+}
+
+.demo .hybridMenu.design_white .notificationItem .notificationItemCloseButton span.v-icon {
+	color: rgba(66, 66, 66, 0.5);
+}
+
+.demo .hybridMenu.design_white .notificationItem .notificationItemCloseButton span.v-icon:hover {
+	color: #ff5722;
+}
+
+.demo .hybridMenu.design_white .notificationItem.notificationPriorityMedium {
+	background: #006064;
+	box-shadow: 0px 6px 7px -3px rgba(0, 96, 100, 0);
+	color: #f5f5f5;
+}
+
+.demo .hybridMenu.design_white .notificationItem.notificationPriorityMedium .v-caption .v-captiontext {
+	color: #f5f5f5;
+}
+
+.demo .hybridMenu.design_white .notificationItem.notificationPriorityMedium .v-caption .v-captiontext p.timeAgo {
+	color: #f5f5f5;
+}
+
+.demo .hybridMenu.design_white .notificationItem.notificationPriorityMedium .v-caption .v-captiontext p.timeAgo:before {
+	background: #f5f5f5;
+}
+
+.demo .hybridMenu.design_white .notificationItem.notificationPriorityMedium .notificationItemCloseButton span.v-icon {
+	color: rgba(245, 245, 245, 0.5);
+}
+
+.demo .hybridMenu.design_white .notificationItem.notificationPriorityHigh {
+	background: #bf360c;
+	box-shadow: 0px 6px 7px -3px rgba(191, 54, 12, 0);
+	color: #f5f5f5;
+}
+
+.demo .hybridMenu.design_white .notificationItem.notificationPriorityHigh .v-caption .v-captiontext {
+	color: #f5f5f5;
+}
+
+.demo .hybridMenu.design_white .notificationItem.notificationPriorityHigh .v-caption .v-captiontext p.timeAgo {
+	color: #f5f5f5;
+}
+
+.demo .hybridMenu.design_white .notificationItem.notificationPriorityHigh .v-caption .v-captiontext p.timeAgo:before {
+	background: #f5f5f5;
+}
+
+.demo .hybridMenu.design_white .notificationItem.notificationPriorityHigh .notificationItemCloseButton span.v-icon {
+	color: rgba(245, 245, 245, 0.5);
+}
+
 .demo .hybridMenu.design_white .v-slot-topMenu {
-	box-shadow: 0px 6px 7px -3px rgba(189, 189, 189, 0.3);
+	box-shadow: 0px 6px 7px -3px rgba(189, 189, 189, 0.5);
 	background: #e0e0e0;
+	color: #424242;
 }
 
 .demo .hybridMenu.design_white .v-slot-leftMenu {
@@ -15485,7 +15541,7 @@ div.v-layout.v-horizontal.v-widget {
 
 .demo .hybridMenu.design_white .leftMenu .menuButton.active {
 	border-left-color: #0091ea;
-	background: rgba(189, 189, 189, 0.5);
+	background: rgba(245, 245, 245, 0.5);
 }
 
 .demo .hybridMenu.design_white .leftMenu .menuButton:hover {
@@ -15498,7 +15554,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .demo .hybridMenu.design_white .leftMenu .menuSubMenuContent {
-	border-left-color: rgba(189, 189, 189, 0.5);
+	border-left-color: #f5f5f5;
 }
 
 .demo .hybridMenu.design_white .leftMenu.minimal .menuButton-caption {
@@ -15510,7 +15566,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .demo .hybridMenu.design_white .contentBox {
-	background: #f5f5f5;
+	background: rgba(245, 245, 245, 0.5);
 }
 
 .demo .hybridMenu.design_white .topMenu .menuButton.captionOutside .menuButton-caption .caption, .demo .hybridMenu.design_white .topMenu .menuSubMenu .menuSubMenuContent {
@@ -15523,37 +15579,16 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .demo .hybridMenu.design_white .topMenu .menuButton:hover {
-	color: #f5f5f5;
 	background: #ff6d00;
 }
 
-.demo .hybridMenu.design_white .topMenu .menuButton:hover .menuButton-caption .caption, .demo .hybridMenu.design_white .topMenu .menuButton .menuButton-caption .caption {
-	color: #424242 !important;
-}
-
 .demo .hybridMenu.design_white .topMenu .menuButton.captionOutside .menuButton-caption .toolTop {
-	color: white;
-	background: #2196f3;
+	background: #0091ea;
+	color: #f5f5f5;
 }
 
 .demo .hybridMenu.design_white .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuHr, .demo .hybridMenu.design_white .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuButton:hover {
-	background: rgba(189, 189, 189, 0.5);
-}
-
-.demo .hybridMenu.design_white .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notificationTitle, .demo .hybridMenu.design_white .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .goToNotisButton {
-	background: #e0e0e0;
-}
-
-.demo .hybridMenu.design_white .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .goToNotisButton:hover, .demo .hybridMenu.design_white .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage:hover {
-	background: rgba(224, 224, 224, 0.5);
-}
-
-.demo .hybridMenu.design_white .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage .notiMessageButton:hover {
-	color: #b71c1c;
-}
-
-.demo .hybridMenu.design_white .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage {
-	border-bottom-color: #bdbdbd;
+	background: #f5f5f5;
 }
 
 .demo .hybridMenu.design_white_blue {
@@ -15561,10 +15596,76 @@ div.v-layout.v-horizontal.v-widget {
 	background: #f5f5f5;
 }
 
+.demo .hybridMenu.design_white_blue .notificationItem {
+	background: #eeeeee;
+	box-shadow: 0px 6px 7px -3px rgba(238, 238, 238, 0);
+	color: #424242;
+}
+
+.demo .hybridMenu.design_white_blue .notificationItem .v-caption .v-captiontext p.timeAgo {
+	color: #424242;
+}
+
+.demo .hybridMenu.design_white_blue .notificationItem .v-caption .v-captiontext p.timeAgo:before {
+	background: #424242;
+}
+
+.demo .hybridMenu.design_white_blue .notificationItem .notificationItemCloseButton span.v-icon {
+	color: rgba(66, 66, 66, 0.5);
+}
+
+.demo .hybridMenu.design_white_blue .notificationItem .notificationItemCloseButton span.v-icon:hover {
+	color: #ff5722;
+}
+
+.demo .hybridMenu.design_white_blue .notificationItem.notificationPriorityMedium {
+	background: #006064;
+	box-shadow: 0px 6px 7px -3px rgba(0, 96, 100, 0);
+	color: #f5f5f5;
+}
+
+.demo .hybridMenu.design_white_blue .notificationItem.notificationPriorityMedium .v-caption .v-captiontext {
+	color: #f5f5f5;
+}
+
+.demo .hybridMenu.design_white_blue .notificationItem.notificationPriorityMedium .v-caption .v-captiontext p.timeAgo {
+	color: #f5f5f5;
+}
+
+.demo .hybridMenu.design_white_blue .notificationItem.notificationPriorityMedium .v-caption .v-captiontext p.timeAgo:before {
+	background: #f5f5f5;
+}
+
+.demo .hybridMenu.design_white_blue .notificationItem.notificationPriorityMedium .notificationItemCloseButton span.v-icon {
+	color: rgba(245, 245, 245, 0.5);
+}
+
+.demo .hybridMenu.design_white_blue .notificationItem.notificationPriorityHigh {
+	background: #bf360c;
+	box-shadow: 0px 6px 7px -3px rgba(191, 54, 12, 0);
+	color: #f5f5f5;
+}
+
+.demo .hybridMenu.design_white_blue .notificationItem.notificationPriorityHigh .v-caption .v-captiontext {
+	color: #f5f5f5;
+}
+
+.demo .hybridMenu.design_white_blue .notificationItem.notificationPriorityHigh .v-caption .v-captiontext p.timeAgo {
+	color: #f5f5f5;
+}
+
+.demo .hybridMenu.design_white_blue .notificationItem.notificationPriorityHigh .v-caption .v-captiontext p.timeAgo:before {
+	background: #f5f5f5;
+}
+
+.demo .hybridMenu.design_white_blue .notificationItem.notificationPriorityHigh .notificationItemCloseButton span.v-icon {
+	color: rgba(245, 245, 245, 0.5);
+}
+
 .demo .hybridMenu.design_white_blue .v-slot-topMenu {
-	box-shadow: 0px 6px 7px -3px rgba(189, 189, 189, 0.3);
+	box-shadow: 0px 6px 7px -3px rgba(189, 189, 189, 0.5);
 	background: #1976d2;
-	color: white;
+	color: #f5f5f5;
 }
 
 .demo .hybridMenu.design_white_blue .v-slot-leftMenu {
@@ -15577,12 +15678,12 @@ div.v-layout.v-horizontal.v-widget {
 
 .demo .hybridMenu.design_white_blue .leftMenu .menuButton.active {
 	border-left-color: #0091ea;
-	background: rgba(189, 189, 189, 0.5);
+	background: rgba(245, 245, 245, 0.5);
 }
 
 .demo .hybridMenu.design_white_blue .leftMenu .menuButton:hover {
-	border-left-color: #1565c0;
-	background: rgba(224, 224, 224, 0.5);
+	border-left-color: #ff6d00;
+	background: rgba(25, 118, 210, 0.5);
 }
 
 .demo .hybridMenu.design_white_blue .leftMenu .menuButton.active:hover {
@@ -15590,7 +15691,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .demo .hybridMenu.design_white_blue .leftMenu .menuSubMenuContent {
-	border-left-color: rgba(189, 189, 189, 0.5);
+	border-left-color: #f5f5f5;
 }
 
 .demo .hybridMenu.design_white_blue .leftMenu.minimal .menuButton-caption {
@@ -15602,88 +15703,124 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .demo .hybridMenu.design_white_blue .contentBox {
-	background: #f5f5f5;
+	background: rgba(245, 245, 245, 0.5);
 }
 
 .demo .hybridMenu.design_white_blue .topMenu .menuButton.captionOutside .menuButton-caption .caption, .demo .hybridMenu.design_white_blue .topMenu .menuSubMenu .menuSubMenuContent {
-	border-top-color: #bbdefb;
+	border-top-color: #ff6d00;
 	background: #eeeeee;
-	color: #424242;
 }
 
 .demo .hybridMenu.design_white_blue .topMenu .menuButton.active {
-	background: #1e88e5;
-}
-
-.demo .hybridMenu.design_white_blue .topMenu .menuButton:hover {
-	color: #f5f5f5;
-	background: #1565c0;
-}
-
-.demo .hybridMenu.design_white_blue .topMenu .menuButton.captionOutside .menuButton-caption .toolTop {
-	color: #0091ea;
-	background: #e3f2fd;
-}
-
-.demo .hybridMenu.design_white_blue .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuHr, .demo .hybridMenu.design_white_blue .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuButton:hover {
-	background: rgba(189, 189, 189, 0.5);
-}
-
-.demo .hybridMenu.design_white_blue .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notificationTitle, .demo .hybridMenu.design_white_blue .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .goToNotisButton {
-	background: #0091ea;
-	color: white;
-}
-
-.demo .hybridMenu.design_white_blue .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .goToNotisButton:hover {
-	background: #1976d2;
-}
-
-.demo .hybridMenu.design_white_blue .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage:hover {
-	background: rgba(189, 189, 189, 0.5);
-}
-
-.demo .hybridMenu.design_white_blue .topMenu .menuSubMenu .menuSubMenuContent.notificationBox {
 	background: #eeeeee;
 }
 
-.demo .hybridMenu.design_white_blue .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .messageBox, .demo .hybridMenu.design_white_blue .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notificationEmptyMessage {
-	color: #424242;
+.demo .hybridMenu.design_white_blue .topMenu .menuButton:hover {
+	background: #ff6d00;
 }
 
-.demo .hybridMenu.design_white_blue .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage .notiMessageButton:hover {
-	color: #b71c1c;
+.demo .hybridMenu.design_white_blue .topMenu .menuButton.captionOutside .menuButton-caption .toolTop {
+	background: #0091ea;
+	color: #f5f5f5;
 }
 
-.demo .hybridMenu.design_white_blue .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage {
-	border-bottom-color: #bdbdbd;
+.demo .hybridMenu.design_white_blue .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuHr, .demo .hybridMenu.design_white_blue .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuButton:hover {
+	background: #f5f5f5;
 }
 
 .demo .hybridMenu.design_dark {
 	color: #f5f5f5;
-	background: #757575;
+	background: #535353;
+}
+
+.demo .hybridMenu.design_dark .notificationItem {
+	background: #353535;
+	box-shadow: 0px 6px 7px -3px rgba(53, 53, 53, 0);
+	color: #f5f5f5;
+}
+
+.demo .hybridMenu.design_dark .notificationItem .v-caption .v-captiontext p.timeAgo {
+	color: #f5f5f5;
+}
+
+.demo .hybridMenu.design_dark .notificationItem .v-caption .v-captiontext p.timeAgo:before {
+	background: #f5f5f5;
+}
+
+.demo .hybridMenu.design_dark .notificationItem .notificationItemCloseButton span.v-icon {
+	color: rgba(245, 245, 245, 0.5);
+}
+
+.demo .hybridMenu.design_dark .notificationItem .notificationItemCloseButton span.v-icon:hover {
+	color: #ff5722;
+}
+
+.demo .hybridMenu.design_dark .notificationItem.notificationPriorityMedium {
+	background: #006064;
+	box-shadow: 0px 6px 7px -3px rgba(0, 96, 100, 0);
+	color: #f5f5f5;
+}
+
+.demo .hybridMenu.design_dark .notificationItem.notificationPriorityMedium .v-caption .v-captiontext {
+	color: #f5f5f5;
+}
+
+.demo .hybridMenu.design_dark .notificationItem.notificationPriorityMedium .v-caption .v-captiontext p.timeAgo {
+	color: #f5f5f5;
+}
+
+.demo .hybridMenu.design_dark .notificationItem.notificationPriorityMedium .v-caption .v-captiontext p.timeAgo:before {
+	background: #f5f5f5;
+}
+
+.demo .hybridMenu.design_dark .notificationItem.notificationPriorityMedium .notificationItemCloseButton span.v-icon {
+	color: rgba(245, 245, 245, 0.5);
+}
+
+.demo .hybridMenu.design_dark .notificationItem.notificationPriorityHigh {
+	background: #bf360c;
+	box-shadow: 0px 6px 7px -3px rgba(191, 54, 12, 0);
+	color: #f5f5f5;
+}
+
+.demo .hybridMenu.design_dark .notificationItem.notificationPriorityHigh .v-caption .v-captiontext {
+	color: #f5f5f5;
+}
+
+.demo .hybridMenu.design_dark .notificationItem.notificationPriorityHigh .v-caption .v-captiontext p.timeAgo {
+	color: #f5f5f5;
+}
+
+.demo .hybridMenu.design_dark .notificationItem.notificationPriorityHigh .v-caption .v-captiontext p.timeAgo:before {
+	background: #f5f5f5;
+}
+
+.demo .hybridMenu.design_dark .notificationItem.notificationPriorityHigh .notificationItemCloseButton span.v-icon {
+	color: rgba(245, 245, 245, 0.5);
 }
 
 .demo .hybridMenu.design_dark .v-slot-topMenu {
-	box-shadow: 0px 6px 7px -3px rgba(117, 117, 117, 0.3);
-	background: #424242;
+	box-shadow: 0px 6px 7px -3px rgba(0, 0, 0, 0.5);
+	background: #212121;
+	color: #f5f5f5;
 }
 
 .demo .hybridMenu.design_dark .v-slot-leftMenu {
-	background: #616161;
+	background: #353535;
 }
 
 .demo .hybridMenu.design_dark .leftMenu {
-	box-shadow: 1px -1px 7px 0px rgba(117, 117, 117, 0.3);
+	box-shadow: 1px -1px 7px 0px rgba(0, 0, 0, 0.3);
 }
 
 .demo .hybridMenu.design_dark .leftMenu .menuButton.active {
 	border-left-color: #0091ea;
-	background: rgba(117, 117, 117, 0.5);
+	background: rgba(83, 83, 83, 0.5);
 }
 
 .demo .hybridMenu.design_dark .leftMenu .menuButton:hover {
 	border-left-color: #ff6d00;
-	background: rgba(66, 66, 66, 0.5);
+	background: rgba(33, 33, 33, 0.5);
 }
 
 .demo .hybridMenu.design_dark .leftMenu .menuButton.active:hover {
@@ -15691,28 +15828,28 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .demo .hybridMenu.design_dark .leftMenu .menuSubMenuContent {
-	border-left-color: #757575;
+	border-left-color: #535353;
 }
 
 .demo .hybridMenu.design_dark .leftMenu.minimal .menuButton-caption {
-	background: #616161;
+	background: #353535;
 }
 
 .demo .hybridMenu.design_dark .leftMenu.minimal .v-slot-menuSubMenuContent {
-	background: rgba(97, 97, 97, 0.5);
+	background: rgba(53, 53, 53, 0.5);
 }
 
 .demo .hybridMenu.design_dark .contentBox {
-	background: rgba(117, 117, 117, 0.5);
+	background: rgba(83, 83, 83, 0.5);
 }
 
 .demo .hybridMenu.design_dark .topMenu .menuButton.captionOutside .menuButton-caption .caption, .demo .hybridMenu.design_dark .topMenu .menuSubMenu .menuSubMenuContent {
 	border-top-color: #ff6d00;
-	background: #616161;
+	background: #353535;
 }
 
 .demo .hybridMenu.design_dark .topMenu .menuButton.active {
-	background: #616161;
+	background: #353535;
 }
 
 .demo .hybridMenu.design_dark .topMenu .menuButton:hover {
@@ -15720,27 +15857,12 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .demo .hybridMenu.design_dark .topMenu .menuButton.captionOutside .menuButton-caption .toolTop {
-	background: #2196f3;
+	background: #0091ea;
+	color: #f5f5f5;
 }
 
 .demo .hybridMenu.design_dark .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuHr, .demo .hybridMenu.design_dark .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuButton:hover {
-	background: #757575;
-}
-
-.demo .hybridMenu.design_dark .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notificationTitle, .demo .hybridMenu.design_dark .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .goToNotisButton {
-	background: #424242;
-}
-
-.demo .hybridMenu.design_dark .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .goToNotisButton:hover, .demo .hybridMenu.design_dark .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage:hover {
-	background: rgba(66, 66, 66, 0.5);
-}
-
-.demo .hybridMenu.design_dark .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage .notiMessageButton:hover {
-	color: #b71c1c;
-}
-
-.demo .hybridMenu.design_dark .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage {
-	border-bottom-color: #757575;
+	background: #535353;
 }
 
 .demo .hybridMenu.design_dark_vaadin_material_conform {
@@ -15750,11 +15872,8 @@ div.v-layout.v-horizontal.v-widget {
 
 .demo .hybridMenu.design_dark_vaadin_material_conform .notificationItem {
 	background: #353535;
-	box-shadow: 0px 6px 7px -3px rgba(53, 53, 53, 0.7);
-}
-
-.demo .hybridMenu.design_dark_vaadin_material_conform .notificationItem .v-caption .v-captiontext {
-	color: #64ffda;
+	box-shadow: 0px 6px 7px -3px rgba(53, 53, 53, 0);
+	color: #f5f5f5;
 }
 
 .demo .hybridMenu.design_dark_vaadin_material_conform .notificationItem .v-caption .v-captiontext p.timeAgo {
@@ -15775,33 +15894,52 @@ div.v-layout.v-horizontal.v-widget {
 
 .demo .hybridMenu.design_dark_vaadin_material_conform .notificationItem.notificationPriorityMedium {
 	background: #006064;
-	box-shadow: 0px 6px 7px -3px rgba(0, 96, 100, 0.7);
+	box-shadow: 0px 6px 7px -3px rgba(0, 96, 100, 0);
+	color: #f5f5f5;
 }
 
 .demo .hybridMenu.design_dark_vaadin_material_conform .notificationItem.notificationPriorityMedium .v-caption .v-captiontext {
 	color: #f5f5f5;
 }
 
-.demo .hybridMenu.design_dark_vaadin_material_conform .notificationItem.notificationPriorityMedium .notificationItemCloseButton span.v-icon:hover {
+.demo .hybridMenu.design_dark_vaadin_material_conform .notificationItem.notificationPriorityMedium .v-caption .v-captiontext p.timeAgo {
 	color: #f5f5f5;
+}
+
+.demo .hybridMenu.design_dark_vaadin_material_conform .notificationItem.notificationPriorityMedium .v-caption .v-captiontext p.timeAgo:before {
+	background: #f5f5f5;
+}
+
+.demo .hybridMenu.design_dark_vaadin_material_conform .notificationItem.notificationPriorityMedium .notificationItemCloseButton span.v-icon {
+	color: rgba(245, 245, 245, 0.5);
 }
 
 .demo .hybridMenu.design_dark_vaadin_material_conform .notificationItem.notificationPriorityHigh {
 	background: #bf360c;
-	box-shadow: 0px 6px 7px -3px rgba(191, 54, 12, 0.7);
+	box-shadow: 0px 6px 7px -3px rgba(191, 54, 12, 0);
+	color: #f5f5f5;
 }
 
 .demo .hybridMenu.design_dark_vaadin_material_conform .notificationItem.notificationPriorityHigh .v-caption .v-captiontext {
 	color: #f5f5f5;
 }
 
-.demo .hybridMenu.design_dark_vaadin_material_conform .notificationItem.notificationPriorityHigh .notificationItemCloseButton span.v-icon:hover {
+.demo .hybridMenu.design_dark_vaadin_material_conform .notificationItem.notificationPriorityHigh .v-caption .v-captiontext p.timeAgo {
 	color: #f5f5f5;
 }
 
+.demo .hybridMenu.design_dark_vaadin_material_conform .notificationItem.notificationPriorityHigh .v-caption .v-captiontext p.timeAgo:before {
+	background: #f5f5f5;
+}
+
+.demo .hybridMenu.design_dark_vaadin_material_conform .notificationItem.notificationPriorityHigh .notificationItemCloseButton span.v-icon {
+	color: rgba(245, 245, 245, 0.5);
+}
+
 .demo .hybridMenu.design_dark_vaadin_material_conform .v-slot-topMenu {
-	box-shadow: 0px 6px 7px -3px rgba(0, 0, 0, 0.3);
+	box-shadow: 0px 6px 7px -3px rgba(0, 0, 0, 0.5);
 	background: #212121;
+	color: #f5f5f5;
 }
 
 .demo .hybridMenu.design_dark_vaadin_material_conform .v-slot-leftMenu {
@@ -15856,25 +15994,10 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .demo .hybridMenu.design_dark_vaadin_material_conform .topMenu .menuButton.captionOutside .menuButton-caption .toolTop {
-	background: #2196f3;
+	background: #0091ea;
+	color: #f5f5f5;
 }
 
 .demo .hybridMenu.design_dark_vaadin_material_conform .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuHr, .demo .hybridMenu.design_dark_vaadin_material_conform .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuButton:hover {
 	background: #535353;
-}
-
-.demo .hybridMenu.design_dark_vaadin_material_conform .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notificationTitle, .demo .hybridMenu.design_dark_vaadin_material_conform .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .goToNotisButton {
-	background: #212121;
-}
-
-.demo .hybridMenu.design_dark_vaadin_material_conform .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .goToNotisButton:hover, .demo .hybridMenu.design_dark_vaadin_material_conform .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage:hover {
-	background: rgba(33, 33, 33, 0.5);
-}
-
-.demo .hybridMenu.design_dark_vaadin_material_conform .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage .notiMessageButton:hover {
-	color: #b71c1c;
-}
-
-.demo .hybridMenu.design_dark_vaadin_material_conform .topMenu .menuSubMenu .menuSubMenuContent.notificationBox .notiMessage {
-	border-bottom-color: #535353;
 }
