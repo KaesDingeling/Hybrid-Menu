@@ -120,17 +120,21 @@ public class TopMenuButton extends MenuTopItem {
 	}
 	
 	public void updateCaption() {
-		if (toolTip == null) {
-			if (hideCaption) {
-				component.setCaption("<span class=\"caption\">" + orginalCapation + "</span>");
-			} else {
-				component.setCaption(orginalCapation);
-			}
-		} else {
-			if (orginalCapation == null) {
-				component.setCaption("<span class=\"toolTop\">" + toolTip + "</span>");
+		if (orginalCapation != null) {
+			if (toolTip == null) {
+				if (hideCaption) {
+					component.setCaption("<span class=\"caption\">" + orginalCapation + "</span>");
+				} else {
+					component.setCaption(orginalCapation);
+				}
 			} else {
 				component.setCaption("<span class=\"toolTop\">" + toolTip + "</span><span class=\"caption\">" + orginalCapation + "</span>");
+			}
+		} else {
+			if (toolTip != null) {
+				component.setCaption("<span class=\"toolTop\">" + toolTip + "</span>");
+			} else {
+				component.setCaption(null);
 			}
 		}
 	}

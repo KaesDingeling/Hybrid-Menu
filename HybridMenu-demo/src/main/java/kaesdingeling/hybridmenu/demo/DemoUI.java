@@ -1,10 +1,10 @@
 package kaesdingeling.hybridmenu.demo;
 
+import javax.servlet.annotation.WebServlet;
+
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.Title;
 import com.vaadin.annotations.VaadinServletConfiguration;
-import com.vaadin.event.LayoutEvents.LayoutClickEvent;
-import com.vaadin.event.LayoutEvents.LayoutClickListener;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.server.ThemeResource;
 import com.vaadin.server.VaadinRequest;
@@ -15,9 +15,9 @@ import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
+
 import kaesdingeling.hybridmenu.HybridMenu;
 import kaesdingeling.hybridmenu.builder.HybridMenuBuilder;
-import kaesdingeling.hybridmenu.builder.MenuNotificationCenterBuilder;
 import kaesdingeling.hybridmenu.builder.NotificationBuilder;
 import kaesdingeling.hybridmenu.builder.left.LeftMenuButtonBuilder;
 import kaesdingeling.hybridmenu.builder.left.LeftMenuSubMenuBuilder;
@@ -26,14 +26,12 @@ import kaesdingeling.hybridmenu.builder.top.TopMenuLabelBuilder;
 import kaesdingeling.hybridmenu.builder.top.TopMenuSubContentBuilder;
 import kaesdingeling.hybridmenu.components.NotificationCenter;
 import kaesdingeling.hybridmenu.data.MenuConfig;
-import kaesdingeling.hybridmenu.data.Notification;
 import kaesdingeling.hybridmenu.data.enums.EMenuComponents;
 import kaesdingeling.hybridmenu.data.enums.EMenuDesign;
 import kaesdingeling.hybridmenu.data.enums.EMenuStyle;
 import kaesdingeling.hybridmenu.data.enums.ENotificationPriority;
 import kaesdingeling.hybridmenu.data.leftmenu.MenuButton;
 import kaesdingeling.hybridmenu.data.leftmenu.MenuSubMenu;
-import kaesdingeling.hybridmenu.data.listeners.INotificationClickListener;
 import kaesdingeling.hybridmenu.data.top.TopMenuButton;
 import kaesdingeling.hybridmenu.data.top.TopMenuLabel;
 import kaesdingeling.hybridmenu.data.top.TopMenuSubContent;
@@ -41,8 +39,6 @@ import kaesdingeling.hybridmenu.demo.page.GroupPage;
 import kaesdingeling.hybridmenu.demo.page.HomePage;
 import kaesdingeling.hybridmenu.demo.page.MemberPage;
 import kaesdingeling.hybridmenu.demo.page.SettingsPage;
-
-import javax.servlet.annotation.WebServlet;
 
 @Theme("demo")
 @Title("HybridMenu Add-on Demo")
@@ -139,7 +135,6 @@ public class DemoUI extends UI {
 				.build(hybridMenu);
 		
 		TopMenuButton notiButton = TopMenuButtonBuilder.get()
-			.setCaption("Home")
 			.setIcon(VaadinIcons.BELL_O)
 			.setAlignment(Alignment.MIDDLE_RIGHT)
 			.build(hybridMenu);
@@ -186,12 +181,6 @@ public class DemoUI extends UI {
 			.withCaption("Test")
 			.withDescription("sdfgdfhg")
 			.withPriority(ENotificationPriority.MEDIUM)
-			.withLayoutClickListener(new INotificationClickListener() {
-				@Override
-				public void click(LayoutClickEvent event, Notification notification) {
-					notification.remove();
-				}
-			})
 			.build();
 		});
 		
@@ -200,13 +189,8 @@ public class DemoUI extends UI {
 				.withCaption("Test")
 				.withDescription("descriptifghhgjghjkfjhgjfhjfoikjrsadopherduiothjreouithruetijpertheriuhton")
 				.withPriority(ENotificationPriority.HIGH)
+				.withIcon(VaadinIcons.INFO)
 				.withCloseButton()
-				.withLayoutClickListener(new INotificationClickListener() {
-					@Override
-					public void click(LayoutClickEvent event, Notification notification) {
-						notification.remove();
-					}
-				})
 				.build();
 		});
 

@@ -6,6 +6,7 @@ import org.ocpsoft.prettytime.PrettyTime;
 
 import com.vaadin.event.LayoutEvents.LayoutClickListener;
 import com.vaadin.icons.VaadinIcons;
+import com.vaadin.server.Resource;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.CssLayout;
@@ -32,6 +33,14 @@ public class Notification {
 		contentLabel.setCaptionAsHtml(true);
 		content.addComponent(contentLabel);
 		content.setStyleName(STYLES.notificationItem);
+	}
+	public void setIcon(Resource icon) {
+		content.setIcon(icon);
+		if (icon != null && !content.getStyleName().contains(STYLES.notificationItemWithIcon)) {
+			content.addStyleName(STYLES.notificationItemWithIcon);
+		} else if (content.getStyleName().contains(STYLES.notificationItemWithIcon)) {
+			content.removeStyleName(STYLES.notificationItemWithIcon);
+		}
 	}
 	public void setCaption(String caption) {
 		this.caption = caption;

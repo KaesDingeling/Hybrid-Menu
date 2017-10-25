@@ -81,16 +81,22 @@ public class HybridMenu extends VerticalLayout {
 			switch (menuComponents) {
 				case ONLY_TOP:
 					buildTopMenu();
-					topMenu.addComponent(notificationCenter);
+					if (notificationCenter != null) {
+						topMenu.addComponent(notificationCenter);
+					}
 					break;
 				case ONLY_LEFT:
 					buildLeftMenu();
-					leftMenu.addComponent(notificationCenter);
+					if (notificationCenter != null) {
+						leftMenu.addComponent(notificationCenter);
+					}
 					break;
 				case LEFT_WITH_TOP:
 					buildTopMenu();
 					buildLeftMenu();
-					topMenu.addComponent(notificationCenter);
+					if (notificationCenter != null) {
+						topMenu.addComponent(notificationCenter);
+					}
 					break;
 				default:
 					break;

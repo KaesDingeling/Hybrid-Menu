@@ -2,6 +2,7 @@ package kaesdingeling.hybridmenu.builder;
 
 import com.vaadin.event.LayoutEvents.LayoutClickEvent;
 import com.vaadin.event.LayoutEvents.LayoutClickListener;
+import com.vaadin.server.Resource;
 import com.vaadin.ui.Component;
 
 import kaesdingeling.hybridmenu.components.NotificationCenter;
@@ -24,6 +25,10 @@ public class NotificationBuilder {
 	}
 	public NotificationBuilder withDescription(String description) {
 		notification.setDescription(description);
+		return this;
+	}
+	public NotificationBuilder withIcon(Resource icon) {
+		notification.setIcon(icon);
 		return this;
 	}
 	public NotificationBuilder withLayoutClickListener(INotificationClickListener listener) {

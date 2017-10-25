@@ -1,0 +1,227 @@
+@mixin hybridMenuThemeBuilder(
+    $white-color,
+    $dark-color,
+    $color-hide,
+    $background-zone-one,
+    $background-zone-two,
+    $background-zone-three,
+    $menus-box-shadow-color,
+    $menu-button-border-color-hover,
+    $menu-button-border-color-active,
+    $notification-prio-shadow,
+    $notification-prio-border-color-opacity,
+    $notification-prio-low-background,
+    $notification-prio-medium-background,
+    $notification-prio-high-background)
+{
+    color: colorDedect($background-zone-one, $dark-color, $white-color);
+    background: $background-zone-one;
+
+
+    /* Notification */
+    .topMenu .v-slot-notificationList .v-slot-notificationItem
+    {
+        .notificationItem.notificationItemWithIcon:before
+        {
+            color: rgba(colorDedect($notification-prio-low-background, $dark-color, $white-color), $notification-prio-border-color-opacity);
+        }
+        
+        .notificationItem.notificationPriorityMedium.notificationItemWithIcon:before
+        {
+            color: rgba(colorDedect($notification-prio-medium-background, $dark-color, $white-color), $notification-prio-border-color-opacity);
+        }
+        
+        .notificationItem.notificationPriorityHigh.notificationItemWithIcon:before
+        {
+            color: rgba(colorDedect($notification-prio-high-background, $dark-color, $white-color), $notification-prio-border-color-opacity);
+        }
+    }
+    
+    .notificationItem
+    {
+        background: $notification-prio-low-background;
+        box-shadow: 0px 6px 7px -3px rgba($notification-prio-low-background, $notification-prio-shadow);
+        color: colorDedect($notification-prio-low-background, $dark-color, $white-color);
+        
+        .v-caption .v-captiontext
+        {
+            p.timeAgo
+            {
+                color: colorDedect($notification-prio-low-background, $dark-color, $white-color);
+            }
+
+            p.timeAgo:before
+            {
+                background: colorDedect($notification-prio-low-background, $dark-color, $white-color);
+            }
+        }
+
+        .notificationItemCloseButton
+        {
+            span.v-icon
+            {
+                color: rgba(colorDedect($notification-prio-low-background, $dark-color, $white-color), 0.5);
+            }
+
+            span.v-icon:hover
+            {
+                color: rgb(255, 87, 34);
+            }
+        }
+    }
+
+    .notificationItem.notificationPriorityMedium
+    {
+        background: $notification-prio-medium-background;
+        box-shadow: 0px 6px 7px -3px rgba($notification-prio-medium-background, $notification-prio-shadow);
+        color: colorDedect($notification-prio-medium-background, $dark-color, $white-color);
+        
+        .v-caption .v-captiontext
+        {
+            color: colorDedect($notification-prio-medium-background, $dark-color, $white-color);
+            
+            p.timeAgo
+            {
+                color: colorDedect($notification-prio-medium-background, $dark-color, $white-color);
+            }
+
+            p.timeAgo:before
+            {
+                background: colorDedect($notification-prio-medium-background, $dark-color, $white-color);
+            }
+        }
+        
+        .notificationItemCloseButton
+        {
+            span.v-icon
+            {
+                color: rgba(colorDedect($notification-prio-medium-background, $dark-color, $white-color), 0.5);
+            }
+        }
+    }
+
+    .notificationItem.notificationPriorityHigh
+    {
+        background: $notification-prio-high-background;
+        box-shadow: 0px 6px 7px -3px rgba($notification-prio-high-background, $notification-prio-shadow);
+        color: colorDedect($notification-prio-high-background, $dark-color, $white-color);
+        
+        .v-caption .v-captiontext
+        {
+            color: colorDedect($notification-prio-high-background, $dark-color, $white-color);
+            
+            p.timeAgo
+            {
+                color: colorDedect($notification-prio-high-background, $dark-color, $white-color);
+            }
+
+            p.timeAgo:before
+            {
+                background: colorDedect($notification-prio-high-background, $dark-color, $white-color);
+            }
+        }
+        
+        .notificationItemCloseButton
+        {
+            span.v-icon
+            {
+                color: rgba(colorDedect($notification-prio-high-background, $dark-color, $white-color), 0.5);
+            }
+        }
+    }
+
+    .v-slot-topMenu
+    {
+        box-shadow: 0px 6px 7px -3px rgba($menus-box-shadow-color, 0.5);
+        background: $background-zone-three;
+        color: colorDedect($background-zone-three, $dark-color, $white-color);
+    }
+
+    .v-slot-leftMenu
+    {
+        background: $background-zone-two;
+    }
+
+    .leftMenu
+    {
+        box-shadow: 1px -1px 7px 0px rgba($menus-box-shadow-color, 0.3);
+
+        .menuButton.active
+        {
+            border-left-color: $menu-button-border-color-active;
+            background: rgba($background-zone-one, 0.5);
+        }
+
+        .menuButton:hover
+        {
+            border-left-color: $menu-button-border-color-hover;
+            background: rgba($background-zone-three, 0.5);
+        }
+
+        .menuButton.active:hover
+        {
+            border-left-color: $menu-button-border-color-active;
+        }
+
+        .menuSubMenuContent
+        {
+            border-left-color: $background-zone-one;
+        }
+    }
+
+    .leftMenu.minimal .menuButton-caption
+    {
+        background: $background-zone-two;
+    }
+
+    .leftMenu.minimal .v-slot-menuSubMenuContent
+    {
+        background: rgba($background-zone-two, 0.5);
+    }
+
+    .contentBox
+    {
+        background: rgba($background-zone-one, 0.5);
+    }
+
+    .topMenu
+    {
+        .menuButton.captionOutside .menuButton-caption .caption, .menuSubMenu .menuSubMenuContent
+        {
+            border-top-color: $menu-button-border-color-hover;
+            background: $background-zone-two;
+        }
+
+        .menuButton.active
+        {
+            background: $background-zone-two;
+        }
+
+        .menuButton:hover
+        {
+            background: $menu-button-border-color-hover;
+        }
+
+        .menuButton.captionOutside .menuButton-caption .toolTop
+        {
+            background: $menu-button-border-color-active;
+            color: colorDedect($menu-button-border-color-active, $dark-color, $white-color);
+        }
+
+        .menuSubMenu
+        {
+            .menuSubMenuContent .menuSubMenuHr, .menuSubMenuContent .menuSubMenuButton:hover
+            {
+                background: $background-zone-one;
+            }
+        }
+    }
+}
+
+@function colorDedect($background, $dark-color, $white-color) {
+    @if (lightness($background) > 50) {
+        @return $white-color;
+    } @else {
+        @return $dark-color;
+    }
+}

@@ -109,12 +109,15 @@ public class NotificationCenter extends VerticalLayout {
 		this.showAll = showAll;
 		if (showAll) {
 			for (Notification notification : notificationListHigh) {
+				notification.makeAsReaded();
 				notification.show();
 			}
 			for (Notification notification : notificationListMedium) {
+				notification.makeAsReaded();
 				notification.show();
 			}
 			for (Notification notification : notificationListLow) {
+				notification.makeAsReaded();
 				notification.show();
 			}
 		} else {
@@ -133,17 +136,17 @@ public class NotificationCenter extends VerticalLayout {
 	public int unReaded() {
 		int unReaded = 0;
 		for (Notification notification : notificationListHigh) {
-			if (!notification.isReaded()) {
+			if (!notification.isReaded() && !notification.toRemove()) {
 				unReaded++;
 			}
 		}
 		for (Notification notification : notificationListMedium) {
-			if (!notification.isReaded()) {
+			if (!notification.isReaded() && !notification.toRemove()) {
 				unReaded++;
 			}
 		}
 		for (Notification notification : notificationListLow) {
-			if (!notification.isReaded()) {
+			if (!notification.isReaded() && !notification.toRemove()) {
 				unReaded++;
 			}
 		}
