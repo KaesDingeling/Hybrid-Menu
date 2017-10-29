@@ -1,227 +1,210 @@
 @mixin hybridMenuThemeBuilder(
-    $white-color,
+    /* Colors */
     $dark-color,
-    $color-hide,
-    $background-zone-one,
-    $background-zone-two,
-    $background-zone-three,
-    $menus-box-shadow-color,
-    $menu-button-border-color-hover,
-    $menu-button-border-color-active,
-    $notification-prio-shadow,
-    $notification-prio-border-color-opacity,
+    $white-color,
+    /* Content-Background */
+    $content-background,
+    /* Notifications */
     $notification-prio-low-background,
     $notification-prio-medium-background,
-    $notification-prio-high-background)
+    $notification-prio-high-background,
+    $notification-border-color-opacity,
+    $notification-shadow,
+    $notification-close-button-hover,
+    $notification-close-button-opacity,
+    /* Left-Menu */
+    $menu-left-background,
+    $menu-left-shadow,
+    $menu-left-shadow-opacity,
+    $menu-left-button-opacity,
+    $menu-left-button-hover,
+    $menu-left-button-border-hover,
+    $menu-left-button-active,
+    $menu-left-button-border-active,
+    $menu-left-sub-menu-border,
+    $menu-left-button-tooltip,
+    /* Top-Menu */
+    $menu-top-background,
+    $menu-top-shadow,
+    $menu-top-shadow-opacity,
+    $menu-top-button-hover,
+    $menu-top-button-active,
+    $menu-top-button-border,
+    $menu-top-button-tooltip)
 {
-    color: colorDedect($background-zone-one, $dark-color, $white-color);
-    background: $background-zone-one;
-
+    @include backgroundWithColor($content-background, $dark-color, $white-color);
 
     /* Notification */
-    .topMenu .v-slot-notificationList .v-slot-notificationItem
+    .notificationItem.notificationItemWithIcon:before
     {
-        .notificationItem.notificationItemWithIcon:before
-        {
-            color: rgba(colorDedect($notification-prio-low-background, $dark-color, $white-color), $notification-prio-border-color-opacity);
-        }
-        
-        .notificationItem.notificationPriorityMedium.notificationItemWithIcon:before
-        {
-            color: rgba(colorDedect($notification-prio-medium-background, $dark-color, $white-color), $notification-prio-border-color-opacity);
-        }
-        
-        .notificationItem.notificationPriorityHigh.notificationItemWithIcon:before
-        {
-            color: rgba(colorDedect($notification-prio-high-background, $dark-color, $white-color), $notification-prio-border-color-opacity);
-        }
+        color: rgba(colorDedect($notification-prio-low-background, $dark-color, $white-color), $notification-border-color-opacity);
+    }
+
+    .notificationItem.notificationPriorityMedium.notificationItemWithIcon:before
+    {
+        color: rgba(colorDedect($notification-prio-medium-background, $dark-color, $white-color), $notification-border-color-opacity);
+    }
+
+    .notificationItem.notificationPriorityHigh.notificationItemWithIcon:before
+    {
+        color: rgba(colorDedect($notification-prio-high-background, $dark-color, $white-color), $notification-border-color-opacity);
     }
     
-    .notificationItem
+    .v-caption-notificationItem.v-caption-notificationItemShow.v-caption-notificationItemWithIcon
     {
-        background: $notification-prio-low-background;
-        box-shadow: 0px 6px 7px -3px rgba($notification-prio-low-background, $notification-prio-shadow);
         color: colorDedect($notification-prio-low-background, $dark-color, $white-color);
-        
-        .v-caption .v-captiontext
-        {
-            p.timeAgo
-            {
-                color: colorDedect($notification-prio-low-background, $dark-color, $white-color);
-            }
-
-            p.timeAgo:before
-            {
-                background: colorDedect($notification-prio-low-background, $dark-color, $white-color);
-            }
-        }
-
-        .notificationItemCloseButton
-        {
-            span.v-icon
-            {
-                color: rgba(colorDedect($notification-prio-low-background, $dark-color, $white-color), 0.5);
-            }
-
-            span.v-icon:hover
-            {
-                color: rgb(255, 87, 34);
-            }
-        }
     }
 
+    .v-caption-notificationItem.v-caption-notificationPriorityMedium.v-caption-notificationItemShow.v-caption-notificationItemWithIcon
+    {
+        color: colorDedect($notification-prio-medium-background, $dark-color, $white-color);
+    }
+
+    .v-caption-notificationItem.v-caption-notificationPriorityHigh.v-caption-notificationItemShow.v-caption-notificationItemWithIcon
+    {
+        color: colorDedect($notification-prio-high-background, $dark-color, $white-color);
+    }
+    
+    .notificationItem .notificationItemCloseButton span.v-icon:hover
+    {
+        color: $notification-close-button-hover !important;
+    }
+    
+    .notificationItem.notificationPriorityLow
+    {
+        @include notificationBuilder($dark-color, $white-color, $notification-prio-low-background, $notification-shadow, $notification-close-button-opacity);
+    }
+    
     .notificationItem.notificationPriorityMedium
     {
-        background: $notification-prio-medium-background;
-        box-shadow: 0px 6px 7px -3px rgba($notification-prio-medium-background, $notification-prio-shadow);
-        color: colorDedect($notification-prio-medium-background, $dark-color, $white-color);
-        
-        .v-caption .v-captiontext
-        {
-            color: colorDedect($notification-prio-medium-background, $dark-color, $white-color);
-            
-            p.timeAgo
-            {
-                color: colorDedect($notification-prio-medium-background, $dark-color, $white-color);
-            }
-
-            p.timeAgo:before
-            {
-                background: colorDedect($notification-prio-medium-background, $dark-color, $white-color);
-            }
-        }
-        
-        .notificationItemCloseButton
-        {
-            span.v-icon
-            {
-                color: rgba(colorDedect($notification-prio-medium-background, $dark-color, $white-color), 0.5);
-            }
-        }
+        @include notificationBuilder($dark-color, $white-color, $notification-prio-medium-background, $notification-shadow, $notification-close-button-opacity);
     }
 
     .notificationItem.notificationPriorityHigh
     {
-        background: $notification-prio-high-background;
-        box-shadow: 0px 6px 7px -3px rgba($notification-prio-high-background, $notification-prio-shadow);
-        color: colorDedect($notification-prio-high-background, $dark-color, $white-color);
-        
-        .v-caption .v-captiontext
-        {
-            color: colorDedect($notification-prio-high-background, $dark-color, $white-color);
-            
-            p.timeAgo
-            {
-                color: colorDedect($notification-prio-high-background, $dark-color, $white-color);
-            }
-
-            p.timeAgo:before
-            {
-                background: colorDedect($notification-prio-high-background, $dark-color, $white-color);
-            }
-        }
-        
-        .notificationItemCloseButton
-        {
-            span.v-icon
-            {
-                color: rgba(colorDedect($notification-prio-high-background, $dark-color, $white-color), 0.5);
-            }
-        }
+        @include notificationBuilder($dark-color, $white-color, $notification-prio-high-background, $notification-shadow, $notification-close-button-opacity);
     }
 
-    .v-slot-topMenu
-    {
-        box-shadow: 0px 6px 7px -3px rgba($menus-box-shadow-color, 0.5);
-        background: $background-zone-three;
-        color: colorDedect($background-zone-three, $dark-color, $white-color);
-    }
-
-    .v-slot-leftMenu
-    {
-        background: $background-zone-two;
-    }
-
+    /* Left-Menu */
     .leftMenu
     {
-        box-shadow: 1px -1px 7px 0px rgba($menus-box-shadow-color, 0.3);
+        @include backgroundWithColor($menu-left-background, $dark-color, $white-color);
+        box-shadow: 1px -1px 7px 0px rgba($menu-left-shadow, $menu-left-shadow-opacity);
 
         .menuButton.active
         {
-            border-left-color: $menu-button-border-color-active;
-            background: rgba($background-zone-one, 0.5);
+            border-left-color: $menu-left-button-border-active;
+            background: rgba($menu-left-button-active, $menu-left-button-opacity);
+            color: colorDedect($menu-left-button-active, $dark-color, $white-color);
         }
 
         .menuButton:hover
         {
-            border-left-color: $menu-button-border-color-hover;
-            background: rgba($background-zone-three, 0.5);
+            border-left-color: $menu-left-button-border-hover;
+            background: rgba($menu-left-button-hover, $menu-left-button-opacity);
+            color: colorDedect($menu-left-button-hover, $dark-color, $white-color);
         }
 
         .menuButton.active:hover
         {
-            border-left-color: $menu-button-border-color-active;
+            border-left-color: $menu-left-button-border-active;
         }
 
         .menuSubMenuContent
         {
-            border-left-color: $background-zone-one;
+            border-left-color: $menu-left-sub-menu-border;
         }
     }
 
     .leftMenu.minimal .menuButton-caption
     {
-        background: $background-zone-two;
+        background: $menu-left-background;
     }
 
     .leftMenu.minimal .v-slot-menuSubMenuContent
     {
-        background: rgba($background-zone-two, 0.5);
+        background: rgba($menu-left-background, 0.5);
     }
 
     .contentBox
     {
-        background: rgba($background-zone-one, 0.5);
+        background: rgba($content-background, 0.5);
     }
 
+    /* Top-Menu */
     .topMenu
     {
+        box-shadow: 0px 6px 7px -3px rgba($menu-top-shadow, $menu-top-shadow-opacity);
+        @include backgroundWithColor($menu-top-background, $dark-color, $white-color);
+        
         .menuButton.captionOutside .menuButton-caption .caption, .menuSubMenu .menuSubMenuContent
         {
-            border-top-color: $menu-button-border-color-hover;
-            background: $background-zone-two;
+            border-top-color: $menu-top-button-border;
+            @include backgroundWithColor($menu-top-button-hover, $dark-color, $white-color);
         }
 
         .menuButton.active
         {
-            background: $background-zone-two;
+            @include backgroundWithColor($menu-top-button-active, $dark-color, $white-color);
         }
 
         .menuButton:hover
         {
-            background: $menu-button-border-color-hover;
+            @include backgroundWithColor($menu-top-button-hover, $dark-color, $white-color);
         }
 
         .menuButton.captionOutside .menuButton-caption .toolTop
         {
-            background: $menu-button-border-color-active;
-            color: colorDedect($menu-button-border-color-active, $dark-color, $white-color);
+            @include backgroundWithColor($menu-top-button-tooltip, $dark-color, $white-color);
         }
 
         .menuSubMenu
         {
             .menuSubMenuContent .menuSubMenuHr, .menuSubMenuContent .menuSubMenuButton:hover
             {
-                background: $background-zone-one;
+                background: $content-background;
             }
+        }
+    }
+}
+
+@mixin notificationBuilder($dark-color, $white-color, $notification-prio-background, $notification-shadow, $notification-close-button-opacity) {
+    @include backgroundWithColor($notification-prio-background, $dark-color, $white-color);
+    box-shadow: 0px 6px 7px -3px rgba($notification-prio-background, $notification-shadow);
+
+    .v-caption .v-captiontext
+    {
+        color: colorDedect($notification-prio-background, $dark-color, $white-color);
+
+        p.timeAgo
+        {
+            color: colorDedect($notification-prio-background, $dark-color, $white-color);
+        }
+
+        p.timeAgo:before
+        {
+            background: colorDedect($notification-prio-background, $dark-color, $white-color);
+        }
+    }
+
+    .notificationItemCloseButton
+    {
+        span.v-icon
+        {
+            color: rgba(colorDedect($notification-prio-background, $dark-color, $white-color), $notification-close-button-opacity);
         }
     }
 }
 
 @function colorDedect($background, $dark-color, $white-color) {
     @if (lightness($background) > 50) {
-        @return $white-color;
-    } @else {
         @return $dark-color;
+    } @else {
+        @return $white-color;
     }
+}
+
+@mixin backgroundWithColor($background, $dark-color, $white-color) {
+    background: $background;
+    color: colorDedect($background, $dark-color, $white-color);
 }

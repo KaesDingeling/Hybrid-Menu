@@ -1,32 +1,39 @@
 package kaesdingeling.hybridmenu;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.ViewChangeListener;
-import com.vaadin.ui.*;
+import com.vaadin.shared.ui.ContentMode;
+import com.vaadin.ui.Alignment;
+import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.Label;
+import com.vaadin.ui.Layout;
+import com.vaadin.ui.UI;
+import com.vaadin.ui.VerticalLayout;
 
 import kaesdingeling.hybridmenu.components.NotificationCenter;
+import kaesdingeling.hybridmenu.data.DesignItem;
 import kaesdingeling.hybridmenu.data.MenuConfig;
 import kaesdingeling.hybridmenu.data.MenuItem;
 import kaesdingeling.hybridmenu.data.MenuTopItem;
 import kaesdingeling.hybridmenu.data.enums.EMenuComponents;
-import kaesdingeling.hybridmenu.data.enums.EMenuDesign;
 import kaesdingeling.hybridmenu.data.leftmenu.MenuButton;
 import kaesdingeling.hybridmenu.data.leftmenu.MenuSubMenu;
 import kaesdingeling.hybridmenu.page.DefaultPage;
 import kaesdingeling.hybridmenu.utils.ViewChangeManager;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class HybridMenu extends VerticalLayout {
 	private static final long serialVersionUID = -4055770717384786366L;
+	
+	public static final String CLASS_NAME = "hybridMenu";
 
 	private ViewChangeManager viewChangeManager = new ViewChangeManager();
 	private MenuConfig config = null;
 	private boolean buildRunning = false;
 	private boolean initNavigator = true;
 	private boolean initViewChangeManager = true;
-
 
 	/* Settings */
 	private EMenuComponents menuComponents = null;
@@ -37,13 +44,14 @@ public class HybridMenu extends VerticalLayout {
 	private HorizontalLayout leftMenuContent = null;
 	private VerticalLayout leftMenu = null;
 	private NotificationCenter notificationCenter = null;
+	private Label css = new Label("", ContentMode.HTML);
 
 	private List<MenuItem> menuItemList = new ArrayList<MenuItem>();
 
 	public HybridMenu() {
 		super();
 		setSizeFull();
-		setStyleName("hybridMenu");
+		setStyleName(CLASS_NAME);
 		setMargin(false);
 		setSpacing(false);
 	}
@@ -59,7 +67,7 @@ public class HybridMenu extends VerticalLayout {
 			if (naviRootContent == null) {
 				naviRootContent = new VerticalLayout();
 			}
-			addStyleName(config.getMenuDesign().getName());
+			
 			naviRootContent.setWidth("100%");
 			naviRootContent.setStyleName("contentBox");
 			if (initNavigator) {
@@ -81,12 +89,14 @@ public class HybridMenu extends VerticalLayout {
 			switch (menuComponents) {
 				case ONLY_TOP:
 					buildTopMenu();
+					topMenu.addComponent(css);
 					if (notificationCenter != null) {
 						topMenu.addComponent(notificationCenter);
 					}
 					break;
 				case ONLY_LEFT:
 					buildLeftMenu();
+					leftMenu.addComponent(css);
 					if (notificationCenter != null) {
 						leftMenu.addComponent(notificationCenter);
 					}
@@ -94,6 +104,7 @@ public class HybridMenu extends VerticalLayout {
 				case LEFT_WITH_TOP:
 					buildTopMenu();
 					buildLeftMenu();
+					topMenu.addComponent(css);
 					if (notificationCenter != null) {
 						topMenu.addComponent(notificationCenter);
 					}
@@ -102,6 +113,8 @@ public class HybridMenu extends VerticalLayout {
 					break;
 			}
 			buildRunning = true;
+			css.setStyleName("hideDesignSettings");
+			switchTheme(config.getDesignItem());
 		}
 	}
 
@@ -190,11 +203,10 @@ public class HybridMenu extends VerticalLayout {
 		leftMenu.addComponent(menuSubMenu);
 	}
 
-	public void switchTheme(EMenuDesign menuDesign) {
-		if (menuDesign != null) {
-			removeStyleName(this.config.getMenuDesign().getName());
-			config.setMenuDesign(menuDesign);
-			addStyleName(this.config.getMenuDesign().getName());
+	public void switchTheme(DesignItem designItem) {
+		if (designItem != null) {
+			config.setDesignItem(designItem);
+			css.setValue("<style type=\"text/css\">" + designItem.convertToStyle() + "</style>");
 		}
 	}
 

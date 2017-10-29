@@ -20,6 +20,7 @@ public class Notification {
 	private CssLayout content = new CssLayout();
 	private Label contentLabel = new Label();
 	private Button closeButton = null;
+	private boolean withCloseByHide = false;
 	
 	private NotificationCenter notificationCenter = null;
 	private ENotificationPriority priority = null;
@@ -59,6 +60,9 @@ public class Notification {
 	}
 	public Label getContentLabel() {
 		return contentLabel;
+	}
+	public void withCloseByHide() {
+		withCloseByHide = true;
 	}
 	public boolean isReaded() {
 		return isReaded;
@@ -117,6 +121,9 @@ public class Notification {
 	public void hide() {
 		if (isShow()) {
 			content.removeStyleName(STYLES.notificationItemShow);
+			if (withCloseByHide) {
+				content.addStyleName(STYLES.notificationItemRemove);
+			}
 		}
 	}
 	public void remove() {

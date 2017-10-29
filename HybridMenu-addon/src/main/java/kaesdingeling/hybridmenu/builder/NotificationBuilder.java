@@ -45,6 +45,10 @@ public class NotificationBuilder {
 		notification.addComponents(components);
 		return this;
 	}
+	public NotificationBuilder withCloseByHide() {
+		notification.withCloseByHide();
+		return this;
+	}
 	public NotificationBuilder withPriority(ENotificationPriority priority) {
 		notification.setPriority(priority);
 		return this;
