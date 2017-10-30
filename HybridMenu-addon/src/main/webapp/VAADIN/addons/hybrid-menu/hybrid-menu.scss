@@ -1,12 +1,27 @@
-@import "hybridmenu-builder";
+//@import "hybridmenu-builder";
 
 @mixin hybrid-menu {
     .hybridMenu
     {
         z-index: 1;
+        
+        .v-slot-hideDesignSettings
+        {
+            position: fixed !important;
+            right: 0 !important;
+            top: 0 !important;
+            width: 0px !important;
+            height: 0px !important;
+            overflow: hidden !important;
+        }
     
         .menuButton:focus {
             outline: none;
+        }
+        
+        .v-slot-contentBox
+        {
+            overflow: auto;
         }
 
         .contentBox
@@ -629,6 +644,156 @@
             }
         }
     }
+    /*
+    /* Colors *//*
+    $dark-color: rgb(66, 66, 66);
+    $white-color: rgb(245, 245, 245);
+    
+    /* Content-Background *//*
+    $white-content-background: rgb(245, 245, 245);
+    $dark-content-background: rgb(83, 83, 83);
+    
+    /* Notifications *//*
+    $white-notification-prio-low-background: rgb(224, 224, 224);
+    $dark-notification-prio-low-background: rgb(53, 53, 53);
+    $notification-prio-medium-background: rgb(0, 96, 100);
+    $notification-prio-high-background: rgb(191, 54, 12);
+    $notification-border-color-opacity: 0.15;
+    $notification-shadow: 0.7;
+    $notification-close-button-hover: rgb(222, 30, 30);
+    $notification-close-button-opacity: 0.5;
+    
+    /* Left-Menu *//*
+    $white-menu-left-background: rgb(238, 238, 238);
+    $dark-menu-left-background: rgb(53, 53, 53);
+    $white-menu-left-shadow: rgb(189, 189, 189);
+    $dark-menu-left-shadow: rgb(0, 0, 0);
+    $menu-left-shadow-opacity: 0.4;
+    $menu-left-button-opacity: 0.5;
+    $white-menu-left-button-hover: rgb(224, 224, 224);
+    $dark-menu-left-button-hover: rgb(33, 33, 33);
+    $menu-left-button-border-hover: rgb(25, 118, 210);
+    $white-menu-left-button-active: rgb(245, 245, 245);
+    $dark-menu-left-button-active: rgb(83, 83, 83);
+    $menu-left-button-border-active: rgb(51, 105, 30);
+    $white-menu-left-sub-menu-border: rgb(224, 224, 224);
+    $dark-menu-left-sub-menu-border: rgb(83, 83, 83);
+    $menu-left-button-tooltip: rgb(25, 118, 210);
+    
+    /* Top-Menu *//*
+    $white-menu-top-background: rgb(224, 224, 224);
+    $white-blue-menu-top-background: rgb(25, 118, 210);
+    $dark-menu-top-background: rgb(33, 33, 33);
+    $white-menu-top-shadow: rgb(189, 189, 189);
+    $dark-menu-top-shadow: rgb(0, 0, 0);
+    $menu-top-shadow-opacity: 0.4;
+    $menu-top-button-hover: rgb(51, 105, 30);
+    $menu-top-button-active: rgb(46, 125, 50);
+    $menu-top-button-border: rgb(100, 221, 23);
+    $menu-top-button-tooltip: rgb(25, 118, 210);
+    $white-blue-menu-top-button-tooltip: rgb(245, 245, 245);
+    
+    /* Theme - White *//*
+    .hybridMenu.design_white
+    {
+        @include hybridMenuThemeBuilder(
+            $dark-color,
+            $white-color,
+            $white-content-background,
+            $white-notification-prio-low-background,
+            $notification-prio-medium-background,
+            $notification-prio-high-background,
+            $notification-border-color-opacity,
+            $notification-shadow,
+            $notification-close-button-hover,
+            $notification-close-button-opacity,
+            $white-menu-left-background,
+            $white-menu-left-shadow,
+            $menu-left-shadow-opacity,
+            $menu-left-button-opacity,
+            $white-menu-left-button-hover,
+            $menu-left-button-border-hover,
+            $white-menu-left-button-active,
+            $menu-left-button-border-active,
+            $white-menu-left-sub-menu-border,
+            $menu-left-button-tooltip,
+            $white-menu-top-background,
+            $white-menu-top-shadow,
+            $menu-top-shadow-opacity,
+            $menu-top-button-hover,
+            $menu-top-button-active,
+            $menu-top-button-border,
+            $menu-top-button-tooltip);
+    }
+    
+    /* Theme - White *//*
+    .hybridMenu.design_white_blue
+    {
+        @include hybridMenuThemeBuilder(
+            $dark-color,
+            $white-color,
+            $white-content-background,
+            $white-notification-prio-low-background,
+            $notification-prio-medium-background,
+            $notification-prio-high-background,
+            $notification-border-color-opacity,
+            $notification-shadow,
+            $notification-close-button-hover,
+            $notification-close-button-opacity,
+            $white-menu-left-background,
+            $white-menu-left-shadow,
+            $menu-left-shadow-opacity,
+            $menu-left-button-opacity,
+            $white-menu-left-button-hover,
+            $menu-left-button-border-hover,
+            $white-menu-left-button-active,
+            $menu-left-button-border-active,
+            $white-menu-left-sub-menu-border,
+            $menu-left-button-tooltip,
+            $white-blue-menu-top-background,
+            $white-menu-top-shadow,
+            $menu-top-shadow-opacity,
+            $menu-top-button-hover,
+            $menu-top-button-active,
+            $menu-top-button-border,
+            $white-blue-menu-top-button-tooltip);
+    }
+    
+    /* Theme - Dark *//*
+    .hybridMenu.design_dark
+    {
+        @include hybridMenuThemeBuilder(
+            $dark-color,
+            $white-color,
+            $dark-content-background,
+            $dark-notification-prio-low-background,
+            $notification-prio-medium-background,
+            $notification-prio-high-background,
+            $notification-border-color-opacity,
+            $notification-shadow,
+            $notification-close-button-hover,
+            $notification-close-button-opacity,
+            $dark-menu-left-background,
+            $dark-menu-left-shadow,
+            $menu-left-shadow-opacity,
+            $menu-left-button-opacity,
+            $dark-menu-left-button-hover,
+            $menu-left-button-border-hover,
+            $dark-menu-left-button-active,
+            $menu-left-button-border-active,
+            $dark-menu-left-sub-menu-border,
+            $menu-left-button-tooltip,
+            $dark-menu-top-background,
+            $dark-menu-top-shadow,
+            $menu-top-shadow-opacity,
+            $menu-top-button-hover,
+            $menu-top-button-active,
+            $menu-top-button-border,
+            $menu-top-button-tooltip);
+    }
+    
+    /*
+    
     
     $white-color: rgb(66, 66, 66);
     $dark-color: rgb(245, 245, 245);
@@ -636,6 +801,7 @@
     $default-color-hide: 0.5;
     $default-menu-button-border-color-hover: rgb(255, 109, 0);
     $default-menu-button-border-color-active: rgb(0, 145, 234);
+    $default-menu-top-button-hover: rgb(255, 109, 0);
     $default-notification-prio-shadow: 0.7;
     $default-notification-prio-border-color-opacity: 0.15;
     $default-notification-prio-medium-background: rgb(0, 96, 100);
@@ -653,7 +819,9 @@
     $dark-background-zone-three: rgb(33, 33, 33);
     $dark-menus-box-shadow-color: rgb(0, 0, 0);
     
-    /* Theme - White */
+    $white-blue-menu-top-button-hover: rgb(245, 245, 245);
+    
+
     .hybridMenu.design_white
     {
         @include hybridMenuThemeBuilder(
@@ -666,6 +834,7 @@
             $white-menus-box-shadow-color,
             $default-menu-button-border-color-hover,
             $default-menu-button-border-color-active,
+            $default-menu-top-button-hover,
             $default-notification-prio-shadow,
             $default-notification-prio-border-color-opacity,
             $white-background-zone-two,
@@ -674,7 +843,7 @@
             );
     }
     
-    /* Theme - White Blue */
+
     .hybridMenu.design_white_blue
     {
         @include hybridMenuThemeBuilder(
@@ -687,6 +856,7 @@
             $white-menus-box-shadow-color,
             $default-menu-button-border-color-hover,
             $default-menu-button-border-color-active,
+            $white-blue-menu-top-button-hover,
             $default-notification-prio-shadow,
             $default-notification-prio-border-color-opacity,
             $white-background-zone-two,
@@ -695,7 +865,7 @@
             );
     }
     
-    /* Theme - Dark */
+ 
     .hybridMenu.design_dark
     {
         @include hybridMenuThemeBuilder(
@@ -708,6 +878,7 @@
             $dark-menus-box-shadow-color,
             $default-menu-button-border-color-hover,
             $default-menu-button-border-color-active,
+            $default-menu-top-button-hover,
             $default-notification-prio-shadow,
             $default-notification-prio-border-color-opacity,
             $dark-background-zone-two,
@@ -716,7 +887,7 @@
             );
     }
     
-    /* Theme - Dark Vaadin Material Conform */
+  
     .hybridMenu.design_dark_vaadin_material_conform
     {
         @include hybridMenuThemeBuilder(
@@ -729,6 +900,7 @@
             $dark-menus-box-shadow-color,
             $default-menu-button-border-color-hover,
             $default-menu-button-border-color-active,
+            $default-menu-top-button-hover,
             $default-notification-prio-shadow,
             $default-notification-prio-border-color-opacity,
             $dark-background-zone-two,
@@ -736,4 +908,5 @@
             $default-notification-prio-high-background
             );
     }
+    */
 }
