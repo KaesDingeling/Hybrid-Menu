@@ -19,6 +19,7 @@ import kaesdingeling.hybridmenu.data.MenuConfig;
 import kaesdingeling.hybridmenu.data.MenuItem;
 import kaesdingeling.hybridmenu.data.MenuTopItem;
 import kaesdingeling.hybridmenu.data.enums.EMenuComponents;
+import kaesdingeling.hybridmenu.data.enums.EMenuDesign;
 import kaesdingeling.hybridmenu.data.leftmenu.MenuButton;
 import kaesdingeling.hybridmenu.data.leftmenu.MenuSubMenu;
 import kaesdingeling.hybridmenu.page.DefaultPage;
@@ -203,10 +204,25 @@ public class HybridMenu extends VerticalLayout {
 		leftMenu.addComponent(menuSubMenu);
 	}
 
+	public void switchTheme(EMenuDesign menuDesign) {
+		if (menuDesign != null) {
+			removeStyleName(this.config.getMenuDesign().getName());
+			this.config.setMenuDesign(menuDesign);
+			css.setValue("");
+			addStyleName(this.config.getMenuDesign().getName());
+		}
+	}
+	
 	public void switchTheme(DesignItem designItem) {
 		if (designItem != null) {
-			config.setDesignItem(designItem);
+			this.config.setDesignItem(designItem);
+			if (this.config.getMenuDesign() != null) {
+				removeStyleName(this.config.getMenuDesign().getName());
+			}
+			this.config.setMenuDesign(null);
 			css.setValue("<style type=\"text/css\">" + designItem.convertToStyle() + "</style>");
+		} else {
+			css.setValue("");
 		}
 	}
 

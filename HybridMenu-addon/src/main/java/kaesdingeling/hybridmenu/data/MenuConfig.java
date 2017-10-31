@@ -5,11 +5,13 @@ import com.vaadin.server.Resource;
 
 import kaesdingeling.hybridmenu.data.enums.EMenuAnimationSpeed;
 import kaesdingeling.hybridmenu.data.enums.EMenuComponents;
+import kaesdingeling.hybridmenu.data.enums.EMenuDesign;
 
 @SuppressWarnings("deprecation")
 public class MenuConfig {
 	private EMenuComponents menuComponents = EMenuComponents.LEFT_WITH_TOP;
 	private DesignItem designItem = DesignItem.getWhiteDesign();
+	private EMenuDesign menuDesign = null;
 	private EMenuAnimationSpeed menuAnimationSpeed = EMenuAnimationSpeed.HIGH;
 	private Resource notificationRemoveIcon = FontAwesome.TIMES;
 	private Resource subMenuIcon = FontAwesome.ANGLE_UP;
@@ -92,5 +94,11 @@ public class MenuConfig {
 	}
 	public void setDesignItem(DesignItem designItem) {
 		this.designItem = designItem;
+	}
+	public EMenuDesign getMenuDesign() {
+		return menuDesign;
+	}
+	public void setMenuDesign(EMenuDesign menuDesign) {
+		this.menuDesign = menuDesign;
 	}
 }
