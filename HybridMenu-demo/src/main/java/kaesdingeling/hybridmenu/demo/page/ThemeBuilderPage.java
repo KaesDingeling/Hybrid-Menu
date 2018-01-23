@@ -103,7 +103,7 @@ public class ThemeBuilderPage extends VerticalLayout implements View {
 					.withDescription("The entry was rejected")
 					.withPriority(ENotificationPriority.MEDIUM)
 					.withIcon(VaadinIcons.INFO)
-					.withCloseByHide()
+					.withCloseByHide() 
 					.build();
 				buildNewObject();
 			} finally {

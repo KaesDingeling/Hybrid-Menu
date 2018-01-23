@@ -80,10 +80,12 @@ public class HybridMenu extends VerticalLayout {
 					private static final long serialVersionUID = 1L;
 					@Override
 					public boolean beforeViewChange(ViewChangeEvent event) {
+						return true;
+					}
+					@Override
+					public void afterViewChange(ViewChangeEvent event) {
 						viewChangeManager.manage(leftMenu, event);
 						viewChangeManager.manage(topMenu, event);
-						viewChangeManager.manage(menuItemList, event);
-						return true;
 					}
 				});
 			}
@@ -151,7 +153,8 @@ public class HybridMenu extends VerticalLayout {
 			leftMenuContent.addComponents(naviRootContent);
 			leftMenuContent.setExpandRatio(naviRootContent, 1);
 			leftMenuContent.setComponentAlignment(naviRootContent, Alignment.TOP_CENTER);
-	
+			leftMenuContent.setSizeFull();
+			
 			addComponent(leftMenuContent);
 			setExpandRatio(leftMenuContent, 1);
 		}
@@ -271,6 +274,10 @@ public class HybridMenu extends VerticalLayout {
 		}
 	}
 
+	public void removeTopMenuItem(MenuItem menuItem) {
+		topMenu.removeComponent(menuItem.getComponent());
+		menuItemList.remove(menuItem);
+	}
 	private void addTopMenuItem(MenuItem menuItem) {
 		topMenu.addComponent(menuItem.getComponent());
 		topMenu.setComponentAlignment(menuItem.getComponent(), ((MenuTopItem) menuItem).getAlignment());

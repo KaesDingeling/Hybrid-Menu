@@ -2,9 +2,14 @@ package kaesdingeling.hybridmenu.demo;
 
 import javax.servlet.annotation.WebServlet;
 
+import com.google.gwt.user.client.ui.SimplePanel;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.Title;
 import com.vaadin.annotations.VaadinServletConfiguration;
+import com.vaadin.client.ServerConnector;
+import com.vaadin.client.debug.internal.AnalyzeLayoutsPanel;
+import com.vaadin.client.debug.internal.HierarchyPanel;
+import com.vaadin.client.debug.internal.Highlight;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.server.ClientConnector.DetachListener;
@@ -54,6 +59,7 @@ public class DemoUI extends UI implements DetachListener {
     @VaadinServletConfiguration(productionMode = true, ui = DemoUI.class)
     public static class Servlet extends VaadinServlet {
     }
+    //private SimplePanel content = new SimplePanel();
     
     private NotificationCenter notiCenter = null;
     private HybridMenu hybridMenu = null;
@@ -98,6 +104,8 @@ public class DemoUI extends UI implements DetachListener {
 				return true;
 			}
 		});
+    	
+    	//hybridMenu.addComponent(content);
 
     	setContent(hybridMenu);
     	VaadinSession.getCurrent().setAttribute(HybridMenu.class, hybridMenu);
@@ -109,9 +117,26 @@ public class DemoUI extends UI implements DetachListener {
                 detach();
             }
         });
+    	
+    	System.out.println("odsafdf");
+    	
+    	//UI.getCurrent().addContextClickListener(e -> System.out.println(e.getComponent().getClass().getSimpleName()));
+    	
+    	/*
+    	UI.getCurrent().addClickListener(e -> {
+    		System.out.println(e.getComponent());
+    	});
+    	*/
+    	
+    	
+    	System.out.println("meddel");
 
         Page.getCurrent().getJavaScript().execute("window.onbeforeunload = function (e) { var e = e || window.event; aboutToClose(); return; };");
     }
+    
+    private void printState(ServerConnector connector, boolean serverDebug) {
+    	System.out.println(connector.getClass().getSimpleName());
+}
 
 	private void buildTopOnlyMenu(HybridMenu hybridMenu) {
 		TopMenuButtonBuilder.get()

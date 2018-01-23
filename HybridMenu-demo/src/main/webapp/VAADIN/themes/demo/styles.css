@@ -14791,6 +14791,7 @@ div.v-layout.v-horizontal.v-widget {
 	width: 0px !important;
 	height: 0px !important;
 	overflow: hidden !important;
+	display: block !important;
 }
 
 .demo .hybridMenu .menuButton:focus {
@@ -14813,6 +14814,12 @@ div.v-layout.v-horizontal.v-widget {
 	height: auto !important;
 	overflow: auto !important;
 	max-height: 100%;
+}
+
+.demo .hybridMenu .v-slot-notificationList > .notificationList {
+	max-height: 265px;
+	overflow-x: hidden;
+	overflow-y: auto;
 }
 
 .demo .hybridMenu .topMenu .v-slot-notificationList {
@@ -15143,6 +15150,11 @@ div.v-layout.v-horizontal.v-widget {
 
 .demo .hybridMenu .topMenu {
 	z-index: 1000;
+}
+
+.demo .hybridMenu .topMenu .v-expand {
+	white-space: unset !important;
+	box-sizing: unset !important;
 }
 
 .demo .hybridMenu .topMenu .v-slot.v-align-middle {

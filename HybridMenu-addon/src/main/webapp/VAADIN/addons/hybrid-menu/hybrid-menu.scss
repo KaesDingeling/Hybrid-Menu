@@ -13,6 +13,7 @@
             width: 0px !important;
             height: 0px !important;
             overflow: hidden !important;
+            display: block !important;
         }
     
         .menuButton:focus {
@@ -29,8 +30,7 @@
             padding: 15px !important;
         }
 
-        .v-slot-notificationList
-        {
+        .v-slot-notificationList {
             position: fixed !important;
             right: 0 !important;
             top: 0 !important;
@@ -38,6 +38,12 @@
             height: auto !important;
             overflow: auto !important;
             max-height: 100%;
+            
+            & > .notificationList {
+                max-height: 280px;
+                overflow-x: hidden;
+                overflow-y: auto;
+            }
         }
 
         .topMenu .v-slot-notificationList
@@ -423,6 +429,11 @@
         .topMenu
         {
             z-index: 1000;
+            
+            .v-expand {
+                white-space: unset !important;
+                box-sizing: unset !important;
+            }
             
             .v-slot.v-align-middle
             {
