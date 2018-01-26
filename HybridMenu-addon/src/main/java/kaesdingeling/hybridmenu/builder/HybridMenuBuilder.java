@@ -6,6 +6,7 @@ import kaesdingeling.hybridmenu.HybridMenu;
 import kaesdingeling.hybridmenu.components.NotificationCenter;
 import kaesdingeling.hybridmenu.data.MenuConfig;
 import kaesdingeling.hybridmenu.data.enums.EMenuComponents;
+import kaesdingeling.hybridmenu.utils.ViewChangeManager;
 
 public class HybridMenuBuilder {
 	private HybridMenu hybridMenu;
@@ -37,8 +38,18 @@ public class HybridMenuBuilder {
     	hybridMenu.setNotificationCenter(notificationCenter);
     	return this;
     }
-    
-    public HybridMenu build() {
+
+	public HybridMenuBuilder setInitNavigator(boolean initNavigator) {
+		hybridMenu.setInitNavigator(initNavigator);
+		return this;
+	}
+
+	public HybridMenuBuilder withViewChangeManager(ViewChangeManager viewChangeManager) {
+		hybridMenu.setViewChangeManager(viewChangeManager);
+		return this;
+	}
+
+	public HybridMenu build() {
     	hybridMenu.build();
     	return hybridMenu;
     }
