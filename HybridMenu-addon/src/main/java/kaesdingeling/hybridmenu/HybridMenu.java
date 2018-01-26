@@ -304,6 +304,6 @@ public class HybridMenu extends VerticalLayout {
 	}
 
 	public void setViewChangeManager(ViewChangeManager viewChangeManager) {
-		viewChangeManager = viewChangeManager;
+		this.viewChangeManager = viewChangeManager;
 	}
 }
