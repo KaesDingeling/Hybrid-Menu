@@ -24,9 +24,11 @@ import kaesdingeling.hybridmenu.utils.ViewChangeManager;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class HybridMenu extends VerticalLayout {
 	private static final long serialVersionUID = -4055770717384786366L;
+	private final static Logger log = Logger.getLogger(HybridMenu.class.getName());
 	
 	public static final String CLASS_NAME = "hybridMenu";
 
@@ -76,6 +78,9 @@ public class HybridMenu extends VerticalLayout {
 				UI.getCurrent().getNavigator().setErrorView(DefaultPage.class);
 			}
 			if (initViewChangeManager) {
+				if (null == UI.getCurrent().getNavigator()) {
+					log.severe("You have configured to not initialize a Navigator! Make sure a Navigator exists in the UI");
+				}
 				UI.getCurrent().getNavigator().addViewChangeListener(new ViewChangeListener() {
 					private static final long serialVersionUID = 1L;
 					@Override
