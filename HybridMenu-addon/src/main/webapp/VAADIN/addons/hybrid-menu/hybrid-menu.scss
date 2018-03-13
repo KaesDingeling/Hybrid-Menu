@@ -55,12 +55,12 @@
             .v-slot-notificationItem
             {
                 transform: scale(0);
-                transition: transform 0.5s ease-in-out, height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+                transition: transform 0.5s ease-in-out, height 0.5s ease-in-out, opacity 0.5s ease-in-out, margin 0.5s ease-in-out;
                 height: 0;
                 opacity: 0;
                 width: 300px;
                 overflow: hidden;
-                margin: 7px 15px;
+                margin: 0 15px;
                 
                 .notificationItem.notificationItemWithIcon
                 {
@@ -94,38 +94,34 @@
                 opacity: 1;
                 transform: scale(1);
                 height: 83px;
+                margin: 7px 15px;
             }
         }
         
         
         /* Notification */
-        .notificationItem
-        {
+        .notificationItem {
             padding: 5px;
             display: block;
             border-radius: 3px;
             position: relative;
             width: calc(100% - 10px);
 
-            .v-caption
-            {
+            .v-caption {
                 display: block;
 
-                .v-captiontext
-                {
+                .v-captiontext {
                     font-size: 18px;
                     margin: 0 0 0 7px;
 
-                    p.timeAgo
-                    {
+                    p.timeAgo {
                         display: inline-block;
                         margin: 6px 0 0 7px;
                         font-size: 10px;
                         position: absolute;
                     }
                     
-                    p.timeAgo:before
-                    {
+                    p.timeAgo:before {
                         content: '';
                         display: inline-block;
                         border-radius: 50%;
@@ -136,8 +132,7 @@
                 }
             }
             
-            .v-label
-            {
+            .v-label {
                 display: block;
                 margin: 0 7px 3px;
                 font-size: 14px;
@@ -145,8 +140,7 @@
                 overflow: hidden;
             }
             
-            .notificationItemCloseButton
-            {
+            .notificationItemCloseButton {
                 position: absolute;
                 top: 0;
                 right: 0;
@@ -156,23 +150,20 @@
                 cursor: pointer;
                 border-radius: 0 3px 0 3px;
                 
-                span.v-icon
-                {
+                span.v-icon {
                     padding: 6px;
                     transition: color 0.3s ease-in-out;
                     border-radius: 0 3px 0 3px;
                 }
                 
-                span.notificationItemCloseButton-caption
-                {
+                span.notificationItemCloseButton-caption {
                     display: none !important;
                 }
             }
         }
         
         /* Left Menu */
-        .leftMenu
-        {
+        .leftMenu {
             padding: 0 !important;
             z-index: 100;
             position: relative;
@@ -182,13 +173,11 @@
             -o-transition: width 0.75s ease-in-out;
             transition: width 0.75s ease-in-out;
             
-            .v-slot
-            {
+            .v-slot {
                 height: auto !important;
             }
 
-            .menuButton
-            {
+            .menuButton {
                 background: transparent;
                 display: block;
                 cursor: pointer;
@@ -199,20 +188,17 @@
                 transition: background 0.3s, border-left 0.3s, height 0.5s;
                 border-left: 0 solid transparent;
                 overflow: hidden;
-            }
-            
-            .menuButton.active
-            {
-                border-left-width: 3px;
-            }
-
-            .menuButton:hover, .menuButton.active:hover
-            {
-                border-left-width: 5px;
+                
+                &.active {
+                    border-left-width: 3px;
+                }
+                
+                &:hover, &.active:hover {
+                    border-left-width: 5px;
+                }
             }
 
-            .menuButton-wrap
-            {
+            .menuButton-wrap {
                 display: block;
                 transition: border 0.3s;
                 position: relative;
@@ -222,22 +208,19 @@
                 -ms-transform: translateY(-50%); /* IE10 is actually unprefixed */
                 -o-transform: translateY(-50%);
                 transform: translateY(-50%);
-            }
-            
-            .menuButton-wrap .v-icon
-            {
-                margin-left: 10px;
-                width: 25px;
-                text-align: center;
+                
+                .v-icon {
+                    margin-left: 10px;
+                    width: 25px;
+                    text-align: center;
+                }
+
+                .menuButton-caption {
+                    font-size: 17px;
+                }
             }
 
-            .menuButton-wrap .menuButton-caption
-            {
-                font-size: 17px;
-            }
-
-            .menuButton.subMenuButton .menuButton-caption .v-icon
-            {
+            .menuButton.subMenuButton .menuButton-caption .v-icon {
                 position: absolute;
                 right: 5px;
                 margin: 0;
