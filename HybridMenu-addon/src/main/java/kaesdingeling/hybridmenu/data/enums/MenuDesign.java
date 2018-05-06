@@ -1,14 +1,15 @@
 package kaesdingeling.hybridmenu.data.enums;
 
-public enum EMenuStyle {
-	LABEL_TITLE("labelTitle"), ICON_RIGHT("iconRight"), PROFILVIEW("profilView");
-	
+public enum MenuDesign {
+	WHITE("white"),
+	DARK("dark");
+
 	private String name = null;
-	
-	EMenuStyle(String name) {
+
+	MenuDesign(String name) {
 		this.name = name;
 	}
-	
+
 	@Override
 	public String toString() {
 		return this.name();

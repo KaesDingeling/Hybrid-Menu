@@ -8,14 +8,13 @@ import com.vaadin.ui.VerticalLayout;
 public class SettingsPage extends VerticalLayout implements View {
 	private static final long serialVersionUID = 1L;
 	
-	public SettingsPage() {
-		Label title = new Label();
-		title.setCaption("Settings");
-		title.setValue("Settings view");
-		addComponent(title);
-	}
-
 	@Override
 	public void enter(ViewChangeEvent event) {
+		Label title = new Label();
+		
+		title.setCaption("Settings");
+		title.setValue("Settings view");
+		
+		addComponent(title);
 	}
 }

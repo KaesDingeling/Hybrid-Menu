@@ -7,7 +7,8 @@ import com.vaadin.shared.ui.colorpicker.Color;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.UI;
 
-import kaesdingeling.hybridmenu.data.listeners.ValueChangeListener;
+import kaesdingeling.hybridmenu.data.interfaces.ValueChangeListener;
+import kaesdingeling.hybridmenu.design.DesignColor;
 
 public class ColorPicker extends Button {
 	private static final long serialVersionUID = 2366670234096059323L;
@@ -27,6 +28,11 @@ public class ColorPicker extends Button {
 	
 	public ColorPicker(Color value) {
 		this.value = value;
+		build();
+	}
+	
+	public ColorPicker(DesignColor value) {
+		this.value = value.getColor();
 		build();
 	}
 	
@@ -56,9 +62,19 @@ public class ColorPicker extends Button {
 	public void addValueChangeListener(ValueChangeListener<Color> valueChangeListener) {
 		valueChangeListenerList.add(valueChangeListener);
 	}
+	
 	public Color getValue() {
 		return value;
 	}
+	
+	public DesignColor getDesignValue() {
+		return DesignColor.get(value);
+	}
+	
+	public void setValue(DesignColor value) {
+		setValue(value.getColor());
+	}
+	
 	public void setValue(Color value) {
 		this.value = value;
 		updateCaption();

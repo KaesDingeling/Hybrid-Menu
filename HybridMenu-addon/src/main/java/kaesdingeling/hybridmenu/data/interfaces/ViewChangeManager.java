@@ -1,4 +1,4 @@
-package kaesdingeling.hybridmenu.utils;
+package kaesdingeling.hybridmenu.data.interfaces;
 
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.ui.AbstractOrderedLayout;
