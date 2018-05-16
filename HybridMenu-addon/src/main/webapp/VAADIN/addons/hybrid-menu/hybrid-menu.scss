@@ -25,6 +25,10 @@ $hm-white-color: rgb(245, 245, 245);
                 
                 &.open {
                     right: 0;
+                    
+                    .lastNotification.show .notification {
+                        right: 350px !important;
+                    }
                 }
                 
                 .v-slot-content {
@@ -127,7 +131,7 @@ $hm-white-color: rgb(245, 245, 245);
                         -ms-transition: right 1s cubic-bezier(0.18, 0.89, 0.32, 1.28);
                         -o-transition: right 1s cubic-bezier(0.18, 0.89, 0.32, 1.28);
                         transition: right 1s cubic-bezier(0.18, 0.89, 0.32, 1.28);
-                        @include hmPos(fixed, null, -350px, 9px, null, 1000);
+                        @include hmPos(fixed, null, -350px, 8px, null, 1000);
                         height: auto !important;
                         width: 330px;
                     }

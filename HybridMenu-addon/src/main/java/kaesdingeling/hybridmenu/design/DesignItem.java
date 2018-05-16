@@ -58,7 +58,7 @@ public class DesignItem {
 		    		.with(".HMButton")
 			    		.add(DesignUtils.border(tooltipBackground, "left"))
 			    		.with("&.active")
-			    			.add(DesignUtils.border(menuLeftButtonActive, "left"))
+			    			.add(DesignUtils.border(tooltipActiveBackground, "left"))
 			    			.add(DesignUtils.hmBackgroundWithColor(menuLeftButtonActive))
 			    			.and()
 			    		.with("&:hover")
@@ -201,7 +201,7 @@ public class DesignItem {
 		
 		/* ToolTip */
 		design.setTooltipBackground(DesignColor.get(25, 118, 210));
-		design.setTooltipActiveBackground(DesignColor.get(51, 105, 30));
+		design.setTooltipActiveBackground(DesignColor.get(43, 194, 78));
 		
 		return design;
 	}

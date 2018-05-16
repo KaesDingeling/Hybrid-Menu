@@ -56,7 +56,7 @@ public class ThemeBuilderPage extends VerticalLayout implements View {
 	
 	private TextArea jsonOutput = new TextArea("JSON-Output");
 	
-	private Button importButton = new Button("Import JSON");
+	//private Button importButton = new Button("Import JSON");
 
 	@Override
 	public void enter(ViewChangeEvent event) {
@@ -82,11 +82,12 @@ public class ThemeBuilderPage extends VerticalLayout implements View {
 			lockForLoad = false;
 		}));
 
-		addComponents(title, defaultThemes, colorsForm, contentBackgroundForm, notificationForm, leftMenuForm, tooltip, jsonOutput, importButton);
+		addComponents(title, defaultThemes, colorsForm, contentBackgroundForm, notificationForm, leftMenuForm, tooltip, jsonOutput/*, importButton*/);
 		
 		buildNewObject();
 		load();
 		
+		/*
 		importButton.addClickListener(e -> {
 			lockForLoad = true;
 			try {
@@ -111,6 +112,7 @@ public class ThemeBuilderPage extends VerticalLayout implements View {
 				lockForLoad = false;
 			}
 		});
+		*/
 		
 		update();
 		lockForLoad = false;

@@ -15082,6 +15082,10 @@ div.v-layout.v-horizontal.v-widget {
 	right: 0;
 }
 
+.demo .hybridMenu .v-slot-notificationCenter .notificationCenter.open .lastNotification.show .notification {
+	right: 350px !important;
+}
+
 .demo .hybridMenu .v-slot-notificationCenter .notificationCenter .v-slot-content {
 	overflow-x: hidden;
 	overflow-y: auto;
@@ -15205,7 +15209,7 @@ div.v-layout.v-horizontal.v-widget {
 	transition: right 1s cubic-bezier(0.18, 0.89, 0.32, 1.28);
 	position: fixed;
 	right: -350px;
-	bottom: 9px;
+	bottom: 8px;
 	z-index: 1000;
 	height: auto !important;
 	width: 330px;

@@ -121,12 +121,23 @@ public class NotificationCenter extends VerticalLayout {
 	}
 	
 	public boolean add(Notification notification) {
+		return add(notification, true);
+	}
+	
+	public boolean add(Notification notification, boolean showDescriptionOnPopup) {
 		if (isOpen()) {
 			notification.makeAsReaded();
 		}
 		content.addComponentAsFirst(notification.build(this));
 		updateToolTip();
-		return notificationQueue.add(notification.clone());
+		
+		Notification notificationClone = notification.clone();
+		
+		if (!showDescriptionOnPopup) {
+			notificationClone.setDescription("");
+		}
+		
+		return notificationQueue.add(notificationClone);
 	}
 	
 	public NotificationCenter remove(Notification notification) {

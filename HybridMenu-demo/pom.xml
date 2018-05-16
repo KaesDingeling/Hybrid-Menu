@@ -5,7 +5,7 @@
 	<groupId>org.vaadin.addons</groupId>
 	<artifactId>hybridmenu-demo</artifactId>
 	<packaging>war</packaging>
-	<version>3.0.0</version>
+	<version>3.0.1</version>
 	<name>HybridMenu Add-on Demo</name>
 
 	<prerequisites>
