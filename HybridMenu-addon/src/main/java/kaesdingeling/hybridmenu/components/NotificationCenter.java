@@ -145,6 +145,10 @@ public class NotificationCenter extends VerticalLayout {
 		return this;
 	}
 	
+	public int queueSize() {
+		return notificationQueue.size();
+	}
+	
 	public List<Notification> getAll() {
 		List<Notification> notificationsList = new ArrayList<Notification>();
 		for (int i = 0; i < content.getComponentCount(); i++) {

@@ -25,6 +25,7 @@ import kaesdingeling.hybridmenu.HybridMenu;
 import kaesdingeling.hybridmenu.components.HMButton;
 import kaesdingeling.hybridmenu.components.HMLabel;
 import kaesdingeling.hybridmenu.components.HMSubMenu;
+import kaesdingeling.hybridmenu.components.HMTextField;
 import kaesdingeling.hybridmenu.components.LeftMenu;
 import kaesdingeling.hybridmenu.components.TopMenu;
 import kaesdingeling.hybridmenu.data.MenuConfig;
@@ -88,6 +89,8 @@ public class DemoUI extends UI implements DetachListener {
 
 	private void buildTopOnlyMenu() {
 		TopMenu topMenu = hybridMenu.getTopMenu();
+		
+		topMenu.add(HMTextField.get(VaadinIcons.SEARCH, "Search ..."));
 		
 		topMenu.add(HMButton.get()
 				.withIcon(VaadinIcons.HOME)
@@ -168,6 +171,11 @@ public class DemoUI extends UI implements DetachListener {
 				.withCaption("Dark Theme")
 				.withIcon(VaadinIcons.PALETE)
 				.withClickListener(e -> hybridMenu.switchTheme(DesignItem.getDarkDesign())));
+		
+		demoSettings.add(HMButton.get()
+				.withCaption("Minimal")
+				.withIcon(VaadinIcons.COG)
+				.withClickListener(e -> hybridMenu.getLeftMenu().toggleSize()));
 	}
 	
 	public HybridMenu getHybridMenu() {

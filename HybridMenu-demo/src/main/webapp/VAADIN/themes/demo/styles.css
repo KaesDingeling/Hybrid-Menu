@@ -15238,6 +15238,48 @@ div.v-layout.v-horizontal.v-widget {
 	z-index: 1000;
 }
 
+.demo .hybridMenu .v-slot-topMenu .topMenu .v-slot.v-slot-HMTextField > div {
+	-webkit-transition: width 0.3s ease-in-out;
+	-moz-transition: width 0.3s ease-in-out;
+	-ms-transition: width 0.3s ease-in-out;
+	-o-transition: width 0.3s ease-in-out;
+	transition: width 0.3s ease-in-out;
+	width: 36px !important;
+	overflow: hidden;
+}
+
+.demo .hybridMenu .v-slot-topMenu .topMenu .v-slot.v-slot-HMTextField > div .v-caption-HMTextField {
+	display: inline-block;
+	max-width: 36px;
+	width: 100%;
+	padding: 0;
+}
+
+.demo .hybridMenu .v-slot-topMenu .topMenu .v-slot.v-slot-HMTextField > div input.HMTextField {
+	-webkit-transition: width 0.3s ease-in-out;
+	-moz-transition: width 0.3s ease-in-out;
+	-ms-transition: width 0.3s ease-in-out;
+	-o-transition: width 0.3s ease-in-out;
+	transition: width 0.3s ease-in-out;
+	display: inline-block;
+	box-shadow: none !important;
+	outline: unset !important;
+	border-radius: 0 !important;
+	border: none !important;
+	width: 0;
+	height: 30px;
+	margin: 6px 0 0 5px;
+	padding: 5px;
+}
+
+.demo .hybridMenu .v-slot-topMenu .topMenu .v-slot.v-slot-HMTextField > div:hover {
+	width: 206px !important;
+}
+
+.demo .hybridMenu .v-slot-topMenu .topMenu .v-slot.v-slot-HMTextField > div:hover input.HMTextField {
+	width: 150px !important;
+}
+
 .demo .hybridMenu .v-slot-topMenu .topMenu .v-slot > div {
 	width: 36px;
 	height: 44px;
@@ -15368,22 +15410,20 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .demo .hybridMenu .rootContent > .v-expand .v-slot-leftMenu .leftMenu .HMButton-wrap {
-	-webkit-transform: translateY(-50%);
-	-moz-transform: translateY(-50%);
-	-ms-transform: translateY(-50%);
-	-o-transform: translateY(-50%);
-	transform: translateY(-50%);
 	-webkit-transition: border 0.3s;
 	-moz-transition: border 0.3s;
 	-ms-transition: border 0.3s;
 	-o-transition: border 0.3s;
 	transition: border 0.3s;
 	position: relative;
-	top: 50%;
 	display: block;
+	z-index: 1000;
 }
 
 .demo .hybridMenu .rootContent > .v-expand .v-slot-leftMenu .leftMenu .HMButton-wrap .v-icon {
+	position: relative;
+	vertical-align: middle;
+	display: inline-block;
 	text-align: center;
 	margin-left: 10px;
 	width: 25px;
@@ -15391,6 +15431,7 @@ div.v-layout.v-horizontal.v-widget {
 
 .demo .hybridMenu .rootContent > .v-expand .v-slot-leftMenu .leftMenu .HMButton-wrap .HMButton-caption {
 	font-size: 17px;
+	vertical-align: middle;
 }
 
 .demo .hybridMenu .rootContent > .v-expand .v-slot-leftMenu .leftMenu .HMSubMenu > .v-slot:first-child .toolTip {
@@ -15445,6 +15486,10 @@ div.v-layout.v-horizontal.v-widget {
 	max-height: 1000px !important;
 }
 
+.demo .hybridMenu .rootContent.minimal {
+	overflow: inherit;
+}
+
 .demo .hybridMenu .rootContent.minimal > .v-expand {
 	padding-left: 50px !important;
 }
@@ -15454,7 +15499,49 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .demo .hybridMenu .rootContent.minimal > .v-expand .v-slot-leftMenu .leftMenu {
+	overflow: visible;
 	width: 50px !important;
+}
+
+.demo .hybridMenu .rootContent.minimal > .v-expand .v-slot-leftMenu .leftMenu .v-slot-HMLabel > div .v-caption .v-captiontext {
+	display: none;
+}
+
+.demo .hybridMenu .rootContent.minimal > .v-expand .v-slot-leftMenu .leftMenu .HMButton {
+	overflow: visible;
+}
+
+.demo .hybridMenu .rootContent.minimal > .v-expand .v-slot-leftMenu .leftMenu .HMButton:hover .HMButton-caption {
+	pointer-events: all !important;
+	opacity: 1 !important;
+	left: 45px !important;
+}
+
+.demo .hybridMenu .rootContent.minimal > .v-expand .v-slot-leftMenu .leftMenu .HMButton .HMButton-wrap {
+	z-index: 100;
+}
+
+.demo .hybridMenu .rootContent.minimal > .v-expand .v-slot-leftMenu .leftMenu .HMButton .HMButton-wrap .v-icon {
+	width: 100%;
+	margin: 0;
+}
+
+.demo .hybridMenu .rootContent.minimal > .v-expand .v-slot-leftMenu .leftMenu .HMButton .HMButton-wrap .HMButton-caption {
+	-webkit-transition: left 0.5s ease-in-out, opacity 0.5s ease-in-out;
+	-moz-transition: left 0.5s ease-in-out, opacity 0.5s ease-in-out;
+	-ms-transition: left 0.5s ease-in-out, opacity 0.5s ease-in-out;
+	-o-transition: left 0.5s ease-in-out, opacity 0.5s ease-in-out;
+	transition: left 0.5s ease-in-out, opacity 0.5s ease-in-out;
+	padding: 9px 13px 8px;
+	top: calc(-50% + 5px);
+	pointer-events: none;
+	position: absolute;
+	white-space: pre;
+	z-index: 10000;
+	height: 28px;
+	left: -500px;
+	opacity: 0;
+	margin: 0;
 }
 
 .demo .hybridMenu .rootContent .v-slot-contentBox {

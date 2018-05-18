@@ -84,7 +84,8 @@ public class ThemeBuilderPage extends VerticalLayout implements View {
 
 		addComponents(title, defaultThemes, colorsForm, contentBackgroundForm, notificationForm, leftMenuForm, tooltip, jsonOutput/*, importButton*/);
 		
-		buildNewObject();
+		designItem = ((DemoUI) UI.getCurrent()).getHybridMenu().getConfig().getDesignItem();
+		
 		load();
 		
 		/*
@@ -114,7 +115,7 @@ public class ThemeBuilderPage extends VerticalLayout implements View {
 		});
 		*/
 		
-		update();
+		jsonOutput.setValue(new Gson().toJson(designItem));
 		lockForLoad = false;
 	}
 	
@@ -170,10 +171,6 @@ public class ThemeBuilderPage extends VerticalLayout implements View {
 		write();
 		((DemoUI) UI.getCurrent()).getHybridMenu().switchTheme(designItem);
 		jsonOutput.setValue(new Gson().toJson(designItem));
-	}
-	
-	private void buildNewObject() {
-		designItem = DesignItem.getDarkDesign();
 	}
 
 	private FormLayout buildForm(String caption) {

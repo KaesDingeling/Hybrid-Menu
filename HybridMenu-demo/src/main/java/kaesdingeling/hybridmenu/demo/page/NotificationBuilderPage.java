@@ -59,6 +59,10 @@ public class NotificationBuilderPage extends VerticalLayout implements View {
 		
 		CheckBox makeAsReaded = new CheckBox("Make as readed");
 		
+		CheckBox showDescriptionOnPopup = new CheckBox("Show description on popup");
+		
+		showDescriptionOnPopup.setValue(true);
+		
 		Slider autoRemoveTime = new Slider("Autoremove display offset delay (ms)");
 		
 		autoRemoveTime.setMin(0);
@@ -70,29 +74,33 @@ public class NotificationBuilderPage extends VerticalLayout implements View {
 		
 		//execute.setDisableOnClick(true);
 		execute.addClickListener(e -> {
-			Notification notification = Notification.get()
-					.withTitle(caption.getValue())
-					.withContent(content.getValue())
-					.withIcon(icon.getValue())
-					.withDisplayTime(displayTime.getValue().longValue());
+			NotificationCenter notificationCenter = VaadinSession.getCurrent().getAttribute(NotificationCenter.class);
 			
-			if (closeable.getValue()) {
-				notification.withCloseable();
-			}
-			
-			if (makeAsReaded.getValue()) {
-				notification.makeAsReaded();
-			}
-			
-			if (autoRemove.getValue()) {
-				if (autoRemoveTime.getValue() > 0) {
-					notification.withAutoRemove(autoRemoveTime.getValue().longValue());
-				} else {
-					notification.withAutoRemove();
+			if (notificationCenter.queueSize() < 10) {
+				Notification notification = Notification.get()
+						.withTitle(caption.getValue())
+						.withContent(content.getValue())
+						.withIcon(icon.getValue())
+						.withDisplayTime(displayTime.getValue().longValue());
+				
+				if (closeable.getValue()) {
+					notification.withCloseable();
 				}
+				
+				if (makeAsReaded.getValue()) {
+					notification.makeAsReaded();
+				}
+				
+				if (autoRemove.getValue()) {
+					if (autoRemoveTime.getValue() > 0) {
+						notification.withAutoRemove(autoRemoveTime.getValue().longValue());
+					} else {
+						notification.withAutoRemove();
+					}
+				}
+				
+				notificationCenter.add(notification, showDescriptionOnPopup.getValue());
 			}
-			
-			VaadinSession.getCurrent().getAttribute(NotificationCenter.class).add(notification);
 		});
 		
 		caption.setWidth(100, Unit.PERCENTAGE);

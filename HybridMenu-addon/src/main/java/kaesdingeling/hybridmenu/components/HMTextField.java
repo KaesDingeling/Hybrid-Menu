@@ -3,32 +3,23 @@ package kaesdingeling.hybridmenu.components;
 import java.util.List;
 
 import com.vaadin.server.Resource;
-import com.vaadin.ui.Label;
+import com.vaadin.ui.TextField;
 
 import kaesdingeling.hybridmenu.data.interfaces.MenuComponent;
 
 /**
- * Only for the left menu
+ * Only for the top menu
  */
-public class HMLabel extends Label implements MenuComponent<Label> {
-	private static final long serialVersionUID = -1030806788859361123L;
+public class HMTextField extends TextField implements MenuComponent<TextField> {
+	private static final long serialVersionUID = -6746020801071116552L;
 
-	public static HMLabel get() {
-		return new HMLabel();
+	public static HMTextField get(Resource icon, String placeholder) {
+		return new HMTextField(icon, placeholder);
 	}
 	
-	public HMLabel() {
-		setCaptionAsHtml(true);
-	}
-	
-	public HMLabel withCaption(String caption) {
-		super.setCaption(caption);
-		return this;
-	}
-	
-	public HMLabel withIcon(Resource icon) {
-		super.setIcon(icon);
-		return this;
+	public HMTextField(Resource icon, String placeholder) {
+		setIcon(icon);
+		setPlaceholder(placeholder);
 	}
 	
 	@Override
@@ -40,7 +31,7 @@ public class HMLabel extends Label implements MenuComponent<Label> {
 	public String getRootStyle() {
 		return this.getClass().getSimpleName();
 	}
-	
+
 	@Override
 	public <C extends MenuComponent<?>> C add(C c) {
 		return null;
@@ -62,7 +53,7 @@ public class HMLabel extends Label implements MenuComponent<Label> {
 	}
 
 	@Override
-	public <C extends MenuComponent<?>> HMLabel remove(C c) {
+	public <C extends MenuComponent<?>> HMTextField remove(C c) {
 		return null;
 	}
 

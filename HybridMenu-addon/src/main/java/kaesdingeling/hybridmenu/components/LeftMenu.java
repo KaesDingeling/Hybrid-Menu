@@ -9,8 +9,9 @@ import com.vaadin.ui.VerticalLayout;
 
 import kaesdingeling.hybridmenu.data.enums.ToggleMode;
 import kaesdingeling.hybridmenu.data.interfaces.MenuComponent;
+import kaesdingeling.hybridmenu.utils.Utils;
 
-public class LeftMenu extends VerticalLayout {
+public class LeftMenu extends VerticalLayout implements MenuComponent<VerticalLayout> {
 	private static final long serialVersionUID = 8774849625123603883L;
 	
 	public static final String CLASS_NAME = "leftMenu";
@@ -77,9 +78,31 @@ public class LeftMenu extends VerticalLayout {
 	}
 	
 	public <C extends MenuComponent<?>> C add(C c) {
-		c.setPrimaryStyleName(c.getRootStyle());
-		addComponent(c);
+		addComponent(Utils.setDefaults(c));
 		return c;
+	}
+	
+	@Override
+	public <C extends MenuComponent<?>> C addAsFirst(C c) {
+		addComponentAsFirst(Utils.setDefaults(c));
+		return c;
+	}
+
+	@Override
+	public <C extends MenuComponent<?>> C addAt(C c, int index) {
+		addComponent(Utils.setDefaults(c), index);
+		return c;
+	}
+	
+	@Override
+	public int count() {
+		return getList().size();
+	}
+	
+	@Override
+	public <C extends MenuComponent<?>> LeftMenu remove(C c) {
+		removeComponent(c);
+		return this;
 	}
 	
 	/*
@@ -121,6 +144,7 @@ public class LeftMenu extends VerticalLayout {
 	}
 	*/
 	
+	@Override
 	public List<MenuComponent<?>> getList() {
 		List<MenuComponent<?>> menuComponentList = new ArrayList<MenuComponent<?>>();
 		for (int i = 0; i < getComponentCount(); i++) {
@@ -130,5 +154,10 @@ public class LeftMenu extends VerticalLayout {
 			}
 		}
 		return menuComponentList;
+	}
+
+	@Override
+	public String getRootStyle() {
+		return super.getPrimaryStyleName();
 	}
 }

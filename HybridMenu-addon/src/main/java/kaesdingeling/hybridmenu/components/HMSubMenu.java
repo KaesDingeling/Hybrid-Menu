@@ -10,6 +10,7 @@ import com.vaadin.ui.VerticalLayout;
 
 import kaesdingeling.hybridmenu.data.MenuConfig;
 import kaesdingeling.hybridmenu.data.interfaces.MenuComponent;
+import kaesdingeling.hybridmenu.utils.Utils;
 
 public class HMSubMenu extends VerticalLayout implements MenuComponent<VerticalLayout> {
 	private static final long serialVersionUID = 5694189462883703860L;
@@ -78,15 +79,37 @@ public class HMSubMenu extends VerticalLayout implements MenuComponent<VerticalL
 		return getStyleName().contains("open");
 	}
 	
+	@Override
+	public String getRootStyle() {
+		return this.getClass().getSimpleName();
+	}
+	
 	public <C extends MenuComponent<?>> C add(C c) {
-		c.setPrimaryStyleName(c.getRootStyle());
-		content.addComponent(c);
+		content.addComponent(Utils.setDefaults(c));
 		return c;
 	}
 	
+	@Override
+	public <C extends MenuComponent<?>> C addAsFirst(C c) {
+		content.addComponentAsFirst(Utils.setDefaults(c));
+		return c;
+	}
+
+	@Override
+	public <C extends MenuComponent<?>> C addAt(C c, int index) {
+		content.addComponent(Utils.setDefaults(c), index);
+		return c;
+	}
+	
+	@Override
 	public <C extends MenuComponent<?>> HMSubMenu remove(C c) {
 		content.removeComponent(c);
 		return this;
+	}
+
+	@Override
+	public int count() {
+		return getList().size();
 	}
 	
 	public List<MenuComponent<?>> getList() {
@@ -98,10 +121,5 @@ public class HMSubMenu extends VerticalLayout implements MenuComponent<VerticalL
 			}
 		}
 		return menuComponentList;
-	}
-	
-	@Override
-	public String getRootStyle() {
-		return this.getClass().getSimpleName();
 	}
 }

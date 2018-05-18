@@ -1,5 +1,8 @@
 package kaesdingeling.hybridmenu.components;
 
+import java.util.List;
+
+import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.server.Resource;
 import com.vaadin.ui.Button;
@@ -113,13 +116,21 @@ public class HMButton extends Button implements MenuComponent<Button> {
 		});
 	}
 	
-	public <T extends View> HMButton withNavigateTo(Class<T> _clazz) {
-		navigateTo = _clazz.getSimpleName();
+	public <T extends View> HMButton withNavigateTo(Class<T> viewClass) {
+		withNavigateTo(viewClass.getSimpleName(), viewClass);
+		return this;
+	}
+	
+	public <T extends View> HMButton withNavigateTo(String viewName, Class<T> viewClass) {
+		navigateTo = viewName;
 		
-		UI.getCurrent().getNavigator().addView(_clazz.getSimpleName(), _clazz);
+		Navigator navigator = UI.getCurrent().getNavigator();
+		
+		navigator.removeView(viewName);
+		navigator.addView(viewName, viewClass);
 		
 		return this.withClickListener(e -> {
-			UI.getCurrent().getNavigator().navigateTo(_clazz.getSimpleName());
+			navigator.navigateTo(navigateTo);
 		});
 	}
 	
@@ -200,5 +211,35 @@ public class HMButton extends Button implements MenuComponent<Button> {
 	@Override
 	public String getRootStyle() {
 		return this.getClass().getSimpleName();
+	}
+	
+	@Override
+	public <C extends MenuComponent<?>> C add(C c) {
+		return null;
+	}
+
+	@Override
+	public <C extends MenuComponent<?>> C addAsFirst(C c) {
+		return null;
+	}
+
+	@Override
+	public <C extends MenuComponent<?>> C addAt(C c, int index) {
+		return null;
+	}
+
+	@Override
+	public int count() {
+		return 0;
+	}
+
+	@Override
+	public <C extends MenuComponent<?>> HMButton remove(C c) {
+		return null;
+	}
+
+	@Override
+	public List<MenuComponent<?>> getList() {
+		return null;
 	}
 }
