@@ -1,5 +1,6 @@
 package kaesdingeling.hybridmenu.demo.page;
 
+/*
 import java.util.concurrent.Future;
 
 import com.vaadin.icons.VaadinIcons;
@@ -138,3 +139,4 @@ public class NotificationBuilderPage extends VerticalLayout implements View {
     }
 
 }
+*/

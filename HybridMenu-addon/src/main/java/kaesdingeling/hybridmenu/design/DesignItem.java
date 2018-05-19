@@ -1,7 +1,5 @@
 package kaesdingeling.hybridmenu.design;
 
-import com.vaadin.shared.ui.colorpicker.Color;
-
 import kaesdingeling.hybridmenu.data.enums.MenuDesign;
 
 public class DesignItem {
@@ -84,7 +82,7 @@ public class DesignItem {
 				    		.add(DesignUtils.background(DesignUtils.hmColorDedect(notificationBackground)))
 				    		.and()
 				    	.with(".button")
-					    	.add(DesignUtils.background(new Color(0, 0, 0, 0)))
+					    	.add(DesignUtils.background(new DesignColor(0, 0, 0, 0)))
 					    	.add(DesignUtils.color(DesignUtils.hmColorDedect(notificationBackground)))
 					    	.with("&:hover")
 						    	.add(DesignUtils.color(notificationRemoveButtonHover))

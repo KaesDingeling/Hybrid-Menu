@@ -2,15 +2,17 @@ package kaesdingeling.hybridmenu.components;
 
 import java.util.List;
 
-import com.vaadin.server.Resource;
-import com.vaadin.ui.Label;
+import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.html.Label;
+import com.vaadin.flow.component.icon.Icon;
 
 import kaesdingeling.hybridmenu.data.interfaces.MenuComponent;
 
 /**
  * Only for the left menu
  */
-public class HMLabel extends Label implements MenuComponent<Label> {
+@SuppressWarnings("hiding")
+public class HMLabel extends Label implements MenuComponent<HMLabel> {
 	private static final long serialVersionUID = -1030806788859361123L;
 
 	public static HMLabel get() {
@@ -18,41 +20,31 @@ public class HMLabel extends Label implements MenuComponent<Label> {
 	}
 	
 	public HMLabel() {
-		setCaptionAsHtml(true);
+		//setCaptionAsHtml(true);
 	}
 	
 	public HMLabel withCaption(String caption) {
-		super.setCaption(caption);
+		super.setText(caption);
 		return this;
 	}
 	
-	public HMLabel withIcon(Resource icon) {
-		super.setIcon(icon);
+	public HMLabel withIcon(Icon icon) {
+		//super.setIcon(icon);
 		return this;
 	}
 	
 	@Override
-	public void setPrimaryStyleName(String style) {
-		super.addStyleName(style);
-	}
-
-	@Override
-	public String getRootStyle() {
-		return this.getClass().getSimpleName();
-	}
-	
-	@Override
-	public <C extends MenuComponent<?>> C add(C c) {
+	public <MenuComponent extends Component> MenuComponent add(MenuComponent c) {
 		return null;
 	}
 
 	@Override
-	public <C extends MenuComponent<?>> C addAsFirst(C c) {
+	public <MenuComponent extends Component> MenuComponent addAsFirst(MenuComponent c) {
 		return null;
 	}
 
 	@Override
-	public <C extends MenuComponent<?>> C addAt(C c, int index) {
+	public <MenuComponent extends Component> MenuComponent addAt(MenuComponent c, int index) {
 		return null;
 	}
 
@@ -62,7 +54,7 @@ public class HMLabel extends Label implements MenuComponent<Label> {
 	}
 
 	@Override
-	public <C extends MenuComponent<?>> HMLabel remove(C c) {
+	public <MenuComponent extends Component> HMLabel remove(MenuComponent c) {
 		return null;
 	}
 

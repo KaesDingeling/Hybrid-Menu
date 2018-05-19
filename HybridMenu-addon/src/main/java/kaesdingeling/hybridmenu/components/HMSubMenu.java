@@ -3,16 +3,18 @@ package kaesdingeling.hybridmenu.components;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.vaadin.server.Resource;
-import com.vaadin.server.VaadinSession;
-import com.vaadin.ui.Component;
-import com.vaadin.ui.VerticalLayout;
+import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.icon.Icon;
+import com.vaadin.flow.component.icon.VaadinIcons;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.server.VaadinSession;
 
 import kaesdingeling.hybridmenu.data.MenuConfig;
 import kaesdingeling.hybridmenu.data.interfaces.MenuComponent;
-import kaesdingeling.hybridmenu.utils.Utils;
+import kaesdingeling.hybridmenu.utils.Styles;
 
-public class HMSubMenu extends VerticalLayout implements MenuComponent<VerticalLayout> {
+@SuppressWarnings("hiding")
+public class HMSubMenu extends VerticalLayout implements MenuComponent<HMSubMenu> {
 	private static final long serialVersionUID = 5694189462883703860L;
 	
 	private HMButton button = new HMButton("");
@@ -26,24 +28,24 @@ public class HMSubMenu extends VerticalLayout implements MenuComponent<VerticalL
 		build(caption, null);
 	}
 	
-	public HMSubMenu(Resource icon) {
+	public HMSubMenu(Icon icon) {
 		build(null, icon);
 	}
 	
-	public HMSubMenu(String caption, Resource icon) {
+	public HMSubMenu(String caption, Icon icon) {
 		build(caption, icon);
 	}
 	
-	private void build(String caption, Resource icon) {
+	private void build(String caption, Icon icon) {
 		button = new HMButton(caption, icon);
-		button.withToolTip(VaadinSession.getCurrent().getAttribute(MenuConfig.class).getSubMenuIcon().getHtml());
+		button.withOtherIcon(VaadinSession.getCurrent().getAttribute(MenuConfig.class).getSubMenuIcon());
 		button.addClickListener(e -> toggle());
-		button.setPrimaryStyleName(button.getClass().getSimpleName());
+		button.getClassNames().add(button.getClass().getSimpleName());
 		content.setMargin(false);
 		content.setSpacing(false);
 		super.setMargin(false);
 		super.setSpacing(false);
-		super.addComponents(button, content);
+		super.add(button, content);
 	}
 	
 	public HMSubMenu withCaption(String caption) {
@@ -51,9 +53,13 @@ public class HMSubMenu extends VerticalLayout implements MenuComponent<VerticalL
 		return this;
 	}
 	
-	public HMSubMenu withIcon(Resource icon) {
+	public HMSubMenu withIcon(Icon icon) {
 		button.withIcon(icon);
 		return this;
+	}
+	
+	public HMSubMenu withIcon(VaadinIcons icon) {
+		return withIcon(icon.create());
 	}
 	
 	public HMSubMenu toggle() {
@@ -66,44 +72,40 @@ public class HMSubMenu extends VerticalLayout implements MenuComponent<VerticalL
 	}
 	
 	public HMSubMenu open() {
-		addStyleName("open");
+		getClassNames().add(Styles.open);
 		return this;
 	}
 	
 	public HMSubMenu close() {
-		removeStyleName("open");
+		getClassNames().remove(Styles.open);
 		return this;
 	}
 	
 	public boolean isOpen() {
-		return getStyleName().contains("open");
+		return  getClassNames().contains(Styles.open);
 	}
 	
 	@Override
-	public String getRootStyle() {
-		return this.getClass().getSimpleName();
-	}
-	
-	public <C extends MenuComponent<?>> C add(C c) {
-		content.addComponent(Utils.setDefaults(c));
+	public <MenuComponent extends Component> MenuComponent add(MenuComponent c) {
+		content.add(c);
 		return c;
 	}
 	
 	@Override
-	public <C extends MenuComponent<?>> C addAsFirst(C c) {
-		content.addComponentAsFirst(Utils.setDefaults(c));
+	public <MenuComponent extends Component> MenuComponent addAsFirst(MenuComponent c) {
+		//content.addAsFirst(c);
 		return c;
 	}
 
 	@Override
-	public <C extends MenuComponent<?>> C addAt(C c, int index) {
-		content.addComponent(Utils.setDefaults(c), index);
+	public <MenuComponent extends Component> MenuComponent addAt(MenuComponent c, int index) {
+		//content.addAt(c, index);
 		return c;
 	}
 	
 	@Override
-	public <C extends MenuComponent<?>> HMSubMenu remove(C c) {
-		content.removeComponent(c);
+	public <MenuComponent extends Component> HMSubMenu remove(MenuComponent c) {
+		content.remove(c);
 		return this;
 	}
 
@@ -115,7 +117,7 @@ public class HMSubMenu extends VerticalLayout implements MenuComponent<VerticalL
 	public List<MenuComponent<?>> getList() {
 		List<MenuComponent<?>> menuComponentList = new ArrayList<MenuComponent<?>>();
 		for (int i = 0; i < content.getComponentCount(); i++) {
-			Component component = content.getComponent(i);
+			Component component = content.getComponentAt(i);
 			if (component instanceof MenuComponent<?>) {
 				menuComponentList.add((MenuComponent<?>) component);
 			}

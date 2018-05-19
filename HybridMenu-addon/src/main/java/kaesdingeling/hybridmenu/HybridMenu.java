@@ -1,112 +1,81 @@
 package kaesdingeling.hybridmenu;
 
-import java.util.logging.Logger;
+import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
 
-import com.vaadin.navigator.Navigator;
-import com.vaadin.navigator.ViewChangeListener;
-import com.vaadin.server.VaadinSession;
-import com.vaadin.shared.ui.ContentMode;
-import com.vaadin.ui.HorizontalLayout;
-import com.vaadin.ui.Label;
-import com.vaadin.ui.Layout;
-import com.vaadin.ui.UI;
-import com.vaadin.ui.VerticalLayout;
+import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.HasElement;
+import com.vaadin.flow.component.UI;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.router.AfterNavigationEvent;
+import com.vaadin.flow.router.AfterNavigationObserver;
+import com.vaadin.flow.router.RouterLayout;
+import com.vaadin.flow.server.VaadinSession;
 
 import kaesdingeling.hybridmenu.components.LeftMenu;
 import kaesdingeling.hybridmenu.components.NotificationCenter;
+import kaesdingeling.hybridmenu.components.Style;
 import kaesdingeling.hybridmenu.components.TopMenu;
 import kaesdingeling.hybridmenu.data.DefaultViewChangeManager;
 import kaesdingeling.hybridmenu.data.MenuConfig;
+import kaesdingeling.hybridmenu.data.enums.MenuDesign;
+import kaesdingeling.hybridmenu.data.interfaces.HybridMenuRouter;
 import kaesdingeling.hybridmenu.data.interfaces.ViewChangeManager;
 import kaesdingeling.hybridmenu.design.DesignItem;
-import kaesdingeling.hybridmenu.page.DefaultPage;
+import kaesdingeling.hybridmenu.utils.Styles;
 
-public class HybridMenu extends VerticalLayout {
+public abstract class HybridMenu extends VerticalLayout implements RouterLayout, AfterNavigationObserver, HybridMenuRouter {
 	private static final long serialVersionUID = -4055770717384786366L;
-	private final static Logger log = Logger.getLogger(HybridMenu.class.getName());
-	
-	public static final String CLASS_NAME = "hybridMenu";
 
 	private ViewChangeManager viewChangeManager = new DefaultViewChangeManager();
 	private MenuConfig config = null;
 	private boolean buildRunning = false;
-	private boolean initNavigator = true;
-	private boolean initViewChangeManager = true;
 
 	/* Components */
 	private HorizontalLayout content = new HorizontalLayout();
 	
-	private Layout naviRootContent = null;
 	private TopMenu topMenu = new TopMenu();
 	private LeftMenu leftMenu = new LeftMenu();
 	private NotificationCenter notiCenter = new NotificationCenter();
 	
-	private Label css = new Label("", ContentMode.HTML);
-
-	public static HybridMenu get() {
-		return new HybridMenu();
-	}
+	private Style style = new Style();
+	private Style customStyles = new Style();
 	
 	public HybridMenu() {
-		super();
+		if (Styles.style == null) {
+			Styles.style = getFile("styles/hybridMenu.css");
+		}
+		style.setStyle(Styles.style);
 		setSizeFull();
-		setStyleName(CLASS_NAME);
+		getClassNames().add(Styles.hybridMenu);
 		setMargin(false);
+		setPadding(false);
 		setSpacing(false);
+		
+		boolean build = init(VaadinSession.getCurrent(), UI.getCurrent());
+		
+		if (build) {
+			build();
+		}
 	}
 
 	public HybridMenu build() {
 		if (!buildRunning) {
-			UI ui = UI.getCurrent();
-			
-			if (config == null) {
-				config = new MenuConfig();
-			}
-			if (naviRootContent == null) {
-				naviRootContent = new VerticalLayout();
-			}
-			
-			naviRootContent.setWidth(100, Unit.PERCENTAGE);
-			naviRootContent.setStyleName("contentBox");
-			if (initNavigator) {
-				new Navigator(ui, naviRootContent);
-				ui.getNavigator().setErrorView(DefaultPage.class);
-			}
-			if (initViewChangeManager) {
-				if (null == ui.getNavigator()) {
-					log.severe("You have configured to not initialize a Navigator! Make sure a Navigator exists in the UI");
-				}
-				ui.getNavigator().addViewChangeListener(new ViewChangeListener() {
-					private static final long serialVersionUID = 5012642635022164196L;
-					@Override
-					public boolean beforeViewChange(ViewChangeEvent event) {
-						return true;
-					}
-					@Override
-					public void afterViewChange(ViewChangeEvent event) {
-						viewChangeManager.manage(leftMenu, event);
-					}
-				});
-			}
-			
-			addComponent(topMenu);
-			
 			content.setSizeFull();
 			content.setMargin(false);
 			content.setSpacing(false);
-			content.setStyleName("rootContent");
-			addComponent(content);
-			setExpandRatio(content, 1f);
+			content.getClassNames().add(Styles.rootContent);
+			content.add(leftMenu, notiCenter);
 			
-			css.setHeight(0, Unit.PIXELS);
-			css.setStyleName("customCss");
+			add(style/*, customStyles*/, topMenu, content);
+			expand(content);
 			
 			notiCenter.setNotificationPosition(config.getNotificationPosition());
-			
-			content.addComponents(leftMenu, naviRootContent, notiCenter, css);
-			content.setExpandRatio(naviRootContent, 1f);
 
 			switchTheme(config.getDesignItem());
+			
 			VaadinSession.getCurrent().setAttribute(MenuConfig.class, config);
 			VaadinSession.getCurrent().setAttribute(HybridMenu.class, this);
 			buildRunning = true;
@@ -125,26 +94,13 @@ public class HybridMenu extends VerticalLayout {
 	public NotificationCenter getNotificationCenter() {
 		return notiCenter;
 	}
-
-	public Layout getNaviContent() {
-		return naviRootContent;
-	}
-	
-	public HybridMenu withNaviContent(Layout naviRootContent) {
-		this.naviRootContent = naviRootContent;
-		return this;
-	}
-	
-	public HybridMenu withInitNavigator(boolean initNavigator) {
-		this.initNavigator = initNavigator;
-		return this;
-	}
 	
 	public MenuConfig getConfig() {
 		return config;
 	}
 
 	public HybridMenu withConfig(MenuConfig config) {
+		VaadinSession.getCurrent().setAttribute(MenuConfig.class, config);
 		this.config = config;
 		return this;
 	}
@@ -154,17 +110,60 @@ public class HybridMenu extends VerticalLayout {
 			if (designItem.getMenuDesign() == null) {
 				designItem.setMenuDesign(config.getDesignItem().getMenuDesign());
 			} else {
-				setStyleName(CLASS_NAME);
-				addStyleName(designItem.getMenuDesign().getName());
+				for (MenuDesign menuDesign : MenuDesign.values()) {
+					getClassNames().remove(menuDesign.getName());
+				}
+				
+				getClassNames().add(designItem.getMenuDesign().getName());
 			}
 			config.withDesignItem(designItem);
-			css.setValue("<style type=\"text/css\">" + designItem.convertToStyle() + "</style>");
+			customStyles.setStyle(designItem.convertToStyle());
 		} else {
-			css.setValue("");
+			customStyles.clear();
 		}
 	}
 
 	public void setViewChangeManager(ViewChangeManager viewChangeManager) {
 		this.viewChangeManager = viewChangeManager;
+	}
+	
+	@Override
+	public void showRouterLayoutContent(HasElement content) {
+        if (content != null) {
+        	Component component = content.getElement().getComponent().get();
+        	
+        	content.getElement().getStyle().set("width", "100%");
+        	content.getElement().getClassList().add(Styles.contentBox);
+        	
+        	this.content.add(component);
+        	this.expand(component);
+        }
+    }
+
+	@Override
+	public void afterNavigation(AfterNavigationEvent event) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	private String getFile(String fileName) {
+		StringBuilder result = new StringBuilder("");
+		
+		ClassLoader classLoader = getClass().getClassLoader();
+		File file = new File(classLoader.getResource(fileName).getFile());
+
+		try (Scanner scanner = new Scanner(file)) {
+			while (scanner.hasNextLine()) {
+				String line = scanner.nextLine();
+				result.append(line).append("\n");
+			}
+
+			scanner.close();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+			
+		return result.toString();
 	}
 }

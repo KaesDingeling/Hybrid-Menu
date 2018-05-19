@@ -1,7 +1,7 @@
 package kaesdingeling.hybridmenu.data.interfaces;
 
-import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
+import com.vaadin.flow.router.AfterNavigationEvent;
 
 public interface ViewChangeManager {
-	boolean manage(MenuComponent<?> menuContent, ViewChangeEvent event);
+	boolean manage(MenuComponent<?> menuContent, AfterNavigationEvent event);
 }

@@ -2,19 +2,26 @@ package kaesdingeling.hybridmenu.components;
 
 import java.util.List;
 
-import com.vaadin.navigator.Navigator;
-import com.vaadin.navigator.View;
-import com.vaadin.server.Resource;
-import com.vaadin.ui.Button;
-import com.vaadin.ui.UI;
+import com.vaadin.flow.component.ClickEvent;
+import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.ComponentEventListener;
+import com.vaadin.flow.component.UI;
+import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.html.Label;
+import com.vaadin.flow.component.icon.Icon;
+import com.vaadin.flow.component.icon.VaadinIcons;
 
 import kaesdingeling.hybridmenu.data.interfaces.MenuComponent;
+import kaesdingeling.hybridmenu.utils.Styles;
 
-public class HMButton extends Button implements MenuComponent<Button> {
+@SuppressWarnings("hiding")
+public class HMButton extends Button implements MenuComponent<HMButton> {
 	private static final long serialVersionUID = -2388630513509376470L;
 	
-	private String toolTip = null;
 	private String navigateTo = null;
+	
+	private Label toolTip = null;
+	private Icon otherIcon = null;
 	
 	public static HMButton get() {
 		return new HMButton("");
@@ -31,7 +38,7 @@ public class HMButton extends Button implements MenuComponent<Button> {
 		build(caption, null, null);
 	}
 	
-	public HMButton(Resource icon) {
+	public HMButton(Icon icon) {
 		build(null, icon, null);
 	}
 	
@@ -42,7 +49,7 @@ public class HMButton extends Button implements MenuComponent<Button> {
 	 * 
 	 * @param caption
 	 */
-	public HMButton(String caption, Resource icon) {
+	public HMButton(String caption, Icon icon) {
 		build(caption, icon, null);
 	}
 	
@@ -53,11 +60,11 @@ public class HMButton extends Button implements MenuComponent<Button> {
 	 * 
 	 * @param caption
 	 */
-	public HMButton(String caption, ClickListener clickListener) {
+	public HMButton(String caption, ComponentEventListener<ClickEvent<Button>> clickListener) {
 		build(caption, null, clickListener);
 	}
 	
-	public HMButton(Resource icon, ClickListener clickListener) {
+	public HMButton(Icon icon, ComponentEventListener<ClickEvent<Button>> clickListener) {
 		build(null, icon, clickListener);
 	}
 	
@@ -68,11 +75,11 @@ public class HMButton extends Button implements MenuComponent<Button> {
 	 * 
 	 * @param caption
 	 */
-	public HMButton(String caption, Resource icon, ClickListener clickListener) {
+	public HMButton(String caption, Icon icon, ComponentEventListener<ClickEvent<Button>> clickListener) {
 		build(caption, icon, clickListener);
 	}
 	
-	private void build(String caption, Resource icon, ClickListener clickListener) {
+	private void build(String caption, Icon icon, ComponentEventListener<ClickEvent<Button>> clickListener) {
 		withCaption(caption);
 		withIcon(icon);
 		if (clickListener != null) {
@@ -88,118 +95,98 @@ public class HMButton extends Button implements MenuComponent<Button> {
 	 * @param caption
 	 */
 	public HMButton withCaption(String caption) {
-		super.setCaption(caption);
-		removeToolTip();
-		updateToolTip();
+		super.setText(caption);
 		return this;
 	}
 	
-	public HMButton withIcon(Resource icon) {
+	public HMButton withIcon(Icon icon) {
 		super.setIcon(icon);
 		return this;
 	}
 	
-	public HMButton withClickListener(ClickListener clickListener) {
+	public HMButton withIcon(VaadinIcons icon) {
+		return withIcon(icon.create());
+	}
+	
+	public HMButton withClickListener(ComponentEventListener<ClickEvent<Button>> clickListener) {
 		super.addClickListener(clickListener);
 		return this;
 	}
 	
 	public HMButton withDescription(String description) {
-		super.setDescription(description);
+		super.getElement().setAttribute("title", description);
 		return this;
 	}
 	
-	public HMButton withNavigateTo(String link) {
+	public <T extends Component> HMButton withNavigateTo(Class<T> viewClass) {
+		withNavigateTo(UI.getCurrent().getRouter().getUrl(viewClass));
+		return this;
+	}
+	
+	public <T extends Component> HMButton withNavigateTo(String link) {
 		navigateTo = link;
-		return this.withClickListener(e -> {
-			UI.getCurrent().getNavigator().navigateTo(link);
-		});
-	}
-	
-	public <T extends View> HMButton withNavigateTo(Class<T> viewClass) {
-		withNavigateTo(viewClass.getSimpleName(), viewClass);
-		return this;
-	}
-	
-	public <T extends View> HMButton withNavigateTo(String viewName, Class<T> viewClass) {
-		navigateTo = viewName;
-		
-		Navigator navigator = UI.getCurrent().getNavigator();
-		
-		navigator.removeView(viewName);
-		navigator.addView(viewName, viewClass);
-		
-		return this.withClickListener(e -> {
-			navigator.navigateTo(navigateTo);
-		});
-	}
-	
-	public HMButton updateToolTip() {
-		String toolTip = "";
-		String caption = getCaption();
-		if (caption != null && !caption.isEmpty()) {
-			toolTip += caption;
-		}
-		if (this.toolTip != null && !this.toolTip.isEmpty()) {
-			toolTip += "<div class=\"toolTip\">" + this.toolTip + "</div>";
-		}
-		setCaption(toolTip);
-		return this;
+		return this.withClickListener(e -> UI.getCurrent().navigate(navigateTo));
 	}
 	
 	/**
-	 * Only for the top menu and internal
+	 * Only for the left menu
 	 * 
 	 * @param toolTip
 	 * @return
 	 */
+	public HMButton withOtherIcon(VaadinIcons icon) {
+		return withOtherIcon(icon.create());
+	}
+	
+	/**
+	 * Only for the left menu
+	 * 
+	 * @param toolTip
+	 * @return
+	 */
+	public HMButton withOtherIcon(Icon icon) {
+		if (otherIcon != null) {
+			otherIcon.getElement().removeFromParent();
+		}
+		otherIcon = icon;
+		otherIcon.getClassNames().add(Styles.buttonOtherIcon);
+		addToSuffix(icon);
+		return this;
+	}
+	
 	public HMButton withToolTip(String toolTip) {
-		setCaptionAsHtml(true);
 		removeToolTip();
-		if (toolTip == null || toolTip.isEmpty()) {
-			this.toolTip = null;
-		} else {
-			this.toolTip = toolTip;
-		}
-		updateToolTip();
+		this.toolTip = new Label(toolTip);
+		this.toolTip.getClassNames().add(Styles.toolTip);
+		addToSuffix(this.toolTip);
 		return this;
 	}
 	
-	/**
-	 * Only for the top menu
-	 * 
-	 * @param toolTip
-	 * @return
-	 */
 	public HMButton withToolTip(int toolTip) {
-		setCaptionAsHtml(true);
-		removeToolTip();
-		if (toolTip == 0) {
-			this.toolTip = null;
+		if (toolTip > 0) {
+			withToolTip(String.valueOf(toolTip));
 		} else {
-			this.toolTip = String.valueOf(toolTip);
+			removeToolTip();
 		}
-		updateToolTip();
 		return this;
 	}
 	
 	public HMButton removeToolTip() {
-		String caption = getCaption();
-		if (toolTip != null && !toolTip.isEmpty() && caption != null && !caption.isEmpty()) {
-			setCaption(caption.replaceAll("<div class=\"toolTip\">" + toolTip + "</div>", ""));
+		if (toolTip != null) {
+			toolTip.getElement().removeFromParent();
 		}
 		return this;
 	}
 	
 	public boolean isActive() {
-		return getStyleName().contains("active");
+		return getClassNames().contains(Styles.active);
 	}
 	
 	public HMButton setActive(boolean active) {
 		if (active && !isActive()) {
-			addStyleName("active");
+			getClassNames().add(Styles.active);
 		} else {
-			removeStyleName("active");
+			getClassNames().remove(Styles.active);
 		}
 		return this;
 	}
@@ -209,22 +196,17 @@ public class HMButton extends Button implements MenuComponent<Button> {
 	}
 	
 	@Override
-	public String getRootStyle() {
-		return this.getClass().getSimpleName();
-	}
-	
-	@Override
-	public <C extends MenuComponent<?>> C add(C c) {
+	public <MenuComponent extends Component> MenuComponent add(MenuComponent c) {
 		return null;
 	}
 
 	@Override
-	public <C extends MenuComponent<?>> C addAsFirst(C c) {
+	public <MenuComponent extends Component> MenuComponent addAsFirst(MenuComponent c) {
 		return null;
 	}
 
 	@Override
-	public <C extends MenuComponent<?>> C addAt(C c, int index) {
+	public <MenuComponent extends Component> MenuComponent addAt(MenuComponent c, int index) {
 		return null;
 	}
 
@@ -234,7 +216,7 @@ public class HMButton extends Button implements MenuComponent<Button> {
 	}
 
 	@Override
-	public <C extends MenuComponent<?>> HMButton remove(C c) {
+	public <MenuComponent extends Component> HMButton remove(MenuComponent c) {
 		return null;
 	}
 

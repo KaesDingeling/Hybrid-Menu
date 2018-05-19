@@ -3,18 +3,17 @@ package kaesdingeling.hybridmenu.components;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.vaadin.server.VaadinSession;
-import com.vaadin.ui.Component;
-import com.vaadin.ui.VerticalLayout;
+import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.server.VaadinSession;
 
 import kaesdingeling.hybridmenu.data.enums.ToggleMode;
 import kaesdingeling.hybridmenu.data.interfaces.MenuComponent;
-import kaesdingeling.hybridmenu.utils.Utils;
+import kaesdingeling.hybridmenu.utils.Styles;
 
+@SuppressWarnings("hiding")
 public class LeftMenu extends VerticalLayout implements MenuComponent<VerticalLayout> {
 	private static final long serialVersionUID = 8774849625123603883L;
-	
-	public static final String CLASS_NAME = "leftMenu";
 	
 	/*
 	private VerticalLayout content = new VerticalLayout();
@@ -23,10 +22,11 @@ public class LeftMenu extends VerticalLayout implements MenuComponent<VerticalLa
 
 	public LeftMenu() {
 		super();
-		setWidth(250, Unit.PIXELS);
-		setHeight(100, Unit.PERCENTAGE);
-		setStyleName(CLASS_NAME);
+		setWidth("250px");
+		setHeight("100%");
+		getClassNames().add(Styles.leftMenu);
 		setMargin(false);
+		setPadding(false);
 		setSpacing(false);
 		/*
 		content.setSizeFull();
@@ -50,12 +50,12 @@ public class LeftMenu extends VerticalLayout implements MenuComponent<VerticalLa
 		if (toggleMode != null) {
 			switch (toggleMode) {
 				case MINIMAL:
-					setWidth(50, Unit.PIXELS);
-					getParent().addStyleName(ToggleMode.MINIMAL.name().toLowerCase());
+					setWidth("50px");
+					getParent().get().getElement().getClassList().add(ToggleMode.MINIMAL.name().toLowerCase());
 					break;
 				case NORMAL:
-					setWidth(250, Unit.PIXELS);
-					getParent().removeStyleName(ToggleMode.MINIMAL.name().toLowerCase());
+					setWidth("250px");
+					getParent().get().getElement().getClassList().remove(ToggleMode.MINIMAL.name().toLowerCase());
 					break;
 			}
 			VaadinSession session = VaadinSession.getCurrent();
@@ -77,20 +77,21 @@ public class LeftMenu extends VerticalLayout implements MenuComponent<VerticalLa
 		return ToggleMode.NORMAL;
 	}
 	
-	public <C extends MenuComponent<?>> C add(C c) {
-		addComponent(Utils.setDefaults(c));
+	@Override
+	public <MenuComponent extends Component> MenuComponent add(MenuComponent c) {
+		super.add(c);
 		return c;
 	}
 	
 	@Override
-	public <C extends MenuComponent<?>> C addAsFirst(C c) {
-		addComponentAsFirst(Utils.setDefaults(c));
+	public <MenuComponent extends Component> MenuComponent addAsFirst(MenuComponent c) {
+		//super.addAsFirst(c);
 		return c;
 	}
-
+	
 	@Override
-	public <C extends MenuComponent<?>> C addAt(C c, int index) {
-		addComponent(Utils.setDefaults(c), index);
+	public <MenuComponent extends Component> MenuComponent addAt(MenuComponent c, int index) {
+		//super.addAt(c, index);
 		return c;
 	}
 	
@@ -100,8 +101,8 @@ public class LeftMenu extends VerticalLayout implements MenuComponent<VerticalLa
 	}
 	
 	@Override
-	public <C extends MenuComponent<?>> LeftMenu remove(C c) {
-		removeComponent(c);
+	public <MenuComponent extends Component> LeftMenu remove(MenuComponent c) {
+		super.remove(c);
 		return this;
 	}
 	
@@ -119,11 +120,6 @@ public class LeftMenu extends VerticalLayout implements MenuComponent<VerticalLa
 		return c;
 	}
 	*/
-	
-	public LeftMenu remove(Component component) {
-		removeComponent(component);
-		return this;
-	}
 	
 	/*
 	public LeftMenu removeFromFooter(HMButton component) {
@@ -148,16 +144,11 @@ public class LeftMenu extends VerticalLayout implements MenuComponent<VerticalLa
 	public List<MenuComponent<?>> getList() {
 		List<MenuComponent<?>> menuComponentList = new ArrayList<MenuComponent<?>>();
 		for (int i = 0; i < getComponentCount(); i++) {
-			Component component = getComponent(i);
+			Component component = getComponentAt(i);
 			if (component instanceof MenuComponent<?>) {
 				menuComponentList.add((MenuComponent<?>) component);
 			}
 		}
 		return menuComponentList;
-	}
-
-	@Override
-	public String getRootStyle() {
-		return super.getPrimaryStyleName();
 	}
 }

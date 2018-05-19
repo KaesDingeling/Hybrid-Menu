@@ -1,20 +1,21 @@
 package kaesdingeling.hybridmenu.demo.page;
 
-import com.vaadin.navigator.View;
-import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
-import com.vaadin.ui.Label;
-import com.vaadin.ui.VerticalLayout;
+import com.vaadin.flow.component.html.Label;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.router.Route;
 
-public class MemberPage extends VerticalLayout implements View {
-	private static final long serialVersionUID = 1L;
-	
-	@Override
-	public void enter(ViewChangeEvent event) {
+import kaesdingeling.hybridmenu.demo.MainView;
+
+@Route(value = "member", layout = MainView.class)
+public class MemberPage extends VerticalLayout {
+	private static final long serialVersionUID = -3951342379250054941L;
+
+	public MemberPage() {
 		Label title = new Label();
 		
-		title.setCaption("Member");
-		title.setValue("Member view");
+		title.setTitle("Member");
+		title.setText("Member view");
 		
-		addComponent(title);
+		add(title);
 	}
 }

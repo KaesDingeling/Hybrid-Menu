@@ -1,7 +1,5 @@
 package kaesdingeling.hybridmenu.design;
 
-import com.vaadin.shared.ui.colorpicker.Color;
-
 public class DesignColor {
 	private int red = 255;
     private int green = 255;
@@ -11,24 +9,24 @@ public class DesignColor {
     public static DesignColor get() {
     	return new DesignColor();
     }
-    public static DesignColor get(Color color) {
-    	return new DesignColor(color);
-    }
     public static DesignColor get(int red, int green, int blue) {
     	return new DesignColor(red, green, blue);
     }
-    
     public DesignColor() {
     	
-    }
-    public DesignColor(Color color) {
-    	convert(color);
     }
     public DesignColor(int red, int green, int blue) {
     	this.red = red;
     	this.green = green;
     	this.blue = blue;
     }
+    public DesignColor(int red, int green, int blue, int alpha) {
+    	this.red = red;
+    	this.green = green;
+    	this.blue = blue;
+    	this.alpha = alpha;
+    }
+    
 	public int getRed() {
 		return red;
 	}
@@ -52,14 +50,5 @@ public class DesignColor {
 	}
 	public void setAlpha(int alpha) {
 		this.alpha = alpha;
-	}
-	public void convert(Color color) {
-		red = color.getRed();
-	    green = color.getGreen();
-	    blue = color.getBlue();
-	    alpha = color.getAlpha();
-	}
-	public Color getColor() {
-		return new Color(red, green, blue, alpha);
 	}
 }

@@ -1,13 +1,11 @@
 package kaesdingeling.hybridmenu.data;
 
-import com.vaadin.server.FontAwesome;
-import com.vaadin.server.FontIcon;
-import com.vaadin.server.Resource;
+import com.vaadin.flow.component.icon.Icon;
+import com.vaadin.flow.component.icon.VaadinIcons;
 
 import kaesdingeling.hybridmenu.data.enums.NotificationPosition;
 import kaesdingeling.hybridmenu.design.DesignItem;
 
-@SuppressWarnings("deprecation")
 public class MenuConfig {
 	public static MenuConfig get() {
 		return new MenuConfig();
@@ -15,12 +13,12 @@ public class MenuConfig {
 	
 	private DesignItem designItem = DesignItem.getDarkDesign();
 	
-	private FontIcon subMenuIcon = FontAwesome.ANGLE_UP;
+	private VaadinIcons subMenuIcon = VaadinIcons.ANGLE_UP;
 	
-	private Resource notificationButtonIcon = FontAwesome.BELL;
-	private Resource notificationButtonEmptyIcon = FontAwesome.BELL_O;
-	private Resource notificationCenterCloseIcon = FontAwesome.ANGLE_RIGHT;
-	private Resource notificationRemoveIcon = FontAwesome.TIMES;
+	private VaadinIcons notificationButtonIcon = VaadinIcons.BELL;
+	private VaadinIcons notificationButtonEmptyIcon = VaadinIcons.BELL_O;
+	private VaadinIcons notificationCenterCloseIcon = VaadinIcons.ANGLE_RIGHT;
+	private VaadinIcons notificationRemoveIcon = VaadinIcons.FILE_REMOVE;
 	
 	private NotificationPosition notificationPosition = NotificationPosition.BOTTOM;
 	
@@ -35,38 +33,38 @@ public class MenuConfig {
 		this.designItem = designItem;
 		return this;
 	}
-	public FontIcon getSubMenuIcon() {
-		return subMenuIcon;
+	public Icon getSubMenuIcon() {
+		return subMenuIcon.create();
 	}
-	public MenuConfig withSubMenuIcon(FontIcon subMenuIcon) {
+	public MenuConfig withSubMenuIcon(VaadinIcons subMenuIcon) {
 		this.subMenuIcon = subMenuIcon;
 		return this;
 	}
-	public Resource getNotificationButtonIcon() {
-		return notificationButtonIcon;
+	public Icon getNotificationButtonIcon() {
+		return notificationButtonIcon.create();
 	}
-	public MenuConfig withNotificationButtonIcon(Resource notificationButtonIcon) {
+	public MenuConfig withNotificationButtonIcon(VaadinIcons notificationButtonIcon) {
 		this.notificationButtonIcon = notificationButtonIcon;
 		return this;
 	}
-	public Resource getNotificationButtonEmptyIcon() {
-		return notificationButtonEmptyIcon;
+	public Icon getNotificationButtonEmptyIcon() {
+		return notificationButtonEmptyIcon.create();
 	}
-	public MenuConfig withNotificationButtonEmptyIcon(Resource notificationButtonEmptyIcon) {
+	public MenuConfig withNotificationButtonEmptyIcon(VaadinIcons notificationButtonEmptyIcon) {
 		this.notificationButtonEmptyIcon = notificationButtonEmptyIcon;
 		return this;
 	}
-	public Resource getNotificationCenterCloseIcon() {
-		return notificationCenterCloseIcon;
+	public Icon getNotificationCenterCloseIcon() {
+		return notificationCenterCloseIcon.create();
 	}
-	public MenuConfig withNotificationCenterCloseIcon(Resource notificationCenterCloseIcon) {
+	public MenuConfig withNotificationCenterCloseIcon(VaadinIcons notificationCenterCloseIcon) {
 		this.notificationCenterCloseIcon = notificationCenterCloseIcon;
 		return this;
 	}
-	public Resource getNotificationRemoveIcon() {
-		return notificationRemoveIcon;
+	public Icon getNotificationRemoveIcon() {
+		return notificationRemoveIcon.create();
 	}
-	public MenuConfig withNotificationRemoveIcon(Resource notificationRemoveIcon) {
+	public MenuConfig withNotificationRemoveIcon(VaadinIcons notificationRemoveIcon) {
 		this.notificationRemoveIcon = notificationRemoveIcon;
 		return this;
 	}

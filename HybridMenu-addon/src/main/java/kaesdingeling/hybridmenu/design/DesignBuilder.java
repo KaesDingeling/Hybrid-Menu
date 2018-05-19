@@ -3,7 +3,7 @@ package kaesdingeling.hybridmenu.design;
 import java.util.ArrayList;
 import java.util.List;
 
-import kaesdingeling.hybridmenu.HybridMenu;
+import kaesdingeling.hybridmenu.utils.Styles;
 
 public class DesignBuilder extends DesignClass {
 	public static DesignBuilder get() {
@@ -11,7 +11,7 @@ public class DesignBuilder extends DesignClass {
 	}
 	
 	public DesignBuilder() {
-		super(null, "." + HybridMenu.CLASS_NAME);
+		super(null, "." + Styles.hybridMenu);
 	}
 	
 	@Override

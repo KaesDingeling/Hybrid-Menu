@@ -1,6 +1,6 @@
 package kaesdingeling.hybridmenu.data;
 
-import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
+import com.vaadin.flow.router.AfterNavigationEvent;
 
 import kaesdingeling.hybridmenu.components.HMButton;
 import kaesdingeling.hybridmenu.components.HMSubMenu;
@@ -10,7 +10,7 @@ import kaesdingeling.hybridmenu.data.interfaces.ViewChangeManager;
 
 public class DefaultViewChangeManager implements ViewChangeManager {
 
-	public boolean manage(MenuComponent<?> menuComponent, ViewChangeEvent event) {
+	public boolean manage(MenuComponent<?> menuComponent, AfterNavigationEvent event) {
 		boolean foundActiveButton = false;
 		if (menuComponent != null) {
 			if (menuComponent instanceof HMButton) {
@@ -36,20 +36,12 @@ public class DefaultViewChangeManager implements ViewChangeManager {
 		return foundActiveButton;
 	}
 	
-	public boolean checkButton(HMButton button, ViewChangeEvent event) {
+	public boolean checkButton(HMButton button, AfterNavigationEvent event) {
 		boolean check = false;
 		
 		if (button.getNavigateTo() != null) {
-			if (button.getNavigateTo().startsWith(event.getNewView().getClass().getSimpleName())) {
-				if (button.getNavigateTo().equals(event.getViewName())) {
-					check = true;
-				} else if (button.getNavigateTo().equals(event.getViewName() + "/" + event.getParameters())) {
-					check = true;
-				}
-			} else {
-				if (button.getNavigateTo().equals(event.getViewName())) {
-					check = true;
-				}
+			if (button.getNavigateTo().equals(event.getLocation().getPath())) {
+				check = true;
 			}
 		}
 		

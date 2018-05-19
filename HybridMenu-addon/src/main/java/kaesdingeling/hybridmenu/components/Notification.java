@@ -4,25 +4,28 @@ import java.util.Date;
 
 import org.ocpsoft.prettytime.PrettyTime;
 
-import com.vaadin.server.Resource;
-import com.vaadin.server.VaadinSession;
-import com.vaadin.shared.ui.ContentMode;
-import com.vaadin.ui.Button;
-import com.vaadin.ui.CssLayout;
-import com.vaadin.ui.Label;
+import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.html.Label;
+import com.vaadin.flow.component.icon.Icon;
+import com.vaadin.flow.component.icon.VaadinIcons;
+import com.vaadin.flow.server.VaadinSession;
 
 import kaesdingeling.hybridmenu.data.MenuConfig;
 
-public class Notification extends CssLayout {
+public class Notification extends Div {
 	private static final long serialVersionUID = 3572068667525046443L;
 	
 	private MenuConfig menuConfig = VaadinSession.getCurrent().getAttribute(MenuConfig.class);
 	
 	private String caption = "";
 	
-	private Label title = new Label("", ContentMode.HTML);
-	private Label content = new Label("", ContentMode.HTML);
+	private Label title = new Label();
+	private Label timeAgo = new Label();
+	private Label content = new Label();
 	private Button removeButton = null;
+	
+	private Icon icon = null;
 	
 	private long created = 0L;
 	private long removeDisplayOffset = 0L;
@@ -40,7 +43,7 @@ public class Notification extends CssLayout {
 	
 	public Notification withCloseable() {
 		removeButton = new Button(menuConfig.getNotificationRemoveIcon());
-		removeButton.setPrimaryStyleName("button");
+		removeButton.getClassNames().add("button");
 		return this;
 	}
 	
@@ -67,17 +70,21 @@ public class Notification extends CssLayout {
 	}
 	
 	public Notification withTitle(String title) {
-		this.caption = title;
+		this.title.setText(title);
 		return this;
 	}
 	
 	public Notification withContent(String content) {
-		this.content.setValue(content);
+		this.content.setText(content);
 		return this;
 	}
 	
-	public Notification withIcon(Resource icon) {
-		title.setIcon(icon);
+	public Notification withIcon(VaadinIcons icon) {
+		return withIcon(icon.create());
+	}
+	
+	public Notification withIcon(Icon icon) {
+		this.icon = icon;
 		return this;
 	}
 	
@@ -87,46 +94,46 @@ public class Notification extends CssLayout {
 	
 	public Notification makeAsReaded() {
 		readed = true;
-		addStyleName("readed");
 		return this;
 	}
 	
 	public Notification build(NotificationCenter notificationCenter) {
-		setStyleName("notification");
-		addComponents(title, content);
+		if (icon != null) {
+			add(icon);
+		}
 		
-		content.setPrimaryStyleName("content");
+		getClassNames().add("notification");
+		add(title, timeAgo, content);
+		
+		title.getClassNames().add("title");
+		timeAgo.getClassNames().add("timeAgo");
+		content.getClassNames().add("content");
 		
 		if (removeButton != null) {
 			removeButton.addClickListener(e -> notificationCenter.remove(this));
-			addComponent(removeButton);
+			add(removeButton);
 		}
 		
-		if (title.getIcon() != null) {
-			addStyleName("withIcon");
-		}
-		
-		title.setPrimaryStyleName("title");
-		title.setValue(caption + "<p class=\"timeAgo\">" + new PrettyTime(notificationCenter.getUI().getLocale()).format(new Date(created)) + "</p>");
+		timeAgo.setText(new PrettyTime(notificationCenter.getUI().get().getLocale()).format(new Date(created)));
 		
 		if (removeDisplayOffset > 0L) {
-			NotificationCenter.runOneAttached(this, () -> notificationCenter.remove(this), removeDisplayOffset);
+			//NotificationCenter.runOneAttached(this, () -> notificationCenter.remove(this), removeDisplayOffset);
 		}
 		return this;
 	}
 	
 	public void update(NotificationCenter notificationCenter) {
-		title.setValue(caption + "<p class=\"timeAgo\">" + new PrettyTime(notificationCenter.getUI().getLocale()).format(new Date(created)) + "</p>");
+		//title.setValue(caption + "<p class=\"timeAgo\">" + new PrettyTime(notificationCenter.getUI().getLocale()).format(new Date(created)) + "</p>");
 	}
 	
 	@Override
 	public Notification clone() {
 		Notification notification = new Notification();
 		notification.withAutoRemove(removeDisplayOffset);
-		notification.withContent(content.getValue());
-		notification.withTitle(title.getValue());
+		//notification.withContent(content.getValue());
+		//notification.withTitle(title.getValue());
 		notification.withDisplayTime(displayTime);
-		notification.withIcon(title.getIcon());
+		//notification.withIcon(title.getIcon());
 		notification.created = created;
 		notification.caption = caption;
 		return notification;

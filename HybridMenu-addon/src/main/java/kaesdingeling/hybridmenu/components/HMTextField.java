@@ -2,48 +2,45 @@ package kaesdingeling.hybridmenu.components;
 
 import java.util.List;
 
-import com.vaadin.server.Resource;
-import com.vaadin.ui.TextField;
+import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.icon.Icon;
+import com.vaadin.flow.component.icon.VaadinIcons;
+import com.vaadin.flow.component.textfield.TextField;
 
 import kaesdingeling.hybridmenu.data.interfaces.MenuComponent;
 
 /**
  * Only for the top menu
  */
-public class HMTextField extends TextField implements MenuComponent<TextField> {
+@SuppressWarnings("hiding")
+public class HMTextField extends TextField implements MenuComponent<HMTextField> {
 	private static final long serialVersionUID = -6746020801071116552L;
 
-	public static HMTextField get(Resource icon, String placeholder) {
+	public static HMTextField get(VaadinIcons icon, String placeholder) {
+		return new HMTextField(icon.create(), placeholder);
+	}
+	
+	public static HMTextField get(Icon icon, String placeholder) {
 		return new HMTextField(icon, placeholder);
 	}
 	
-	public HMTextField(Resource icon, String placeholder) {
-		setIcon(icon);
+	public HMTextField(Icon icon, String placeholder) {
+		setPrefixComponent(icon);
 		setPlaceholder(placeholder);
 	}
-	
-	@Override
-	public void setPrimaryStyleName(String style) {
-		super.addStyleName(style);
-	}
 
 	@Override
-	public String getRootStyle() {
-		return this.getClass().getSimpleName();
-	}
-
-	@Override
-	public <C extends MenuComponent<?>> C add(C c) {
+	public <MenuComponent extends Component> MenuComponent add(MenuComponent c) {
 		return null;
 	}
 
 	@Override
-	public <C extends MenuComponent<?>> C addAsFirst(C c) {
+	public <MenuComponent extends Component> MenuComponent addAsFirst(MenuComponent c) {
 		return null;
 	}
 
 	@Override
-	public <C extends MenuComponent<?>> C addAt(C c, int index) {
+	public <MenuComponent extends Component> MenuComponent addAt(MenuComponent c, int index) {
 		return null;
 	}
 
@@ -53,7 +50,7 @@ public class HMTextField extends TextField implements MenuComponent<TextField> {
 	}
 
 	@Override
-	public <C extends MenuComponent<?>> HMTextField remove(C c) {
+	public <MenuComponent extends Component> HMTextField remove(MenuComponent c) {
 		return null;
 	}
 
