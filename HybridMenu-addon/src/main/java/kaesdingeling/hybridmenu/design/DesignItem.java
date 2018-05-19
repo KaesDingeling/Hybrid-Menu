@@ -1,228 +1,204 @@
 package kaesdingeling.hybridmenu.design;
 
-import kaesdingeling.hybridmenu.data.enums.MenuDesign;
-
 public class DesignItem {
-	private MenuDesign menuDesign = MenuDesign.DARK;
-	
 	/* Colors */
-    private DesignColor darkColor;
-    private DesignColor whiteColor;
+    public DesignColor darkColor; // rgb(66, 66, 66)
+    public DesignColor whiteColor; // rgb(245, 245, 245)
     
     /* Content Background */
-    private DesignColor contentBackground;
+    public DesignColor contentBackground; // rgb(245, 245, 245)
     
     /* Notifications */
-    private DesignColor notificationBackground;
-    private double notificationShadow;
-    private DesignColor notificationRemoveButtonHover;
+    public DesignColor notificationCenterBackground; // rgba(224, 224, 224, 0.75)
+    public DesignColor notificationCenterFooterButtonBackground; // rgb(245, 245, 245)
+    public DesignColor notificationCenterFooterHoverButtonBackground; // rgb(189, 189, 189)
+    public DesignColor notificationBackground; // rgba(224, 224, 224, 0.8)
+    public DesignColor notificationButtonRemoveBackground; // rgba(189, 189, 189, 0)
+    public DesignColor notificationHoverButtonRemoveBackground; // rgba(189, 189, 189, 0.5)
+    public DesignColor notificationHoverButtonRemoveColor; // rgb(222, 30, 30)
     
-    /* Left-Menu */
-    private DesignColor menuLeftBackground;
-    private DesignColor menuLeftButtonHover;
-    private DesignColor menuLeftButtonActive;
+    /* Left Menu */
+    public DesignColor menuLeftBackground; // rgb(224, 224, 224)
+    public DesignColor menuLeftItemBackground; // rgba(0, 0, 0, 0)
+    public DesignColor menuLeftItemActiveBackground; // rgb(245, 245, 245)
+    public DesignColor menuLeftItemHoverBackground; // rgb(189, 189, 189)
     
-    /* tooltip */
-    private DesignColor tooltipBackground;
-    private DesignColor tooltipActiveBackground;
+    /* Top Menu */
+    public DesignColor menuTopItemBackground; // rgb(240, 240, 240)
+    public DesignColor menuTopItemHoverBackground; // rgb(224, 224, 224)
+    
+    /* Tool Tip */
+    public DesignColor menuItemBorder; // rgb(25, 118, 210)
+    public DesignColor menuItemActiveBorder; // rgb(43, 194, 78)
+    public DesignColor tooltipBackground; // rgb(25, 118, 210)
     
     public String convertToStyle() {
     	DesignUtils.setWhiteColor(whiteColor);
     	DesignUtils.setDarkColor(darkColor);
     	
     	DesignBuilder designBuilder = DesignBuilder.get();
-		
-		/* Notification */
     	
-    	/* top menu */
     	designBuilder
-    		.with(".topMenu .v-slot > div")
-		    	.add(DesignUtils.hmBackgroundWithColor(menuLeftBackground))
-		    	.add(DesignUtils.border(tooltipBackground, "top"))
-		    	.with("input.HMTextField")
-		    		.add(DesignUtils.hmBackgroundWithColor(notificationBackground))
-		    		.and()
-		    	.with("&:hover")
-		    		.add(DesignUtils.hmBackgroundWithColor(menuLeftButtonHover))
-		    		.and()
-		    	.with(".HMButton-caption .toolTip")
-		    		.add(DesignUtils.hmBackgroundWithColor(tooltipBackground))
-		    		.and()
-		    	.and()
-		    .with(".rootContent.minimal .leftMenu .HMButton .HMButton-caption")
-		    	.add(DesignUtils.background(menuLeftBackground, 0.75))
-		    	.and()
-		    .with(".rootContent")
-		    	.add(DesignUtils.hmBackgroundWithColor(contentBackground))
-		    	.with(".leftMenu")
-		    		.add(DesignUtils.background(menuLeftBackground))
-		    		.with(".v-slot-HMLabel > div .v-caption:after")
-		    			.add(DesignUtils.border(DesignUtils.hmColorDedect(menuLeftBackground), "bottom", 25))
-		    			.and()
-		    		.with(".HMButton")
-			    		.add(DesignUtils.border(tooltipBackground, "left"))
-			    		.with("&.active")
-			    			.add(DesignUtils.border(tooltipActiveBackground, "left"))
-			    			.add(DesignUtils.hmBackgroundWithColor(menuLeftButtonActive))
-			    			.and()
-			    		.with("&:hover")
-			    			.add(DesignUtils.hmBackgroundWithColor(menuLeftButtonHover))
-			    			.and()
-			    		.and()
-			    	.with(".HMSubMenu > .v-slot:last-child > .v-verticallayout")
-			    		.add(DesignUtils.border(DesignUtils.hmColorDedect(menuLeftBackground), "left", 25))
-			    		.and()
-			    	.and()
-			    .with(".notificationCenter")
-				    .add(DesignUtils.background(menuLeftBackground, notificationShadow))
-				    .add(DesignUtils.color(DesignUtils.hmColorDedect(menuLeftBackground)))
-				    .with(".notification")
-				    	.add(DesignUtils.hmBackgroundWithColor(notificationBackground))
-				    	.with(".title .timeAgo:before")
-				    		.add(DesignUtils.background(DesignUtils.hmColorDedect(notificationBackground)))
-				    		.and()
-				    	.with(".button")
-					    	.add(DesignUtils.background(new DesignColor(0, 0, 0, 0)))
-					    	.add(DesignUtils.color(DesignUtils.hmColorDedect(notificationBackground)))
-					    	.with("&:hover")
-						    	.add(DesignUtils.color(notificationRemoveButtonHover))
-						    	.add(DesignUtils.background(menuLeftButtonHover, 50))
-						    	.and()
-						    .and()
+    		.with(".rootContent")
+    			.add(DesignUtils.hmBackgroundWithColor(contentBackground))
+    			.and()
+    		.with(".topMenu")
+    			.with("vaadin-button")
+    				.add(DesignUtils.color(DesignUtils.hmColorDedect(menuTopItemBackground)))
+    				.add(DesignUtils.boxShadow(0, 0, 2, 0, menuTopItemBackground.copy().setAlpha(0.75)))
+    				.with("> div")
+    					.add(DesignUtils.background(menuTopItemBackground))
+    					.and()
+    				.with("iron-icon")
+	    				.add(DesignUtils.color(DesignUtils.hmColorDedect(menuTopItemBackground)))
+	    				.and()
+	        		.with("&:hover")
+	        			.add(DesignUtils.border(menuItemBorder, "top"))
+	    				.with("> div")
+		    				.add(DesignUtils.background(menuTopItemHoverBackground))
+		    				.and()
+	    				.and()
+        			.with("&.active")
+	    				.add(DesignUtils.border(menuItemActiveBorder, "top"))
+	    				.and()
+    				.with(".toolTip")
+	    				.add(DesignUtils.hmBackgroundWithColor(tooltipBackground))
+	    				.add(DesignUtils.boxShadow(0, 0, 2, 0, tooltipBackground.copy().setAlpha(0.75)))
+	    				.and()
+	    			.and()
+    			.with("vaadin-text-field")
+    				.add(DesignUtils.color(DesignUtils.hmColorDedect(menuTopItemBackground)))
+    				.add(DesignUtils.boxShadow(0, 0, 2, 0, menuTopItemBackground.copy().setAlpha(0.75)))
+        			.with(".vaadin-text-field")
+        				.add(DesignUtils.background(menuTopItemBackground))
+        				.and()
+        			.with("&:hover")
+        				.add(DesignUtils.border(menuItemBorder, "top"))
+        				.with(".vaadin-text-field")
+	        				.add(DesignUtils.background(menuTopItemHoverBackground))
+	        				.and()
+        				.and()
+        			.with("&.active")
+	    				.add(DesignUtils.border(menuItemActiveBorder, "top"))
+	    				.and()
+    				.with("iron-icon")
+    					.add(DesignUtils.color(DesignUtils.hmColorDedect(menuTopItemBackground)))
+    					.and()
+    				.and()
+    			.and()
+    		.with(".leftMenu")
+				.add(DesignUtils.hmBackgroundWithColor(menuLeftBackground))
+				.add(DesignUtils.boxShadow(0, 0, 2, 0, DesignUtils.hmColorDedect(menuLeftBackground).copy().setAlpha(0.25)))
+				.add(DesignUtils.border(DesignUtils.hmColorDedect(menuLeftBackground).copy().setAlpha(0.25), "right"))
+				.with("> label")
+					.add(DesignUtils.border(DesignUtils.hmColorDedect(menuLeftBackground).copy().setAlpha(0.25), "bottom"))
+					.and()
+    			.with("vaadin-button")
+    				.add(DesignUtils.hmBackgroundWithColor(menuLeftItemBackground))
+    				.add(DesignUtils.border(menuItemBorder, "left"))
+    				.with("&.active")
+    					.add(DesignUtils.background(menuLeftItemActiveBackground))
+        				.add(DesignUtils.border(menuItemActiveBorder, "left"))
+        				.and()
+    				.with("&:hover")
+    					.add(DesignUtils.background(menuLeftItemHoverBackground))
+        				.and()
+	    			.with(".toolTip")
+	    				.add(DesignUtils.hmBackgroundWithColor(tooltipBackground))
+	    				.add(DesignUtils.boxShadow(0, 0, 2, 0, tooltipBackground.copy().setAlpha(0.75)))
+	    				.and()
+	    			.and()
+	    		.with("vaadin-vertical-layout.subMenu > vaadin-vertical-layout")
+					.add(DesignUtils.border(DesignUtils.hmColorDedect(menuLeftBackground).copy().setAlpha(0.25), "left"))
+					.and()
+				.and()
+			.with(".notificationCenter")
+				.add(DesignUtils.hmBackgroundWithColor(notificationCenterBackground))
+				.with(".notification")
+					.add(DesignUtils.hmBackgroundWithColor(notificationBackground))
+    				.add(DesignUtils.boxShadow(0, 0, 2, 0, notificationBackground.copy().setAlpha(0.75)))
+					.with("> iron-icon")
+						.add(DesignUtils.border(DesignUtils.hmColorDedect(notificationBackground).copy().setAlpha(0.25), "right"))
 						.and()
-					.with(".v-slot-footer .v-slot > div")
-						.add(DesignUtils.hmBackgroundWithColor(menuLeftButtonActive))
+					.with(".timeAgo:before")
+						.add(DesignUtils.background(DesignUtils.hmColorDedect(notificationBackground)))
+						.and()
+					.with("vaadin-button")
+						.add(DesignUtils.hmBackgroundWithColor(notificationButtonRemoveBackground))
 						.with("&:hover")
-							.add(DesignUtils.hmBackgroundWithColor(menuLeftButtonHover));
+							.add(DesignUtils.color(notificationHoverButtonRemoveColor))
+							.add(DesignUtils.background(notificationHoverButtonRemoveBackground))
+							.and()
+						.and()
+					.and()
+				.with(".footer vaadin-button")
+					.add(DesignUtils.hmBackgroundWithColor(notificationCenterFooterButtonBackground))
+					.with("&:hover")
+						.add(DesignUtils.hmBackgroundWithColor(notificationCenterFooterHoverButtonBackground));
     	
     	return designBuilder.build();
     }
-
-	public MenuDesign getMenuDesign() {
-		return menuDesign;
-	}
-	public DesignItem setMenuDesign(MenuDesign menuDesign) {
-		this.menuDesign = menuDesign;
-		return this;
-	}
-	public DesignColor getDarkColor() {
-		return darkColor;
-	}
-	public DesignItem setDarkColor(DesignColor darkColor) {
-		this.darkColor = darkColor;
-		return this;
-	}
-	public DesignColor getWhiteColor() {
-		return whiteColor;
-	}
-	public DesignItem setWhiteColor(DesignColor whiteColor) {
-		this.whiteColor = whiteColor;
-		return this;
-	}
-	public DesignColor getContentBackground() {
-		return contentBackground;
-	}
-	public DesignItem setContentBackground(DesignColor contentBackground) {
-		this.contentBackground = contentBackground;
-		return this;
-	}
-	public DesignColor getNotificationBackground() {
-		return notificationBackground;
-	}
-	public DesignItem setNotificationBackground(DesignColor notificationBackground) {
-		this.notificationBackground = notificationBackground;
-		return this;
-	}
-	public double getNotificationShadow() {
-		return notificationShadow;
-	}
-	public DesignItem setNotificationShadow(double notificationShadow) {
-		this.notificationShadow = notificationShadow;
-		return this;
-	}
-	public DesignColor getNotificationRemoveButtonHover() {
-		return notificationRemoveButtonHover;
-	}
-	public DesignItem setNotificationRemoveButtonHover(DesignColor notificationRemoveButtonHover) {
-		this.notificationRemoveButtonHover = notificationRemoveButtonHover;
-		return this;
-	}
-	public DesignColor getMenuLeftBackground() {
-		return menuLeftBackground;
-	}
-	public DesignItem setMenuLeftBackground(DesignColor menuLeftBackground) {
-		this.menuLeftBackground = menuLeftBackground;
-		return this;
-	}
-	public DesignColor getMenuLeftButtonHover() {
-		return menuLeftButtonHover;
-	}
-	public DesignItem setMenuLeftButtonHover(DesignColor menuLeftButtonHover) {
-		this.menuLeftButtonHover = menuLeftButtonHover;
-		return this;
-	}
-	public DesignColor getMenuLeftButtonActive() {
-		return menuLeftButtonActive;
-	}
-	public DesignItem setMenuLeftButtonActive(DesignColor menuLeftButtonActive) {
-		this.menuLeftButtonActive = menuLeftButtonActive;
-		return this;
-	}
-	public DesignColor getTooltipBackground() {
-		return tooltipBackground;
-	}
-	public DesignItem setTooltipBackground(DesignColor tooltipBackground) {
-		this.tooltipBackground = tooltipBackground;
-		return this;
-	}
-	public DesignColor getTooltipActiveBackground() {
-		return tooltipActiveBackground;
-	}
-	public DesignItem setTooltipActiveBackground(DesignColor tooltipActiveBackground) {
-		this.tooltipActiveBackground = tooltipActiveBackground;
-		return this;
-	}
 	
 	public static DesignItem getWhiteDesign() {
-		DesignItem design = new DesignItem().setMenuDesign(MenuDesign.WHITE);
+		DesignItem design = new DesignItem();
 		
 		/* Colors */
-		design.setDarkColor(DesignColor.get(66, 66, 66));
-		design.setWhiteColor(DesignColor.get(245, 245, 245));
+		design.darkColor = DesignColor.get(66, 66, 66);
+		design.whiteColor = DesignColor.get(245, 245, 245);
 		
-		/* Content-Background */
-		design.setContentBackground(DesignColor.get(245, 245, 245));
-        
-		/* Left-Menu */
-		design.setMenuLeftBackground(DesignColor.get(224, 224, 224));
-		design.setMenuLeftButtonActive(design.getContentBackground());
-		design.setMenuLeftButtonHover(DesignColor.get(189, 189, 189));
+	    /* Content Background */
+		design.contentBackground = design.whiteColor.copy();
+	    
+	    /* Notifications */
+		design.notificationCenterBackground = DesignColor.get(224, 224, 224, 0.75);
+		design.notificationCenterFooterButtonBackground = design.whiteColor.copy().setAlpha(1);
+		design.notificationCenterFooterHoverButtonBackground = DesignColor.get(189, 189, 189);
+		design.notificationBackground = design.notificationCenterBackground.setAlpha(0.8);
+		design.notificationButtonRemoveBackground = design.notificationCenterFooterHoverButtonBackground.copy().setAlpha(0);
+		design.notificationHoverButtonRemoveBackground = design.notificationCenterFooterHoverButtonBackground.copy().setAlpha(0.5);
+		design.notificationHoverButtonRemoveColor = DesignColor.get(222, 30, 30);
+	    
+		/* Left Menu */
+		design.menuLeftBackground = DesignColor.get(224, 224, 224);
+		design.menuLeftItemBackground = design.notificationCenterFooterHoverButtonBackground.copy().setAlpha(0);
+		design.menuLeftItemActiveBackground = design.whiteColor.copy();
+		design.menuLeftItemHoverBackground = design.notificationCenterFooterHoverButtonBackground.copy();
 		
-		/* Notifications */
-		design.setNotificationBackground(design.getMenuLeftBackground());
-		design.setNotificationRemoveButtonHover(DesignColor.get(222, 30, 30));
-		design.setNotificationShadow(75);
-		
-		/* ToolTip */
-		design.setTooltipBackground(DesignColor.get(25, 118, 210));
-		design.setTooltipActiveBackground(DesignColor.get(43, 194, 78));
+		/* Top Menu */
+		design.menuTopItemBackground = DesignColor.get(240, 240, 240);
+		design.menuTopItemHoverBackground = design.menuLeftBackground.copy();
+	    
+	    /* Tool Tip */
+		design.menuItemBorder = DesignColor.get(25, 118, 210);
+		design.menuItemActiveBorder = DesignColor.get(43, 194, 78);
+		design.tooltipBackground = design.menuItemBorder.copy();
 		
 		return design;
 	}
 	
 	public static DesignItem getDarkDesign() {
-		DesignItem design = DesignItem.getWhiteDesign().setMenuDesign(MenuDesign.DARK);
+		DesignItem design = DesignItem.getWhiteDesign();
 		
 		/* Content-Background */
-		design.setContentBackground(DesignColor.get(83, 83, 83));
-        
-		/* Left-Menu */
-		design.setMenuLeftBackground(DesignColor.get(53, 53, 53));
-		design.setMenuLeftButtonActive(design.getContentBackground());
-		design.setMenuLeftButtonHover(DesignColor.get(33, 33, 33));
+		design.contentBackground = DesignColor.get(83, 83, 83);
+	    
+	    /* Notifications */
+		design.notificationCenterBackground = design.darkColor.copy().setAlpha(0.75);
+		design.notificationCenterFooterButtonBackground = design.darkColor.copy().setAlpha(1);
+		design.notificationCenterFooterHoverButtonBackground = DesignColor.get(33, 33, 33);
+		design.notificationBackground = design.darkColor.copy().setAlpha(0.8);
+		design.notificationButtonRemoveBackground = design.notificationCenterFooterHoverButtonBackground.copy().setAlpha(0);
+		design.notificationHoverButtonRemoveBackground = design.notificationCenterFooterHoverButtonBackground.copy().setAlpha(0.5);
+	    
+		/* Left Menu */
+		design.menuLeftBackground = DesignColor.get(53, 53, 53);
+		design.menuLeftItemBackground = design.notificationCenterFooterHoverButtonBackground.copy().setAlpha(0);
+		design.menuLeftItemActiveBackground = design.contentBackground.copy();
+		design.menuLeftItemHoverBackground = design.notificationCenterFooterHoverButtonBackground.copy();
 		
-		/* Notifications */
-		design.setNotificationBackground(design.getMenuLeftBackground());
+		/* Top Menu */
+		design.menuTopItemBackground = design.menuLeftBackground.copy();
+		design.menuTopItemHoverBackground = DesignColor.get(33, 33, 33);
 		
 		return design;
 	}

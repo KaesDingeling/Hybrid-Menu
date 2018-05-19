@@ -6,9 +6,9 @@ import com.vaadin.flow.component.html.H6;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
 
-import kaesdingeling.hybridmenu.demo.MainView;
+import kaesdingeling.hybridmenu.demo.DemoRouterLayout;
 
-@Route(value = "group", layout = MainView.class)
+@Route(value = "group", layout = DemoRouterLayout.class)
 public class GroupPage extends VerticalLayout {
 	private static final long serialVersionUID = -2668430117956575638L;
 

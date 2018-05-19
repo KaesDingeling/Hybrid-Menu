@@ -1,10 +1,11 @@
 package kaesdingeling.hybridmenu.data;
 
+import java.util.List;
+
 import com.vaadin.flow.router.AfterNavigationEvent;
 
 import kaesdingeling.hybridmenu.components.HMButton;
 import kaesdingeling.hybridmenu.components.HMSubMenu;
-import kaesdingeling.hybridmenu.components.LeftMenu;
 import kaesdingeling.hybridmenu.data.interfaces.MenuComponent;
 import kaesdingeling.hybridmenu.data.interfaces.ViewChangeManager;
 
@@ -17,18 +18,21 @@ public class DefaultViewChangeManager implements ViewChangeManager {
 				if (checkButton((HMButton) menuComponent, event)) {
 					foundActiveButton = true;
 				}
-			} else if (menuComponent instanceof LeftMenu || menuComponent instanceof HMSubMenu) {
-				for (MenuComponent<?> cacheMenuComponent : menuComponent.getList()) {
-					if (manage(cacheMenuComponent, event)) {
-						foundActiveButton = true;
+			} else {
+				List<MenuComponent<?>> menuComponentList = menuComponent.getList();
+				if (menuComponentList != null) {
+					for (MenuComponent<?> cacheMenuComponent : menuComponentList) {
+						if (manage(cacheMenuComponent, event)) {
+							foundActiveButton = true;
+						}
 					}
-				}
-				
-				if (menuComponent instanceof HMSubMenu) {
-					if (foundActiveButton) {
-						((HMSubMenu) menuComponent).open();
-					} else {
-						((HMSubMenu) menuComponent).close();
+					
+					if (menuComponent instanceof HMSubMenu) {
+						if (foundActiveButton) {
+							((HMSubMenu) menuComponent).open();
+						} else {
+							((HMSubMenu) menuComponent).close();
+						}
 					}
 				}
 			}

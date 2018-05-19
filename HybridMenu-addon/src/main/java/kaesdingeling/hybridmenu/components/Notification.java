@@ -4,10 +4,10 @@ import java.util.Date;
 
 import org.ocpsoft.prettytime.PrettyTime;
 
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Label;
-import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcons;
 import com.vaadin.flow.server.VaadinSession;
 
@@ -18,14 +18,12 @@ public class Notification extends Div {
 	
 	private MenuConfig menuConfig = VaadinSession.getCurrent().getAttribute(MenuConfig.class);
 	
-	private String caption = "";
-	
 	private Label title = new Label();
 	private Label timeAgo = new Label();
 	private Label content = new Label();
 	private Button removeButton = null;
 	
-	private Icon icon = null;
+	private VaadinIcons icon = null;
 	
 	private long created = 0L;
 	private long removeDisplayOffset = 0L;
@@ -80,10 +78,6 @@ public class Notification extends Div {
 	}
 	
 	public Notification withIcon(VaadinIcons icon) {
-		return withIcon(icon.create());
-	}
-	
-	public Notification withIcon(Icon icon) {
 		this.icon = icon;
 		return this;
 	}
@@ -97,9 +91,10 @@ public class Notification extends Div {
 		return this;
 	}
 	
-	public Notification build(NotificationCenter notificationCenter) {
+	public Notification build(NotificationCenter notificationCenter, UI ui) {
 		if (icon != null) {
-			add(icon);
+			getClassNames().add("withIcon");
+			add(icon.create());
 		}
 		
 		getClassNames().add("notification");
@@ -114,28 +109,26 @@ public class Notification extends Div {
 			add(removeButton);
 		}
 		
-		timeAgo.setText(new PrettyTime(notificationCenter.getUI().get().getLocale()).format(new Date(created)));
+		timeAgo.setText(new PrettyTime(ui.getLocale()).format(new Date(created)));
 		
 		if (removeDisplayOffset > 0L) {
-			//NotificationCenter.runOneAttached(this, () -> notificationCenter.remove(this), removeDisplayOffset);
+			notificationCenter.runOneAttached(this, () -> notificationCenter.remove(this), removeDisplayOffset);
 		}
 		return this;
 	}
 	
-	public void update(NotificationCenter notificationCenter) {
-		//title.setValue(caption + "<p class=\"timeAgo\">" + new PrettyTime(notificationCenter.getUI().getLocale()).format(new Date(created)) + "</p>");
+	public void update(UI ui) {
+		timeAgo.setText(new PrettyTime(ui.getLocale()).format(new Date(created)));
 	}
 	
 	@Override
 	public Notification clone() {
 		Notification notification = new Notification();
-		notification.withAutoRemove(removeDisplayOffset);
-		//notification.withContent(content.getValue());
-		//notification.withTitle(title.getValue());
+		notification.withContent(content.getText());
+		notification.withTitle(title.getText());
 		notification.withDisplayTime(displayTime);
-		//notification.withIcon(title.getIcon());
+		notification.withIcon(icon);
 		notification.created = created;
-		notification.caption = caption;
 		return notification;
 	}
 }

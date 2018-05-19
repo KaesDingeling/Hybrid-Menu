@@ -10,9 +10,9 @@ import com.vaadin.flow.router.HasErrorParameter;
 import com.vaadin.flow.router.NotFoundException;
 import com.vaadin.flow.router.ParentLayout;
 
-import kaesdingeling.hybridmenu.demo.MainView;
+import kaesdingeling.hybridmenu.demo.DemoRouterLayout;
 
-@ParentLayout(MainView.class)
+@ParentLayout(DemoRouterLayout.class)
 public class DefaultPage extends VerticalLayout implements HasErrorParameter<NotFoundException> {
 	private static final long serialVersionUID = 526172191959497669L;
 

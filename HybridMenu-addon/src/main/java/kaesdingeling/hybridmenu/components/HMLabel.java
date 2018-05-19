@@ -3,8 +3,10 @@ package kaesdingeling.hybridmenu.components;
 import java.util.List;
 
 import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.Html;
 import com.vaadin.flow.component.html.Label;
-import com.vaadin.flow.component.icon.Icon;
+import com.vaadin.flow.component.icon.VaadinIcons;
+import com.vaadin.flow.dom.Element;
 
 import kaesdingeling.hybridmenu.data.interfaces.MenuComponent;
 
@@ -15,21 +17,34 @@ import kaesdingeling.hybridmenu.data.interfaces.MenuComponent;
 public class HMLabel extends Label implements MenuComponent<HMLabel> {
 	private static final long serialVersionUID = -1030806788859361123L;
 
+	private Element caption = null;
+	private Element icon = null;
+	
 	public static HMLabel get() {
 		return new HMLabel();
 	}
 	
-	public HMLabel() {
-		//setCaptionAsHtml(true);
-	}
-	
 	public HMLabel withCaption(String caption) {
-		super.setText(caption);
+		if (this.caption != null) {
+			getElement().removeChild(this.caption);
+		}
+		if (caption != null) {
+			this.caption = getElement().appendChild(new Html("<p>" + caption + "</p>").getElement());
+		}
 		return this;
 	}
 	
-	public HMLabel withIcon(Icon icon) {
-		//super.setIcon(icon);
+	public HMLabel withIcon(VaadinIcons icon) {
+		return withIcon(icon.create());
+	}
+	
+	public HMLabel withIcon(Component icon) {
+		if (this.icon != null) {
+			getElement().removeChild(this.icon);
+		}
+		if (icon != null) {
+			this.icon = getElement().insertChild(0, icon.getElement());
+		}
 		return this;
 	}
 	

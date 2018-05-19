@@ -42,9 +42,12 @@ public class HMSubMenu extends VerticalLayout implements MenuComponent<HMSubMenu
 		button.addClickListener(e -> toggle());
 		button.getClassNames().add(button.getClass().getSimpleName());
 		content.setMargin(false);
+		content.setPadding(false);
 		content.setSpacing(false);
 		super.setMargin(false);
+		super.setPadding(false);
 		super.setSpacing(false);
+		super.getClassNames().add(Styles.subMenu);
 		super.add(button, content);
 	}
 	
@@ -73,16 +76,18 @@ public class HMSubMenu extends VerticalLayout implements MenuComponent<HMSubMenu
 	
 	public HMSubMenu open() {
 		getClassNames().add(Styles.open);
+		button.setActive(true);
 		return this;
 	}
 	
 	public HMSubMenu close() {
 		getClassNames().remove(Styles.open);
+		button.setActive(false);
 		return this;
 	}
 	
 	public boolean isOpen() {
-		return  getClassNames().contains(Styles.open);
+		return getClassNames().contains(Styles.open);
 	}
 	
 	@Override

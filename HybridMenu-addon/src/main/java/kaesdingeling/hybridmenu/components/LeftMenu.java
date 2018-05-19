@@ -24,6 +24,8 @@ public class LeftMenu extends VerticalLayout implements MenuComponent<VerticalLa
 		super();
 		setWidth("250px");
 		setHeight("100%");
+		getStyle().set("min-width", "250px");
+		getStyle().set("max-width", "250px");
 		getClassNames().add(Styles.leftMenu);
 		setMargin(false);
 		setPadding(false);
@@ -51,10 +53,14 @@ public class LeftMenu extends VerticalLayout implements MenuComponent<VerticalLa
 			switch (toggleMode) {
 				case MINIMAL:
 					setWidth("50px");
+					getStyle().set("min-width", "50px");
+					getStyle().set("max-width", "50px");
 					getParent().get().getElement().getClassList().add(ToggleMode.MINIMAL.name().toLowerCase());
 					break;
 				case NORMAL:
 					setWidth("250px");
+					getStyle().set("min-width", "250px");
+					getStyle().set("max-width", "250px");
 					getParent().get().getElement().getClassList().remove(ToggleMode.MINIMAL.name().toLowerCase());
 					break;
 			}

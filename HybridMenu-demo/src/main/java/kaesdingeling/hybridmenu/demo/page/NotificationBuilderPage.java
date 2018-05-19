@@ -1,41 +1,31 @@
 package kaesdingeling.hybridmenu.demo.page;
 
-/*
-import java.util.concurrent.Future;
-
-import com.vaadin.icons.VaadinIcons;
-import com.vaadin.navigator.View;
-import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
-import com.vaadin.server.VaadinSession;
-import com.vaadin.ui.Button;
-import com.vaadin.ui.CheckBox;
-import com.vaadin.ui.ComboBox;
-import com.vaadin.ui.Component;
-import com.vaadin.ui.FormLayout;
-import com.vaadin.ui.HorizontalLayout;
-import com.vaadin.ui.Label;
-import com.vaadin.ui.Slider;
-import com.vaadin.ui.TextArea;
-import com.vaadin.ui.TextField;
-import com.vaadin.ui.VerticalLayout;
+import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.checkbox.Checkbox;
+import com.vaadin.flow.component.combobox.ComboBox;
+import com.vaadin.flow.component.html.H2;
+import com.vaadin.flow.component.html.H5;
+import com.vaadin.flow.component.html.Label;
+import com.vaadin.flow.component.icon.VaadinIcons;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.textfield.TextArea;
+import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.router.Route;
+import com.vaadin.flow.server.VaadinSession;
 
 import kaesdingeling.hybridmenu.components.Notification;
 import kaesdingeling.hybridmenu.components.NotificationCenter;
 import kaesdingeling.hybridmenu.data.enums.NotificationPosition;
+import kaesdingeling.hybridmenu.demo.DemoRouterLayout;
+import kaesdingeling.hybridmenu.demo.components.Slider;
 
-public class NotificationBuilderPage extends VerticalLayout implements View {
-	private static final long serialVersionUID = 1L;
+@Route(value = "notification/builder", layout = DemoRouterLayout.class)
+public class NotificationBuilderPage extends VerticalLayout {
+	private static final long serialVersionUID = 2225084532665233458L;
 
-	@Override
-	public void enter(ViewChangeEvent event) {
-		Label title = new Label();
-		
-		title.setCaption("Notification Builder");
-		title.setValue("Here you can click a notification together");
-		
-		FormLayout form = new FormLayout();
-		
-		form.setSizeFull();
+	public NotificationBuilderPage() {
+		add(new H2("Notification Builder"), new H5("Here you can click a notification together"));
 		
 		HorizontalLayout outputPosition = new HorizontalLayout(new Button("Top", e -> VaadinSession.getCurrent().getAttribute(NotificationCenter.class).setNotificationPosition(NotificationPosition.TOP)), new Button("Bottom", e -> VaadinSession.getCurrent().getAttribute(NotificationCenter.class).setNotificationPosition(NotificationPosition.BOTTOM)));
 		
@@ -44,45 +34,41 @@ public class NotificationBuilderPage extends VerticalLayout implements View {
 		
 		ComboBox<VaadinIcons> icon = new ComboBox<VaadinIcons>("Icon");
 		
-		icon.setItemIconGenerator((i) -> i);
+		icon.setItemLabelGenerator((i) -> i.name());
 		icon.setItems(VaadinIcons.values());
 		
-		Slider displayTime = new Slider("Display time (ms)");
+		Label displayTimeLabel = new Label("Display time (ms)");
+		Slider displayTime = new Slider(1000, 10000);
 		
-		displayTime.setMin(1000);
-		displayTime.setMax(10000);
-		displayTime.setValue(5000.0);
-		displayTime.addStyleName("ticks");
+		displayTime.setOnValue(5000);
 		
-		CheckBox closeable = new CheckBox("Closeable");
+		displayTimeLabel.getElement().appendChild(displayTime.getElement());
 		
-		CheckBox autoRemove = new CheckBox("Autoremove");
-		
-		CheckBox makeAsReaded = new CheckBox("Make as readed");
-		
-		CheckBox showDescriptionOnPopup = new CheckBox("Show description on popup");
+		Checkbox closeable = new Checkbox("Closeable");
+		Checkbox autoRemove = new Checkbox("Autoremove");
+		Checkbox makeAsReaded = new Checkbox("Make as readed");
+		Checkbox showDescriptionOnPopup = new Checkbox("Show description on popup");
 		
 		showDescriptionOnPopup.setValue(true);
 		
-		Slider autoRemoveTime = new Slider("Autoremove display offset delay (ms)");
+		Label autoRemoveTimeLabel = new Label("Autoremove display offset delay (ms)");
+		Slider autoRemoveTime = new Slider(0, 5000);
+
+		autoRemoveTime.setOnValue(0);
 		
-		autoRemoveTime.setMin(0);
-		autoRemoveTime.setMax(5000);
-		autoRemoveTime.setValue(0.0);
-		autoRemoveTime.addStyleName("ticks");
+		autoRemoveTimeLabel.getElement().appendChild(autoRemoveTime.getElement());
 		
-		Button execute = new Button("Execute", VaadinIcons.CODE);
+		Button execute = new Button("Execute", VaadinIcons.CODE.create());
 		
 		//execute.setDisableOnClick(true);
 		execute.addClickListener(e -> {
 			NotificationCenter notificationCenter = VaadinSession.getCurrent().getAttribute(NotificationCenter.class);
-			
 			if (notificationCenter.queueSize() < 10) {
 				Notification notification = Notification.get()
 						.withTitle(caption.getValue())
 						.withContent(content.getValue())
 						.withIcon(icon.getValue())
-						.withDisplayTime(displayTime.getValue().longValue());
+						.withDisplayTime(displayTime.getOnValue().longValue());
 				
 				if (closeable.getValue()) {
 					notification.withCloseable();
@@ -93,8 +79,8 @@ public class NotificationBuilderPage extends VerticalLayout implements View {
 				}
 				
 				if (autoRemove.getValue()) {
-					if (autoRemoveTime.getValue() > 0) {
-						notification.withAutoRemove(autoRemoveTime.getValue().longValue());
+					if (autoRemoveTime.getOnValue() > 0) {
+						notification.withAutoRemove(autoRemoveTime.getOnValue().longValue());
 					} else {
 						notification.withAutoRemove();
 					}
@@ -104,39 +90,6 @@ public class NotificationBuilderPage extends VerticalLayout implements View {
 			}
 		});
 		
-		caption.setWidth(100, Unit.PERCENTAGE);
-		content.setWidth(100, Unit.PERCENTAGE);
-		icon.setWidth(100, Unit.PERCENTAGE);
-		displayTime.setWidth(100, Unit.PERCENTAGE);
-		closeable.setWidth(100, Unit.PERCENTAGE);
-		makeAsReaded.setWidth(100, Unit.PERCENTAGE);
-		autoRemove.setWidth(100, Unit.PERCENTAGE);
-		autoRemoveTime.setWidth(100, Unit.PERCENTAGE);
-		
-		form.addComponents(outputPosition, caption, content, icon, displayTime, closeable, makeAsReaded, autoRemove, autoRemoveTime, execute);
-		
-		addComponents(title, form);
+		add(outputPosition, caption, content, icon, displayTimeLabel, closeable, makeAsReaded, autoRemove, showDescriptionOnPopup, autoRemoveTimeLabel, execute);
 	}
-	
-	public static void runOneAttached(final Component component, final Runnable task, final int initialPause) {
-        final Thread thread = new Thread() {
-            @Override
-            public void run() {
-                try {
-                	if (initialPause > 0) {
-                		Thread.sleep(initialPause);
-                	}
-                	if (component.getUI() != null && component.getUI().isAttached()) {
-	                    Future<Void> future = component.getUI().access(task);
-	                    future.get();
-	                }
-                } catch (Exception e) {
-                	e.printStackTrace();
-                }
-            }
-        };
-        thread.start();
-    }
-
 }
-*/

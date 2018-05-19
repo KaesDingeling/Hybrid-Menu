@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
 import com.vaadin.flow.component.Component;
@@ -13,6 +14,7 @@ import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.icon.VaadinIcons;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.server.Command;
 import com.vaadin.flow.server.VaadinSession;
 
 import kaesdingeling.hybridmenu.data.MenuConfig;
@@ -32,7 +34,7 @@ public class NotificationCenter extends VerticalLayout {
 	
 	private HMButton notiButton = null;
 	
-	public ExecutorService exe = Executors.newSingleThreadExecutor();
+	public ExecutorService exe = null;
 	
 	public NotificationCenter() {
 		super();
@@ -43,49 +45,13 @@ public class NotificationCenter extends VerticalLayout {
 		setPadding(false);
 		setSpacing(false);
 		
-		exe.execute(() -> {
-			try {
-				boolean initBoot = false;
-				while (this.getUI() != null && this.getUI().isPresent() || !initBoot) {
-					initBoot = true;
-					
-					TimeUnit.SECONDS.sleep(1);
-					
-					Notification noti = notificationQueue.take();
-					
-					noti.build(this);
-					
-					/*
-					ui.access(() -> {
-						lastNotification.removeAllComponents();
-						lastNotification.addComponent(noti);
-						lastNotification.addStyleName("show");
-						
-						runOneAttached(noti, () -> {
-							lastNotification.removeStyleName("show");
-						}, noti.getDisplayTime());
-					});
-					*/
-					
-					TimeUnit.MILLISECONDS.sleep(noti.getDisplayTime());
-				}
-			} catch (Exception e) {
-				/*
-				com.vaadin.ui.Notification vaadinNotification = new com.vaadin.ui.Notification("Notification of the NotificationCenter is no longer possible!", Type.WARNING_MESSAGE);
-				vaadinNotification.setPosition(Position.BOTTOM_RIGHT);
-				vaadinNotification.setDescription("Error: " + e.getMessage());
-				vaadinNotification.show(ui.getPage());
-				*/
-				e.printStackTrace();
-			}
-		});
-		
 		footer.setSpacing(true);
 		footer.setMargin(false);
 		footer.getClassNames().add(Styles.footer);
 		
 		content.setSpacing(false);
 		content.setMargin(false);
+		content.setPadding(false);
 		content.getClassNames().add(Styles.content);
 		
 		lastNotification.setHeight("0px");
@@ -126,20 +92,54 @@ public class NotificationCenter extends VerticalLayout {
 		if (isOpen()) {
 			notification.makeAsReaded();
 		}
-		content.add(notification.build(this));
+		content.add(notification.build(this, ui));
 		updateToolTip();
 		
 		Notification notificationClone = notification.clone();
 		
 		if (!showDescriptionOnPopup) {
-			//notificationClone.setDescription("");
+			notificationClone.withContent("");
 		}
 		
-		return notificationQueue.add(notificationClone);
+		return addQueue(notificationClone);
+	}
+	
+	private boolean addQueue(Notification notification) {
+		if (exe == null) {
+			exe = Executors.newSingleThreadExecutor();
+			exe.execute(() -> {
+				try {
+					while (notificationQueue.size() > 0) {
+						TimeUnit.SECONDS.sleep(1);
+						
+						Notification noti = notificationQueue.take().build(this, ui);
+						
+						ui.access(() -> {
+							lastNotification.removeAll();
+							lastNotification.add(noti);
+							lastNotification.getClassNames().add(Styles.show);
+							
+							runOneAttached(noti, () -> {
+								lastNotification.getClassNames().remove(Styles.show);
+							}, noti.getDisplayTime());
+						});
+						
+						TimeUnit.MILLISECONDS.sleep(noti.getDisplayTime());
+					}
+				} catch (Exception e) {
+					
+				}
+				exe.shutdown();
+				exe = null;
+			});
+		}
+		
+		return notificationQueue.add(notification);
 	}
 	
 	public NotificationCenter remove(Notification notification) {
 		content.remove(notification);
+		updateToolTip();
 		return this;
 	}
 	
@@ -161,7 +161,7 @@ public class NotificationCenter extends VerticalLayout {
 	public NotificationCenter open() {
 		getClassNames().add(Styles.open);
 		getAll().forEach(e -> {
-			e.update(this);
+			e.update(ui);
 			e.makeAsReaded();
 		});
 		updateToolTip();
@@ -209,6 +209,17 @@ public class NotificationCenter extends VerticalLayout {
 		this.notiButton.addClickListener(e -> toggle());
 		updateToolTip();
 		return this;
+	}
+	
+	public Thread runOneAttached(final Component component, final Command task, final long initSleep) {
+        return initThread(() -> {
+        	 try {
+                 Thread.sleep(initSleep);
+                 Future<Void> future = ui.access(task);
+                 future.get();
+             } catch (Exception e) {
+             }
+        });
 	}
 	
 	public static Thread initThread(final Runnable task) {

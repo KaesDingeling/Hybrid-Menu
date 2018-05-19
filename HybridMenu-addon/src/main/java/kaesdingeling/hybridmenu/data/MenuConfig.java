@@ -18,7 +18,7 @@ public class MenuConfig {
 	private VaadinIcons notificationButtonIcon = VaadinIcons.BELL;
 	private VaadinIcons notificationButtonEmptyIcon = VaadinIcons.BELL_O;
 	private VaadinIcons notificationCenterCloseIcon = VaadinIcons.ANGLE_RIGHT;
-	private VaadinIcons notificationRemoveIcon = VaadinIcons.FILE_REMOVE;
+	private VaadinIcons notificationRemoveIcon = VaadinIcons.CLOSE;
 	
 	private NotificationPosition notificationPosition = NotificationPosition.BOTTOM;
 	

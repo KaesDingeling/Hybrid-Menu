@@ -19,27 +19,35 @@ public class DesignUtils {
 	}
 	
 	public static String background(DesignColor background) {
-		return background(background, 100);
-	}
-	
-	public static String background(DesignColor background, double alpha) {
-		return "background: " + colorToRGBA(background, alpha) + " !important;";
+		return element("background", colorToRGBA(background));
 	}
 	
 	public static String color(DesignColor color) {
-		return color(color, 100);
-	}
-	
-	public static String color(DesignColor color, double alpha) {
-		return "color: " + colorToRGBA(color, alpha) + " !important;";
+		return element("color", colorToRGBA(color));
 	}
 	
 	public static String border(DesignColor color, String position) {
-		return border(color, position, 100);
+		return element("border-" + position + "-color", colorToRGBA(color));
 	}
 	
-	public static String border(DesignColor color, String position, double alpha) {
-		return "border-" + position + "-" + color(color, alpha) + " !important;";
+	public static String boxShadow(int left, int top, int shadow, int width, DesignColor color) {
+		return element("box-shadow", left + "px " + top + "px " + shadow + "px " + width + "px " + colorToRGBA(color));
+	}
+	
+	public static String element(String element, String value) {
+		return element(element, value, false);
+	}
+	
+	public static String element(String element, String value, boolean important) {
+		return element + ": " + value + (important ? " !important;" : ";");
+	}
+	
+	public static String colorToRGBA(DesignColor color) {
+		if (color.getAlpha() == 1) {
+			return "rgb(" + color.getRed() + ", " + color.getGreen() + ", " + color.getBlue() + ")";
+		} else {
+			return "rgba(" + color.getRed() + ", " + color.getGreen() + ", " + color.getBlue() + ", " + color.getAlpha() + ")";
+		}
 	}
 	
 	public static DesignColor hmColorDedect(DesignColor background) {
@@ -48,13 +56,5 @@ public class DesignUtils {
 		} else {
 			return darkColor;
 		}
-	}
-	
-	public static String colorToRGB(DesignColor color) {
-		return "rgb(" + color.getRed() + ", " + color.getGreen() + ", " + color.getBlue() + ")";
-	}
-	
-	public static String colorToRGBA(DesignColor color, double alpha) {
-		return "rgba(" + color.getRed() + ", " + color.getGreen() + ", " + color.getBlue() + ", " + alpha / 100.00 + ")";
 	}
 }

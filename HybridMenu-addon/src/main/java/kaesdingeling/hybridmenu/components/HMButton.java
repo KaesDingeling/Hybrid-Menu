@@ -183,10 +183,12 @@ public class HMButton extends Button implements MenuComponent<HMButton> {
 	}
 	
 	public HMButton setActive(boolean active) {
-		if (active && !isActive()) {
-			getClassNames().add(Styles.active);
-		} else {
-			getClassNames().remove(Styles.active);
+		if (isActive() != active) {
+			if (active) {
+				getClassNames().add(Styles.active);
+			} else {
+				getClassNames().remove(Styles.active);
+			}
 		}
 		return this;
 	}

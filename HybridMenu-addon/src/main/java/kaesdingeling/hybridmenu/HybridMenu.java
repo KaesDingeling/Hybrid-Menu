@@ -1,7 +1,10 @@
 package kaesdingeling.hybridmenu;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Scanner;
 
 import com.vaadin.flow.component.Component;
@@ -20,7 +23,6 @@ import kaesdingeling.hybridmenu.components.Style;
 import kaesdingeling.hybridmenu.components.TopMenu;
 import kaesdingeling.hybridmenu.data.DefaultViewChangeManager;
 import kaesdingeling.hybridmenu.data.MenuConfig;
-import kaesdingeling.hybridmenu.data.enums.MenuDesign;
 import kaesdingeling.hybridmenu.data.interfaces.HybridMenuRouter;
 import kaesdingeling.hybridmenu.data.interfaces.ViewChangeManager;
 import kaesdingeling.hybridmenu.design.DesignItem;
@@ -45,7 +47,7 @@ public abstract class HybridMenu extends VerticalLayout implements RouterLayout,
 	
 	public HybridMenu() {
 		if (Styles.style == null) {
-			Styles.style = getFile("styles/hybridMenu.css");
+			Styles.style = fileToString(getFile("css/hybridMenu.css"));
 		}
 		style.setStyle(Styles.style);
 		setSizeFull();
@@ -69,7 +71,7 @@ public abstract class HybridMenu extends VerticalLayout implements RouterLayout,
 			content.getClassNames().add(Styles.rootContent);
 			content.add(leftMenu, notiCenter);
 			
-			add(style/*, customStyles*/, topMenu, content);
+			add(style, customStyles, topMenu, content);
 			expand(content);
 			
 			notiCenter.setNotificationPosition(config.getNotificationPosition());
@@ -107,15 +109,6 @@ public abstract class HybridMenu extends VerticalLayout implements RouterLayout,
 	
 	public void switchTheme(DesignItem designItem) {
 		if (designItem != null) {
-			if (designItem.getMenuDesign() == null) {
-				designItem.setMenuDesign(config.getDesignItem().getMenuDesign());
-			} else {
-				for (MenuDesign menuDesign : MenuDesign.values()) {
-					getClassNames().remove(menuDesign.getName());
-				}
-				
-				getClassNames().add(designItem.getMenuDesign().getName());
-			}
 			config.withDesignItem(designItem);
 			customStyles.setStyle(designItem.convertToStyle());
 		} else {
@@ -142,15 +135,12 @@ public abstract class HybridMenu extends VerticalLayout implements RouterLayout,
 
 	@Override
 	public void afterNavigation(AfterNavigationEvent event) {
-		// TODO Auto-generated method stub
-		
+		viewChangeManager.manage(leftMenu, event);
+		viewChangeManager.manage(topMenu, event);
 	}
 	
-	private String getFile(String fileName) {
+	public static String fileToString(File file) {
 		StringBuilder result = new StringBuilder("");
-		
-		ClassLoader classLoader = getClass().getClassLoader();
-		File file = new File(classLoader.getResource(fileName).getFile());
 
 		try (Scanner scanner = new Scanner(file)) {
 			while (scanner.hasNextLine()) {
@@ -165,5 +155,13 @@ public abstract class HybridMenu extends VerticalLayout implements RouterLayout,
 		}
 			
 		return result.toString();
+	}
+	
+	public static InputStream fileToInputStream(File file) throws FileNotFoundException {
+		return new FileInputStream(file);
+	}
+	
+	public static File getFile(String fileName) {
+		return new File(HybridMenu.class.getClassLoader().getResource(fileName).getFile());
 	}
 }

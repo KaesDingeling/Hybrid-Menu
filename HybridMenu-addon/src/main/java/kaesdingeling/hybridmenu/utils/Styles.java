@@ -8,6 +8,7 @@ public class Styles {
 	public static final String hybridMenu = "hybridMenu";
 	public static final String leftMenu = "leftMenu";
 	public static final String topMenu = "topMenu";
+	public static final String subMenu = "subMenu";
 	public static final String rootContent = "rootContent";
 	public static final String contentBox = "contentBox";
 	public static final String notificationCenter = "notificationCenter";
@@ -20,5 +21,6 @@ public class Styles {
 	/* General */
 	public static final String active = "active";
 	public static final String open = "open";
+	public static final String show = "show";
 	public static final String top = "top";
 }

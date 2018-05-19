@@ -5,9 +5,9 @@ import com.vaadin.flow.component.html.H5;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
 
-import kaesdingeling.hybridmenu.demo.MainView;
+import kaesdingeling.hybridmenu.demo.DemoRouterLayout;
 
-@Route(value = "", layout = MainView.class)
+@Route(value = "", layout = DemoRouterLayout.class)
 public class HomePage extends VerticalLayout {
 	private static final long serialVersionUID = 1337339618913376736L;
 
