@@ -6,7 +6,7 @@
 
 	<groupId>de.kaesdingeling</groupId>
 	<artifactId>hybridmenu</artifactId>
-	<version>3.0.3</version>
+	<version>3.0.3.pre.vaadin10</version>
 	<name>HybridMenu</name>
 
 	<prerequisites>
@@ -102,7 +102,7 @@
                     <archive>
                         <index>true</index>
                         <manifest>
-                            <addClasspath>true</addClasspath>
+                            <addClasspath>false</addClasspath>
                             <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
                         </manifest>
                         <manifestEntries>

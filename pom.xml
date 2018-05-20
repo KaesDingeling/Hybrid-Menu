@@ -3,10 +3,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	
-	<groupId>org.vaadin.addons</groupId>
+	<groupId>de.kaesdingeling</groupId>
 	<artifactId>hybridmenu-root</artifactId>
 	<packaging>pom</packaging>
-	<version>3.0.2.pre.vaadin10</version>
+	<version>3.0.3</version>
 	<name>HybridMenu Add-on Root Project</name>
 
 	<prerequisites>
