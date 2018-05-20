@@ -1,0 +1,374 @@
+/* General */
+.hybridMenu {
+	position: relative;
+    overflow: hidden;
+	z-index: 1;
+}
+
+.hybridMenu .contentBox {
+    overflow: auto;
+}
+
+.hybridMenu .notificationCenter vaadin-button, .hybridMenu .leftMenu vaadin-button, .hybridMenu .topMenu vaadin-button {
+    border-radius: 0;
+    cursor: pointer;
+}
+
+
+/* Top Menu */
+.hybridMenu .topMenu {
+	position: fixed;
+	top: 0;
+	right: 100px;
+	z-index: 1000;
+}
+
+.hybridMenu .topMenu vaadin-text-field {
+    -webkit-transition: width 0.3s ease-in-out, border-top-width 0.3s ease-in-out;
+	-moz-transition: width 0.3s ease-in-out, border-top-width 0.3s ease-in-out;
+	-ms-transition: width 0.3s ease-in-out, border-top-width 0.3s ease-in-out;
+	-o-transition: width 0.3s ease-in-out, border-top-width 0.3s ease-in-out;
+	transition: width 0.3s ease-in-out, border-top-width 0.3s ease-in-out;
+}
+
+.hybridMenu .topMenu vaadin-text-field, .hybridMenu .topMenu vaadin-button {
+    border-top: 0 solid;
+    border-radius: 0;
+    min-width: 35px;
+    margin: 0 4px;
+    height: 40px;
+    width: 35px;
+    padding: 0;
+}
+
+.hybridMenu .topMenu vaadin-text-field.active, .hybridMenu .topMenu vaadin-button.active {
+    border-top-width: 3px;
+    height: 43px;
+}
+
+.hybridMenu .topMenu vaadin-text-field:hover, .hybridMenu .topMenu vaadin-button:hover {
+    border-top-width: 5px;
+    height: 45px;
+}
+
+.hybridMenu .topMenu .vaadin-text-field {
+    border-radius: 0;
+}
+
+.hybridMenu .topMenu vaadin-text-field:hover {
+    width: 180px !important;
+}
+
+.hybridMenu .topMenu vaadin-text-field input {
+    -webkit-transition: background 0.3s ease-in-out, opacity 0.3s ease-in-out;
+	-moz-transition: background 0.3s ease-in-out, opacity 0.3s ease-in-out;
+	-ms-transition: background 0.3s ease-in-out, opacity 0.3s ease-in-out;
+	-o-transition: background 0.3s ease-in-out, opacity 0.3s ease-in-out;
+	transition: background 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    opacity: 0;
+}
+
+.hybridMenu .topMenu vaadin-text-field:hover input {
+    opacity: 1;
+}
+
+.hybridMenu .topMenu vaadin-button {
+    -webkit-transition: height 0.3s ease-in-out, border-top-width 0.3s ease-in-out;
+	-moz-transition: height 0.3s ease-in-out, border-top-width 0.3s ease-in-out;
+	-ms-transition: height 0.3s ease-in-out, border-top-width 0.3s ease-in-out;
+	-o-transition: height 0.3s ease-in-out, border-top-width 0.3s ease-in-out;
+	transition: height 0.3s ease-in-out, border-top-width 0.3s ease-in-out;
+}
+
+.hybridMenu .topMenu .vaadin-button {
+    -webkit-transition: background 0.3s ease-in-out;
+	-moz-transition: background 0.3s ease-in-out;
+	-ms-transition: background 0.3s ease-in-out;
+	-o-transition: background 0.3s ease-in-out;
+	transition: background 0.3s ease-in-out;
+}
+
+.hybridMenu .topMenu vaadin-button .toolTip {
+    padding: 1px 4px 3px;
+    border-radius: 3px;
+    position: absolute;
+    left: 25px;
+    top: 30px;
+}
+
+
+/* Left Menu */
+.hybridMenu .leftMenu {
+    -webkit-transition: width 0.5s ease-in-out, min-width 0.5s ease-in-out, max-width 0.5s ease-in-out;
+	-moz-transition: width 0.5s ease-in-out, min-width 0.5s ease-in-out, max-width 0.5s ease-in-out;
+	-ms-transition: width 0.5s ease-in-out, min-width 0.5s ease-in-out, max-width 0.5s ease-in-out;
+	-o-transition: width 0.5s ease-in-out, min-width 0.5s ease-in-out, max-width 0.5s ease-in-out;
+	transition: width 0.5s ease-in-out, min-width 0.5s ease-in-out, max-width 0.5s ease-in-out;
+    border-radius: 1px solid;
+    overflow-y: visible;
+    overflow-x: auto;
+}
+
+.hybridMenu .leftMenu vaadin-button {
+    -webkit-transition: background 0.3s ease-in-out, border-left-color 0.3s ease-in-out, border-left-width 0.3s ease-in-out;
+	-moz-transition: background 0.3s ease-in-out, border-left-color 0.3s ease-in-out, border-left-width 0.3s ease-in-out;
+	-ms-transition: background 0.3s ease-in-out, border-left-color 0.3s ease-in-out, border-left-width 0.3s ease-in-out;
+	-o-transition: background 0.3s ease-in-out, border-left-color 0.3s ease-in-out, border-left-width 0.3s ease-in-out;
+	transition: background 0.3s ease-in-out, border-left-color 0.3s ease-in-out, border-left-width 0.3s ease-in-out;
+    padding: 8px 0 8px 10px !important;
+    border-left: 0 solid;
+    height: 45px;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.hybridMenu .leftMenu .vaadin-button div[part="label"] {
+    position: relative;
+    line-height: 18px;
+    text-align: left;
+    display: block;
+    width: 100%;
+}
+
+.hybridMenu .leftMenu .vaadin-button div[part="label"] iron-icon:not(.buttonOtherIcon) {
+    vertical-align: middle;
+    margin-right: 7px;
+}
+
+.hybridMenu .leftMenu .vaadin-button div[part="label"] span {
+    vertical-align: middle;
+    margin-right: 7px;
+}
+
+.hybridMenu .leftMenu .vaadin-button div[part="label"] iron-icon.buttonOtherIcon {
+    -webkit-transition: transform 0.3s ease-in-out;
+	-moz-transition: transform 0.3s ease-in-out;
+	-ms-transition: transform 0.3s ease-in-out;
+	-o-transition: transform 0.3s ease-in-out;
+	transition: transform 0.3s ease-in-out;
+	-webkit-transform: rotate(0deg);
+	-moz-transform: rotate(0deg);
+	-ms-transform: rotate(0deg);
+	-o-transform: rotate(0deg);
+	transform: rotate(0deg);
+    position: absolute;
+    right: 5px;
+}
+
+.hybridMenu .leftMenu vaadin-button .toolTip {
+    -webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	transform: translateY(-50%);
+    padding: 1px 4px 3px;
+    border-radius: 3px;
+    position: absolute;
+    right: 8px;
+    top: 50%;
+}
+
+.hybridMenu .leftMenu vaadin-button.active {
+    border-left-width: 3px;
+}
+
+.hybridMenu .leftMenu vaadin-button:hover {
+    border-left-width: 5px;
+}
+
+.hybridMenu .leftMenu vaadin-vertical-layout.subMenu {
+    width: 100%;
+    margin: 0;
+}
+
+.hybridMenu .leftMenu vaadin-vertical-layout.subMenu > vaadin-vertical-layout {
+    -webkit-transition: max-height 0.5s ease-in-out;
+	-moz-transition: max-height 0.5s ease-in-out;
+	-ms-transition: max-height 0.5s ease-in-out;
+	-o-transition: max-height 0.5s ease-in-out;
+	transition: max-height 0.5s ease-in-out;
+	width: calc(100% - 24px) !important;
+	border-left: 1px solid transparent;
+	position: relative;
+	margin-left: 24px;
+	overflow: hidden;
+	display: block;
+	max-height: 0;
+}
+
+.hybridMenu .leftMenu vaadin-vertical-layout.subMenu.open > vaadin-vertical-layout {
+	max-height: 500px;
+}
+
+.hybridMenu .leftMenu vaadin-vertical-layout.subMenu.open > vaadin-button div.vaadin-button[part="label"] iron-icon.buttonOtherIcon {
+    -webkit-transform: rotate(-180deg);
+	-moz-transform: rotate(-180deg);
+	-ms-transform: rotate(-180deg);
+	-o-transform: rotate(-180deg);
+	transform: rotate(-180deg);
+}
+
+.hybridMenu .leftMenu > label {
+    border-bottom: 1px solid;
+    text-align: center;
+    position: relative;
+    padding: 8px 0;
+    width: 100%;
+    margin: 0;
+}
+
+.hybridMenu .leftMenu > label img {
+    vertical-align: middle;
+    margin-right: 5px;
+    height: 32px;
+    width: 32px;
+}
+
+.hybridMenu .leftMenu > label > p {
+    vertical-align: middle;
+    display: inline-block;
+    margin: 0 0 0 5px;
+}
+
+
+/* Notification Center */
+.hybridMenu .notificationCenter {
+    -webkit-transition: right 0.5s cubic-bezier(0.77, 0, 0.18, 1);
+	-moz-transition: right 0.5s cubic-bezier(0.77, 0, 0.18, 1);
+	-ms-transition: right 0.5s cubic-bezier(0.77, 0, 0.18, 1);
+	-o-transition: right 0.5s cubic-bezier(0.77, 0, 0.18, 1);
+	transition: right 0.5s cubic-bezier(0.77, 0, 0.18, 1);
+    width: 350px !important;
+    position: fixed;
+    z-index: 100000;
+    right: -350px;
+    top: 0;
+}
+
+.hybridMenu .notificationCenter .notification {
+    width: calc(100% - 36px);
+	position: relative;
+	margin: 8px 8px 0;
+	display: block;
+	padding: 10px;
+}
+
+.hybridMenu .notificationCenter .notification > iron-icon {
+    height: calc(100% - 16px);
+    border-right: 1px solid;
+    vertical-align: middle;
+    position: absolute;
+    padding: 0 8px 0 0;
+    font-size: 28px;
+    display: block;
+    margin: 8px;
+    width: 34px;
+    left: 0;
+    top: 0;
+}
+
+.hybridMenu .notificationCenter .notification.withIcon .content, .hybridMenu .notificationCenter .notification.withIcon .title {
+    padding-left: 50px;
+}
+
+.hybridMenu .notificationCenter .notification .title {
+    line-height: 12px;
+    font-size: 18px;
+    height: 24px;
+}
+
+.hybridMenu .notificationCenter .notification .timeAgo {
+    margin: 4px 0 0 8px;
+    position: absolute;
+    font-size: 10px;
+}
+
+.hybridMenu .notificationCenter .notification .timeAgo:before {
+    display: inline-block;
+    margin: 0 7px 1px 0;
+    border-radius: 50%;
+    content: '';
+    height: 4px;
+    width: 4px;
+}
+
+.hybridMenu .notificationCenter .notification .content {
+    font-size: 14px;
+    display: block;
+}
+
+.hybridMenu .notificationCenter .notification vaadin-button {
+    -webkit-transition: background 0.3s ease-in-out;
+	-moz-transition: background 0.3s ease-in-out;
+	-ms-transition: background 0.3s ease-in-out;
+	-o-transition: background 0.3s ease-in-out;
+	transition: background 0.3s ease-in-out;
+    position: absolute;
+    margin: 0;
+    right: 0;
+    top: 0;
+}
+
+.hybridMenu .notificationCenter .footer {
+    text-align: center;
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+.hybridMenu .notificationCenter .footer vaadin-button {
+    -webkit-transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+	-moz-transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+	-ms-transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+	-o-transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+	transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+    display: inline-block;
+    position: relative;
+    margin: 5px;
+}
+
+.hybridMenu .notificationCenter .lastNotification {
+    -webkit-transition: right 1s cubic-bezier(0.79, 0.14, 0.15, 0.86), opacity 0.3s ease-in-out;
+	-moz-transition: right 1s cubic-bezier(0.79, 0.14, 0.15, 0.86), opacity 0.3s ease-in-out;
+	-ms-transition: right 1s cubic-bezier(0.79, 0.14, 0.15, 0.86), opacity 0.3s ease-in-out;
+	-o-transition: right 1s cubic-bezier(0.79, 0.14, 0.15, 0.86), opacity 0.3s ease-in-out;
+	transition: right 1s cubic-bezier(0.79, 0.14, 0.15, 0.86), opacity 0.3s ease-in-out;
+    height: auto !important;
+    pointer-events: none;
+    position: absolute;
+    margin: 10px 5px;
+    right: -350px;
+    opacity: 0;
+    bottom: 0;
+}
+
+.hybridMenu .notificationCenter .lastNotification.top {
+    margin-top: 2px;
+    bottom: unset;
+    top: 0;
+}
+
+.hybridMenu .notificationCenter .lastNotification.show {
+    pointer-events: auto;
+    right: 350px;
+    opacity: 1;
+}
+
+.hybridMenu .notificationCenter .lastNotification.show:hover {
+    opacity: 0.1;
+}
+
+.hybridMenu .notificationCenter .lastNotification .notification {
+    width: 300px;
+}
+
+
+/* Others */
+.hybridMenu .leftMenu.minimal {
+    
+}
+
+.hybridMenu .notificationCenter.open {
+    right: 0;
+}
