@@ -116,7 +116,8 @@ public class HybridMenu extends VerticalLayout {
 			content.setExpandRatio(rootContent, 1f);
 			
 			rootContent.setMargin(false);
-			rootContent.setSpacing(true);
+			rootContent.setSpacing(false);
+			rootContent.setSizeFull();
 			
 			if (config.isBreadcrumbs()) {
 				breadcrumbs = new BreadCrumbs();
@@ -124,6 +125,10 @@ public class HybridMenu extends VerticalLayout {
 			}
 			
 			rootContent.addComponent(naviRootContent);
+			
+			if (config.isBreadcrumbs()) {
+				rootContent.setExpandRatio(naviRootContent, 1f);
+			}
 
 			switchTheme(config.getDesignItem());
 			VaadinSession.getCurrent().setAttribute(MenuConfig.class, config);
@@ -131,6 +136,10 @@ public class HybridMenu extends VerticalLayout {
 			buildRunning = true;
 		}
 		return this;
+	}
+	
+	public VerticalLayout getRootContent() {
+		return rootContent;
 	}
 	
 	public LeftMenu getLeftMenu() {
