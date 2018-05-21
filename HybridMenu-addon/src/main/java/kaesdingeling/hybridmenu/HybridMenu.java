@@ -1,5 +1,6 @@
 package kaesdingeling.hybridmenu;
 
+import java.util.List;
 import java.util.logging.Logger;
 
 import com.vaadin.navigator.Navigator;
@@ -12,11 +13,13 @@ import com.vaadin.ui.Layout;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
+import kaesdingeling.hybridmenu.components.BreadCrumbs;
 import kaesdingeling.hybridmenu.components.LeftMenu;
 import kaesdingeling.hybridmenu.components.NotificationCenter;
 import kaesdingeling.hybridmenu.components.TopMenu;
 import kaesdingeling.hybridmenu.data.DefaultViewChangeManager;
 import kaesdingeling.hybridmenu.data.MenuConfig;
+import kaesdingeling.hybridmenu.data.interfaces.MenuComponent;
 import kaesdingeling.hybridmenu.data.interfaces.ViewChangeManager;
 import kaesdingeling.hybridmenu.design.DesignItem;
 import kaesdingeling.hybridmenu.page.DefaultPage;
@@ -26,7 +29,7 @@ public class HybridMenu extends VerticalLayout {
 	private final static Logger log = Logger.getLogger(HybridMenu.class.getName());
 	
 	public static final String CLASS_NAME = "hybridMenu";
-
+	
 	private ViewChangeManager viewChangeManager = new DefaultViewChangeManager();
 	private MenuConfig config = null;
 	private boolean buildRunning = false;
@@ -36,7 +39,9 @@ public class HybridMenu extends VerticalLayout {
 	/* Components */
 	private HorizontalLayout content = new HorizontalLayout();
 	
+	private BreadCrumbs breadcrumbs = null;
 	private Layout naviRootContent = null;
+	private VerticalLayout rootContent = new VerticalLayout();
 	private TopMenu topMenu = new TopMenu();
 	private LeftMenu leftMenu = new LeftMenu();
 	private NotificationCenter notiCenter = new NotificationCenter();
@@ -68,10 +73,12 @@ public class HybridMenu extends VerticalLayout {
 			
 			naviRootContent.setWidth(100, Unit.PERCENTAGE);
 			naviRootContent.setStyleName("contentBox");
+			
 			if (initNavigator) {
 				new Navigator(ui, naviRootContent);
 				ui.getNavigator().setErrorView(DefaultPage.class);
 			}
+			
 			if (initViewChangeManager) {
 				if (null == ui.getNavigator()) {
 					log.severe("You have configured to not initialize a Navigator! Make sure a Navigator exists in the UI");
@@ -84,7 +91,9 @@ public class HybridMenu extends VerticalLayout {
 					}
 					@Override
 					public void afterViewChange(ViewChangeEvent event) {
-						viewChangeManager.manage(leftMenu, event);
+						List<MenuComponent<?>> menuContentList = viewChangeManager.init(HybridMenu.this);
+						viewChangeManager.manage(HybridMenu.this, leftMenu, event, menuContentList);
+						viewChangeManager.finish(HybridMenu.this, menuContentList);
 					}
 				});
 			}
@@ -103,8 +112,18 @@ public class HybridMenu extends VerticalLayout {
 			
 			notiCenter.setNotificationPosition(config.getNotificationPosition());
 			
-			content.addComponents(leftMenu, naviRootContent, notiCenter, css);
-			content.setExpandRatio(naviRootContent, 1f);
+			content.addComponents(leftMenu, rootContent, notiCenter, css);
+			content.setExpandRatio(rootContent, 1f);
+			
+			rootContent.setMargin(false);
+			rootContent.setSpacing(true);
+			
+			if (config.isBreadcrumbs()) {
+				breadcrumbs = new BreadCrumbs();
+				rootContent.addComponent(breadcrumbs);
+			}
+			
+			rootContent.addComponent(naviRootContent);
 
 			switchTheme(config.getDesignItem());
 			VaadinSession.getCurrent().setAttribute(MenuConfig.class, config);
@@ -120,6 +139,10 @@ public class HybridMenu extends VerticalLayout {
 	
 	public TopMenu getTopMenu() {
 		return topMenu;
+	}
+	
+	public BreadCrumbs getBreadCrumbs() {
+		return breadcrumbs;
 	}
 	
 	public NotificationCenter getNotificationCenter() {

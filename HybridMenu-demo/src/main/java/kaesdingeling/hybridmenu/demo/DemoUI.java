@@ -109,10 +109,10 @@ public class DemoUI extends UI implements DetachListener {
 				.withCaption("<b>Hybrid</b> Menu")
 				.withIcon(new ThemeResource("images/hybridmenu-Logo.png")));
 		
-		leftMenu.add(HMButton.get()
+		hybridMenu.getBreadCrumbs().setRoot(leftMenu.add(HMButton.get()
 				.withCaption("Home")
 				.withIcon(VaadinIcons.HOME)
-				.withNavigateTo(HomePage.class));
+				.withNavigateTo(HomePage.class)));
 		
 		leftMenu.add(HMButton.get()
 				.withCaption("Notification Builder")

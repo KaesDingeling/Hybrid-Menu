@@ -5,7 +5,7 @@
 	<groupId>org.vaadin.addons</groupId>
 	<artifactId>hybridmenu-root</artifactId>
 	<packaging>pom</packaging>
-	<version>3.0.2</version>
+	<version>3.0.6</version>
 	<name>HybridMenu Add-on Root Project</name>
 
 	<prerequisites>

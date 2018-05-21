@@ -26,6 +26,9 @@ public class MenuConfig {
 	
 	private long notificationDisplayTime = 5000;
 	
+	private Resource breadcrumbSeperatorIcon = FontAwesome.ANGLE_RIGHT;
+	private boolean breadcrumbs = true;
+	
 	public static int notificationQueueMax = 200;
 	
 	public DesignItem getDesignItem() {
@@ -82,6 +85,20 @@ public class MenuConfig {
 	}
 	public MenuConfig setNotificationDisplayTime(long notificationDisplayTime) {
 		this.notificationDisplayTime = notificationDisplayTime;
+		return this;
+	}
+	public Resource getBreadcrumbSeperatorIcon() {
+		return breadcrumbSeperatorIcon;
+	}
+	public MenuConfig withBreadcrumbSeperatorIcon(Resource breadcrumbSeperatorIcon) {
+		this.breadcrumbSeperatorIcon = breadcrumbSeperatorIcon;
+		return this;
+	}
+	public boolean isBreadcrumbs() {
+		return breadcrumbs;
+	}
+	public MenuConfig withBreadcrumbs(boolean breadcrumbs) {
+		this.breadcrumbs = breadcrumbs;
 		return this;
 	}
 }

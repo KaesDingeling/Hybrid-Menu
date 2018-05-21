@@ -10,7 +10,7 @@ import com.vaadin.ui.UI;
 
 import kaesdingeling.hybridmenu.data.interfaces.MenuComponent;
 
-public class HMButton extends Button implements MenuComponent<Button> {
+public class HMButton extends Button implements MenuComponent<HMButton> {
 	private static final long serialVersionUID = -2388630513509376470L;
 	
 	private String toolTip = null;
@@ -78,6 +78,23 @@ public class HMButton extends Button implements MenuComponent<Button> {
 		if (clickListener != null) {
 			withClickListener(clickListener);
 		}
+	}
+	
+	public HMButton withStyleName(String style) {
+		addStyleName(style);
+		return this;
+	}
+	
+	public String getToolTip() {
+		return toolTip;
+	}
+	
+	/**
+	 * set value toolTip
+	 */
+	public HMButton setToolTip(String toolTip) {
+		this.toolTip = toolTip;
+		return this;
 	}
 	
 	/**
@@ -196,10 +213,12 @@ public class HMButton extends Button implements MenuComponent<Button> {
 	}
 	
 	public HMButton setActive(boolean active) {
-		if (active && !isActive()) {
-			addStyleName("active");
-		} else {
-			removeStyleName("active");
+		if (active != isActive()) {
+			if (active) {
+				addStyleName("active");
+			} else {
+				removeStyleName("active");
+			}
 		}
 		return this;
 	}

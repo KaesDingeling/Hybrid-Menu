@@ -15365,6 +15365,7 @@ div.v-layout.v-horizontal.v-widget {
 .demo .hybridMenu .rootContent > .v-expand .v-slot-leftMenu .leftMenu .v-slot-HMLabel > div .v-caption {
 	text-align: center;
 	position: relative;
+	font-size: 17px;
 	padding: 10px;
 }
 
@@ -15484,6 +15485,22 @@ div.v-layout.v-horizontal.v-widget {
 
 .demo .hybridMenu .rootContent > .v-expand .v-slot-leftMenu .leftMenu .HMSubMenu.open > .v-slot:last-child > .v-verticallayout {
 	max-height: 1000px !important;
+}
+
+.demo .hybridMenu .rootContent .breadcrumbs {
+	padding: 15px 20px;
+}
+
+.demo .hybridMenu .rootContent .breadcrumbs .v-slot {
+	width: auto !important;
+}
+
+.demo .hybridMenu .rootContent .breadcrumbs .v-slot .HMButton.clickable {
+	cursor: pointer;
+}
+
+.demo .hybridMenu .rootContent .breadcrumbs .v-slot .HMLabel {
+	display: none !important;
 }
 
 .demo .hybridMenu .rootContent.minimal {

@@ -255,6 +255,7 @@ $hm-white-color: rgb(245, 245, 245);
                             .v-caption {
                                 text-align: center;
                                 position: relative;
+                                font-size: 17px;
                                 padding: 10px;
                                 
                                 &:after {
@@ -352,6 +353,23 @@ $hm-white-color: rgb(245, 245, 245);
                                 }
                             }
                         }
+                    }
+                }
+            }
+            
+            /* breadcrumbs */
+            .breadcrumbs {
+                padding: 15px 20px;
+                
+                .v-slot {
+                    width: auto !important;
+                    
+                    .HMButton.clickable {
+                        cursor: pointer;
+                    }
+                    
+                    .HMLabel {
+                        display: none !important;
                     }
                 }
             }

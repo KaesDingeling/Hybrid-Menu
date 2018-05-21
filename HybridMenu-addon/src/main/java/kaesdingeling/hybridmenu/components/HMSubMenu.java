@@ -46,6 +46,15 @@ public class HMSubMenu extends VerticalLayout implements MenuComponent<VerticalL
 		super.addComponents(button, content);
 	}
 	
+	@Override
+	public String getCaption() {
+		return button.getCaption();
+	}
+	
+	public HMButton getButton() {
+		return button;
+	}
+	
 	public HMSubMenu withCaption(String caption) {
 		button.withCaption(caption);
 		return this;
@@ -66,11 +75,13 @@ public class HMSubMenu extends VerticalLayout implements MenuComponent<VerticalL
 	}
 	
 	public HMSubMenu open() {
+		button.setActive(true);
 		addStyleName("open");
 		return this;
 	}
 	
 	public HMSubMenu close() {
+		button.setActive(false);
 		removeStyleName("open");
 		return this;
 	}
