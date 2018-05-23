@@ -36,11 +36,11 @@ $hm-white-color: rgb(245, 245, 245);
                     overflow-y: auto;
                 }
                 
-                .footer {
+                .buttonLine {
                     padding: 8px;
                 }
                 
-                .v-slot-footer {
+                .v-slot-buttonLine {
                     text-align: center;
                     
                     .v-slot > div {
@@ -66,7 +66,10 @@ $hm-white-color: rgb(245, 245, 245);
                     padding: 10px;
                     
                     .title {
+                        width: 100%;
+                        text-overflow: ellipsis;
                         line-height: 22px;
+                        overflow: hidden;
                         display: block;
                         height: 24px;
 
@@ -89,6 +92,10 @@ $hm-white-color: rgb(245, 245, 245);
                     &.withIcon {
                         padding-left: 50px;
                         
+                        .title {
+                            width: calc(100% - 23px) !important;
+                        }
+                        
                         .v-caption {
                             @include hmSize(34px, calc(100% - 16px));
                             @include hmPos(absolute, 0, null, null, 0);
@@ -102,19 +109,26 @@ $hm-white-color: rgb(245, 245, 245);
                     }
 
                     .content {
-                        white-space: normal;
+                        white-space: pre-line;
+                        word-break: break-all;
+                        overflow: hidden;
                         font-size: 14px;
                         margin: 2px 0 0;
                         display: block;
                     }
 
                     .button {
-                        @include hmTransition(background 0.3s ease-in-out, color 0.3s ease-in-out);
+                        @include hmTransition(opacity 0.3s ease-in-out);
                         @include hmPos(absolute, 0, 0);
                         @include hmSize(30px, 30px);
                         text-align: center;
                         line-height: 28px;
                         cursor: pointer;
+                        opacity: 0;
+                        
+                        &:hover {
+                            opacity: 1;
+                        }
                     }
                 }
                 
@@ -435,6 +449,10 @@ $hm-white-color: rgb(245, 245, 245);
                 
                 .contentBox {
                     padding: 0 !important;
+                    
+                    & > .v-margin-top {
+                        padding-top: 0 !important;
+                    }
                 }
             }
         }

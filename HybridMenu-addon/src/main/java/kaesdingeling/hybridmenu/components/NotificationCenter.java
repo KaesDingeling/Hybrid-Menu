@@ -18,6 +18,7 @@ import com.vaadin.ui.Notification.Type;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
+import kaesdingeling.hybridmenu.HybridMenu;
 import kaesdingeling.hybridmenu.data.MenuConfig;
 import kaesdingeling.hybridmenu.data.enums.NotificationPosition;
 import kaesdingeling.hybridmenu.data.interfaces.MenuComponent;
@@ -28,10 +29,11 @@ public class NotificationCenter extends VerticalLayout {
 	
 	public static final String CLASS_NAME = "notificationCenter";
 	
+	public HybridMenu hybridMenu = null;
 	public UI ui = UI.getCurrent();
-	
+
 	private VerticalLayout content = new VerticalLayout();
-	private HorizontalLayout footer = new HorizontalLayout();
+	private HorizontalLayout buttonLine = new HorizontalLayout();
 	private CssLayout lastNotification = new CssLayout();
 	
 	private ArrayBlockingQueue<Notification> notificationQueue = new ArrayBlockingQueue<Notification>(MenuConfig.notificationQueueMax);
@@ -40,13 +42,15 @@ public class NotificationCenter extends VerticalLayout {
 	
 	public ExecutorService exe = Executors.newSingleThreadExecutor();
 	
-	public NotificationCenter() {
+	public NotificationCenter(HybridMenu hybridMenu) {
 		super();
 		setHeight(100, Unit.PERCENTAGE);
 		setWidth(0, Unit.PIXELS);
 		setStyleName(CLASS_NAME);
 		setMargin(false);
 		setSpacing(false);
+		
+		this.hybridMenu = hybridMenu;
 		
 		exe.execute(() -> {
 			try {
@@ -81,9 +85,9 @@ public class NotificationCenter extends VerticalLayout {
 			}
 		});
 		
-		footer.setSpacing(true);
-		footer.setMargin(false);
-		footer.setStyleName("footer");
+		buttonLine.setSpacing(true);
+		buttonLine.setMargin(false);
+		buttonLine.setStyleName("buttonLine");
 		
 		content.setSpacing(false);
 		content.setMargin(false);
@@ -92,31 +96,34 @@ public class NotificationCenter extends VerticalLayout {
 		lastNotification.setHeight(0, Unit.PIXELS);
 		lastNotification.setStyleName("lastNotification");
 		
-		addComponents(content, footer, lastNotification);
-		setExpandRatio(content, 1);
-		
 		VaadinSession.getCurrent().setAttribute(NotificationCenter.class, this);
 		
-		addFooter(HMButton.get().withIcon(FontAwesome.ANGLE_RIGHT).withClickListener(e -> close()));
+		addButtonLine(HMButton.get().withIcon(FontAwesome.ANGLE_RIGHT).withClickListener(e -> close()));
 	}
 	
-	public NotificationCenter setNotificationPosition(NotificationPosition notificationPosition) {
-		if (notificationPosition.equals(NotificationPosition.TOP) && !lastNotification.getStyleName().contains("top")) {
+	public void build() {
+		if (hybridMenu.getConfig().getNotificationPopupPosition().equals(NotificationPosition.TOP) && !lastNotification.getStyleName().contains("top")) {
 			lastNotification.addStyleName("top");
 		} else {
 			lastNotification.removeStyleName("top");
 		}
-		return this;
+		if (hybridMenu.getConfig().getNotificationButtonLinePosition().equals(NotificationPosition.TOP) && !lastNotification.getStyleName().contains("top")) {
+			addComponents(buttonLine, content);
+		} else {
+			addComponents(content, buttonLine);
+		}
+		addComponent(lastNotification);
+		setExpandRatio(content, 1);
 	}
 	
-	public <C extends MenuComponent<?>> C addFooter(C c) {
+	public <C extends MenuComponent<?>> C addButtonLine(C c) {
 		c.setPrimaryStyleName(c.getClass().getSimpleName());
-		footer.addComponentAsFirst(c);
+		buttonLine.addComponentAsFirst(c);
 		return c;
 	}
 	
-	public <C extends MenuComponent<?>> NotificationCenter removeFooter(C c) {
-		footer.removeComponent(c);
+	public <C extends MenuComponent<?>> NotificationCenter removeButtonLine(C c) {
+		buttonLine.removeComponent(c);
 		return this;
 	}
 	
@@ -134,7 +141,11 @@ public class NotificationCenter extends VerticalLayout {
 		Notification notificationClone = notification.clone();
 		
 		if (!showDescriptionOnPopup) {
-			notificationClone.setDescription("");
+			notificationClone.withContent("");
+		} else {
+			if (notificationClone.getContent().length() > hybridMenu.getConfig().getNotificationPopupMaxContentLength()) {
+				notificationClone.withContent(notificationClone.getContent().substring(0, hybridMenu.getConfig().getNotificationPopupMaxContentLength()));
+			}
 		}
 		
 		return notificationQueue.add(notificationClone);

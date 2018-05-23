@@ -1,10 +1,8 @@
 package kaesdingeling.hybridmenu.demo.page;
 
 import com.google.gson.Gson;
-import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
-import com.vaadin.server.VaadinSession;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.FormLayout;
 import com.vaadin.ui.HorizontalLayout;
@@ -16,8 +14,6 @@ import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
 import kaesdingeling.hybridmenu.components.ColorPicker;
-import kaesdingeling.hybridmenu.components.Notification;
-import kaesdingeling.hybridmenu.components.NotificationCenter;
 import kaesdingeling.hybridmenu.demo.DemoUI;
 import kaesdingeling.hybridmenu.design.DesignColor;
 import kaesdingeling.hybridmenu.design.DesignItem;
@@ -41,7 +37,6 @@ public class ThemeBuilderPage extends VerticalLayout implements View {
 	private FormLayout notificationForm = buildForm("Notifications");
 	private ColorPicker notificationBackground = buildPicker(notificationForm, "Notification-Background");
 	private Slider notificationShadow = buildSlider(notificationForm, "Notification-Shadow");
-	private ColorPicker notificationRemoveButtonHover = buildPicker(notificationForm, "Notification-Remove-Button-Hover");
 	
 	/* Left-Menu */
 	private FormLayout leftMenuForm = buildForm("Left-Menu");
@@ -135,7 +130,6 @@ public class ThemeBuilderPage extends VerticalLayout implements View {
 		/* Notifications */
 		notificationBackground.setValue(designItem.getNotificationBackground());
 		notificationShadow.setValue(designItem.getNotificationShadow());
-		notificationRemoveButtonHover.setValue(designItem.getNotificationRemoveButtonHover());
 		
 	    /* tooltip */
 		tooltipBackground.setValue(designItem.getTooltipBackground());
@@ -154,7 +148,6 @@ public class ThemeBuilderPage extends VerticalLayout implements View {
 			/* Notifications */
 			designItem.setNotificationBackground(DesignColor.get(notificationBackground.getValue()));
 			designItem.setNotificationShadow(notificationShadow.getValue());
-			designItem.setNotificationRemoveButtonHover(DesignColor.get(notificationRemoveButtonHover.getValue()));
 			
 			/* Left-Menu */
 			designItem.setMenuLeftBackground(DesignColor.get(leftMenuBackground.getValue()));

@@ -22,9 +22,12 @@ public class MenuConfig {
 	private Resource notificationCenterCloseIcon = FontAwesome.ANGLE_RIGHT;
 	private Resource notificationRemoveIcon = FontAwesome.TIMES;
 	
-	private NotificationPosition notificationPosition = NotificationPosition.BOTTOM;
+	private NotificationPosition notificationPopupPosition = NotificationPosition.BOTTOM;
+	private NotificationPosition notificationButtonLinePosition = NotificationPosition.BOTTOM;
 	
 	private long notificationDisplayTime = 5000;
+	
+	private int notificationPopupMaxContentLength = 100;
 	
 	private Resource breadcrumbSeperatorIcon = FontAwesome.ANGLE_RIGHT;
 	private boolean breadcrumbs = true;
@@ -73,11 +76,18 @@ public class MenuConfig {
 		this.notificationRemoveIcon = notificationRemoveIcon;
 		return this;
 	}
-	public NotificationPosition getNotificationPosition() {
-		return notificationPosition;
+	public NotificationPosition getNotificationPopupPosition() {
+		return notificationPopupPosition;
 	}
-	public MenuConfig setNotificationPosition(NotificationPosition notificationPosition) {
-		this.notificationPosition = notificationPosition;
+	public MenuConfig setNotificationPopupPosition(NotificationPosition notificationPopupPosition) {
+		this.notificationPopupPosition = notificationPopupPosition;
+		return this;
+	}
+	public NotificationPosition getNotificationButtonLinePosition() {
+		return notificationButtonLinePosition;
+	}
+	public MenuConfig setNotificationButtonLinePosition(NotificationPosition notificationButtonLinePosition) {
+		this.notificationButtonLinePosition = notificationButtonLinePosition;
 		return this;
 	}
 	public long getNotificationDisplayTime() {
@@ -85,6 +95,13 @@ public class MenuConfig {
 	}
 	public MenuConfig setNotificationDisplayTime(long notificationDisplayTime) {
 		this.notificationDisplayTime = notificationDisplayTime;
+		return this;
+	}
+	public int getNotificationPopupMaxContentLength() {
+		return notificationPopupMaxContentLength;
+	}
+	public MenuConfig setNotificationPopupMaxContentLength(int notificationPopupMaxContentLength) {
+		this.notificationPopupMaxContentLength = notificationPopupMaxContentLength;
 		return this;
 	}
 	public Resource getBreadcrumbSeperatorIcon() {

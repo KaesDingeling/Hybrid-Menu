@@ -44,7 +44,7 @@ public class HybridMenu extends VerticalLayout {
 	private VerticalLayout rootContent = new VerticalLayout();
 	private TopMenu topMenu = new TopMenu();
 	private LeftMenu leftMenu = new LeftMenu();
-	private NotificationCenter notiCenter = new NotificationCenter();
+	private NotificationCenter notiCenter = new NotificationCenter(this);
 	
 	private Label css = new Label("", ContentMode.HTML);
 
@@ -98,6 +98,8 @@ public class HybridMenu extends VerticalLayout {
 				});
 			}
 			
+			notiCenter.build();
+			
 			addComponent(topMenu);
 			
 			content.setSizeFull();
@@ -109,8 +111,6 @@ public class HybridMenu extends VerticalLayout {
 			
 			css.setHeight(0, Unit.PIXELS);
 			css.setStyleName("customCss");
-			
-			notiCenter.setNotificationPosition(config.getNotificationPosition());
 			
 			content.addComponents(leftMenu, rootContent, notiCenter, css);
 			content.setExpandRatio(rootContent, 1f);

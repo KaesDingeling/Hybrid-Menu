@@ -11,7 +11,6 @@ import com.vaadin.ui.CheckBox;
 import com.vaadin.ui.ComboBox;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.FormLayout;
-import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Slider;
 import com.vaadin.ui.TextArea;
@@ -20,7 +19,6 @@ import com.vaadin.ui.VerticalLayout;
 
 import kaesdingeling.hybridmenu.components.Notification;
 import kaesdingeling.hybridmenu.components.NotificationCenter;
-import kaesdingeling.hybridmenu.data.enums.NotificationPosition;
 
 public class NotificationBuilderPage extends VerticalLayout implements View {
 	private static final long serialVersionUID = 1L;
@@ -35,8 +33,6 @@ public class NotificationBuilderPage extends VerticalLayout implements View {
 		FormLayout form = new FormLayout();
 		
 		form.setSizeFull();
-		
-		HorizontalLayout outputPosition = new HorizontalLayout(new Button("Top", e -> VaadinSession.getCurrent().getAttribute(NotificationCenter.class).setNotificationPosition(NotificationPosition.TOP)), new Button("Bottom", e -> VaadinSession.getCurrent().getAttribute(NotificationCenter.class).setNotificationPosition(NotificationPosition.BOTTOM)));
 		
 		TextField caption = new TextField("Title");
 		TextArea content = new TextArea("Content");
@@ -112,7 +108,7 @@ public class NotificationBuilderPage extends VerticalLayout implements View {
 		autoRemove.setWidth(100, Unit.PERCENTAGE);
 		autoRemoveTime.setWidth(100, Unit.PERCENTAGE);
 		
-		form.addComponents(outputPosition, caption, content, icon, displayTime, closeable, makeAsReaded, autoRemove, autoRemoveTime, execute);
+		form.addComponents(caption, content, icon, displayTime, closeable, makeAsReaded, autoRemove, autoRemoveTime, execute);
 		
 		addComponents(title, form);
 	}

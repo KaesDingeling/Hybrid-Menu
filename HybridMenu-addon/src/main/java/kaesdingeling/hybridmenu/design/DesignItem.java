@@ -1,7 +1,5 @@
 package kaesdingeling.hybridmenu.design;
 
-import com.vaadin.shared.ui.colorpicker.Color;
-
 import kaesdingeling.hybridmenu.data.enums.MenuDesign;
 
 public class DesignItem {
@@ -17,7 +15,6 @@ public class DesignItem {
     /* Notifications */
     private DesignColor notificationBackground;
     private double notificationShadow;
-    private DesignColor notificationRemoveButtonHover;
     
     /* Left-Menu */
     private DesignColor menuLeftBackground;
@@ -84,15 +81,10 @@ public class DesignItem {
 				    		.add(DesignUtils.background(DesignUtils.hmColorDedect(notificationBackground)))
 				    		.and()
 				    	.with(".button")
-					    	.add(DesignUtils.background(new Color(0, 0, 0, 0)))
 					    	.add(DesignUtils.color(DesignUtils.hmColorDedect(notificationBackground)))
-					    	.with("&:hover")
-						    	.add(DesignUtils.color(notificationRemoveButtonHover))
-						    	.add(DesignUtils.background(menuLeftButtonHover, 50))
-						    	.and()
 						    .and()
 						.and()
-					.with(".v-slot-footer .v-slot > div")
+					.with(".v-slot-buttonLine .v-slot > div")
 						.add(DesignUtils.hmBackgroundWithColor(menuLeftButtonActive))
 						.with("&:hover")
 							.add(DesignUtils.hmBackgroundWithColor(menuLeftButtonHover));
@@ -140,13 +132,6 @@ public class DesignItem {
 	}
 	public DesignItem setNotificationShadow(double notificationShadow) {
 		this.notificationShadow = notificationShadow;
-		return this;
-	}
-	public DesignColor getNotificationRemoveButtonHover() {
-		return notificationRemoveButtonHover;
-	}
-	public DesignItem setNotificationRemoveButtonHover(DesignColor notificationRemoveButtonHover) {
-		this.notificationRemoveButtonHover = notificationRemoveButtonHover;
 		return this;
 	}
 	public DesignColor getMenuLeftBackground() {
@@ -202,7 +187,6 @@ public class DesignItem {
 		
 		/* Notifications */
 		design.setNotificationBackground(design.getMenuLeftBackground());
-		design.setNotificationRemoveButtonHover(DesignColor.get(222, 30, 30));
 		design.setNotificationShadow(75);
 		
 		/* ToolTip */

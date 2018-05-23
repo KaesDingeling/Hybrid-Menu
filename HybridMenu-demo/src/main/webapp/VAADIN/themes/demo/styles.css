@@ -15091,15 +15091,15 @@ div.v-layout.v-horizontal.v-widget {
 	overflow-y: auto;
 }
 
-.demo .hybridMenu .v-slot-notificationCenter .notificationCenter .footer {
+.demo .hybridMenu .v-slot-notificationCenter .notificationCenter .buttonLine {
 	padding: 8px;
 }
 
-.demo .hybridMenu .v-slot-notificationCenter .notificationCenter .v-slot-footer {
+.demo .hybridMenu .v-slot-notificationCenter .notificationCenter .v-slot-buttonLine {
 	text-align: center;
 }
 
-.demo .hybridMenu .v-slot-notificationCenter .notificationCenter .v-slot-footer .v-slot > div {
+.demo .hybridMenu .v-slot-notificationCenter .notificationCenter .v-slot-buttonLine .v-slot > div {
 	-webkit-transition: background 0.3s ease-in-out;
 	-moz-transition: background 0.3s ease-in-out;
 	-ms-transition: background 0.3s ease-in-out;
@@ -15114,7 +15114,7 @@ div.v-layout.v-horizontal.v-widget {
 	margin: 0 5px;
 }
 
-.demo .hybridMenu .v-slot-notificationCenter .notificationCenter .v-slot-footer .v-slot > div.HMButton {
+.demo .hybridMenu .v-slot-notificationCenter .notificationCenter .v-slot-buttonLine .v-slot > div.HMButton {
 	cursor: pointer;
 }
 
@@ -15127,7 +15127,10 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .demo .hybridMenu .v-slot-notificationCenter .notificationCenter .notification .title {
+	width: 100%;
+	text-overflow: ellipsis;
 	line-height: 22px;
+	overflow: hidden;
 	display: block;
 	height: 24px;
 }
@@ -15152,6 +15155,10 @@ div.v-layout.v-horizontal.v-widget {
 	padding-left: 50px;
 }
 
+.demo .hybridMenu .v-slot-notificationCenter .notificationCenter .notification.withIcon .title {
+	width: calc(100% - 23px) !important;
+}
+
 .demo .hybridMenu .v-slot-notificationCenter .notificationCenter .notification.withIcon .v-caption {
 	width: 34px;
 	height: calc(100% - 16px);
@@ -15167,18 +15174,20 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .demo .hybridMenu .v-slot-notificationCenter .notificationCenter .notification .content {
-	white-space: normal;
+	white-space: pre-line;
+	word-break: break-all;
+	overflow: hidden;
 	font-size: 14px;
 	margin: 2px 0 0;
 	display: block;
 }
 
 .demo .hybridMenu .v-slot-notificationCenter .notificationCenter .notification .button {
-	-webkit-transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
-	-moz-transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
-	-ms-transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
-	-o-transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
-	transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+	-webkit-transition: opacity 0.3s ease-in-out;
+	-moz-transition: opacity 0.3s ease-in-out;
+	-ms-transition: opacity 0.3s ease-in-out;
+	-o-transition: opacity 0.3s ease-in-out;
+	transition: opacity 0.3s ease-in-out;
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -15187,6 +15196,11 @@ div.v-layout.v-horizontal.v-widget {
 	text-align: center;
 	line-height: 28px;
 	cursor: pointer;
+	opacity: 0;
+}
+
+.demo .hybridMenu .v-slot-notificationCenter .notificationCenter .notification .button:hover {
+	opacity: 1;
 }
 
 .demo .hybridMenu .v-slot-notificationCenter .notificationCenter .lastNotification {
@@ -15567,4 +15581,8 @@ div.v-layout.v-horizontal.v-widget {
 
 .demo .hybridMenu .rootContent .v-slot-contentBox .contentBox {
 	padding: 0 !important;
+}
+
+.demo .hybridMenu .rootContent .v-slot-contentBox .contentBox > .v-margin-top {
+	padding-top: 0 !important;
 }

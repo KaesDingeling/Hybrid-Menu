@@ -76,6 +76,10 @@ public class Notification extends CssLayout {
 		return this;
 	}
 	
+	public String getContent() {
+		return this.content.getValue();
+	}
+	
 	public Notification withIcon(Resource icon) {
 		title.setIcon(icon);
 		return this;
