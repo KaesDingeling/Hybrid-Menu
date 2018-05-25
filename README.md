@@ -1,10 +1,10 @@
-# HybridMenu Add-on for Vaadin 8
+# HybridMenu Add-on for Vaadin 10
 
-HybridMenu is a UI component add-on for Vaadin 8.
+HybridMenu is a UI component add-on for Vaadin 10.
 
 ## Online demo
 
-http://fo0.me:8080/hybridmenu/
+http://fo0.me:8080/hybridmenu/ (Vaadin 8)
 
 ## Download release
 
@@ -21,7 +21,7 @@ mvn clean install
 cd demo
 mvn jetty:run
 
-To see the demo, navigate to http://localhost:8080/
+To see the demo, navigate to http://localhost:8080/hybridmenu/
 
 ## Development with Eclipse IDE
 
@@ -30,7 +30,6 @@ For further development of this add-on, the following tool-chain is recommended:
 - m2e wtp plug-in (install it from Eclipse Marketplace)
 - Vaadin Eclipse plug-in (install it from Eclipse Marketplace)
 - JRebel Eclipse plug-in (install it from Eclipse Marketplace)
-- Chrome browser
 
 ### Importing project
 
@@ -44,7 +43,7 @@ If you have not already compiled the widgetset, do it now by running vaadin:inst
 
 If you have a JRebel license, it makes on the fly code changes faster. Just add JRebel nature to your HybridMenu-demo project by clicking project with right mouse button and choosing JRebel > Add JRebel Nature
 
-To debug project and make code modifications on the fly in the server-side, right-click the HybridMenu-demo project and choose Debug As > Debug on Server. Navigate to http://localhost:8080/HybridMenu-demo/ to see the application.
+To debug project and make code modifications on the fly in the server-side, right-click the HybridMenu-demo project and choose Debug As > Debug on Server. Navigate to http://localhost:8080/hybridmenu/ to see the application.
 
 ### Debugging client-side
 
@@ -52,16 +51,6 @@ Debugging client side code in the HybridMenu-demo project:
   - run "mvn vaadin:run-codeserver" on a separate console while the application is running
   - activate Super Dev Mode in the debug window of the application or by adding ?superdevmode to the URL
   - You can access Java-sources and set breakpoints inside Chrome if you enable source maps from inspector settings.
- 
-## Release notes
-
-### Version 0.0.1.1-ALPHA
-- Upload to Vaadin Repository
-- Upload to GitHub
-
-### Version 0.0.1.13-ALPHA
-- Compiling problems was solved
-
 
 ## Contributions
 
