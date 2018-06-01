@@ -6,7 +6,7 @@
 	<groupId>de.kaesdingeling</groupId>
 	<artifactId>HM-Demo</artifactId>
 	<packaging>war</packaging>
-	<version>3.0.5</version>
+	<version>3.0.8.vaadin10</version>
 	<name>HybridMenu Add-on Demo</name>
 
 	<prerequisites>

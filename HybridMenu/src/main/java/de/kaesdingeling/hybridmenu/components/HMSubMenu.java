@@ -51,6 +51,10 @@ public class HMSubMenu extends VerticalLayout implements MenuComponent<HMSubMenu
 		super.add(button, content);
 	}
 	
+	public HMButton getButton() {
+		return button;
+	}
+	
 	public HMSubMenu withCaption(String caption) {
 		button.withCaption(caption);
 		return this;

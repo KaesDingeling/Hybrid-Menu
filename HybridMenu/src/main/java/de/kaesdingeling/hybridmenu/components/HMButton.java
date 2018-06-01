@@ -99,6 +99,11 @@ public class HMButton extends Button implements MenuComponent<HMButton> {
 		return this;
 	}
 	
+	public HMButton withStyleName(String style) {
+		getClassNames().add(style);
+		return this;
+	}
+	
 	public HMButton withIcon(Icon icon) {
 		super.setIcon(icon);
 		return this;
@@ -169,6 +174,10 @@ public class HMButton extends Button implements MenuComponent<HMButton> {
 			removeToolTip();
 		}
 		return this;
+	}
+	
+	public Label getToolTip() {
+		return toolTip;
 	}
 	
 	public HMButton removeToolTip() {

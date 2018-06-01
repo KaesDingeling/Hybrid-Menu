@@ -24,6 +24,9 @@ public class MenuConfig {
 	
 	private long notificationDisplayTime = 5000;
 	
+	private VaadinIcons breadcrumbSeperatorIcon = VaadinIcons.ANGLE_RIGHT;
+	private boolean breadcrumbs = true;
+	
 	public static int notificationQueueMax = 200;
 	
 	public DesignItem getDesignItem() {
@@ -73,6 +76,20 @@ public class MenuConfig {
 	}
 	public MenuConfig setNotificationPosition(NotificationPosition notificationPosition) {
 		this.notificationPosition = notificationPosition;
+		return this;
+	}
+	public VaadinIcons getBreadcrumbSeperatorIcon() {
+		return breadcrumbSeperatorIcon;
+	}
+	public MenuConfig withBreadcrumbSeperatorIcon(VaadinIcons breadcrumbSeperatorIcon) {
+		this.breadcrumbSeperatorIcon = breadcrumbSeperatorIcon;
+		return this;
+	}
+	public boolean isBreadcrumbs() {
+		return breadcrumbs;
+	}
+	public MenuConfig withBreadcrumbs(boolean breadcrumbs) {
+		this.breadcrumbs = breadcrumbs;
 		return this;
 	}
 	public long getNotificationDisplayTime() {

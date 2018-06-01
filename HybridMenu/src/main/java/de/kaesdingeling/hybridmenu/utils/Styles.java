@@ -3,13 +3,14 @@ package de.kaesdingeling.hybridmenu.utils;
 public class Styles {
 	/* CSS Classes */
 	public static final String hybridMenu = "hybridMenu";
-	public static final String leftMenu = "leftMenu";
-	public static final String topMenu = "topMenu";
+	public static final String leftMenu = "hmLeftMenu";
+	public static final String topMenu = "hmTopMenu";
 	public static final String subMenu = "subMenu";
 	public static final String rootContent = "rootContent";
-	public static final String contentBox = "contentBox";
-	public static final String notificationCenter = "notificationCenter";
+	public static final String contentBox = "hmContentBox";
+	public static final String notificationCenter = "hmNotificationCenter";
 	public static final String lastNotification = "lastNotification";
+	public static final String breadCrumbs = "hmBreadcrumbs";
 	public static final String content = "content";
 	public static final String footer = "footer";
 	public static final String toolTip = "toolTip";
@@ -31,25 +32,25 @@ public class Styles {
 			"	z-index: 1;\n" + 
 			"}\n" + 
 			"\n" + 
-			".hybridMenu .contentBox {\n" + 
+			".hmContentBox {\n" + 
 			"    overflow: auto;\n" + 
 			"}\n" + 
 			"\n" + 
-			".hybridMenu .notificationCenter vaadin-button, .hybridMenu .leftMenu vaadin-button, .hybridMenu .topMenu vaadin-button {\n" + 
+			".hmNotificationCenter vaadin-button, .hmLeftMenu vaadin-button, .hmTopMenu vaadin-button {\n" + 
 			"    border-radius: 0;\n" + 
 			"    cursor: pointer;\n" + 
 			"}\n" + 
 			"\n" + 
 			"\n" + 
 			"/* Top Menu */\n" + 
-			".hybridMenu .topMenu {\n" + 
+			".hmTopMenu {\n" + 
 			"	position: fixed;\n" + 
 			"	top: 0;\n" + 
 			"	right: 100px;\n" + 
 			"	z-index: 1000;\n" + 
 			"}\n" + 
 			"\n" + 
-			".hybridMenu .topMenu vaadin-text-field {\n" + 
+			".hmTopMenu vaadin-text-field {\n" + 
 			"    -webkit-transition: width 0.3s ease-in-out, border-top-width 0.3s ease-in-out;\n" + 
 			"	-moz-transition: width 0.3s ease-in-out, border-top-width 0.3s ease-in-out;\n" + 
 			"	-ms-transition: width 0.3s ease-in-out, border-top-width 0.3s ease-in-out;\n" + 
@@ -57,7 +58,7 @@ public class Styles {
 			"	transition: width 0.3s ease-in-out, border-top-width 0.3s ease-in-out;\n" + 
 			"}\n" + 
 			"\n" + 
-			".hybridMenu .topMenu vaadin-text-field, .hybridMenu .topMenu vaadin-button {\n" + 
+			".hmTopMenu vaadin-text-field, .hmTopMenu vaadin-button {\n" + 
 			"    border-top: 0 solid;\n" + 
 			"    border-radius: 0;\n" + 
 			"    min-width: 35px;\n" + 
@@ -67,25 +68,25 @@ public class Styles {
 			"    padding: 0;\n" + 
 			"}\n" + 
 			"\n" + 
-			".hybridMenu .topMenu vaadin-text-field.active, .hybridMenu .topMenu vaadin-button.active {\n" + 
+			".hmTopMenu vaadin-text-field.active, .hmTopMenu vaadin-button.active {\n" + 
 			"    border-top-width: 3px;\n" + 
 			"    height: 43px;\n" + 
 			"}\n" + 
 			"\n" + 
-			".hybridMenu .topMenu vaadin-text-field:hover, .hybridMenu .topMenu vaadin-button:hover {\n" + 
+			".hmTopMenu vaadin-text-field:hover, .hmTopMenu vaadin-button:hover {\n" + 
 			"    border-top-width: 5px;\n" + 
 			"    height: 45px;\n" + 
 			"}\n" + 
 			"\n" + 
-			".hybridMenu .topMenu .vaadin-text-field {\n" + 
+			".hmTopMenu .vaadin-text-field {\n" + 
 			"    border-radius: 0;\n" + 
 			"}\n" + 
 			"\n" + 
-			".hybridMenu .topMenu vaadin-text-field:hover {\n" + 
+			".hmTopMenu vaadin-text-field:hover {\n" + 
 			"    width: 180px !important;\n" + 
 			"}\n" + 
 			"\n" + 
-			".hybridMenu .topMenu vaadin-text-field input {\n" + 
+			".hmTopMenu vaadin-text-field input {\n" + 
 			"    -webkit-transition: background 0.3s ease-in-out, opacity 0.3s ease-in-out;\n" + 
 			"	-moz-transition: background 0.3s ease-in-out, opacity 0.3s ease-in-out;\n" + 
 			"	-ms-transition: background 0.3s ease-in-out, opacity 0.3s ease-in-out;\n" + 
@@ -94,11 +95,11 @@ public class Styles {
 			"    opacity: 0;\n" + 
 			"}\n" + 
 			"\n" + 
-			".hybridMenu .topMenu vaadin-text-field:hover input {\n" + 
+			".hmTopMenu vaadin-text-field:hover input {\n" + 
 			"    opacity: 1;\n" + 
 			"}\n" + 
 			"\n" + 
-			".hybridMenu .topMenu vaadin-button {\n" + 
+			".hmTopMenu vaadin-button {\n" + 
 			"    -webkit-transition: height 0.3s ease-in-out, border-top-width 0.3s ease-in-out;\n" + 
 			"	-moz-transition: height 0.3s ease-in-out, border-top-width 0.3s ease-in-out;\n" + 
 			"	-ms-transition: height 0.3s ease-in-out, border-top-width 0.3s ease-in-out;\n" + 
@@ -106,7 +107,7 @@ public class Styles {
 			"	transition: height 0.3s ease-in-out, border-top-width 0.3s ease-in-out;\n" + 
 			"}\n" + 
 			"\n" + 
-			".hybridMenu .topMenu .vaadin-button {\n" + 
+			".hmTopMenu .vaadin-button {\n" + 
 			"    -webkit-transition: background 0.3s ease-in-out;\n" + 
 			"	-moz-transition: background 0.3s ease-in-out;\n" + 
 			"	-ms-transition: background 0.3s ease-in-out;\n" + 
@@ -114,7 +115,7 @@ public class Styles {
 			"	transition: background 0.3s ease-in-out;\n" + 
 			"}\n" + 
 			"\n" + 
-			".hybridMenu .topMenu vaadin-button .toolTip {\n" + 
+			".hmTopMenu vaadin-button .toolTip {\n" + 
 			"    padding: 1px 4px 3px;\n" + 
 			"    border-radius: 3px;\n" + 
 			"    position: absolute;\n" + 
@@ -124,7 +125,7 @@ public class Styles {
 			"\n" + 
 			"\n" + 
 			"/* Left Menu */\n" + 
-			".hybridMenu .leftMenu {\n" + 
+			".hmLeftMenu {\n" + 
 			"    -webkit-transition: width 0.5s ease-in-out, min-width 0.5s ease-in-out, max-width 0.5s ease-in-out;\n" + 
 			"	-moz-transition: width 0.5s ease-in-out, min-width 0.5s ease-in-out, max-width 0.5s ease-in-out;\n" + 
 			"	-ms-transition: width 0.5s ease-in-out, min-width 0.5s ease-in-out, max-width 0.5s ease-in-out;\n" + 
@@ -135,7 +136,7 @@ public class Styles {
 			"    overflow-x: auto;\n" + 
 			"}\n" + 
 			"\n" + 
-			".hybridMenu .leftMenu vaadin-button {\n" + 
+			".hmLeftMenu vaadin-button {\n" + 
 			"    -webkit-transition: background 0.3s ease-in-out, border-left-color 0.3s ease-in-out, border-left-width 0.3s ease-in-out;\n" + 
 			"	-moz-transition: background 0.3s ease-in-out, border-left-color 0.3s ease-in-out, border-left-width 0.3s ease-in-out;\n" + 
 			"	-ms-transition: background 0.3s ease-in-out, border-left-color 0.3s ease-in-out, border-left-width 0.3s ease-in-out;\n" + 
@@ -149,7 +150,7 @@ public class Styles {
 			"    margin: 0;\n" + 
 			"}\n" + 
 			"\n" + 
-			".hybridMenu .leftMenu .vaadin-button div[part=\"label\"] {\n" + 
+			".hmLeftMenu .vaadin-button div[part=\"label\"] {\n" + 
 			"    position: relative;\n" + 
 			"    line-height: 18px;\n" + 
 			"    text-align: left;\n" + 
@@ -157,17 +158,17 @@ public class Styles {
 			"    width: 100%;\n" + 
 			"}\n" + 
 			"\n" + 
-			".hybridMenu .leftMenu .vaadin-button div[part=\"label\"] iron-icon:not(.buttonOtherIcon) {\n" + 
+			".hmLeftMenu .vaadin-button div[part=\"label\"] iron-icon:not(.buttonOtherIcon) {\n" + 
 			"    vertical-align: middle;\n" + 
 			"    margin-right: 7px;\n" + 
 			"}\n" + 
 			"\n" + 
-			".hybridMenu .leftMenu .vaadin-button div[part=\"label\"] span {\n" + 
+			".hmLeftMenu .vaadin-button div[part=\"label\"] span {\n" + 
 			"    vertical-align: middle;\n" + 
 			"    margin-right: 7px;\n" + 
 			"}\n" + 
 			"\n" + 
-			".hybridMenu .leftMenu .vaadin-button div[part=\"label\"] iron-icon.buttonOtherIcon {\n" + 
+			".hmLeftMenu .vaadin-button div[part=\"label\"] iron-icon.buttonOtherIcon {\n" + 
 			"    -webkit-transition: transform 0.3s ease-in-out;\n" + 
 			"	-moz-transition: transform 0.3s ease-in-out;\n" + 
 			"	-ms-transition: transform 0.3s ease-in-out;\n" + 
@@ -182,7 +183,7 @@ public class Styles {
 			"    right: 5px;\n" + 
 			"}\n" + 
 			"\n" + 
-			".hybridMenu .leftMenu vaadin-button .toolTip {\n" + 
+			".hmLeftMenu vaadin-button .toolTip {\n" + 
 			"    -webkit-transform: translateY(-50%);\n" + 
 			"	-moz-transform: translateY(-50%);\n" + 
 			"	-ms-transform: translateY(-50%);\n" + 
@@ -195,20 +196,20 @@ public class Styles {
 			"    top: 50%;\n" + 
 			"}\n" + 
 			"\n" + 
-			".hybridMenu .leftMenu vaadin-button.active {\n" + 
+			".hmLeftMenu vaadin-button.active {\n" + 
 			"    border-left-width: 3px;\n" + 
 			"}\n" + 
 			"\n" + 
-			".hybridMenu .leftMenu vaadin-button:hover {\n" + 
+			".hmLeftMenu vaadin-button:hover {\n" + 
 			"    border-left-width: 5px;\n" + 
 			"}\n" + 
 			"\n" + 
-			".hybridMenu .leftMenu vaadin-vertical-layout.subMenu {\n" + 
+			".hmLeftMenu vaadin-vertical-layout.subMenu {\n" + 
 			"    width: 100%;\n" + 
 			"    margin: 0;\n" + 
 			"}\n" + 
 			"\n" + 
-			".hybridMenu .leftMenu vaadin-vertical-layout.subMenu > vaadin-vertical-layout {\n" + 
+			".hmLeftMenu vaadin-vertical-layout.subMenu > vaadin-vertical-layout {\n" + 
 			"    -webkit-transition: max-height 0.5s ease-in-out;\n" + 
 			"	-moz-transition: max-height 0.5s ease-in-out;\n" + 
 			"	-ms-transition: max-height 0.5s ease-in-out;\n" + 
@@ -223,11 +224,11 @@ public class Styles {
 			"	max-height: 0;\n" + 
 			"}\n" + 
 			"\n" + 
-			".hybridMenu .leftMenu vaadin-vertical-layout.subMenu.open > vaadin-vertical-layout {\n" + 
+			".hmLeftMenu vaadin-vertical-layout.subMenu.open > vaadin-vertical-layout {\n" + 
 			"	max-height: 500px;\n" + 
 			"}\n" + 
 			"\n" + 
-			".hybridMenu .leftMenu vaadin-vertical-layout.subMenu.open > vaadin-button div.vaadin-button[part=\"label\"] iron-icon.buttonOtherIcon {\n" + 
+			".hmLeftMenu vaadin-vertical-layout.subMenu.open > vaadin-button div.vaadin-button[part=\"label\"] iron-icon.buttonOtherIcon {\n" + 
 			"    -webkit-transform: rotate(-180deg);\n" + 
 			"	-moz-transform: rotate(-180deg);\n" + 
 			"	-ms-transform: rotate(-180deg);\n" + 
@@ -235,7 +236,7 @@ public class Styles {
 			"	transform: rotate(-180deg);\n" + 
 			"}\n" + 
 			"\n" + 
-			".hybridMenu .leftMenu > label {\n" + 
+			".hmLeftMenu > label {\n" + 
 			"    border-bottom: 1px solid;\n" + 
 			"    text-align: center;\n" + 
 			"    position: relative;\n" + 
@@ -244,14 +245,14 @@ public class Styles {
 			"    margin: 0;\n" + 
 			"}\n" + 
 			"\n" + 
-			".hybridMenu .leftMenu > label img {\n" + 
+			".hmLeftMenu > label img {\n" + 
 			"    vertical-align: middle;\n" + 
 			"    margin-right: 5px;\n" + 
 			"    height: 32px;\n" + 
 			"    width: 32px;\n" + 
 			"}\n" + 
 			"\n" + 
-			".hybridMenu .leftMenu > label > p {\n" + 
+			".hmLeftMenu > label > p {\n" + 
 			"    vertical-align: middle;\n" + 
 			"    display: inline-block;\n" + 
 			"    margin: 0 0 0 5px;\n" + 
@@ -259,7 +260,7 @@ public class Styles {
 			"\n" + 
 			"\n" + 
 			"/* Notification Center */\n" + 
-			".hybridMenu .notificationCenter {\n" + 
+			".hmNotificationCenter {\n" + 
 			"    -webkit-transition: right 0.5s cubic-bezier(0.77, 0, 0.18, 1);\n" + 
 			"	-moz-transition: right 0.5s cubic-bezier(0.77, 0, 0.18, 1);\n" + 
 			"	-ms-transition: right 0.5s cubic-bezier(0.77, 0, 0.18, 1);\n" + 
@@ -272,7 +273,7 @@ public class Styles {
 			"    top: 0;\n" + 
 			"}\n" + 
 			"\n" + 
-			".hybridMenu .notificationCenter .notification {\n" + 
+			".hmNotificationCenter .notification {\n" + 
 			"    width: calc(100% - 36px);\n" + 
 			"	position: relative;\n" + 
 			"	margin: 8px 8px 0;\n" + 
@@ -280,7 +281,7 @@ public class Styles {
 			"	padding: 10px;\n" + 
 			"}\n" + 
 			"\n" + 
-			".hybridMenu .notificationCenter .notification > iron-icon {\n" + 
+			".hmNotificationCenter .notification > iron-icon {\n" + 
 			"    height: calc(100% - 16px);\n" + 
 			"    border-right: 1px solid;\n" + 
 			"    vertical-align: middle;\n" + 
@@ -294,23 +295,23 @@ public class Styles {
 			"    top: 0;\n" + 
 			"}\n" + 
 			"\n" + 
-			".hybridMenu .notificationCenter .notification.withIcon .content, .hybridMenu .notificationCenter .notification.withIcon .title {\n" + 
+			".hmNotificationCenter .notification.withIcon .content, .hmNotificationCenter .notification.withIcon .title {\n" + 
 			"    padding-left: 50px;\n" + 
 			"}\n" + 
 			"\n" + 
-			".hybridMenu .notificationCenter .notification .title {\n" + 
+			".hmNotificationCenter .notification .title {\n" + 
 			"    line-height: 12px;\n" + 
 			"    font-size: 18px;\n" + 
 			"    height: 24px;\n" + 
 			"}\n" + 
 			"\n" + 
-			".hybridMenu .notificationCenter .notification .timeAgo {\n" + 
+			".hmNotificationCenter .notification .timeAgo {\n" + 
 			"    margin: 4px 0 0 8px;\n" + 
 			"    position: absolute;\n" + 
 			"    font-size: 10px;\n" + 
 			"}\n" + 
 			"\n" + 
-			".hybridMenu .notificationCenter .notification .timeAgo:before {\n" + 
+			".hmNotificationCenter .notification .timeAgo:before {\n" + 
 			"    display: inline-block;\n" + 
 			"    margin: 0 7px 1px 0;\n" + 
 			"    border-radius: 50%;\n" + 
@@ -319,12 +320,12 @@ public class Styles {
 			"    width: 4px;\n" + 
 			"}\n" + 
 			"\n" + 
-			".hybridMenu .notificationCenter .notification .content {\n" + 
+			".hmNotificationCenter .notification .content {\n" + 
 			"    font-size: 14px;\n" + 
 			"    display: block;\n" + 
 			"}\n" + 
 			"\n" + 
-			".hybridMenu .notificationCenter .notification vaadin-button {\n" + 
+			".hmNotificationCenter .notification vaadin-button {\n" + 
 			"    -webkit-transition: background 0.3s ease-in-out;\n" + 
 			"	-moz-transition: background 0.3s ease-in-out;\n" + 
 			"	-ms-transition: background 0.3s ease-in-out;\n" + 
@@ -336,14 +337,14 @@ public class Styles {
 			"    top: 0;\n" + 
 			"}\n" + 
 			"\n" + 
-			".hybridMenu .notificationCenter .footer {\n" + 
+			".hmNotificationCenter .footer {\n" + 
 			"    text-align: center;\n" + 
 			"    position: relative;\n" + 
 			"    display: block;\n" + 
 			"    width: 100%;\n" + 
 			"}\n" + 
 			"\n" + 
-			".hybridMenu .notificationCenter .footer vaadin-button {\n" + 
+			".hmNotificationCenter .footer vaadin-button {\n" + 
 			"    -webkit-transition: background 0.3s ease-in-out, color 0.3s ease-in-out;\n" + 
 			"	-moz-transition: background 0.3s ease-in-out, color 0.3s ease-in-out;\n" + 
 			"	-ms-transition: background 0.3s ease-in-out, color 0.3s ease-in-out;\n" + 
@@ -354,7 +355,7 @@ public class Styles {
 			"    margin: 5px;\n" + 
 			"}\n" + 
 			"\n" + 
-			".hybridMenu .notificationCenter .lastNotification {\n" + 
+			".hmNotificationCenter .lastNotification {\n" + 
 			"    -webkit-transition: right 1s cubic-bezier(0.79, 0.14, 0.15, 0.86), opacity 0.3s ease-in-out;\n" + 
 			"	-moz-transition: right 1s cubic-bezier(0.79, 0.14, 0.15, 0.86), opacity 0.3s ease-in-out;\n" + 
 			"	-ms-transition: right 1s cubic-bezier(0.79, 0.14, 0.15, 0.86), opacity 0.3s ease-in-out;\n" + 
@@ -369,33 +370,33 @@ public class Styles {
 			"    bottom: 0;\n" + 
 			"}\n" + 
 			"\n" + 
-			".hybridMenu .notificationCenter .lastNotification.top {\n" + 
+			".hmNotificationCenter .lastNotification.top {\n" + 
 			"    margin-top: 2px;\n" + 
 			"    bottom: unset;\n" + 
 			"    top: 0;\n" + 
 			"}\n" + 
 			"\n" + 
-			".hybridMenu .notificationCenter .lastNotification.show {\n" + 
+			".hmNotificationCenter .lastNotification.show {\n" + 
 			"    pointer-events: auto;\n" + 
 			"    right: 350px;\n" + 
 			"    opacity: 1;\n" + 
 			"}\n" + 
 			"\n" + 
-			".hybridMenu .notificationCenter .lastNotification.show:hover {\n" + 
+			".hmNotificationCenter .lastNotification.show:hover {\n" + 
 			"    opacity: 0.1;\n" + 
 			"}\n" + 
 			"\n" + 
-			".hybridMenu .notificationCenter .lastNotification .notification {\n" + 
+			".hmNotificationCenter .lastNotification .notification {\n" + 
 			"    width: 300px;\n" + 
 			"}\n" + 
 			"\n" + 
 			"\n" + 
 			"/* Others */\n" + 
-			".hybridMenu .leftMenu.minimal {\n" + 
+			".hmLeftMenu.minimal {\n" + 
 			"    \n" + 
 			"}\n" + 
 			"\n" + 
-			".hybridMenu .notificationCenter.open {\n" + 
+			".hmNotificationCenter.open {\n" + 
 			"    right: 0;\n" + 
 			"}";
 }

@@ -5,25 +5,26 @@
 	z-index: 1;
 }
 
-.hybridMenu .contentBox {
+.hmContentBox {
     overflow: auto;
+    padding-top: 0 !important;
 }
 
-.hybridMenu .notificationCenter vaadin-button, .hybridMenu .leftMenu vaadin-button, .hybridMenu .topMenu vaadin-button {
+.hmNotificationCenter vaadin-button, .hmLeftMenu vaadin-button, .hmTopMenu vaadin-button {
     border-radius: 0;
     cursor: pointer;
 }
 
 
 /* Top Menu */
-.hybridMenu .topMenu {
+.hmTopMenu {
 	position: fixed;
 	top: 0;
 	right: 100px;
 	z-index: 1000;
 }
 
-.hybridMenu .topMenu vaadin-text-field {
+.hmTopMenu vaadin-text-field {
     -webkit-transition: width 0.3s ease-in-out, border-top-width 0.3s ease-in-out;
 	-moz-transition: width 0.3s ease-in-out, border-top-width 0.3s ease-in-out;
 	-ms-transition: width 0.3s ease-in-out, border-top-width 0.3s ease-in-out;
@@ -31,7 +32,7 @@
 	transition: width 0.3s ease-in-out, border-top-width 0.3s ease-in-out;
 }
 
-.hybridMenu .topMenu vaadin-text-field, .hybridMenu .topMenu vaadin-button {
+.hmTopMenu vaadin-text-field, .hmTopMenu vaadin-button {
     border-top: 0 solid;
     border-radius: 0;
     min-width: 35px;
@@ -41,25 +42,25 @@
     padding: 0;
 }
 
-.hybridMenu .topMenu vaadin-text-field.active, .hybridMenu .topMenu vaadin-button.active {
+.hmTopMenu vaadin-text-field.active, .hmTopMenu vaadin-button.active {
     border-top-width: 3px;
     height: 43px;
 }
 
-.hybridMenu .topMenu vaadin-text-field:hover, .hybridMenu .topMenu vaadin-button:hover {
+.hmTopMenu vaadin-text-field:hover, .hmTopMenu vaadin-button:hover {
     border-top-width: 5px;
     height: 45px;
 }
 
-.hybridMenu .topMenu .vaadin-text-field {
+.hmTopMenu .vaadin-text-field {
     border-radius: 0;
 }
 
-.hybridMenu .topMenu vaadin-text-field:hover {
+.hmTopMenu vaadin-text-field:hover {
     width: 180px !important;
 }
 
-.hybridMenu .topMenu vaadin-text-field input {
+.hmTopMenu vaadin-text-field input {
     -webkit-transition: background 0.3s ease-in-out, opacity 0.3s ease-in-out;
 	-moz-transition: background 0.3s ease-in-out, opacity 0.3s ease-in-out;
 	-ms-transition: background 0.3s ease-in-out, opacity 0.3s ease-in-out;
@@ -68,11 +69,11 @@
     opacity: 0;
 }
 
-.hybridMenu .topMenu vaadin-text-field:hover input {
+.hmTopMenu vaadin-text-field:hover input {
     opacity: 1;
 }
 
-.hybridMenu .topMenu vaadin-button {
+.hmTopMenu vaadin-button {
     -webkit-transition: height 0.3s ease-in-out, border-top-width 0.3s ease-in-out;
 	-moz-transition: height 0.3s ease-in-out, border-top-width 0.3s ease-in-out;
 	-ms-transition: height 0.3s ease-in-out, border-top-width 0.3s ease-in-out;
@@ -80,7 +81,7 @@
 	transition: height 0.3s ease-in-out, border-top-width 0.3s ease-in-out;
 }
 
-.hybridMenu .topMenu .vaadin-button {
+.hmTopMenu .vaadin-button {
     -webkit-transition: background 0.3s ease-in-out;
 	-moz-transition: background 0.3s ease-in-out;
 	-ms-transition: background 0.3s ease-in-out;
@@ -88,7 +89,7 @@
 	transition: background 0.3s ease-in-out;
 }
 
-.hybridMenu .topMenu vaadin-button .toolTip {
+.hmTopMenu vaadin-button .toolTip {
     padding: 1px 4px 3px;
     border-radius: 3px;
     position: absolute;
@@ -98,7 +99,7 @@
 
 
 /* Left Menu */
-.hybridMenu .leftMenu {
+.hmLeftMenu {
     -webkit-transition: width 0.5s ease-in-out, min-width 0.5s ease-in-out, max-width 0.5s ease-in-out;
 	-moz-transition: width 0.5s ease-in-out, min-width 0.5s ease-in-out, max-width 0.5s ease-in-out;
 	-ms-transition: width 0.5s ease-in-out, min-width 0.5s ease-in-out, max-width 0.5s ease-in-out;
@@ -109,7 +110,7 @@
     overflow-x: auto;
 }
 
-.hybridMenu .leftMenu vaadin-button {
+.hmLeftMenu vaadin-button {
     -webkit-transition: background 0.3s ease-in-out, border-left-color 0.3s ease-in-out, border-left-width 0.3s ease-in-out;
 	-moz-transition: background 0.3s ease-in-out, border-left-color 0.3s ease-in-out, border-left-width 0.3s ease-in-out;
 	-ms-transition: background 0.3s ease-in-out, border-left-color 0.3s ease-in-out, border-left-width 0.3s ease-in-out;
@@ -123,7 +124,7 @@
     margin: 0;
 }
 
-.hybridMenu .leftMenu .vaadin-button div[part="label"] {
+.hmLeftMenu .vaadin-button div[part="label"] {
     position: relative;
     line-height: 18px;
     text-align: left;
@@ -131,17 +132,17 @@
     width: 100%;
 }
 
-.hybridMenu .leftMenu .vaadin-button div[part="label"] iron-icon:not(.buttonOtherIcon) {
+.hmLeftMenu .vaadin-button div[part="label"] iron-icon:not(.buttonOtherIcon) {
     vertical-align: middle;
     margin-right: 7px;
 }
 
-.hybridMenu .leftMenu .vaadin-button div[part="label"] span {
+.hmLeftMenu .vaadin-button div[part="label"] span {
     vertical-align: middle;
     margin-right: 7px;
 }
 
-.hybridMenu .leftMenu .vaadin-button div[part="label"] iron-icon.buttonOtherIcon {
+.hmLeftMenu .vaadin-button div[part="label"] iron-icon.buttonOtherIcon {
     -webkit-transition: transform 0.3s ease-in-out;
 	-moz-transition: transform 0.3s ease-in-out;
 	-ms-transition: transform 0.3s ease-in-out;
@@ -156,7 +157,7 @@
     right: 5px;
 }
 
-.hybridMenu .leftMenu vaadin-button .toolTip {
+.hmLeftMenu vaadin-button .toolTip {
     -webkit-transform: translateY(-50%);
 	-moz-transform: translateY(-50%);
 	-ms-transform: translateY(-50%);
@@ -169,20 +170,20 @@
     top: 50%;
 }
 
-.hybridMenu .leftMenu vaadin-button.active {
+.hmLeftMenu vaadin-button.active {
     border-left-width: 3px;
 }
 
-.hybridMenu .leftMenu vaadin-button:hover {
+.hmLeftMenu vaadin-button:hover {
     border-left-width: 5px;
 }
 
-.hybridMenu .leftMenu vaadin-vertical-layout.subMenu {
+.hmLeftMenu vaadin-vertical-layout.subMenu {
     width: 100%;
     margin: 0;
 }
 
-.hybridMenu .leftMenu vaadin-vertical-layout.subMenu > vaadin-vertical-layout {
+.hmLeftMenu vaadin-vertical-layout.subMenu > vaadin-vertical-layout {
     -webkit-transition: max-height 0.5s ease-in-out;
 	-moz-transition: max-height 0.5s ease-in-out;
 	-ms-transition: max-height 0.5s ease-in-out;
@@ -197,11 +198,11 @@
 	max-height: 0;
 }
 
-.hybridMenu .leftMenu vaadin-vertical-layout.subMenu.open > vaadin-vertical-layout {
+.hmLeftMenu vaadin-vertical-layout.subMenu.open > vaadin-vertical-layout {
 	max-height: 500px;
 }
 
-.hybridMenu .leftMenu vaadin-vertical-layout.subMenu.open > vaadin-button div.vaadin-button[part="label"] iron-icon.buttonOtherIcon {
+.hmLeftMenu vaadin-vertical-layout.subMenu.open > vaadin-button div.vaadin-button[part="label"] iron-icon.buttonOtherIcon {
     -webkit-transform: rotate(-180deg);
 	-moz-transform: rotate(-180deg);
 	-ms-transform: rotate(-180deg);
@@ -209,23 +210,24 @@
 	transform: rotate(-180deg);
 }
 
-.hybridMenu .leftMenu > label {
+.hmLeftMenu > label {
     border-bottom: 1px solid;
     text-align: center;
     position: relative;
+    font-size: 17px;
     padding: 8px 0;
     width: 100%;
     margin: 0;
 }
 
-.hybridMenu .leftMenu > label img {
+.hmLeftMenu > label img {
     vertical-align: middle;
     margin-right: 5px;
     height: 32px;
     width: 32px;
 }
 
-.hybridMenu .leftMenu > label > p {
+.hmLeftMenu > label > p {
     vertical-align: middle;
     display: inline-block;
     margin: 0 0 0 5px;
@@ -233,7 +235,7 @@
 
 
 /* Notification Center */
-.hybridMenu .notificationCenter {
+.hmNotificationCenter {
     -webkit-transition: right 0.5s cubic-bezier(0.77, 0, 0.18, 1);
 	-moz-transition: right 0.5s cubic-bezier(0.77, 0, 0.18, 1);
 	-ms-transition: right 0.5s cubic-bezier(0.77, 0, 0.18, 1);
@@ -246,7 +248,7 @@
     top: 0;
 }
 
-.hybridMenu .notificationCenter .notification {
+.hmNotificationCenter .notification {
     width: calc(100% - 36px);
 	position: relative;
 	margin: 8px 8px 0;
@@ -254,7 +256,7 @@
 	padding: 10px;
 }
 
-.hybridMenu .notificationCenter .notification > iron-icon {
+.hmNotificationCenter .notification > iron-icon {
     height: calc(100% - 16px);
     border-right: 1px solid;
     vertical-align: middle;
@@ -268,23 +270,23 @@
     top: 0;
 }
 
-.hybridMenu .notificationCenter .notification.withIcon .content, .hybridMenu .notificationCenter .notification.withIcon .title {
+.hmNotificationCenter .notification.withIcon .content, .hmNotificationCenter .notification.withIcon .title {
     padding-left: 50px;
 }
 
-.hybridMenu .notificationCenter .notification .title {
+.hmNotificationCenter .notification .title {
     line-height: 12px;
     font-size: 18px;
     height: 24px;
 }
 
-.hybridMenu .notificationCenter .notification .timeAgo {
+.hmNotificationCenter .notification .timeAgo {
     margin: 4px 0 0 8px;
     position: absolute;
     font-size: 10px;
 }
 
-.hybridMenu .notificationCenter .notification .timeAgo:before {
+.hmNotificationCenter .notification .timeAgo:before {
     display: inline-block;
     margin: 0 7px 1px 0;
     border-radius: 50%;
@@ -293,12 +295,12 @@
     width: 4px;
 }
 
-.hybridMenu .notificationCenter .notification .content {
+.hmNotificationCenter .notification .content {
     font-size: 14px;
     display: block;
 }
 
-.hybridMenu .notificationCenter .notification vaadin-button {
+.hmNotificationCenter .notification vaadin-button {
     -webkit-transition: background 0.3s ease-in-out;
 	-moz-transition: background 0.3s ease-in-out;
 	-ms-transition: background 0.3s ease-in-out;
@@ -310,14 +312,14 @@
     top: 0;
 }
 
-.hybridMenu .notificationCenter .footer {
+.hmNotificationCenter .footer {
     text-align: center;
     position: relative;
     display: block;
     width: 100%;
 }
 
-.hybridMenu .notificationCenter .footer vaadin-button {
+.hmNotificationCenter .footer vaadin-button {
     -webkit-transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
 	-moz-transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
 	-ms-transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
@@ -328,7 +330,7 @@
     margin: 5px;
 }
 
-.hybridMenu .notificationCenter .lastNotification {
+.hmNotificationCenter .lastNotification {
     -webkit-transition: right 1s cubic-bezier(0.79, 0.14, 0.15, 0.86), opacity 0.3s ease-in-out;
 	-moz-transition: right 1s cubic-bezier(0.79, 0.14, 0.15, 0.86), opacity 0.3s ease-in-out;
 	-ms-transition: right 1s cubic-bezier(0.79, 0.14, 0.15, 0.86), opacity 0.3s ease-in-out;
@@ -343,32 +345,54 @@
     bottom: 0;
 }
 
-.hybridMenu .notificationCenter .lastNotification.top {
+.hmNotificationCenter .lastNotification.top {
     margin-top: 2px;
     bottom: unset;
     top: 0;
 }
 
-.hybridMenu .notificationCenter .lastNotification.show {
+.hmNotificationCenter .lastNotification.show {
     pointer-events: auto;
     right: 350px;
     opacity: 1;
 }
 
-.hybridMenu .notificationCenter .lastNotification.show:hover {
+.hmNotificationCenter .lastNotification.show:hover {
     opacity: 0.1;
 }
 
-.hybridMenu .notificationCenter .lastNotification .notification {
+.hmNotificationCenter .lastNotification .notification {
     width: 300px;
 }
 
 
+/* breadcrumbs */
+.hmBreadcrumbs {
+    padding: 15px 20px;
+}
+
+.hmBreadcrumbs vaadin-button {
+    background: transparent;
+}
+
+.hmBreadcrumbs vaadin-button:not(.clickable):before, .hmBreadcrumbs vaadin-button:not(.clickable):hover:before {
+    background: transparent !important;
+}
+
+.hmBreadcrumbs vaadin-button.clickable {
+    cursor: pointer;
+}
+
+.hmBreadcrumbs label > iron-icon {
+    height: 100% !important;
+}
+
+
 /* Others */
-.hybridMenu .leftMenu.minimal {
+.hmLeftMenu.minimal {
     
 }
 
-.hybridMenu .notificationCenter.open {
+.hmNotificationCenter.open {
     right: 0;
 }

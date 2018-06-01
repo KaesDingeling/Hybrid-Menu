@@ -1,5 +1,7 @@
 package de.kaesdingeling.hybridmenu.design;
 
+import de.kaesdingeling.hybridmenu.utils.Styles;
+
 public class DesignItem {
 	/* Colors */
     public DesignColor darkColor; // rgb(66, 66, 66)
@@ -42,7 +44,7 @@ public class DesignItem {
     		.with(".rootContent")
     			.add(DesignUtils.hmBackgroundWithColor(contentBackground))
     			.and()
-    		.with(".topMenu")
+    		.with("." + Styles.topMenu)
     			.with("vaadin-button")
     				.add(DesignUtils.color(DesignUtils.hmColorDedect(menuTopItemBackground)))
     				.add(DesignUtils.boxShadow(0, 0, 2, 0, menuTopItemBackground.copy().setAlpha(0.75)))
@@ -86,7 +88,7 @@ public class DesignItem {
     					.and()
     				.and()
     			.and()
-    		.with(".leftMenu")
+    		.with("." + Styles.leftMenu)
 				.add(DesignUtils.hmBackgroundWithColor(menuLeftBackground))
 				.add(DesignUtils.boxShadow(0, 0, 2, 0, DesignUtils.hmColorDedect(menuLeftBackground).copy().setAlpha(0.25)))
 				.add(DesignUtils.border(DesignUtils.hmColorDedect(menuLeftBackground).copy().setAlpha(0.25), "right"))
@@ -112,7 +114,7 @@ public class DesignItem {
 					.add(DesignUtils.border(DesignUtils.hmColorDedect(menuLeftBackground).copy().setAlpha(0.25), "left"))
 					.and()
 				.and()
-			.with(".notificationCenter")
+			.with("." + Styles.notificationCenter)
 				.add(DesignUtils.hmBackgroundWithColor(notificationCenterBackground))
 				.with(".notification")
 					.add(DesignUtils.hmBackgroundWithColor(notificationBackground))
@@ -134,7 +136,12 @@ public class DesignItem {
 				.with(".footer vaadin-button")
 					.add(DesignUtils.hmBackgroundWithColor(notificationCenterFooterButtonBackground))
 					.with("&:hover")
-						.add(DesignUtils.hmBackgroundWithColor(notificationCenterFooterHoverButtonBackground));
+						.add(DesignUtils.hmBackgroundWithColor(notificationCenterFooterHoverButtonBackground))
+    					.and()
+    				.and()
+    			.and()
+    		.with("." + Styles.breadCrumbs + " vaadin-button")
+    			.add(DesignUtils.color(DesignUtils.hmColorDedect(contentBackground)));
     	
     	return designBuilder.build();
     }

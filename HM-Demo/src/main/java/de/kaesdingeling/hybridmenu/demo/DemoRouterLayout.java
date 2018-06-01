@@ -53,10 +53,10 @@ public class DemoRouterLayout extends HybridMenu {
 				.withCaption("<b>Hybrid</b> Menu")
 				.withIcon(new Image("./frontend/logo.png", "HybridMenu Logo")));
 		
-		leftMenu.add(HMButton.get()
+		getBreadCrumbs().setRoot(leftMenu.add(HMButton.get()
 				.withCaption("Home")
 				.withIcon(VaadinIcons.HOME)
-				.withNavigateTo(HomePage.class));
+				.withNavigateTo(HomePage.class)));
 		
 		leftMenu.add(HMButton.get()
 				.withCaption("Notification Builder")

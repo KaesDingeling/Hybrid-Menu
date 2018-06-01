@@ -5,7 +5,7 @@
 
     <groupId>de.kaesdingeling</groupId>
     <artifactId>hybridmenu</artifactId>
-    <version>3.0.5</version>
+    <version>3.0.8.vaadin10</version>
     <name>HybridMenu</name>
 
     <properties>

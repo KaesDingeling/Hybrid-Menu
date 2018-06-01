@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 import java.util.Scanner;
 
 import com.vaadin.flow.component.Component;
@@ -17,6 +18,7 @@ import com.vaadin.flow.router.AfterNavigationObserver;
 import com.vaadin.flow.router.RouterLayout;
 import com.vaadin.flow.server.VaadinSession;
 
+import de.kaesdingeling.hybridmenu.components.BreadCrumbs;
 import de.kaesdingeling.hybridmenu.components.LeftMenu;
 import de.kaesdingeling.hybridmenu.components.NotificationCenter;
 import de.kaesdingeling.hybridmenu.components.Style;
@@ -24,6 +26,7 @@ import de.kaesdingeling.hybridmenu.components.TopMenu;
 import de.kaesdingeling.hybridmenu.data.DefaultViewChangeManager;
 import de.kaesdingeling.hybridmenu.data.MenuConfig;
 import de.kaesdingeling.hybridmenu.data.interfaces.HybridMenuRouter;
+import de.kaesdingeling.hybridmenu.data.interfaces.MenuComponent;
 import de.kaesdingeling.hybridmenu.data.interfaces.ViewChangeManager;
 import de.kaesdingeling.hybridmenu.design.DesignItem;
 import de.kaesdingeling.hybridmenu.utils.COMMENTS;
@@ -38,7 +41,8 @@ public abstract class HybridMenu extends VerticalLayout implements RouterLayout,
 
 	/* Components */
 	private HorizontalLayout content = new HorizontalLayout();
-	
+	private BreadCrumbs breadcrumbs = null;
+	private VerticalLayout rootContent = new VerticalLayout();
 	private TopMenu topMenu = new TopMenu();
 	private LeftMenu leftMenu = new LeftMenu();
 	private NotificationCenter notiCenter = new NotificationCenter();
@@ -75,6 +79,22 @@ public abstract class HybridMenu extends VerticalLayout implements RouterLayout,
 			add(style, customStyles, topMenu, content);
 			expand(content);
 			
+			if (config.isBreadcrumbs()) {
+				if (breadcrumbs == null) {
+					breadcrumbs = new BreadCrumbs();
+				}
+				rootContent.add(breadcrumbs);
+			}
+			
+			rootContent.setWidth("100%");
+			rootContent.setHeight("100%");
+			rootContent.setMargin(false);
+			rootContent.setPadding(false);
+			rootContent.setSpacing(false);
+			
+			content.add(rootContent);
+			content.expand(rootContent);
+			
 			notiCenter.setNotificationPosition(config.getNotificationPosition());
 
 			switchTheme(config.getDesignItem());
@@ -92,6 +112,13 @@ public abstract class HybridMenu extends VerticalLayout implements RouterLayout,
 	
 	public TopMenu getTopMenu() {
 		return topMenu;
+	}
+	
+	public BreadCrumbs getBreadCrumbs() {
+		if (breadcrumbs == null) {
+			breadcrumbs = new BreadCrumbs();
+		}
+		return breadcrumbs;
 	}
 	
 	public NotificationCenter getNotificationCenter() {
@@ -129,15 +156,17 @@ public abstract class HybridMenu extends VerticalLayout implements RouterLayout,
         	content.getElement().getStyle().set("width", "100%");
         	content.getElement().getClassList().add(Styles.contentBox);
         	
-        	this.content.add(component);
-        	this.expand(component);
+        	this.rootContent.add(component);
+        	this.rootContent.expand(component);
         }
     }
 
 	@Override
 	public void afterNavigation(AfterNavigationEvent event) {
-		viewChangeManager.manage(leftMenu, event);
-		viewChangeManager.manage(topMenu, event);
+		List<MenuComponent<?>> menuContentList = viewChangeManager.init(HybridMenu.this);
+		viewChangeManager.manage(HybridMenu.this, leftMenu, event, menuContentList);
+		viewChangeManager.manage(HybridMenu.this, topMenu, event, menuContentList);
+		viewChangeManager.finish(HybridMenu.this, menuContentList);
 	}
 	
 	public static String fileToString(File file) {
