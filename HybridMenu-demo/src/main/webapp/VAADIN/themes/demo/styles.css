@@ -1081,7 +1081,7 @@
  */
 
 .v-vaadin-version:after {
-	content: "8.1.5";
+	content: "8.3.0";
 }
 
 .v-widget {
@@ -1172,7 +1172,7 @@
 	overflow: auto;
 }
 
-.v-assistive-device-only {
+.v-assistive-device-only, .v-assistive-device-only-label label {
 	position: absolute;
 	top: -2000px;
 	left: -2000px;
@@ -1751,6 +1751,61 @@ div.v-layout.v-horizontal.v-widget {
 	content: "!";
 }
 
+.demo .v-errorindicator-info {
+	color: #00a7f5;
+	font-weight: 600;
+	width: 19px;
+	text-align: center;
+}
+
+.demo .v-errorindicator-info:before {
+	content: "!";
+}
+
+.demo .v-errorindicator-warning {
+	color: #fc9c00;
+	font-weight: 600;
+	width: 19px;
+	text-align: center;
+}
+
+.demo .v-errorindicator-warning:before {
+	content: "!";
+}
+
+.demo .v-errorindicator-error {
+	color: #ed473b;
+	font-weight: 600;
+	width: 19px;
+	text-align: center;
+}
+
+.demo .v-errorindicator-error:before {
+	content: "!";
+}
+
+.demo .v-errorindicator-critical {
+	color: #fa007d;
+	font-weight: 600;
+	width: 19px;
+	text-align: center;
+}
+
+.demo .v-errorindicator-critical:before {
+	content: "!";
+}
+
+.demo .v-errorindicator-system {
+	color: #bb00ff;
+	font-weight: 600;
+	width: 19px;
+	text-align: center;
+}
+
+.demo .v-errorindicator-system:before {
+	content: "!";
+}
+
 .demo .v-required-field-indicator {
 	color: #ed473b;
 	padding: 0 0.2em;
@@ -1828,6 +1883,26 @@ div.v-layout.v-horizontal.v-widget {
 .demo .v-tooltip .v-errormessage h2:only-child {
 	font: inherit;
 	line-height: inherit;
+}
+
+.demo .v-tooltip .v-errormessage-info {
+	color: #00a7f5;
+}
+
+.demo .v-tooltip .v-errormessage-warning {
+	color: #fc9c00;
+}
+
+.demo .v-tooltip .v-errormessage-error {
+	color: #ed473b;
+}
+
+.demo .v-tooltip .v-errormessage-critical {
+	color: #fa007d;
+}
+
+.demo .v-tooltip .v-errormessage-system {
+	color: #bb00ff;
 }
 
 .demo .v-tooltip .v-tooltip-text {
@@ -3085,6 +3160,61 @@ div.v-layout.v-horizontal.v-widget {
 .demo .v-filterselect-error .v-filterselect-button {
 	color: #ed473b;
 	border-color: #ed473b;
+}
+
+.demo .v-filterselect-error-info .v-filterselect-input {
+	border-color: #00a7f5 !important;
+	background: #fafdff;
+	color: #195774;
+}
+
+.demo .v-filterselect-error-info .v-filterselect-button {
+	color: #00a7f5;
+	border-color: #00a7f5;
+}
+
+.demo .v-filterselect-error-warning .v-filterselect-input {
+	border-color: #fc9c00 !important;
+	background: #fffdfa;
+	color: #745119;
+}
+
+.demo .v-filterselect-error-warning .v-filterselect-button {
+	color: #fc9c00;
+	border-color: #fc9c00;
+}
+
+.demo .v-filterselect-error-error .v-filterselect-input {
+	border-color: #ed473b !important;
+	background: #fffbfb;
+	color: #6c2621;
+}
+
+.demo .v-filterselect-error-error .v-filterselect-button {
+	color: #ed473b;
+	border-color: #ed473b;
+}
+
+.demo .v-filterselect-error-critical .v-filterselect-input {
+	border-color: #fa007d !important;
+	background: #fffafc;
+	color: #741947;
+}
+
+.demo .v-filterselect-error-critical .v-filterselect-button {
+	color: #fa007d;
+	border-color: #fa007d;
+}
+
+.demo .v-filterselect-error-system .v-filterselect-input {
+	border-color: #bb00ff !important;
+	background: #fefaff;
+	color: #5c1974;
+}
+
+.demo .v-filterselect-error-system .v-filterselect-button {
+	color: #bb00ff;
+	border-color: #bb00ff;
 }
 
 .demo .v-filterselect-suggestpopup {
@@ -5117,6 +5247,36 @@ div.v-layout.v-horizontal.v-widget {
 	color: #6c2621;
 }
 
+.demo .v-textfield-error-info {
+	border-color: #00a7f5 !important;
+	background: #fafdff;
+	color: #195774;
+}
+
+.demo .v-textfield-error-warning {
+	border-color: #fc9c00 !important;
+	background: #fffdfa;
+	color: #745119;
+}
+
+.demo .v-textfield-error-error {
+	border-color: #ed473b !important;
+	background: #fffbfb;
+	color: #6c2621;
+}
+
+.demo .v-textfield-error-critical {
+	border-color: #fa007d !important;
+	background: #fffafc;
+	color: #741947;
+}
+
+.demo .v-textfield-error-system {
+	border-color: #bb00ff !important;
+	background: #fefaff;
+	color: #5c1974;
+}
+
 .demo .v-textfield-borderless {
 	border: none;
 	border-radius: 0;
@@ -5861,6 +6021,61 @@ div.v-layout.v-horizontal.v-widget {
 .demo .v-datefield-error .v-datefield-button {
 	color: #ed473b;
 	border-color: #ed473b;
+}
+
+.demo .v-datefield-error-info .v-datefield-textfield {
+	border-color: #00a7f5 !important;
+	background: #fafdff;
+	color: #195774;
+}
+
+.demo .v-datefield-error-info .v-datefield-button {
+	color: #00a7f5;
+	border-color: #00a7f5;
+}
+
+.demo .v-datefield-error-warning .v-datefield-textfield {
+	border-color: #fc9c00 !important;
+	background: #fffdfa;
+	color: #745119;
+}
+
+.demo .v-datefield-error-warning .v-datefield-button {
+	color: #fc9c00;
+	border-color: #fc9c00;
+}
+
+.demo .v-datefield-error-error .v-datefield-textfield {
+	border-color: #ed473b !important;
+	background: #fffbfb;
+	color: #6c2621;
+}
+
+.demo .v-datefield-error-error .v-datefield-button {
+	color: #ed473b;
+	border-color: #ed473b;
+}
+
+.demo .v-datefield-error-critical .v-datefield-textfield {
+	border-color: #fa007d !important;
+	background: #fffafc;
+	color: #741947;
+}
+
+.demo .v-datefield-error-critical .v-datefield-button {
+	color: #fa007d;
+	border-color: #fa007d;
+}
+
+.demo .v-datefield-error-system .v-datefield-textfield {
+	border-color: #bb00ff !important;
+	background: #fefaff;
+	color: #5c1974;
+}
+
+.demo .v-datefield-error-system .v-datefield-button {
+	color: #bb00ff;
+	border-color: #bb00ff;
 }
 
 .demo .v-datefield-full {
@@ -8359,6 +8574,30 @@ div.v-layout.v-horizontal.v-widget {
 	color: inherit;
 }
 
+.demo .v-window-closebox:focus::after {
+	content: "";
+	position: absolute;
+	top: 6px;
+	right: 6px;
+	bottom: 6px;
+	left: 2px;
+	border-radius: 4px;
+	-webkit-box-shadow: 0 0 0 2px rgba(25, 125, 225, 0.5);
+	box-shadow: 0 0 0 2px rgba(25, 125, 225, 0.5);
+}
+
+.demo .v-window-maximizebox:focus::after, .demo .v-window-restorebox:focus::after {
+	content: "";
+	position: absolute;
+	top: 6px;
+	right: 2px;
+	bottom: 6px;
+	left: 6px;
+	border-radius: 4px;
+	-webkit-box-shadow: 0 0 0 2px rgba(25, 125, 225, 0.5);
+	box-shadow: 0 0 0 2px rgba(25, 125, 225, 0.5);
+}
+
 .demo .v-window-closebox {
 	padding-right: 4px;
 	border-radius: 0 4px 0 4px;
@@ -8386,6 +8625,10 @@ div.v-layout.v-horizontal.v-widget {
 	width: 37px;
 	padding-right: 0;
 	border-bottom-left-radius: 4px;
+}
+
+.demo .v-window-closebox-disabled  + .v-window-closebox:focus::after, .demo .v-window-resizebox-disabled  + .v-window-closebox:focus::after, .demo .v-window-restorebox-disabled  + .v-window-closebox:focus::after, .demo .v-window-maximizebox-disabled  + .v-window-closebox:focus::after {
+	left: 6px;
 }
 
 .demo .v-window-maximizebox:before {
@@ -12736,6 +12979,36 @@ div.v-layout.v-horizontal.v-widget {
 	color: #6c2621;
 }
 
+.demo .v-select-twincol-error-info .v-select-twincol-options, .demo .v-select-twincol-error-info .v-select-twincol-selections {
+	border-color: #00a7f5 !important;
+	background: #fafdff;
+	color: #195774;
+}
+
+.demo .v-select-twincol-error-warning .v-select-twincol-options, .demo .v-select-twincol-error-warning .v-select-twincol-selections {
+	border-color: #fc9c00 !important;
+	background: #fffdfa;
+	color: #745119;
+}
+
+.demo .v-select-twincol-error-error .v-select-twincol-options, .demo .v-select-twincol-error-error .v-select-twincol-selections {
+	border-color: #ed473b !important;
+	background: #fffbfb;
+	color: #6c2621;
+}
+
+.demo .v-select-twincol-error-critical .v-select-twincol-options, .demo .v-select-twincol-error-critical .v-select-twincol-selections {
+	border-color: #fa007d !important;
+	background: #fffafc;
+	color: #741947;
+}
+
+.demo .v-select-twincol-error-system .v-select-twincol-options, .demo .v-select-twincol-error-system .v-select-twincol-selections {
+	border-color: #bb00ff !important;
+	background: #fefaff;
+	color: #5c1974;
+}
+
 .demo .v-select select {
 	border: 1px solid #c5c5c5;
 	background-color: #fafafa;
@@ -14781,210 +15054,410 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .demo .hybridMenu {
+	position: relative;
 	z-index: 1;
 }
 
-.demo .hybridMenu .v-slot-hideDesignSettings {
+.demo .hybridMenu .v-slot-notificationCenter {
+	top: 0;
+	right: 0;
+	z-index: 100000;
 	position: fixed !important;
-	right: 0 !important;
-	top: 0 !important;
-	width: 0px !important;
-	height: 0px !important;
-	overflow: hidden !important;
 }
 
-.demo .hybridMenu .menuButton:focus {
-	outline: none;
+.demo .hybridMenu .v-slot-notificationCenter .notificationCenter {
+	-webkit-transition: right 0.5s cubic-bezier(0.77, 0, 0.18, 1);
+	-moz-transition: right 0.5s cubic-bezier(0.77, 0, 0.18, 1);
+	-ms-transition: right 0.5s cubic-bezier(0.77, 0, 0.18, 1);
+	-o-transition: right 0.5s cubic-bezier(0.77, 0, 0.18, 1);
+	transition: right 0.5s cubic-bezier(0.77, 0, 0.18, 1);
+	position: fixed;
+	top: 0;
+	right: -350px;
+	z-index: 100000;
+	width: 350px !important;
 }
 
-.demo .hybridMenu .v-slot-contentBox {
-	overflow: auto;
+.demo .hybridMenu .v-slot-notificationCenter .notificationCenter.open {
+	right: 0;
 }
 
-.demo .hybridMenu .contentBox {
-	padding: 15px !important;
+.demo .hybridMenu .v-slot-notificationCenter .notificationCenter.open .lastNotification.show .notification {
+	right: 350px !important;
 }
 
-.demo .hybridMenu .v-slot-notificationList {
-	position: fixed !important;
-	right: 0 !important;
-	top: 0 !important;
-	width: auto !important;
-	height: auto !important;
-	overflow: auto !important;
-	max-height: 100%;
+.demo .hybridMenu .v-slot-notificationCenter .notificationCenter .v-slot-content {
+	overflow-x: hidden;
+	overflow-y: auto;
 }
 
-.demo .hybridMenu .topMenu .v-slot-notificationList {
-	top: 50px !important;
-	max-height: calc(100% - 50px) !important;
-	margin: 8px 0 0;
+.demo .hybridMenu .v-slot-notificationCenter .notificationCenter .buttonLine {
+	padding: 8px;
 }
 
-.demo .hybridMenu .topMenu .v-slot-notificationList .v-slot-notificationItem {
-	transform: scale(0);
-	transition: transform 0.5s ease-in-out, height 0.5s ease-in-out, opacity 0.5s ease-in-out;
-	height: 0;
-	opacity: 0;
-	width: 300px;
-	overflow: hidden;
-	margin: 7px 15px;
+.demo .hybridMenu .v-slot-notificationCenter .notificationCenter .v-slot-buttonLine {
+	text-align: center;
 }
 
-.demo .hybridMenu .topMenu .v-slot-notificationList .v-slot-notificationItem .notificationItem.notificationItemWithIcon {
-	padding-left: 43px !important;
-}
-
-.demo .hybridMenu .topMenu .v-slot-notificationList .v-slot-notificationItem .notificationItem.notificationItemWithIcon:before {
-	content: "";
-	position: absolute;
-	border-left: 1px solid;
-	height: calc(100% - 10px);
-}
-
-.demo .hybridMenu .topMenu .v-slot-notificationList .v-slot-notificationItem > .v-widget:not(.v-csslayout) {
-	display: block !important;
-}
-
-.demo .hybridMenu .topMenu .v-slot-notificationList .v-slot-notificationItem > .v-widget:not(.v-csslayout) > .v-caption {
-	position: absolute;
-	z-index: 10001;
-	font-size: 23px;
-	padding: 15px 10px;
-}
-
-.demo .hybridMenu .topMenu .v-slot-notificationList .v-slot-notificationItem.v-slot-notificationItemShow {
-	opacity: 1;
-	transform: scale(1);
-	height: 83px;
-}
-
-.demo .hybridMenu .notificationItem {
-	padding: 5px;
-	display: block;
-	border-radius: 3px;
+.demo .hybridMenu .v-slot-notificationCenter .notificationCenter .v-slot-buttonLine .v-slot > div {
+	-webkit-transition: background 0.3s ease-in-out;
+	-moz-transition: background 0.3s ease-in-out;
+	-ms-transition: background 0.3s ease-in-out;
+	-o-transition: background 0.3s ease-in-out;
+	transition: background 0.3s ease-in-out;
+	width: 40px;
+	height: 40px;
+	vertical-align: middle;
+	text-align: center;
 	position: relative;
-	width: calc(100% - 10px);
+	line-height: 38px;
+	margin: 0 5px;
 }
 
-.demo .hybridMenu .notificationItem .v-caption {
-	display: block;
+.demo .hybridMenu .v-slot-notificationCenter .notificationCenter .v-slot-buttonLine .v-slot > div.HMButton {
+	cursor: pointer;
 }
 
-.demo .hybridMenu .notificationItem .v-caption .v-captiontext {
+.demo .hybridMenu .v-slot-notificationCenter .notificationCenter .notification {
+	position: relative;
+	margin: 8px 8px 0;
 	font-size: 18px;
-	margin: 0 0 0 7px;
-}
-
-.demo .hybridMenu .notificationItem .v-caption .v-captiontext p.timeAgo {
-	display: inline-block;
-	margin: 6px 0 0 7px;
-	font-size: 10px;
-	position: absolute;
-}
-
-.demo .hybridMenu .notificationItem .v-caption .v-captiontext p.timeAgo:before {
-	content: "";
-	display: inline-block;
-	border-radius: 50%;
-	height: 4px;
-	width: 4px;
-	margin: 0 7px 1px 0;
-}
-
-.demo .hybridMenu .notificationItem .v-label {
 	display: block;
-	margin: 0 7px 3px;
-	font-size: 14px;
-	text-overflow: ellipsis;
-	overflow: hidden;
+	padding: 10px;
 }
 
-.demo .hybridMenu .notificationItem .notificationItemCloseButton {
+.demo .hybridMenu .v-slot-notificationCenter .notificationCenter .notification .title {
+	width: 100%;
+	text-overflow: ellipsis;
+	line-height: 22px;
+	overflow: hidden;
+	display: block;
+	height: 24px;
+}
+
+.demo .hybridMenu .v-slot-notificationCenter .notificationCenter .notification .title .timeAgo {
+	display: inline-block;
+	position: absolute;
+	margin: 0 0 0 8px;
+	font-size: 10px;
+}
+
+.demo .hybridMenu .v-slot-notificationCenter .notificationCenter .notification .title .timeAgo:before {
+	width: 4px;
+	height: 4px;
+	display: inline-block;
+	margin: 0 7px 1px 0;
+	border-radius: 50%;
+	content: "";
+}
+
+.demo .hybridMenu .v-slot-notificationCenter .notificationCenter .notification.withIcon {
+	padding-left: 50px;
+}
+
+.demo .hybridMenu .v-slot-notificationCenter .notificationCenter .notification.withIcon .title {
+	width: calc(100% - 23px) !important;
+}
+
+.demo .hybridMenu .v-slot-notificationCenter .notificationCenter .notification.withIcon .v-caption {
+	width: 34px;
+	height: calc(100% - 16px);
+	position: absolute;
+	top: 0;
+	left: 0;
+	border-right: 1px solid;
+	vertical-align: middle;
+	font-size: 28px;
+	display: block;
+	margin: 8px;
+	padding: 0;
+}
+
+.demo .hybridMenu .v-slot-notificationCenter .notificationCenter .notification .content {
+	white-space: pre-line;
+	word-break: break-all;
+	overflow: hidden;
+	font-size: 14px;
+	margin: 2px 0 0;
+	display: block;
+}
+
+.demo .hybridMenu .v-slot-notificationCenter .notificationCenter .notification .button {
+	-webkit-transition: opacity 0.3s ease-in-out;
+	-moz-transition: opacity 0.3s ease-in-out;
+	-ms-transition: opacity 0.3s ease-in-out;
+	-o-transition: opacity 0.3s ease-in-out;
+	transition: opacity 0.3s ease-in-out;
 	position: absolute;
 	top: 0;
 	right: 0;
-	font-size: 12px;
-	height: 20px;
-	width: 25px;
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	line-height: 28px;
 	cursor: pointer;
-	border-radius: 0 3px 0 3px;
+	opacity: 0;
 }
 
-.demo .hybridMenu .notificationItem .notificationItemCloseButton span.v-icon {
-	padding: 6px;
-	transition: color 0.3s ease-in-out;
-	border-radius: 0 3px 0 3px;
+.demo .hybridMenu .v-slot-notificationCenter .notificationCenter .notification .button:hover {
+	opacity: 1;
 }
 
-.demo .hybridMenu .notificationItem .notificationItemCloseButton span.notificationItemCloseButton-caption {
-	display: none !important;
+.demo .hybridMenu .v-slot-notificationCenter .notificationCenter .lastNotification {
+	-webkit-transition: opacity 0.3s ease-in-out;
+	-moz-transition: opacity 0.3s ease-in-out;
+	-ms-transition: opacity 0.3s ease-in-out;
+	-o-transition: opacity 0.3s ease-in-out;
+	transition: opacity 0.3s ease-in-out;
 }
 
-.demo .hybridMenu .leftMenu {
-	padding: 0 !important;
-	z-index: 100;
+.demo .hybridMenu .v-slot-notificationCenter .notificationCenter .lastNotification:hover {
+	opacity: 0.2;
+}
+
+.demo .hybridMenu .v-slot-notificationCenter .notificationCenter .lastNotification .notification {
+	-webkit-transition: right 1s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+	-moz-transition: right 1s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+	-ms-transition: right 1s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+	-o-transition: right 1s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+	transition: right 1s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+	position: fixed;
+	right: -350px;
+	bottom: 8px;
+	z-index: 1000;
+	height: auto !important;
+	width: 330px;
+}
+
+.demo .hybridMenu .v-slot-notificationCenter .notificationCenter .lastNotification.top .notification {
+	top: 45px !important;
+	bottom: unset !important;
+}
+
+.demo .hybridMenu .v-slot-notificationCenter .notificationCenter .lastNotification.show .notification {
+	right: 0 !important;
+}
+
+.demo .hybridMenu .v-slot-topMenu {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+}
+
+.demo .hybridMenu .v-slot-topMenu .topMenu {
+	position: fixed;
+	top: 0;
+	right: 100px;
+	z-index: 1000;
+}
+
+.demo .hybridMenu .v-slot-topMenu .topMenu .v-slot.v-slot-HMTextField > div {
+	-webkit-transition: width 0.3s ease-in-out;
+	-moz-transition: width 0.3s ease-in-out;
+	-ms-transition: width 0.3s ease-in-out;
+	-o-transition: width 0.3s ease-in-out;
+	transition: width 0.3s ease-in-out;
+	width: 36px !important;
+	overflow: hidden;
+}
+
+.demo .hybridMenu .v-slot-topMenu .topMenu .v-slot.v-slot-HMTextField > div .v-caption-HMTextField {
+	display: inline-block;
+	max-width: 36px;
+	width: 100%;
+	padding: 0;
+}
+
+.demo .hybridMenu .v-slot-topMenu .topMenu .v-slot.v-slot-HMTextField > div input.HMTextField {
+	-webkit-transition: width 0.3s ease-in-out;
+	-moz-transition: width 0.3s ease-in-out;
+	-ms-transition: width 0.3s ease-in-out;
+	-o-transition: width 0.3s ease-in-out;
+	transition: width 0.3s ease-in-out;
+	display: inline-block;
+	box-shadow: none !important;
+	outline: unset !important;
+	border-radius: 0 !important;
+	border: none !important;
+	width: 0;
+	height: 30px;
+	margin: 6px 0 0 5px;
+	padding: 5px;
+}
+
+.demo .hybridMenu .v-slot-topMenu .topMenu .v-slot.v-slot-HMTextField > div:hover {
+	width: 206px !important;
+}
+
+.demo .hybridMenu .v-slot-topMenu .topMenu .v-slot.v-slot-HMTextField > div:hover input.HMTextField {
+	width: 150px !important;
+}
+
+.demo .hybridMenu .v-slot-topMenu .topMenu .v-slot > div {
+	width: 36px;
+	height: 44px;
 	position: relative;
-	-webkit-transition: width 0.75s ease-in-out;
-	-moz-transition: width 0.75s ease-in-out;
-	-ms-transition: width 0.75s ease-in-out;
-	-o-transition: width 0.75s ease-in-out;
-	transition: width 0.75s ease-in-out;
+	vertical-align: middle;
+	text-align: center;
+	line-height: 42px;
+	margin: 0 5px;
 }
 
-.demo .hybridMenu .leftMenu .v-slot {
+.demo .hybridMenu .v-slot-topMenu .topMenu .v-slot > div.HMButton {
+	-webkit-transition: background 0.3s ease-in-out, border-top-width 0.3s ease-in-out, height 0.3s ease-in-out;
+	-moz-transition: background 0.3s ease-in-out, border-top-width 0.3s ease-in-out, height 0.3s ease-in-out;
+	-ms-transition: background 0.3s ease-in-out, border-top-width 0.3s ease-in-out, height 0.3s ease-in-out;
+	-o-transition: background 0.3s ease-in-out, border-top-width 0.3s ease-in-out, height 0.3s ease-in-out;
+	transition: background 0.3s ease-in-out, border-top-width 0.3s ease-in-out, height 0.3s ease-in-out;
+	border-top: 0 solid;
+	cursor: pointer;
+}
+
+.demo .hybridMenu .v-slot-topMenu .topMenu .v-slot > div.HMButton .HMButton-caption {
+	margin: 0;
+}
+
+.demo .hybridMenu .v-slot-topMenu .topMenu .v-slot > div.HMButton .HMButton-caption .toolTip {
+	position: absolute;
+	top: 32px;
+	right: -6px;
+	border-radius: 4px;
+	line-height: 17px;
+	font-size: 14px;
+	padding: 5px;
+}
+
+.demo .hybridMenu .v-slot-topMenu .topMenu .v-slot > div.HMButton:hover {
+	border-top-width: 4px;
+	height: 48px;
+}
+
+.demo .hybridMenu .v-slot-topMenu .topMenu .v-slot > div.HMButton:hover .HMButton-caption {
+	pointer-events: auto !important;
+}
+
+.demo .hybridMenu .rootContent > .v-expand {
+	-webkit-transition: padding-left 0.3s ease-in-out;
+	-moz-transition: padding-left 0.3s ease-in-out;
+	-ms-transition: padding-left 0.3s ease-in-out;
+	-o-transition: padding-left 0.3s ease-in-out;
+	transition: padding-left 0.3s ease-in-out;
+	padding-left: 250px !important;
+}
+
+.demo .hybridMenu .rootContent > .v-expand .v-slot-leftMenu {
+	-webkit-transition: margin-left 0.3s ease-in-out;
+	-moz-transition: margin-left 0.3s ease-in-out;
+	-ms-transition: margin-left 0.3s ease-in-out;
+	-o-transition: margin-left 0.3s ease-in-out;
+	transition: margin-left 0.3s ease-in-out;
+	margin-left: -250px !important;
+}
+
+.demo .hybridMenu .rootContent > .v-expand .v-slot-leftMenu .leftMenu {
+	-webkit-transition: width 0.3s ease-in-out;
+	-moz-transition: width 0.3s ease-in-out;
+	-ms-transition: width 0.3s ease-in-out;
+	-o-transition: width 0.3s ease-in-out;
+	transition: width 0.3s ease-in-out;
+	width: 250px !important;
+}
+
+.demo .hybridMenu .rootContent > .v-expand .v-slot-leftMenu .leftMenu > .v-expand > .v-slot {
 	height: auto !important;
 }
 
-.demo .hybridMenu .leftMenu .menuButton {
-	background: transparent;
-	display: block;
-	cursor: pointer;
+.demo .hybridMenu .rootContent > .v-expand .v-slot-leftMenu .leftMenu:not(.minimal) {
+	overflow: auto;
+}
+
+.demo .hybridMenu .rootContent > .v-expand .v-slot-leftMenu .leftMenu .v-slot-HMLabel > div {
+	width: 100%;
+}
+
+.demo .hybridMenu .rootContent > .v-expand .v-slot-leftMenu .leftMenu .v-slot-HMLabel > div .v-caption {
+	text-align: center;
+	position: relative;
+	font-size: 20px;
+	padding: 10px;
+}
+
+.demo .hybridMenu .rootContent > .v-expand .v-slot-leftMenu .leftMenu .v-slot-HMLabel > div .v-caption:after {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	border-bottom: 1px solid;
+	content: "";
+	width: 100%;
+}
+
+.demo .hybridMenu .rootContent > .v-expand .v-slot-leftMenu .leftMenu .v-slot-HMLabel > div .v-caption .v-icon {
+	margin-right: 5px;
+	max-height: 32px;
+}
+
+.demo .hybridMenu .rootContent > .v-expand .v-slot-leftMenu .leftMenu .v-slot-HMLabel > div .v-label {
+	display: none;
+}
+
+.demo .hybridMenu .rootContent > .v-expand .v-slot-leftMenu .leftMenu .HMButton {
 	-webkit-transition: background 0.3s, border-left 0.3s, height 0.5s;
 	-moz-transition: background 0.3s, border-left 0.3s, height 0.5s;
 	-ms-transition: background 0.3s, border-left 0.3s, height 0.5s;
 	-o-transition: background 0.3s, border-left 0.3s, height 0.5s;
 	transition: background 0.3s, border-left 0.3s, height 0.5s;
 	border-left: 0 solid transparent;
+	background: transparent;
 	overflow: hidden;
+	cursor: pointer;
+	display: block;
+	padding: 8px 0;
+	height: 45px;
 }
 
-.demo .hybridMenu .leftMenu .menuButton.active {
+.demo .hybridMenu .rootContent > .v-expand .v-slot-leftMenu .leftMenu .HMButton.active {
 	border-left-width: 3px;
 }
 
-.demo .hybridMenu .leftMenu .menuButton:hover, .demo .hybridMenu .leftMenu .menuButton.active:hover {
+.demo .hybridMenu .rootContent > .v-expand .v-slot-leftMenu .leftMenu .HMButton:hover, .demo .hybridMenu .rootContent > .v-expand .v-slot-leftMenu .leftMenu .HMButton.active:hover {
 	border-left-width: 5px;
 }
 
-.demo .hybridMenu .leftMenu .menuButton-wrap {
-	display: block;
+.demo .hybridMenu .rootContent > .v-expand .v-slot-leftMenu .leftMenu .HMButton-wrap {
+	-webkit-transition: border 0.3s;
+	-moz-transition: border 0.3s;
+	-ms-transition: border 0.3s;
+	-o-transition: border 0.3s;
 	transition: border 0.3s;
 	position: relative;
-	top: 50%;
-	-webkit-transform: translateY(-50%);
-	-moz-transform: translateY(-50%);
-	-ms-transform: translateY(-50%);
-	-o-transform: translateY(-50%);
-	transform: translateY(-50%);
+	display: block;
+	z-index: 1000;
 }
 
-.demo .hybridMenu .leftMenu .menuButton-wrap .v-icon {
+.demo .hybridMenu .rootContent > .v-expand .v-slot-leftMenu .leftMenu .HMButton-wrap .v-icon {
+	position: relative;
+	vertical-align: middle;
+	display: inline-block;
+	text-align: center;
 	margin-left: 10px;
 	width: 25px;
-	text-align: center;
 }
 
-.demo .hybridMenu .leftMenu .menuButton-wrap .menuButton-caption {
+.demo .hybridMenu .rootContent > .v-expand .v-slot-leftMenu .leftMenu .HMButton-wrap .HMButton-caption {
 	font-size: 17px;
+	vertical-align: middle;
 }
 
-.demo .hybridMenu .leftMenu .menuButton.subMenuButton .menuButton-caption .v-icon {
+.demo .hybridMenu .rootContent > .v-expand .v-slot-leftMenu .leftMenu .HMSubMenu > .v-slot:first-child .toolTip {
 	position: absolute;
+	top: 0;
 	right: 5px;
-	margin: 0;
-	height: 30px;
 	width: 30px;
+	height: 30px;
+}
+
+.demo .hybridMenu .rootContent > .v-expand .v-slot-leftMenu .leftMenu .HMSubMenu > .v-slot:first-child .toolTip .v-icon {
 	-webkit-transition: transform 0.3s ease-in-out;
 	-moz-transition: transform 0.3s ease-in-out;
 	-ms-transition: transform 0.3s ease-in-out;
@@ -14995,9 +15468,28 @@ div.v-layout.v-horizontal.v-widget {
 	-ms-transform: rotate(0deg);
 	-o-transform: rotate(0deg);
 	transform: rotate(0deg);
+	width: 30px;
+	height: 30px;
+	line-height: 27px;
+	margin: 0;
 }
 
-.demo .hybridMenu .leftMenu .menuButton.subMenuButton.active .menuButton-caption .v-icon {
+.demo .hybridMenu .rootContent > .v-expand .v-slot-leftMenu .leftMenu .HMSubMenu > .v-slot:last-child > .v-verticallayout {
+	-webkit-transition: max-height 0.5s ease-in-out;
+	-moz-transition: max-height 0.5s ease-in-out;
+	-ms-transition: max-height 0.5s ease-in-out;
+	-o-transition: max-height 0.5s ease-in-out;
+	transition: max-height 0.5s ease-in-out;
+	width: calc(100% - 24px) !important;
+	border-left: 1px solid transparent;
+	position: relative;
+	margin-left: 24px;
+	overflow: hidden;
+	display: block;
+	max-height: 0;
+}
+
+.demo .hybridMenu .rootContent > .v-expand .v-slot-leftMenu .leftMenu .HMSubMenu.open > .v-slot:first-child .toolTip .v-icon {
 	-webkit-transform: rotate(-180deg);
 	-moz-transform: rotate(-180deg);
 	-ms-transform: rotate(-180deg);
@@ -15005,329 +15497,92 @@ div.v-layout.v-horizontal.v-widget {
 	transform: rotate(-180deg);
 }
 
-.demo .hybridMenu .leftMenu .hybridMenu .centralContent .v-expand {
-	-webkit-transition: padding-left 0.75s ease-in-out;
-	-moz-transition: padding-left 0.75s ease-in-out;
-	-ms-transition: padding-left 0.75s ease-in-out;
-	-o-transition: padding-left 0.75s ease-in-out;
-	transition: padding-left 0.75s ease-in-out;
-	z-index: 10;
+.demo .hybridMenu .rootContent > .v-expand .v-slot-leftMenu .leftMenu .HMSubMenu.open > .v-slot:last-child > .v-verticallayout {
+	max-height: 1000px !important;
 }
 
-.demo .hybridMenu .leftMenu .hybridMenu .centralContent .v-expand .v-expand {
-	transition: unset;
+.demo .hybridMenu .rootContent .breadcrumbs {
+	padding: 15px 20px;
 }
 
-.demo .hybridMenu .leftMenu .hybridMenu .v-slot-leftMenu {
-	-webkit-transition: margin-left 0.75s ease-in-out;
-	-moz-transition: margin-left 0.75s ease-in-out;
-	-ms-transition: margin-left 0.75s ease-in-out;
-	-o-transition: margin-left 0.75s ease-in-out;
-	transition: margin-left 0.75s ease-in-out;
+.demo .hybridMenu .rootContent .breadcrumbs .v-slot {
+	width: auto !important;
 }
 
-.demo .hybridMenu .leftMenu .menuSubMenuContent {
-	border-left: 1px solid transparent;
-	margin-left: 24px;
-	width: calc(100% - 24px) !important;
+.demo .hybridMenu .rootContent .breadcrumbs .v-slot .HMButton.clickable {
+	cursor: pointer;
 }
 
-.demo .hybridMenu .leftMenu .v-slot-menuSubMenuContent {
-	position: relative;
-	overflow: hidden;
-	display: block;
-	max-height: 0;
-	-webkit-transition: max-height 0.5s ease-in-out;
-	-moz-transition: max-height 0.5s ease-in-out;
-	-ms-transition: max-height 0.5s ease-in-out;
-	-o-transition: max-height 0.5s ease-in-out;
-	transition: max-height 0.5s ease-in-out;
+.demo .hybridMenu .rootContent .breadcrumbs .v-slot .HMLabel {
+	display: none !important;
 }
 
-.demo .hybridMenu .leftMenu .v-slot-menuSubMenuContent.v-slot-open {
-	max-height: 1000px;
+.demo .hybridMenu .rootContent.minimal {
+	overflow: inherit;
 }
 
-.demo .hybridMenu .leftMenu:not(.minimal) {
-	overflow: auto;
+.demo .hybridMenu .rootContent.minimal > .v-expand {
+	padding-left: 50px !important;
 }
 
-.demo .hybridMenu .leftMenu.minimal .menuButton {
-	overflow: unset !important;
+.demo .hybridMenu .rootContent.minimal > .v-expand .v-slot-leftMenu {
+	margin-left: -50px !important;
 }
 
-.demo .hybridMenu .leftMenu.minimal .menuButton .v-icon {
-	width: 100% !important;
-	margin: 0 !important;
+.demo .hybridMenu .rootContent.minimal > .v-expand .v-slot-leftMenu .leftMenu {
+	overflow: visible;
+	width: 50px !important;
 }
 
-.demo .hybridMenu .leftMenu.minimal .menuButton-caption {
-	position: absolute;
-	padding: 12px;
-	margin: -12px 0 0 -100%;
-	height: 26px;
-	pointer-events: none;
-	opacity: 0;
-	transition: opacity 0.5s, margin-left 0.5s;
-	white-space: nowrap;
-}
-
-.demo .hybridMenu .leftMenu.minimal .menuButton-caption .v-icon {
+.demo .hybridMenu .rootContent.minimal > .v-expand .v-slot-leftMenu .leftMenu .v-slot-HMLabel > div .v-caption .v-captiontext {
 	display: none;
 }
 
-.demo .hybridMenu .leftMenu.minimal .menuButton:hover .menuButton-caption {
-	opacity: 1;
-	margin-left: 0;
-	pointer-events: auto;
+.demo .hybridMenu .rootContent.minimal > .v-expand .v-slot-leftMenu .leftMenu .HMButton {
+	overflow: visible;
 }
 
-.demo .hybridMenu .leftMenu.minimal .menuSubMenu .v-slot-menuSubMenuContent {
-	max-height: 1000px !important;
-	overflow: unset !important;
-	position: absolute !important;
+.demo .hybridMenu .rootContent.minimal > .v-expand .v-slot-leftMenu .leftMenu .HMButton:hover .HMButton-caption {
+	pointer-events: all !important;
+	opacity: 1 !important;
+	left: 45px !important;
+}
+
+.demo .hybridMenu .rootContent.minimal > .v-expand .v-slot-leftMenu .leftMenu .HMButton .HMButton-wrap {
+	z-index: 100;
+}
+
+.demo .hybridMenu .rootContent.minimal > .v-expand .v-slot-leftMenu .leftMenu .HMButton .HMButton-wrap .v-icon {
+	width: 100%;
+	margin: 0;
+}
+
+.demo .hybridMenu .rootContent.minimal > .v-expand .v-slot-leftMenu .leftMenu .HMButton .HMButton-wrap .HMButton-caption {
+	-webkit-transition: left 0.5s ease-in-out, opacity 0.5s ease-in-out;
+	-moz-transition: left 0.5s ease-in-out, opacity 0.5s ease-in-out;
+	-ms-transition: left 0.5s ease-in-out, opacity 0.5s ease-in-out;
+	-o-transition: left 0.5s ease-in-out, opacity 0.5s ease-in-out;
+	transition: left 0.5s ease-in-out, opacity 0.5s ease-in-out;
+	padding: 9px 13px 8px;
+	top: calc(-50% + 5px);
+	pointer-events: none;
+	position: absolute;
+	white-space: pre;
+	z-index: 10000;
+	height: 28px;
+	left: -500px;
 	opacity: 0;
 	margin: 0;
-	pointer-events: none;
-	width: auto !important;
-	transition: visibility 0s 0.5s, opacity 0.5s, margin-left 0.5s;
-	visibility: hidden;
 }
 
-.demo .hybridMenu .leftMenu.minimal .menuSubMenuContent {
-	border-left: 0 !important;
-	margin-left: 0 !important;
-	width: auto !important;
-}
-
-.demo .hybridMenu .leftMenu.minimal .menuSubMenu:hover > .v-slot-subMenuButton .menuButton-caption {
-	opacity: 1;
-	margin-left: 0;
-	pointer-events: auto;
-}
-
-.demo .hybridMenu .leftMenu.minimal .menuSubMenu .v-slot-subMenuButton:hover ~ .v-slot-menuSubMenuContent, .demo .hybridMenu .leftMenu.minimal .menuSubMenu > .v-slot-menuSubMenuContent:hover {
-	margin-left: 61px;
-	pointer-events: auto;
-	opacity: 1;
-	visibility: visible;
-	transition-delay: 0s;
-}
-
-.demo .hybridMenu .leftMenu.minimal .menuSubMenuContent .v-slot, .demo .hybridMenu .leftMenu.minimal .menuSubMenuContent .menuButton {
-	width: auto !important;
-	display: block !important;
-}
-
-.demo .hybridMenu .leftMenu.minimal .menuSubMenuContent .v-icon {
-	margin-left: 10px !important;
-	width: 25px !important;
-	position: absolute !important;
-	z-index: 102;
-}
-
-.demo .hybridMenu .leftMenu.minimal .menuSubMenuContent .menuButton-caption {
-	position: relative !important;
-	pointer-events: auto !important;
-	opacity: 1 !important;
-	margin: 0 !important;
-	padding: 0 10px 0 35px !important;
-	z-index: 101;
-	background: transparent !important;
-}
-
-.demo .hybridMenu .v-slot-topMenu {
-	position: relative;
-	z-index: 101;
-}
-
-.demo .hybridMenu .topMenu {
-	z-index: 1000;
-}
-
-.demo .hybridMenu .topMenu .v-slot.v-align-middle {
-	width: auto !important;
-	display: inline-block;
-}
-
-.demo .hybridMenu .topMenu .v-slot.v-align-right.v-align-middle {
-	float: right;
-}
-
-.demo .hybridMenu .topMenu .menuLabel.labelTitle {
-	padding: 0 15px;
-	width: 250px;
-	text-align: center;
-	font-size: 18px;
-	outline: 0 !important;
-	cursor: pointer !important;
-}
-
-.demo .hybridMenu .topMenu .menuLabel.labelTitle img {
-	max-height: 23px;
-}
-
-.demo .hybridMenu .topMenu .menuSubMenu {
-	position: relative;
-	height: 100%;
-	display: inline-block;
-}
-
-.demo .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent {
-	position: absolute;
-	top: 100%;
-	right: 0;
-	border-top: 1px solid transparent;
-	padding: 0;
-	opacity: 0;
-	z-index: -1;
-	margin-top: -100%;
-	-webkit-transition: margin-top 0.3s ease-in-out, opacity 0.3s ease-in-out, z-index 0.3s ease-in-out;
-	-moz-transition: margin-top 0.3s ease-in-out, opacity 0.3s ease-in-out, z-index 0.3s ease-in-out;
-	-ms-transition: margin-top 0.3s ease-in-out, opacity 0.3s ease-in-out, z-index 0.3s ease-in-out;
-	-o-transition: margin-top 0.3s ease-in-out, opacity 0.3s ease-in-out, z-index 0.3s ease-in-out;
-	transition: margin-top 0.3s ease-in-out, opacity 0.3s ease-in-out, z-index 0.3s ease-in-out;
-	pointer-events: none;
-}
-
-.demo .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent .v-slot {
-	height: auto;
-}
-
-.demo .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuLabel {
-	display: block;
-	opacity: 0.75;
-	padding: 5px 10px 5px 15px;
-	font-size: 12px;
-}
-
-.demo .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuButton {
-	display: block;
-	padding: 4px 10px 3px 15px;
-	font-size: 14px;
-	cursor: pointer;
-	background: transparent;
-	-webkit-transition: background 0.3s ease-in-out;
-	-moz-transition: background 0.3s ease-in-out;
-	-ms-transition: background 0.3s ease-in-out;
-	-o-transition: background 0.3s ease-in-out;
-	transition: background 0.3s ease-in-out;
-}
-
-.demo .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuHr {
-	height: 1px;
-	margin: 6px 0;
-	overflow: hidden;
-	width: 100%;
-	display: block;
-}
-
-.demo .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent .messageBox {
+.demo .hybridMenu .rootContent .v-slot-contentBox {
 	overflow-y: auto;
-	overflow-x: hidden;
-	max-height: 200px;
 }
 
-.demo .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent .messageBox .v-slot-created {
-	position: absolute;
-	bottom: 1px;
-	left: 75px;
-	font-size: 9px;
+.demo .hybridMenu .rootContent .v-slot-contentBox .contentBox {
+	padding: 0 !important;
 }
 
-.demo .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.open {
-	pointer-events: auto;
-	margin-top: 0;
-	opacity: 1;
-	z-index: 100;
-}
-
-.demo .hybridMenu .topMenu .menuButton {
-	height: 100%;
-	cursor: pointer;
-	padding: 0 12px;
-	background: transparent;
-	-webkit-transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
-	-moz-transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
-	-ms-transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
-	-o-transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
-	transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
-}
-
-.demo .hybridMenu .topMenu .menuButton-wrap {
-	display: block;
-	position: relative;
-	top: 50%;
-	-webkit-transform: translateY(-50%);
-	-moz-transform: translateY(-50%);
-	-ms-transform: translateY(-50%);
-	-o-transform: translateY(-50%);
-	transform: translateY(-50%);
-}
-
-.demo .hybridMenu .topMenu .menuButton.iconRight .v-icon {
-	float: right;
-}
-
-.demo .hybridMenu .topMenu .menuButton.iconRight .menuButton-caption {
-	margin-right: 7px;
-	margin-left: 0;
-}
-
-.demo .hybridMenu .topMenu .menuButton.profilView .v-icon {
-	max-height: 23px;
-	border-radius: 50%;
-	margin-left: 5px;
-}
-
-.demo .hybridMenu .topMenu .menuButton.captionOutside .menuButton-wrap {
-	top: 0;
-	height: 100%;
-	transform: unset;
-}
-
-.demo .hybridMenu .topMenu .menuButton.captionOutside .v-icon {
-	display: block;
-	transition: border 0.3s;
-	position: relative;
-	top: 50%;
-	-webkit-transform: translateY(-50%);
-	-moz-transform: translateY(-50%);
-	-ms-transform: translateY(-50%);
-	-o-transform: translateY(-50%);
-	transform: translateY(-50%);
-}
-
-.demo .hybridMenu .topMenu .menuButton.captionOutside .menuButton-caption .toolTop {
-	position: absolute;
-	z-index: 100;
-	font-size: 10px;
-	line-height: 12px;
-	padding: 2px 5px;
-	border-radius: 6px;
-	top: 8px;
-}
-
-.demo .hybridMenu .topMenu .menuButton.captionOutside .menuButton-caption .caption {
-	position: absolute;
-	top: 100%;
-	right: -12px;
-	border-top: 1px solid transparent;
-	padding: 5px 15px 7px;
-	opacity: 0;
-	z-index: -1;
-	margin-top: -100%;
-	white-space: nowrap;
-	-webkit-transition: margin-top 0.3s ease-in-out, opacity 0.3s ease-in-out, z-index 0.3s ease-in-out;
-	-moz-transition: margin-top 0.3s ease-in-out, opacity 0.3s ease-in-out, z-index 0.3s ease-in-out;
-	-ms-transition: margin-top 0.3s ease-in-out, opacity 0.3s ease-in-out, z-index 0.3s ease-in-out;
-	-o-transition: margin-top 0.3s ease-in-out, opacity 0.3s ease-in-out, z-index 0.3s ease-in-out;
-	transition: margin-top 0.3s ease-in-out, opacity 0.3s ease-in-out, z-index 0.3s ease-in-out;
-	pointer-events: none;
-}
-
-.demo .hybridMenu .topMenu .menuButton.captionOutside:hover .menuButton-caption .caption {
-	margin-top: 0;
-	opacity: 1;
-	z-index: 100;
+.demo .hybridMenu .rootContent .v-slot-contentBox .contentBox > .v-margin-top {
+	padding-top: 0 !important;
 }

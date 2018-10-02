@@ -8,14 +8,13 @@ import com.vaadin.ui.VerticalLayout;
 public class GroupPage extends VerticalLayout implements View {
 	private static final long serialVersionUID = 1L;
 	
-	public GroupPage() {
-		Label title = new Label();
-		title.setCaption("Group");
-		title.setValue("Group view");
-		addComponent(title);
-	}
-
 	@Override
 	public void enter(ViewChangeEvent event) {
+		Label title = new Label();
+		
+		title.setCaption("Group");
+		title.setValue("Group view");
+		
+		addComponent(title);
 	}
 }

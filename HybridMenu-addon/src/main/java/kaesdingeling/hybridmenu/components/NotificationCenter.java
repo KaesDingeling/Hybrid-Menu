@@ -1,227 +1,257 @@
 package kaesdingeling.hybridmenu.components;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
-import java.util.stream.Collectors;
+import java.util.concurrent.TimeUnit;
 
+import com.vaadin.server.FontAwesome;
+import com.vaadin.server.VaadinSession;
+import com.vaadin.shared.Position;
 import com.vaadin.ui.Component;
+import com.vaadin.ui.CssLayout;
+import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.Notification.Type;
+import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
-import kaesdingeling.hybridmenu.data.Notification;
-import kaesdingeling.hybridmenu.data.top.TopMenuButton;
-import kaesdingeling.hybridmenu.utils.STYLES;
+import kaesdingeling.hybridmenu.HybridMenu;
+import kaesdingeling.hybridmenu.data.MenuConfig;
+import kaesdingeling.hybridmenu.data.enums.NotificationPosition;
+import kaesdingeling.hybridmenu.data.interfaces.MenuComponent;
 
+@SuppressWarnings("deprecation")
 public class NotificationCenter extends VerticalLayout {
-	private static final long serialVersionUID = 8240675492290112083L;
+	private static final long serialVersionUID = 4526129172208540022L;
 	
-	private List<Notification> notificationListLow = new ArrayList<Notification>();
-	private List<Notification> notificationListMedium = new ArrayList<Notification>();
-	private List<Notification> notificationListHigh = new ArrayList<Notification>();
+	public static final String CLASS_NAME = "notificationCenter";
 	
-	private boolean sortUpwards = true;
-	private boolean showAll = false;
+	public HybridMenu hybridMenu = null;
+	public UI ui = UI.getCurrent();
+
+	private VerticalLayout content = new VerticalLayout();
+	private HorizontalLayout buttonLine = new HorizontalLayout();
+	private CssLayout lastNotification = new CssLayout();
 	
-	private TopMenuButton notiButton = null;
+	private ArrayBlockingQueue<Notification> notificationQueue = new ArrayBlockingQueue<Notification>(MenuConfig.notificationQueueMax);
 	
-	private Thread thread = null;
+	private HMButton notiButton = null;
 	
-	public NotificationCenter(int initSleep) {
-		setStyleName(STYLES.notificationList);
+	public ExecutorService exe = Executors.newSingleThreadExecutor();
+	
+	public NotificationCenter(HybridMenu hybridMenu) {
+		super();
+		setHeight(100, Unit.PERCENTAGE);
+		setWidth(0, Unit.PIXELS);
+		setStyleName(CLASS_NAME);
 		setMargin(false);
 		setSpacing(false);
-		thread = runWhileAttached(this, new Runnable() {
-			@Override
-			public void run() {
-				updateToolTip();
-				updateItems();
+		
+		this.hybridMenu = hybridMenu;
+		
+		exe.execute(() -> {
+			try {
+				boolean initBoot = false;
+				while (this.getUI() != null && this.getUI().isAttached() || !initBoot) {
+					initBoot = true;
+					
+					TimeUnit.SECONDS.sleep(1);
+					
+					Notification noti = notificationQueue.take();
+					
+					noti.build(this);
+					
+					ui.access(() -> {
+						lastNotification.removeAllComponents();
+						lastNotification.addComponent(noti);
+						lastNotification.addStyleName("show");
+						
+						runOneAttached(noti, () -> {
+							lastNotification.removeStyleName("show");
+						}, noti.getDisplayTime());
+					});
+					
+					TimeUnit.MILLISECONDS.sleep(noti.getDisplayTime());
+				}
+			} catch (Exception e) {
+				com.vaadin.ui.Notification vaadinNotification = new com.vaadin.ui.Notification("Notification of the NotificationCenter is no longer possible!", Type.WARNING_MESSAGE);
+				vaadinNotification.setPosition(Position.BOTTOM_RIGHT);
+				vaadinNotification.setDescription("Error: " + e.getMessage());
+				vaadinNotification.show(ui.getPage());
+				e.printStackTrace();
 			}
-        }, initSleep);
+		});
+		
+		buttonLine.setSpacing(true);
+		buttonLine.setMargin(false);
+		buttonLine.setStyleName("buttonLine");
+		
+		content.setSpacing(false);
+		content.setMargin(false);
+		content.setStyleName("content");
+		
+		lastNotification.setHeight(0, Unit.PIXELS);
+		lastNotification.setStyleName("lastNotification");
+		
+		VaadinSession.getCurrent().setAttribute(NotificationCenter.class, this);
+		
+		addButtonLine(HMButton.get().withIcon(FontAwesome.ANGLE_RIGHT).withClickListener(e -> close()));
 	}
 	
-	public void add(Notification notification) {
-		switch (notification.getPriority()) {
-			case LOW:
-				if (!notificationListLow.contains(notification)) {
-					notification.show();
-					notificationListLow.add(notification);
-					notificationListMedium.remove(notification);
-					notificationListHigh.remove(notification);
-					updateList();
-				}
-				break;
-			case MEDIUM:
-				if (!notificationListMedium.contains(notification)) {
-					notification.show();
-					notificationListMedium.add(notification);
-					notificationListLow.remove(notification);
-					notificationListHigh.remove(notification);
-					updateList();
-				}
-				break;
-			case HIGH:
-				if (!notificationListHigh.contains(notification)) {
-					notification.show();
-					notificationListHigh.add(notification);
-					notificationListLow.remove(notification);
-					notificationListMedium.remove(notification);
-					updateList();
-				}
-				break;
-			default:
-				break;
+	public void build() {
+		if (hybridMenu.getConfig().getNotificationPopupPosition().equals(NotificationPosition.TOP) && !lastNotification.getStyleName().contains("top")) {
+			lastNotification.addStyleName("top");
+		} else {
+			lastNotification.removeStyleName("top");
 		}
-	}
-	
-	public void remove(Notification notification) {
-		if (notification.isShow()) {
-			notification.hide();
-			notification.getContent().addStyleName(STYLES.notificationItemRemove);
-		} else if (notification.toRemove()) {
-			notificationListLow.remove(notification);
-			notificationListMedium.remove(notification);
-			notificationListHigh.remove(notification);
-			removeComponent(notification.getContent());
+		if (hybridMenu.getConfig().getNotificationButtonLinePosition().equals(NotificationPosition.TOP) && !lastNotification.getStyleName().contains("top")) {
+			addComponents(buttonLine, content);
+		} else {
+			addComponents(content, buttonLine);
 		}
+		addComponent(lastNotification);
+		setExpandRatio(content, 1);
 	}
 	
-	public void setNotificationButton(TopMenuButton notiButton) {
-		this.notiButton = notiButton;
-		notiButton.addClickListener(e -> {
-			setShowAll(!isShowAll());
+	public <C extends MenuComponent<?>> C addButtonLine(C c) {
+		c.setPrimaryStyleName(c.getClass().getSimpleName());
+		buttonLine.addComponentAsFirst(c);
+		return c;
+	}
+	
+	public <C extends MenuComponent<?>> NotificationCenter removeButtonLine(C c) {
+		buttonLine.removeComponent(c);
+		return this;
+	}
+	
+	public boolean add(Notification notification) {
+		return add(notification, true);
+	}
+	
+	public boolean add(Notification notification, boolean showDescriptionOnPopup) {
+		if (isOpen()) {
+			notification.makeAsReaded();
+		}
+		content.addComponentAsFirst(notification.build(this));
+		updateToolTip();
+		
+		Notification notificationClone = notification.clone();
+		
+		if (!showDescriptionOnPopup) {
+			notificationClone.withContent("");
+		} else {
+			if (notificationClone.getContent().length() > hybridMenu.getConfig().getNotificationPopupMaxContentLength()) {
+				notificationClone.withContent(notificationClone.getContent().substring(0, hybridMenu.getConfig().getNotificationPopupMaxContentLength()));
+			}
+		}
+		
+		return notificationQueue.add(notificationClone);
+	}
+	
+	public NotificationCenter remove(Notification notification) {
+		content.removeComponent(notification);
+		return this;
+	}
+	
+	public int queueSize() {
+		return notificationQueue.size();
+	}
+	
+	public List<Notification> getAll() {
+		List<Notification> notificationsList = new ArrayList<Notification>();
+		for (int i = 0; i < content.getComponentCount(); i++) {
+			Component component = content.getComponent(i);
+			if (component instanceof Notification) {
+				notificationsList.add((Notification) component);
+			}
+		}
+		return notificationsList;
+	}
+	
+	public NotificationCenter open() {
+		addStyleName("open");
+		getAll().forEach(e -> {
+			e.update(this);
+			e.makeAsReaded();
 		});
 		updateToolTip();
+		return this;
 	}
 	
-	public void updateToolTip() {
-		if (notiButton != null) {
-			int unReaded = unReaded();
-			if (unReaded > 0) {
-				notiButton.setToolTip(String.valueOf(unReaded));
-			} else {
-				notiButton.setToolTip(null);
-			}
-		}
+	public NotificationCenter close() {
+		removeStyleName("open");
+		return this;
 	}
 	
-	public void setShowAll(boolean showAll) {
-		this.showAll = showAll;
-		if (showAll) {
-			for (Notification notification : notificationListHigh) {
-				notification.makeAsReaded();
-				notification.show();
-			}
-			for (Notification notification : notificationListMedium) {
-				notification.makeAsReaded();
-				notification.show();
-			}
-			for (Notification notification : notificationListLow) {
-				notification.makeAsReaded();
-				notification.show();
-			}
+	public NotificationCenter toggle() {
+		if (isOpen()) {
+			close();
 		} else {
-			for (Notification notification : notificationListHigh) {
-				notification.hide();
-			}
-			for (Notification notification : notificationListMedium) {
-				notification.hide();
-			}
-			for (Notification notification : notificationListLow) {
-				notification.hide();
+			open();
+		}
+		return this;
+	}
+	
+	public boolean isOpen() {
+		return getStyleName().contains("open");
+	}
+	
+	public NotificationCenter updateToolTip() {
+		int unreaded = 0;
+		for (Notification notification : getAll()) {
+			if (!notification.isReaded()) {
+				unreaded++;
 			}
 		}
-	}
-	
-	public int unReaded() {
-		int unReaded = 0;
-		for (Notification notification : notificationListHigh) {
-			if (!notification.isReaded() && !notification.toRemove()) {
-				unReaded++;
-			}
+		notiButton.withToolTip(unreaded);
+		if (unreaded > 0) {
+			notiButton.setIcon(VaadinSession.getCurrent().getAttribute(MenuConfig.class).getNotificationButtonIcon());
+		} else {
+			notiButton.setIcon(VaadinSession.getCurrent().getAttribute(MenuConfig.class).getNotificationButtonEmptyIcon());
 		}
-		for (Notification notification : notificationListMedium) {
-			if (!notification.isReaded() && !notification.toRemove()) {
-				unReaded++;
+		return this;
+	}
+	
+	public NotificationCenter setNotiButton(HMButton notiButton) {
+		this.notiButton = notiButton;
+		this.notiButton.addClickListener(e -> toggle());
+		updateToolTip();
+		return this;
+	}
+	
+	public static Thread runWhileAttached(final Component component, final Runnable task, final long initSleep, final long sleep) {
+		return initThread(() -> {
+            try {
+                Thread.sleep(initSleep);
+                while (component.getUI() != null && component.getUI().isAttached()) {
+                    Future<Void> future = component.getUI().access(task);
+                    future.get();
+                    Thread.sleep(sleep);
+                }
+            } catch (Exception e) {
 			}
-		}
-		for (Notification notification : notificationListLow) {
-			if (!notification.isReaded() && !notification.toRemove()) {
-				unReaded++;
-			}
-		}
-		return unReaded;
+        });
 	}
 	
-	public boolean isShowAll() {
-		return showAll;
+	public static Thread runOneAttached(final Component component, final Runnable task, final long initSleep) {
+        return initThread(() -> {
+        	 try {
+                 Thread.sleep(initSleep);
+                 if (component.getUI() != null && component.getUI().isAttached()) {
+                     Future<Void> future = component.getUI().access(task);
+                     future.get();
+                 }
+             } catch (Exception e) {
+             }
+        });
 	}
 	
-	public void sortDownwards() {
-		sortUpwards = false;
-	}
-	
-	public void sortUpwards() {
-		sortUpwards = true;
-	}
-	
-	public Thread getThread() {
+	public static Thread initThread(final Runnable task) {
+		final Thread thread = new Thread(task);
+		thread.start();
 		return thread;
 	}
-	
-	private void updateList() {
-		if (sortUpwards) {
-			notificationListLow = notificationListLow.stream().sorted(Comparator.comparingLong(Notification::getCreated).reversed()).collect(Collectors.toList());
-			notificationListMedium = notificationListMedium.stream().sorted(Comparator.comparingLong(Notification::getCreated).reversed()).collect(Collectors.toList());
-			notificationListHigh = notificationListHigh.stream().sorted(Comparator.comparingLong(Notification::getCreated).reversed()).collect(Collectors.toList());
-		} else {
-			notificationListLow = notificationListLow.stream().sorted(Comparator.comparingLong(Notification::getCreated)).collect(Collectors.toList());
-			notificationListMedium = notificationListMedium.stream().sorted(Comparator.comparingLong(Notification::getCreated)).collect(Collectors.toList());
-			notificationListHigh = notificationListHigh.stream().sorted(Comparator.comparingLong(Notification::getCreated)).collect(Collectors.toList());
-		}
-		removeAllComponents();
-		updateItems();
-	}
-	
-	private void updateItems() {
-		for (int i = 0; i < notificationListHigh.size(); i++) {
-			updateItem(notificationListHigh.get(i));
-		}
-		for (int i = 0; i < notificationListMedium.size(); i++) {
-			updateItem(notificationListMedium.get(i));
-		}
-		for (int i = 0; i < notificationListLow.size(); i++) {
-			updateItem(notificationListLow.get(i));
-		}
-		updateToolTip();
-	}
-	
-	private void updateItem(Notification notification) {
-		if (notification.toRemove()) {
-			remove(notification);
-		} else {
-			notification.update();
-			addComponent(notification.getContent());
-		}
-	}
-	
-	public static Thread runWhileAttached(final Component component, final Runnable task, final int initSleep) {
-        final Thread thread = new Thread() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(initSleep);
-                    while (component.getUI() != null && component.getUI().isAttached()) {
-                        Future<Void> future = component.getUI().access(task);
-                        future.get();
-                        Thread.sleep(initSleep);
-                    }
-                } catch (Exception e) {
-                	e.printStackTrace();
-                }
-            }
-        };
-        thread.start();
-        return thread;
-    }
 }

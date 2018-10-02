@@ -8,14 +8,13 @@ import com.vaadin.ui.VerticalLayout;
 public class HomePage extends VerticalLayout implements View {
 	private static final long serialVersionUID = 1L;
 	
-	public HomePage() {
-		Label title = new Label();
-		title.setCaption("Home");
-		title.setValue("Home view");
-		addComponent(title);
-	}
-
 	@Override
 	public void enter(ViewChangeEvent event) {
+		Label title = new Label();
+		
+		title.setCaption("Home");
+		title.setValue("Home view");
+		
+		addComponent(title);
 	}
 }

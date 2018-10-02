@@ -1,96 +1,121 @@
 package kaesdingeling.hybridmenu.data;
 
 import com.vaadin.server.FontAwesome;
+import com.vaadin.server.FontIcon;
 import com.vaadin.server.Resource;
 
-import kaesdingeling.hybridmenu.data.enums.EMenuAnimationSpeed;
-import kaesdingeling.hybridmenu.data.enums.EMenuComponents;
+import kaesdingeling.hybridmenu.data.enums.NotificationPosition;
+import kaesdingeling.hybridmenu.design.DesignItem;
 
 @SuppressWarnings("deprecation")
 public class MenuConfig {
-	private EMenuComponents menuComponents = EMenuComponents.LEFT_WITH_TOP;
-	private DesignItem designItem = DesignItem.getWhiteDesign();
-	private EMenuAnimationSpeed menuAnimationSpeed = EMenuAnimationSpeed.HIGH;
-	private Resource notificationRemoveIcon = FontAwesome.TIMES;
-	private Resource subMenuIcon = FontAwesome.ANGLE_UP;
-	private Resource topMenuLeftMenuMaxSizeIcon = FontAwesome.ANGLE_RIGHT;
-	private Resource topMenuLeftMenuMinSizeIcon = FontAwesome.ANGLE_LEFT;
-	private Resource notificationCenterIcon = FontAwesome.BELL;
-	private Resource notificationCenterEmptyIcon = FontAwesome.BELL_O;
-	private boolean notificationCenterOpenIsReaded = true;
-	private int leftMenuButtonHeight = 50;
-	private int leftMenuLabelHeight = 45;
-	
-	public boolean isNotificationCenterOpenIsReaded() {
-		return notificationCenterOpenIsReaded;
+	public static MenuConfig get() {
+		return new MenuConfig();
 	}
-	public void setNotificationCenterOpenIsReaded(boolean notificationCenterOpenIsReaded) {
-		this.notificationCenterOpenIsReaded = notificationCenterOpenIsReaded;
+	
+	private DesignItem designItem = DesignItem.getDarkDesign();
+	
+	private FontIcon subMenuIcon = FontAwesome.ANGLE_UP;
+	
+	private Resource notificationButtonIcon = FontAwesome.BELL;
+	private Resource notificationButtonEmptyIcon = FontAwesome.BELL_O;
+	private Resource notificationCenterCloseIcon = FontAwesome.ANGLE_RIGHT;
+	private Resource notificationRemoveIcon = FontAwesome.TIMES;
+	
+	private NotificationPosition notificationPopupPosition = NotificationPosition.BOTTOM;
+	private NotificationPosition notificationButtonLinePosition = NotificationPosition.BOTTOM;
+	
+	private long notificationDisplayTime = 5000;
+	
+	private int notificationPopupMaxContentLength = 100;
+	
+	private Resource breadcrumbSeperatorIcon = FontAwesome.ANGLE_RIGHT;
+	private boolean breadcrumbs = true;
+	
+	public static int notificationQueueMax = 200;
+	
+	public DesignItem getDesignItem() {
+		return designItem;
+	}
+	public MenuConfig withDesignItem(DesignItem designItem) {
+		this.designItem = designItem;
+		return this;
+	}
+	public FontIcon getSubMenuIcon() {
+		return subMenuIcon;
+	}
+	public MenuConfig withSubMenuIcon(FontIcon subMenuIcon) {
+		this.subMenuIcon = subMenuIcon;
+		return this;
+	}
+	public Resource getNotificationButtonIcon() {
+		return notificationButtonIcon;
+	}
+	public MenuConfig withNotificationButtonIcon(Resource notificationButtonIcon) {
+		this.notificationButtonIcon = notificationButtonIcon;
+		return this;
+	}
+	public Resource getNotificationButtonEmptyIcon() {
+		return notificationButtonEmptyIcon;
+	}
+	public MenuConfig withNotificationButtonEmptyIcon(Resource notificationButtonEmptyIcon) {
+		this.notificationButtonEmptyIcon = notificationButtonEmptyIcon;
+		return this;
+	}
+	public Resource getNotificationCenterCloseIcon() {
+		return notificationCenterCloseIcon;
+	}
+	public MenuConfig withNotificationCenterCloseIcon(Resource notificationCenterCloseIcon) {
+		this.notificationCenterCloseIcon = notificationCenterCloseIcon;
+		return this;
 	}
 	public Resource getNotificationRemoveIcon() {
 		return notificationRemoveIcon;
 	}
-	public void setNotificationRemoveIcon(Resource notificationRemoveIcon) {
+	public MenuConfig withNotificationRemoveIcon(Resource notificationRemoveIcon) {
 		this.notificationRemoveIcon = notificationRemoveIcon;
+		return this;
 	}
-	public int getLeftMenuButtonHeight() {
-		return leftMenuButtonHeight;
+	public NotificationPosition getNotificationPopupPosition() {
+		return notificationPopupPosition;
 	}
-	public void setLeftMenuButtonHeight(int leftMenuButtonHeight) {
-		this.leftMenuButtonHeight = leftMenuButtonHeight;
+	public MenuConfig setNotificationPopupPosition(NotificationPosition notificationPopupPosition) {
+		this.notificationPopupPosition = notificationPopupPosition;
+		return this;
 	}
-	public int getLeftMenuLabelHeight() {
-		return leftMenuLabelHeight;
+	public NotificationPosition getNotificationButtonLinePosition() {
+		return notificationButtonLinePosition;
 	}
-	public void setLeftMenuLabelHeight(int leftMenuLabelHeight) {
-		this.leftMenuLabelHeight = leftMenuLabelHeight;
+	public MenuConfig setNotificationButtonLinePosition(NotificationPosition notificationButtonLinePosition) {
+		this.notificationButtonLinePosition = notificationButtonLinePosition;
+		return this;
 	}
-	public EMenuComponents getMenuComponents() {
-		return menuComponents;
+	public long getNotificationDisplayTime() {
+		return notificationDisplayTime;
 	}
-	public void setMenuComponents(EMenuComponents menuComponents) {
-		this.menuComponents = menuComponents;
+	public MenuConfig setNotificationDisplayTime(long notificationDisplayTime) {
+		this.notificationDisplayTime = notificationDisplayTime;
+		return this;
 	}
-	public EMenuAnimationSpeed getMenuAnimationSpeed() {
-		return menuAnimationSpeed;
+	public int getNotificationPopupMaxContentLength() {
+		return notificationPopupMaxContentLength;
 	}
-	public void setMenuAnimationSpeed(EMenuAnimationSpeed menuAnimationSpeed) {
-		this.menuAnimationSpeed = menuAnimationSpeed;
+	public MenuConfig setNotificationPopupMaxContentLength(int notificationPopupMaxContentLength) {
+		this.notificationPopupMaxContentLength = notificationPopupMaxContentLength;
+		return this;
 	}
-	public Resource getSubMenuIcon() {
-		return subMenuIcon;
+	public Resource getBreadcrumbSeperatorIcon() {
+		return breadcrumbSeperatorIcon;
 	}
-	public void setSubMenuIcon(Resource subMenuIcon) {
-		this.subMenuIcon = subMenuIcon;
+	public MenuConfig withBreadcrumbSeperatorIcon(Resource breadcrumbSeperatorIcon) {
+		this.breadcrumbSeperatorIcon = breadcrumbSeperatorIcon;
+		return this;
 	}
-	public Resource getTopMenuLeftMenuMaxSizeIcon() {
-		return topMenuLeftMenuMaxSizeIcon;
+	public boolean isBreadcrumbs() {
+		return breadcrumbs;
 	}
-	public void setTopMenuLeftMenuMaxSizeIcon(Resource topMenuLeftMenuMaxSizeIcon) {
-		this.topMenuLeftMenuMaxSizeIcon = topMenuLeftMenuMaxSizeIcon;
-	}
-	public Resource getTopMenuLeftMenuMinSizeIcon() {
-		return topMenuLeftMenuMinSizeIcon;
-	}
-	public void setTopMenuLeftMenuMinSizeIcon(Resource topMenuLeftMenuMinSizeIcon) {
-		this.topMenuLeftMenuMinSizeIcon = topMenuLeftMenuMinSizeIcon;
-	}
-	public Resource getNotificationCenterIcon() {
-		return notificationCenterIcon;
-	}
-	public void setNotificationCenterIcon(Resource notificationCenterIcon) {
-		this.notificationCenterIcon = notificationCenterIcon;
-	}
-	public Resource getNotificationCenterEmptyIcon() {
-		return notificationCenterEmptyIcon;
-	}
-	public void setNotificationCenterEmptyIcon(Resource notificationCenterEmptyIcon) {
-		this.notificationCenterEmptyIcon = notificationCenterEmptyIcon;
-	}
-	public DesignItem getDesignItem() {
-		return designItem;
-	}
-	public void setDesignItem(DesignItem designItem) {
-		this.designItem = designItem;
+	public MenuConfig withBreadcrumbs(boolean breadcrumbs) {
+		this.breadcrumbs = breadcrumbs;
+		return this;
 	}
 }

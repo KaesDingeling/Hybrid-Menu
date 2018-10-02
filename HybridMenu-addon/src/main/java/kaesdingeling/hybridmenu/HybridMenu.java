@@ -1,53 +1,57 @@
 package kaesdingeling.hybridmenu;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.ViewChangeListener;
+import com.vaadin.server.VaadinSession;
 import com.vaadin.shared.ui.ContentMode;
-import com.vaadin.ui.Alignment;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Layout;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
+import kaesdingeling.hybridmenu.components.BreadCrumbs;
+import kaesdingeling.hybridmenu.components.LeftMenu;
 import kaesdingeling.hybridmenu.components.NotificationCenter;
-import kaesdingeling.hybridmenu.data.DesignItem;
+import kaesdingeling.hybridmenu.components.TopMenu;
+import kaesdingeling.hybridmenu.data.DefaultViewChangeManager;
 import kaesdingeling.hybridmenu.data.MenuConfig;
-import kaesdingeling.hybridmenu.data.MenuItem;
-import kaesdingeling.hybridmenu.data.MenuTopItem;
-import kaesdingeling.hybridmenu.data.enums.EMenuComponents;
-import kaesdingeling.hybridmenu.data.leftmenu.MenuButton;
-import kaesdingeling.hybridmenu.data.leftmenu.MenuSubMenu;
+import kaesdingeling.hybridmenu.data.interfaces.MenuComponent;
+import kaesdingeling.hybridmenu.data.interfaces.ViewChangeManager;
+import kaesdingeling.hybridmenu.design.DesignItem;
 import kaesdingeling.hybridmenu.page.DefaultPage;
-import kaesdingeling.hybridmenu.utils.ViewChangeManager;
 
 public class HybridMenu extends VerticalLayout {
 	private static final long serialVersionUID = -4055770717384786366L;
+	private final static Logger log = Logger.getLogger(HybridMenu.class.getName());
 	
 	public static final String CLASS_NAME = "hybridMenu";
-
-	private ViewChangeManager viewChangeManager = new ViewChangeManager();
+	
+	private ViewChangeManager viewChangeManager = new DefaultViewChangeManager();
 	private MenuConfig config = null;
 	private boolean buildRunning = false;
 	private boolean initNavigator = true;
 	private boolean initViewChangeManager = true;
 
-	/* Settings */
-	private EMenuComponents menuComponents = null;
-
 	/* Components */
+	private HorizontalLayout content = new HorizontalLayout();
+	
+	private BreadCrumbs breadcrumbs = null;
 	private Layout naviRootContent = null;
-	private HorizontalLayout topMenu = null;
-	private HorizontalLayout leftMenuContent = null;
-	private VerticalLayout leftMenu = null;
-	private NotificationCenter notificationCenter = null;
+	private VerticalLayout rootContent = new VerticalLayout();
+	private TopMenu topMenu = new TopMenu();
+	private LeftMenu leftMenu = new LeftMenu();
+	private NotificationCenter notiCenter = new NotificationCenter(this);
+	
 	private Label css = new Label("", ContentMode.HTML);
 
-	private List<MenuItem> menuItemList = new ArrayList<MenuItem>();
-
+	public static HybridMenu get() {
+		return new HybridMenu();
+	}
+	
 	public HybridMenu() {
 		super();
 		setSizeFull();
@@ -56,222 +60,143 @@ public class HybridMenu extends VerticalLayout {
 		setSpacing(false);
 	}
 
-	public void build() {
+	public HybridMenu build() {
 		if (!buildRunning) {
+			UI ui = UI.getCurrent();
+			
 			if (config == null) {
 				config = new MenuConfig();
-			}
-			if (menuComponents == null) {
-				menuComponents = EMenuComponents.LEFT_WITH_TOP;
 			}
 			if (naviRootContent == null) {
 				naviRootContent = new VerticalLayout();
 			}
 			
-			naviRootContent.setWidth("100%");
+			naviRootContent.setWidth(100, Unit.PERCENTAGE);
 			naviRootContent.setStyleName("contentBox");
+			
 			if (initNavigator) {
-				new Navigator(UI.getCurrent(), naviRootContent);
-				UI.getCurrent().getNavigator().setErrorView(DefaultPage.class);
+				new Navigator(ui, naviRootContent);
+				ui.getNavigator().setErrorView(DefaultPage.class);
 			}
+			
 			if (initViewChangeManager) {
-				UI.getCurrent().getNavigator().addViewChangeListener(new ViewChangeListener() {
-					private static final long serialVersionUID = 1L;
+				if (null == ui.getNavigator()) {
+					log.severe("You have configured to not initialize a Navigator! Make sure a Navigator exists in the UI");
+				}
+				ui.getNavigator().addViewChangeListener(new ViewChangeListener() {
+					private static final long serialVersionUID = 5012642635022164196L;
 					@Override
 					public boolean beforeViewChange(ViewChangeEvent event) {
-						viewChangeManager.manage(leftMenu, event);
-						viewChangeManager.manage(topMenu, event);
-						viewChangeManager.manage(menuItemList, event);
 						return true;
+					}
+					@Override
+					public void afterViewChange(ViewChangeEvent event) {
+						List<MenuComponent<?>> menuContentList = viewChangeManager.init(HybridMenu.this);
+						viewChangeManager.manage(HybridMenu.this, leftMenu, event, menuContentList);
+						viewChangeManager.finish(HybridMenu.this, menuContentList);
 					}
 				});
 			}
-			switch (menuComponents) {
-				case ONLY_TOP:
-					buildTopMenu();
-					topMenu.addComponent(css);
-					if (notificationCenter != null) {
-						topMenu.addComponent(notificationCenter);
-					}
-					break;
-				case ONLY_LEFT:
-					buildLeftMenu();
-					leftMenu.addComponent(css);
-					if (notificationCenter != null) {
-						leftMenu.addComponent(notificationCenter);
-					}
-					break;
-				case LEFT_WITH_TOP:
-					buildTopMenu();
-					buildLeftMenu();
-					topMenu.addComponent(css);
-					if (notificationCenter != null) {
-						topMenu.addComponent(notificationCenter);
-					}
-					break;
-				default:
-					break;
+			
+			notiCenter.build();
+			
+			addComponent(topMenu);
+			
+			content.setSizeFull();
+			content.setMargin(false);
+			content.setSpacing(false);
+			content.setStyleName("rootContent");
+			addComponent(content);
+			setExpandRatio(content, 1f);
+			
+			css.setHeight(0, Unit.PIXELS);
+			css.setStyleName("customCss");
+			
+			content.addComponents(leftMenu, rootContent, notiCenter, css);
+			content.setExpandRatio(rootContent, 1f);
+			
+			rootContent.setMargin(false);
+			rootContent.setSpacing(false);
+			rootContent.setSizeFull();
+			
+			if (config.isBreadcrumbs()) {
+				breadcrumbs = new BreadCrumbs();
+				rootContent.addComponent(breadcrumbs);
 			}
-			buildRunning = true;
-			css.setStyleName("hideDesignSettings");
+			
+			rootContent.addComponent(naviRootContent);
+			
+			if (config.isBreadcrumbs()) {
+				rootContent.setExpandRatio(naviRootContent, 1f);
+			}
+
 			switchTheme(config.getDesignItem());
+			VaadinSession.getCurrent().setAttribute(MenuConfig.class, config);
+			VaadinSession.getCurrent().setAttribute(HybridMenu.class, this);
+			buildRunning = true;
 		}
+		return this;
 	}
-
-	private void buildLeftMenu() {
-		leftMenu = new VerticalLayout();
-		leftMenu.setWidth("250px");
-		leftMenu.setHeight("100%");
-		leftMenu.setSpacing(false);
-		leftMenu.setStyleName("leftMenu");
-		leftMenuContent = new HorizontalLayout();
-		leftMenuContent.setSizeFull();
-		leftMenuContent.setSpacing(false);
-		leftMenuContent.setStyleName("centralContent");
-		leftMenuContent.addComponents(leftMenu, naviRootContent);
-		leftMenuContent.setExpandRatio(naviRootContent, 1);
-		leftMenuContent.setComponentAlignment(leftMenu, Alignment.MIDDLE_LEFT);
-		leftMenuContent.setComponentAlignment(naviRootContent, Alignment.TOP_CENTER);
-		addComponent(leftMenuContent);
-		setExpandRatio(leftMenuContent, 1);
-
-	}
-
-	private void buildTopMenu() {
-		topMenu = new HorizontalLayout();
-		topMenu.setHeight("50px");
-		topMenu.setWidth("100%");
-		topMenu.setSpacing(false);
-		topMenu.setStyleName("topMenu");
-		addComponent(topMenu);
-		if (!menuComponents.equals(EMenuComponents.LEFT_WITH_TOP)) {
-			leftMenuContent = new HorizontalLayout();
-			leftMenuContent.setStyleName("centralContent");
-			leftMenuContent.addComponents(naviRootContent);
-			leftMenuContent.setExpandRatio(naviRootContent, 1);
-			leftMenuContent.setComponentAlignment(naviRootContent, Alignment.TOP_CENTER);
 	
-			addComponent(leftMenuContent);
-			setExpandRatio(leftMenuContent, 1);
-		}
-
+	public VerticalLayout getRootContent() {
+		return rootContent;
+	}
+	
+	public LeftMenu getLeftMenu() {
+		return leftMenu;
+	}
+	
+	public TopMenu getTopMenu() {
+		return topMenu;
+	}
+	
+	public BreadCrumbs getBreadCrumbs() {
+		return breadcrumbs;
+	}
+	
+	public NotificationCenter getNotificationCenter() {
+		return notiCenter;
 	}
 
-	public void setLeftMenuVisible(boolean visible) {
-		leftMenu.setVisible(visible);
-	}
-
-	public void setTopMenuVisible(boolean visible) {
-		if (topMenu != null) {
-			topMenu.setVisible(visible);
-		}
-	}
-
-	public Layout getContent() {
+	public Layout getNaviContent() {
 		return naviRootContent;
 	}
-
-	public void setInitNavigator(boolean initNavigator) {
-		if (!buildRunning) {
-			this.initNavigator = initNavigator;
-		}
+	
+	public HybridMenu withNaviContent(Layout naviRootContent) {
+		this.naviRootContent = naviRootContent;
+		return this;
 	}
-
-	public void setContent(Layout component) {
-		if (!buildRunning) {
-			naviRootContent = component;
-		}
+	
+	public HybridMenu withInitNavigator(boolean initNavigator) {
+		this.initNavigator = initNavigator;
+		return this;
 	}
-
-	public void setConfig(MenuConfig config) {
-		if (!buildRunning) {
-			this.config = config;
-		}
-	}
-
-	public void setMenuComponent(EMenuComponents menuComponents) {
-		if (!buildRunning) {
-			this.menuComponents = menuComponents;
-		}
-	}
-
-	public void addLeftMenuButton(MenuButton menuButton) {
-		leftMenu.addComponent(menuButton);
-	}
-
-	public void addLeftMenuSubMenu(MenuSubMenu menuSubMenu) {
-		leftMenu.addComponent(menuSubMenu);
-	}
-
-	public void switchTheme(DesignItem designItem) {
-		if (designItem != null) {
-			config.setDesignItem(designItem);
-			css.setValue("<style type=\"text/css\">" + designItem.convertToStyle() + "</style>");
-		}
-	}
-
-	public void setLeftMenuMinimal(boolean minimal) {
-		if (minimal) {
-			if (!leftMenu.getStyleName().contains("minimal")) {
-				leftMenu.addStyleName("minimal");
-				leftMenu.setWidth("60px");
-			}
-		} else {
-			if (leftMenu.getStyleName().contains("minimal")) {
-				leftMenu.removeStyleName("minimal");
-				leftMenu.setWidth("250px");
-			}
-		}
-	}
-
-	public boolean isLeftMenuMinimal() {
-		return leftMenu.getStyleName().contains("minimal");
-	}
-
+	
 	public MenuConfig getConfig() {
 		return config;
 	}
 
-	public boolean addMenuItem(MenuItem menuItem) {
-		if (menuItem != null) {
-			if (menuItem instanceof MenuTopItem && menuComponents.equals(EMenuComponents.ONLY_TOP) && topMenu != null) {
-				addTopMenuItem(menuItem);
-				return true;
-			}
-			if (menuItem instanceof MenuTopItem && menuComponents.equals(EMenuComponents.LEFT_WITH_TOP) && topMenu != null) {
-				addTopMenuItem(menuItem);
-				return true;
+	public HybridMenu withConfig(MenuConfig config) {
+		this.config = config;
+		return this;
+	}
+	
+	public void switchTheme(DesignItem designItem) {
+		if (designItem != null) {
+			if (designItem.getMenuDesign() == null) {
+				designItem.setMenuDesign(config.getDesignItem().getMenuDesign());
 			} else {
-				if (leftMenu != null) {
-					leftMenu.addComponent(menuItem.getComponent());
-					menuItemList.add(menuItem);
-					return true;
-				} else {
-					return false;
-				}
+				setStyleName(CLASS_NAME);
+				addStyleName(designItem.getMenuDesign().getName());
 			}
+			config.withDesignItem(designItem);
+			css.setValue("<style type=\"text/css\">" + designItem.convertToStyle() + "</style>");
 		} else {
-			return false;
+			css.setValue("");
 		}
 	}
 
-	private void addTopMenuItem(MenuItem menuItem) {
-		topMenu.addComponent(menuItem.getComponent());
-		topMenu.setComponentAlignment(menuItem.getComponent(), ((MenuTopItem) menuItem).getAlignment());
-		menuItemList.add(menuItem);
-	}
-	public void setNotificationCenter(NotificationCenter notificationCenter) {
-		this.notificationCenter = notificationCenter;
-	}
-	public NotificationCenter getNotificationCenter() {
-		return notificationCenter;
-	}
-
-	public EMenuComponents getMenuComponents() {
-		return menuComponents;
-	}
-
-	public void setMenuComponents(EMenuComponents menuComponents) {
-		this.menuComponents = menuComponents;
+	public void setViewChangeManager(ViewChangeManager viewChangeManager) {
+		this.viewChangeManager = viewChangeManager;
 	}
 }

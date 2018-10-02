@@ -1,0 +1,180 @@
+@mixin hmTransition($settings1, $settings2: null, $settings3: null) {
+    @if ($settings2) {
+        @if ($settings3) {
+            -webkit-transition: $settings1, $settings2, $settings3;
+            -moz-transition: $settings1, $settings2, $settings3;
+            -ms-transition: $settings1, $settings2, $settings3;
+            -o-transition: $settings1, $settings2, $settings3;
+            transition: $settings1, $settings2, $settings3;
+        } @else {
+            -webkit-transition: $settings1, $settings2;
+            -moz-transition: $settings1, $settings2;
+            -ms-transition: $settings1, $settings2;
+            -o-transition: $settings1, $settings2;
+            transition: $settings1, $settings2;
+        }
+    } @else {
+        -webkit-transition: $settings1;
+        -moz-transition: $settings1;
+        -ms-transition: $settings1;
+        -o-transition: $settings1;
+        transition: $settings1;
+    }
+}
+
+@mixin hmPos($position: null, $top: null, $right: null, $bottom: null, $left: null, $z-index: null) {
+    @if ($position) {
+        position: $position;
+    }
+    @if ($top) {
+        top: $top;
+    }
+    @if ($right) {
+        right: $right;
+    }
+    @if ($bottom) {
+        bottom: $bottom;
+    }
+    @if ($left) {
+        left: $left;
+    }
+    @if ($z-index) {
+        z-index: $z-index;
+    }
+}
+
+@mixin hmSize($width: null, $height: null) {
+    @if ($width) {
+        width: $width;
+    }
+    @if ($height) {
+        height: $height;
+    }
+}
+
+@mixin hmTransformTranslate($x: null, $y: null) {
+    @if ($x) {
+        @if ($y) {
+            -webkit-transform: translateX($x) translateY($y);
+            -moz-transform: translateX($x) translateY($y);
+            -ms-transform: translateX($x) translateY($y);
+            -o-transform: translateX($x) translateY($y);
+            transform: translateX($x) translateY($y);
+        } @else {
+            -webkit-transform: translateX($x);
+            -moz-transform: translateX($x);
+            -ms-transform: translateX($x);
+            -o-transform: translateX($x);
+            transform: translateX($x);
+        }
+    } @else {
+        -webkit-transform: translateY($y);
+        -moz-transform: translateY($y);
+        -ms-transform: translateY($y);
+        -o-transform: translateY($y);
+        transform: translateY($y);
+    }
+}
+
+@mixin hmTransformRotate($settings1) {
+    -webkit-transform: rotate($settings1);
+    -moz-transform: rotate($settings1);
+    -ms-transform: rotate($settings1);
+    -o-transform: rotate($settings1);
+    transform: rotate($settings1);
+}
+
+@mixin hmTheme($content-background, 
+        $menuLeft-background,
+        $button-active-background,
+        $button-hover-background,
+        $notification-background,
+        $notification-remove-button-color,
+        $tooltip-background,
+        $tooltip-active-background) {
+    .topMenu .v-slot > div {
+        @include hmBackgroundWithColor($menuLeft-background);
+        border-top-color: $tooltip-background !important;
+        
+        &:hover {
+            @include hmBackgroundWithColor($button-hover-background);
+        }
+        
+        .HMButton-caption .toolTip {
+            @include hmBackgroundWithColor($tooltip-background);
+        }
+    }
+    
+    .rootContent {
+        @include hmBackgroundWithColor($content-background);
+
+        .leftMenu {
+            background: $menuLeft-background;
+
+            .v-slot-HMLabel > div .v-caption:after {
+                border-bottom-color: rgba(hmColorDedect($menuLeft-background), 0.25) !important;
+            }
+            
+            .HMButton {
+                border-left-color: $tooltip-background !important;
+
+                &.active {
+                    border-left-color: $tooltip-active-background !important;
+                    @include hmBackgroundWithColor($button-active-background);
+                }
+
+                &:hover {
+                    @include hmBackgroundWithColor($button-hover-background);
+                }
+            }
+
+            .HMSubMenu > .v-slot:last-child > .v-verticallayout {
+                border-left-color: rgba(hmColorDedect($menuLeft-background), 0.25) !important;
+            }
+        }
+
+        .notificationCenter {
+            background: rgba($menuLeft-background, 0.75);
+            color: hmColorDedect($menuLeft-background);
+            
+            .notification {
+                @include hmBackgroundWithColor($notification-background);
+
+                .title .timeAgo:before {
+                    background: hmColorDedect($notification-background);
+                }
+
+                .button {
+                    background: transparent;
+                    color: hmColorDedect($notification-background);
+
+                    &:hover {
+                        color: $notification-remove-button-color;
+                        background: rgba($button-hover-background, 0.5);
+                    }
+                }
+            }
+            
+            .v-slot-footer .v-slot > div {
+                @include hmBackgroundWithColor($button-active-background);
+                
+                &:hover {
+                    @include hmBackgroundWithColor($button-hover-background);
+                }
+            }
+        }
+    }
+}
+
+@function hmColorDedect($background) {
+    @if (lightness($background) > 50) {
+        @return $hm-dark-color;
+    } @else {
+        @return $hm-white-color;
+    }
+}
+
+@mixin hmBackgroundWithColor($background) {
+    background: $background;
+    color: hmColorDedect($background);
+}
