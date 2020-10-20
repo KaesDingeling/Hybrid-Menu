@@ -1,6 +1,10 @@
-# HybridMenu Add-on for Vaadin 8
+# HybridMenu Add-on for Vaadin 8+
 
-HybridMenu is a UI component add-on for Vaadin 8.
+Project was moved to GitLab https://gitlab.com/KaesDingeling/Hybrid-Menu
+
+HybridMenu is a UI component add-on for Vaadin 8+.
+
+This branch ist for Vaadin 8.
 
 ## Online demo
 
